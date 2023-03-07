@@ -1,0 +1,17 @@
+//quy tac dat ten bien: viet hoa chu dau moi tu vd HocSinh, Sinh, .... 
+//dat ten bien phai co nghia
+//so thap phan de kieu float
+//cho ban ban thay lang nhang thi comment vao
+//nho up len git dung co quen!!!
+??nho nop dung gio??
+
+//pre luc nao co tg thi uppdate
+//username = id
+
+//ham login/dang xuat - accoun -- kha
+//ham luu tk/doc danh sach-> tk: id / mk 123/34/qweqwe ------chua biet hoi xem da
+//in profile -- tran
+//ham doi mat khau -- khoi
+//nhap diem tinh gpa -- duy
+
+ham quet hoc sinh -> tao tk cho tung hs -> luu vao file 
