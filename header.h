@@ -2,28 +2,49 @@
 #define _HEADER_H_
 
 #include<iostream>
+#include<fstream>
+
 using namespace std;
 
 
 struct Account{
     string UserName, Password;
-    //Type true = giao vien, false = hoc sinh
-    //status true la log in con false la log out
     bool Status,Type;
+    Account *next;
 };
 
 struct Student{
     int No;
     string Name, Id, Class, Course;
-    float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;//yeu cau 20
-    Student *Next, *Prev=nullptr;//pre luc nao co tg thi uppdate
+    float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
+    Student *Next, *Prev=nullptr;
 };
 
-struct Class
-{       
-    
+struct Course
+{
+    string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
+    int NumberOfCredits, MaxStudent = 50;
+    Course *Next, *Prev = nullptr;
 };
 
+struct Class{
+    Student *StudentHead;
+    Class *next;
+};
 
+struct Semester{
+    Course *SemesterHead;
+    Semester *next;
+};
+
+struct SchoolYear{
+    string BeginYear, EndYear;
+    Class *ClassHead;
+    Semester *S1, *S2, *S3;
+};
+void changePassword(Account &a);
+bool checkPassword(string a);
+void CreateSchoolYears(SchoolYear Year);
+void CreateClass(Class a);
 
 #endif
