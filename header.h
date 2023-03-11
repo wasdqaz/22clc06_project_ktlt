@@ -15,8 +15,9 @@ struct Account{
 
 struct Student{
     int No;
-    string Name, Id, Class, Course;
+    string F_Name, L_Name, Id, Class; //da bo cai Course va them Ho Ten
     float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
+    Course *CoursesOfStudentHead; //moi update them
     Student *Next, *Prev=nullptr;
 };
 
@@ -24,6 +25,7 @@ struct Course
 {
     string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
     int NumberOfCredits, MaxStudent = 50;
+    Student *CourseStudent; // moi update them
     Course *Next, *Prev = nullptr;
 };
 
