@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 
+// ham nay tra ve con tro Accont. Se bo sung ham tao listAccont sau
 
 
 Account* Login(Account* head)
