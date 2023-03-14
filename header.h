@@ -10,11 +10,16 @@
     struct Account{
         string UserName, Password;
         bool Status,Type;
+        string ID, Class;           // Them ID, Class;
         Account *next;
     };
 
     struct Course;
 
+    struct Staff{
+        string Id, F_Name, L_Name, Gender, Birth, Social_ID;
+        Staff *pNext;
+    };
     struct Student{
         int No;
         string F_Name, L_Name, Id, Class, DateOfBirth, SocialId; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
