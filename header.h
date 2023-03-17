@@ -14,8 +14,6 @@
         Account *next;
     };
 
-    struct Course;
-
     struct Staff{
         string Id, F_Name, L_Name, Gender, Birth, Social_ID;
         Staff *pNext;
