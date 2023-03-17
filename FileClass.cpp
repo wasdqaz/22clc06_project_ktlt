@@ -36,7 +36,7 @@ void Input_Class(Class *&ClassHead)
     Class *cur = ClassHead; 
     while (cur)
     {
-        string Inp = ClassHead -> Name + ".txt";
+        string Inp = ClassHead -> Name + ".csv";
         cur -> StudentHead = InputStudent(cur -> StudentHead, Inp);
         ClassHead -> tail = cur;
         cur = cur -> next;
@@ -49,7 +49,7 @@ void CreateClass(Class *&AddClass, Class *&ClassHead)
     cout <<"Please enter the class name: ";
     string ClassName;
     cin >>ClassName;
-    ClassName += "txt";
+    ClassName += "csv";
     Class *cur = ClassHead -> tail;
     cur -> next = new Class;
     cur = cur -> next;

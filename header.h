@@ -57,6 +57,6 @@
     void changePassword(Account &a);
     bool checkPassword(string a);
     void CreateSchoolYears(SchoolYear Year);
-    void CreateClass(Class a);
+    void Input_Class(Class *&ClassHead);
 
     #endif
