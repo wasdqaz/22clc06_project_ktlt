@@ -7,5 +7,6 @@ void CalGpa(Student &Hs, Course *HeadCourse);
 
 void AddNewYear(SchoolYear *pHeadYear);
 Semester *AddNewSemester(SchoolYear *pHeadYear);
+void AddCourse(Semester *pHeadSemester);
 
 #endif
