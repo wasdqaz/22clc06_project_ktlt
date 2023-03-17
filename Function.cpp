@@ -5,7 +5,7 @@ void PrintProfile_Staff(Staff *User)
     cout << "Profile\n";
     cout << "Academic staff member\n";
     cout << "Id: " << User -> Id <<endl;
-    cout << "Name: " << User -> F_Name << " " << User -> L_Name << endl;
+    cout << "Name: " << User -> Name << endl;
     cout << "Gender: " << User -> Gender << endl;
     cout << "Birth: "<< User -> Birth << endl;
     cout << "Social ID: " << User -> Social_ID << endl;
@@ -17,10 +17,10 @@ void PrintProfile_Student(Student *User)
     cout << "Student\n";
     cout << "No: " << User -> No << endl;
     cout << "ID: " << User -> Id << endl;
-    cout << "Name: "<< User -> F_Name << " " << User -> L_Name <<endl;
+    cout << "Name: "<< User -> Name <<endl;
     cout << "Gender: " << User -> Gender << endl;
-    cout << "Birth: "<< User -> Birth << endl;
-    cout << "Social ID: " << User -> Social_ID << endl;
+    cout << "Birth: "<< User -> DateOfBirth << endl;
+    cout << "Social ID: " << User -> SocialId << endl;
 }
 
 Staff *Find_Staff(Staff *pHead, string ID)
@@ -41,7 +41,7 @@ Class *Find_ClassName(Class *pHead, string Class_Name)
     Class *cur = pHead;
     while (cur)
     {
-        if (cur -> ClassName == Class_Name)
+        if (cur -> Name == Class_Name)
             return cur;
         cur = cur -> next;
     }
@@ -61,8 +61,8 @@ Student *Find_Student(Class *pClass, string ID)
 }
 void Profile(Account *User, Staff *StaffInfo, Class *ClassName)
 {
-    string ID = User -> ID;
-    if (User -> Type == 1)
+    string ID = User -> username;
+    if (User -> Role == 1)
     {
         Staff *Staff_Info = Find_Staff(StaffInfo, ID);
         PrintProfile_Staff(Staff_Info);

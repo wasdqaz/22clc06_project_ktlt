@@ -3,7 +3,7 @@
 
     #include<iostream>
     #include<fstream>
-
+    #include<string>
     using namespace std;
 
 
@@ -16,12 +16,12 @@
     };
 
     struct Staff{
-        string Id, F_Name, L_Name, Gender, Birth, Social_ID;
+        string Id, Name, Gender, Birth, Social_ID;
         Staff *pNext;
     };
     struct Student{
         int No;
-        string F_Name, L_Name, Id, Class, DateOfBirth, SocialId; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
+        string Name, Id, Class, Gender, DateOfBirth, SocialId; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
         float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
         Course *CoursesOfStudentHead; //moi update them
         Student *Next, *Prev=nullptr;
@@ -37,8 +37,9 @@
     };
 
     struct Class{
+        string Name;
         Student *StudentHead;
-        Class *next;
+        Class *next, *tail;
     };
 
     struct Semester{
