@@ -39,5 +39,25 @@ Semester *AddNewSemester(SchoolYear *pHeadYear)
     while (pHeadYear->BeginYear != Temp)
         pHeadYear = pHeadYear->NextYear;
     
-    //chua xong
+    switch (Smt)
+    {
+        case 1:
+            Semester *pHead = &pHeadYear->S1;
+            pHead->StartDate = StartDate;
+            pHead->EndDate = EndDate;
+            return pHead;
+            break;
+        case 2:
+            Semester *pHead = &pHeadYear->S2;
+            pHead->StartDate = StartDate;
+            pHead->EndDate = EndDate;
+            return pHead;
+            break;
+        case 3:
+            Semester *pHead = &pHeadYear->S3;
+            pHead->StartDate = StartDate;
+            pHead->EndDate = EndDate;
+            return pHead;
+            break;
+    }
 }
