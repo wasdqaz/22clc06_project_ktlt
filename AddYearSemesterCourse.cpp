@@ -11,9 +11,6 @@ void AddNewYear(SchoolYear *pHeadYear)
         pHeadYear = new SchoolYear;
         pHeadYear->NextYear = nullptr;
         pHeadYear->ClassHead = nullptr;
-        pHeadYear->S1 = nullptr;
-        pHeadYear->S2 = nullptr;
-        pHeadYear->S3 = nullptr;
         return;
     }
 
@@ -23,9 +20,6 @@ void AddNewYear(SchoolYear *pHeadYear)
     pHeadYear->NextYear = new SchoolYear;
     pHeadYear->NextYear = nullptr;
     pHeadYear->ClassHead = nullptr;
-    pHeadYear->S1 = nullptr;
-    pHeadYear->S2 = nullptr;
-    pHeadYear->S3 = nullptr;
 }
 
 Semester *AddNewSemester(SchoolYear *pHeadYear)
