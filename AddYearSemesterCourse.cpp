@@ -61,3 +61,61 @@ Semester *AddNewSemester(SchoolYear *pHeadYear)
             break;
     }
 }
+
+void AddCourse(Semester *pHeadSemester)
+{
+    string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
+    int NumberOfCredits, MaxStudent = 50;
+    cout << "Please input the information of the course: " << endl;
+    cout << "Course ID: ";
+    cin >> CourseId;
+    cout << "Course name: ";
+    cin.ignore();
+    getline(cin, CourseName);
+    cout << "Class name: ";
+    cin.ignore();
+    getline(cin, ClassName);
+    cout << "Teacher name: ";
+    cin.ignore();
+    getline(cin, TeacherName);
+    cout << "Session(S1, S2, S3 or S4): ";
+    cin.ignore();
+    getline(cin, Session);
+    cout << "Day of week (MON, TUE, WED, THU, FRI or SAT): ";
+    cin.ignore();
+    getline(cin, DayOfWeek);
+    cout << "Number of credits: ";
+    cin >> NumberOfCredits;
+    cout << "Maximum number of students: ";
+    cin >> MaxStudent;
+
+
+    if (pHeadSemester->CourseList == nullptr)
+    {
+        pHeadSemester->CourseList = new Course;
+        pHeadSemester->CourseList->ClassName = ClassName;
+        pHeadSemester->CourseList->CourseId = CourseId;
+        pHeadSemester->CourseList->CourseName = CourseName;
+        pHeadSemester->CourseList->DayOfWeek = DayOfWeek;
+        pHeadSemester->CourseList->MaxStudent = MaxStudent;
+        pHeadSemester->CourseList->Session = Session;
+        pHeadSemester->CourseList->NumberOfCredits = NumberOfCredits;
+        pHeadSemester->CourseList->TeacherName = TeacherName;
+        pHeadSemester->CourseList->Next = nullptr;
+    }
+
+    Course *pHeadCourse = pHeadSemester->CourseList;
+    while (pHeadCourse->Next != nullptr)
+        pHeadCourse = pHeadCourse->Next;
+
+    pHeadCourse->Next = new Course;
+    pHeadCourse->Next->ClassName = ClassName;
+    pHeadCourse->Next->CourseId = CourseId;
+    pHeadCourse->Next->CourseName = CourseName;
+    pHeadCourse->Next->DayOfWeek = DayOfWeek;
+    pHeadCourse->Next->MaxStudent = MaxStudent;
+    pHeadCourse->Next->Session = Session;
+    pHeadCourse->Next->NumberOfCredits = NumberOfCredits;
+    pHeadCourse->Next->TeacherName = TeacherName;
+    pHeadCourse->Next->Next = nullptr;
+}
