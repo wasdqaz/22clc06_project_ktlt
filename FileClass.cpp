@@ -19,13 +19,13 @@ Student *InputStudent(Student *&StuHead, string input)
             cur = cur -> Next;
         }
         string Info = "";
-        getline(ifs, Info, ';');
+        getline(ifs, Info, ',');
         cur -> No = stoi(Info);
-        getline(ifs, cur ->Id, ';');
-        getline(ifs, cur -> Name, ';');
-        getline(ifs, cur -> Gender, ';');
-        getline(ifs, cur -> DateOfBirth, ';');
-        getline(ifs, cur -> SocialId, ';');
+        getline(ifs, cur ->Id, ',');
+        getline(ifs, cur -> Name, ',');
+        getline(ifs, cur -> Gender, ',');
+        getline(ifs, cur -> DateOfBirth, ',');
+        getline(ifs, cur -> SocialId, ',');
         cur -> Next = nullptr;
     }
 }
