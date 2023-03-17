@@ -42,6 +42,7 @@
 
     struct Semester{
         Course *SemesterHead;
+        string StartDate, EndDate; // them ngay bat dau, ket thuc hk
         Semester *next;
     };
 
@@ -49,6 +50,7 @@
         string BeginYear, EndYear;
         Class *ClassHead;
         Semester *S1, *S2, *S3;
+        SchoolYear *NextYear; //them con tro cho nam hoc
     };
     void changePassword(Account &a);
     bool checkPassword(string a);
