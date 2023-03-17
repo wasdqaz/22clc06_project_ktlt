@@ -41,7 +41,7 @@
     };
 
     struct Semester{
-        Course *SemesterHead;
+        Course *CourseList;
         string StartDate, EndDate; // them ngay bat dau, ket thuc hk
         Semester *next;
     };
