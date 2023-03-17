@@ -49,7 +49,7 @@
     struct SchoolYear{
         string BeginYear, EndYear;
         Class *ClassHead;
-        Semester *S1, *S2, *S3;
+        Semester S1, S2, S3;
         SchoolYear *NextYear; //them con tro cho nam hoc
     };
     void changePassword(Account &a);
