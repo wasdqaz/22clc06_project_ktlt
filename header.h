@@ -8,10 +8,10 @@
 
 
     struct Account{
-        string UserName, Password;
+        string username, Password;
         bool Status = false;
-        int Type;
-        string ID, Class;           // Them ID, Class;
+        int Role;
+        string Class;           // Them ID, Class; // ID: username
         Account *next;
     };
 
