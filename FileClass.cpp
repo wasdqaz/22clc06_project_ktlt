@@ -30,7 +30,6 @@ Student *InputStudent(Student *&StuHead, string input)
     }
 }
 
-
 void Input_Class(Class *&ClassHead)
 {
     Class *cur = ClassHead; 
@@ -38,23 +37,24 @@ void Input_Class(Class *&ClassHead)
     {
         string Inp = ClassHead -> Name + ".csv";
         cur -> StudentHead = InputStudent(cur -> StudentHead, Inp);
-        ClassHead -> tail = cur;
         cur = cur -> next;
     }
 }
 
-void CreateClass(Class *&AddClass, Class *&ClassHead)
+void CreateClass(Class *&ClassHead)
 {
     cout <<"The structure of the class name: Year(YY)+";
     cout <<"Please enter the class name: ";
     string ClassName;
     cin >>ClassName;
     ClassName += "csv";
-    Class *cur = ClassHead -> tail;
+    Class *cur = ClassHead;
+    while (cur -> next)
+        cur = cur -> next;
     cur -> next = new Class;
     cur = cur -> next;
-    cur -> StudentHead = InputStudent(cur -> StudentHead, ClassName);
-    ClassHead -> tail = cur;
+    cur -> Name = ClassName;
+    cur -> next = nullptr;
 }
 
 

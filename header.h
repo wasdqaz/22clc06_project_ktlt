@@ -21,7 +21,7 @@
     };
     struct Student{
         int No;
-        string Name, Id, Class, DateOfBirth, SocialId; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
+        string Id, Name, Gender, DateOfBirth, SocialId, Class; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
         float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
         Course *CoursesOfStudentHead; //cai nay de lam j vay moi nguoi
         Student *Next, *Prev=nullptr;
@@ -46,7 +46,7 @@
     struct Class{
         string Name;
         Student *StudentHead;
-        Class *next, *tail;
+        Class *next;
     };
 
     struct Semester{
