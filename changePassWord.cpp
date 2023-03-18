@@ -25,10 +25,3 @@ void changePassword(Account &a){
     cout<<"Change password successfully!!!";
 }
 
-int main(){
-    Account a;
-    a.UserName="phamanhkhoi";
-    a.Password="qweqwe";
-    changePassword(a);
-    return 0;
-}
