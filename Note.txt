@@ -13,7 +13,7 @@
 //ham tao list acccount/tạo tk cho học sinh-giáo viên->kha
 //hàm tạo class/ đọc học sinh từ file gv vào struct->trân 
 //hàm add year/hàm thêm hc kỳ/khóa học->duy
-//ham dọc file điểm cào list->khôi
+//ham dọc file điểm vào list->khôi
 
 file year->chứa năm học
 

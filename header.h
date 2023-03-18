@@ -21,11 +21,17 @@
     };
     struct Student{
         int No;
-        string Name, Id, Class, Gender, DateOfBirth, SocialId; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
+        string Name, Id, Class, DateOfBirth, SocialId; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
         float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
-        Course *CoursesOfStudentHead; //moi update them
+        Course *CoursesOfStudentHead; //cai nay de lam j vay moi nguoi
         Student *Next, *Prev=nullptr;
-        bool Male; // them gioi tinh
+        bool Gender; // them gioi tinh
+    };
+
+    struct Mark{
+        string NameOfCourse,Id;
+        float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
+        Mark *next=nullptr;
     };
 
     struct Course
@@ -33,6 +39,7 @@
         string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
         int NumberOfCredits, MaxStudent = 50;
         Student *CourseStudent; // moi update them
+        Mark *headMark;
         Course *Next, *Prev = nullptr;
     };
 
@@ -54,9 +61,10 @@
         Semester S1, S2, S3;
         SchoolYear *NextYear; //them con tro cho nam hoc
     };
+    
     void changePassword(Account &a);
     bool checkPassword(string a);
     void CreateSchoolYears(SchoolYear Year);
-    void Input_Class(Class *&ClassHead);
+    void CreateClass(Class a);
 
     #endif
