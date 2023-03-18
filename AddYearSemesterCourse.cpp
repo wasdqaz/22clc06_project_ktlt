@@ -86,9 +86,6 @@ void AddCourse(Semester *pHeadSemester)
     getline(cin, DayOfWeek);
     cout << "Number of credits: ";
     cin >> NumberOfCredits;
-    cout << "Maximum number of students: ";
-    cin >> MaxStudent;
-
 
     if (pHeadSemester->CourseList == nullptr)
     {
