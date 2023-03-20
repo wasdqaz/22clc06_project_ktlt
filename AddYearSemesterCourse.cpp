@@ -6,9 +6,14 @@ using namespace std;
 
 void AddNewYear(SchoolYear *pHeadYear)
 {
+    string Temp;
+    cout << "What is the school year (Ex: 2022-2023): ";
+    cin >> Temp;
     if (pHeadYear == nullptr)
     {
         pHeadYear = new SchoolYear;
+        pHeadYear->BeginYear = Temp.substr(0, 4);
+        pHeadYear->EndYear = Temp.substr(5, 4);
         pHeadYear->NextYear = nullptr;
         pHeadYear->ClassHead = nullptr;
         return;
@@ -18,6 +23,8 @@ void AddNewYear(SchoolYear *pHeadYear)
         pHeadYear = pHeadYear->NextYear;
     
     pHeadYear->NextYear = new SchoolYear;
+    pHeadYear->BeginYear = Temp.substr(0, 4);
+    pHeadYear->EndYear = Temp.substr(5, 4);
     pHeadYear->NextYear = nullptr;
     pHeadYear->ClassHead = nullptr;
 }
