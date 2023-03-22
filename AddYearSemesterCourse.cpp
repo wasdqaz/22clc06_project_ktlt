@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-void AddNewYear(SchoolYear *&pHeadYear)
+void AddNewYear(SchoolYear *&pHeadYear) //con tro toan bo cac nam hoc
 {
     string Temp;
     cout << "What is the school year (Ex: 2022-2023): ";
@@ -16,6 +16,7 @@ void AddNewYear(SchoolYear *&pHeadYear)
         pHeadYear->EndYear = Temp.substr(5, 4);
         pHeadYear->NextYear = nullptr;
         pHeadYear->ClassHead = nullptr;
+        cout << "Add new school year successfully" << endl;
         return;
     }
 
@@ -27,9 +28,10 @@ void AddNewYear(SchoolYear *&pHeadYear)
     pHeadYear->EndYear = Temp.substr(5, 4);
     pHeadYear->NextYear = nullptr;
     pHeadYear->ClassHead = nullptr;
+    cout << "Add new school year successfully" << endl;
 }
 
-Semester *AddNewSemester(SchoolYear *pHeadYear)
+Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
 {
     int Smter;
     string Year, StartDate, EndDate;
@@ -58,24 +60,24 @@ Semester *AddNewSemester(SchoolYear *pHeadYear)
             Semester *pHead = &pHeadYear->S1;
             pHead->StartDate = StartDate;
             pHead->EndDate = EndDate;
+            cout << "Semester created" << endl;
             return pHead;
-            break;
         case 2:
             Semester *pHead = &pHeadYear->S2;
             pHead->StartDate = StartDate;
             pHead->EndDate = EndDate;
+            cout << "Semester created" << endl;
             return pHead;
-            break;
         case 3:
             Semester *pHead = &pHeadYear->S3;
             pHead->StartDate = StartDate;
             pHead->EndDate = EndDate;
+            cout << "Semester created" << endl;
             return pHead;
-            break;
     }
 }
 
-void AddCourse(Semester *pHeadSemester)
+void AddCourse(Semester *pHeadSemester) //con tro hoc ki mac dinh
 {
     string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
     int NumberOfCredits, MaxStudent = 50;
@@ -112,6 +114,8 @@ void AddCourse(Semester *pHeadSemester)
         pHeadSemester->CourseList->NumberOfCredits = NumberOfCredits;
         pHeadSemester->CourseList->TeacherName = TeacherName;
         pHeadSemester->CourseList->Next = nullptr;
+        cout << "Add course successfully" << endl;
+        return;
     }
 
     Course *pHeadCourse = pHeadSemester->CourseList;
@@ -128,4 +132,5 @@ void AddCourse(Semester *pHeadSemester)
     pHeadCourse->Next->NumberOfCredits = NumberOfCredits;
     pHeadCourse->Next->TeacherName = TeacherName;
     pHeadCourse->Next->Next = nullptr;
+    cout << "Add course successfully" << endl;
 }
