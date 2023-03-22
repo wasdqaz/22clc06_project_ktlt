@@ -1,6 +1,6 @@
 #include <iostream>
 #include "header.h"
-#include "CalGPA.h"
+#include "functionOfDuy.h"
 using namespace std;
 
 void CalGpa(Student &Hs, Course *HeadCourse)

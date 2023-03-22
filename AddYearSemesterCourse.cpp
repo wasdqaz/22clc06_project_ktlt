@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-void AddNewYear(SchoolYear *pHeadYear)
+void AddNewYear(SchoolYear *&pHeadYear)
 {
     string Temp;
     cout << "What is the school year (Ex: 2022-2023): ";
@@ -31,10 +31,10 @@ void AddNewYear(SchoolYear *pHeadYear)
 
 Semester *AddNewSemester(SchoolYear *pHeadYear)
 {
-    int Smt;
+    int Smter;
     string Year, StartDate, EndDate;
     cout << "What semester do you want to create (1, 2 or 3): ";
-    cin >> Smt;
+    cin >> Smter;
     cout << "What year does it belong to (Ex: 2022-2023): ";
     cin >> Year;
     cout << "What is the start date (Ex: 30/04): ";
@@ -43,10 +43,16 @@ Semester *AddNewSemester(SchoolYear *pHeadYear)
     cin >> EndDate;
 
     string Temp = StartDate.substr(0, 4);
-    while (pHeadYear->BeginYear != Temp)
+    while (pHeadYear != nullptr && pHeadYear->BeginYear != Temp)
         pHeadYear = pHeadYear->NextYear;
+
+    if (pHeadYear == nullptr)
+    {
+        cout << "No school year found!!!" << endl;
+        return nullptr;
+    }
     
-    switch (Smt)
+    switch (Smter)
     {
         case 1:
             Semester *pHead = &pHeadYear->S1;
