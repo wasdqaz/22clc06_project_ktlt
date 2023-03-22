@@ -24,10 +24,10 @@ void AddNewYear(SchoolYear *&pHeadYear) //con tro toan bo cac nam hoc
         pHeadYear = pHeadYear->NextYear;
     
     pHeadYear->NextYear = new SchoolYear;
-    pHeadYear->BeginYear = Temp.substr(0, 4);
-    pHeadYear->EndYear = Temp.substr(5, 4);
-    pHeadYear->NextYear = nullptr;
-    pHeadYear->ClassHead = nullptr;
+    pHeadYear->NextYear->BeginYear = Temp.substr(0, 4);
+    pHeadYear->NextYear->EndYear = Temp.substr(5, 4);
+    pHeadYear->NextYear->NextYear = nullptr;
+    pHeadYear->NextYear->ClassHead = nullptr;
     cout << "Add new school year successfully" << endl;
 }
 
