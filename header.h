@@ -8,7 +8,7 @@
 
 
     struct Account{
-        string username, Password;
+        string UserName, Password;
         bool Status = false;
         int Role;
         string Class;           // Them ID, Class; // ID: username
@@ -19,6 +19,7 @@
         string Id, Name, Gender, Birth, Social_ID;
         Staff *pNext;
     };
+    struct Course;
     struct Student{
         int No;
         string Id, Name, Gender, DateOfBirth, SocialId, Class; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
