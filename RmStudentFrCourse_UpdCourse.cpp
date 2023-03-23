@@ -98,4 +98,5 @@ void UpdCourseInf(Course *pHead) //con tro danh sach cac course
     pHead->NumberOfCredits = NumberOfCredits;
     pHead->Session = Session;
     pHead->TeacherName = TeacherName;
+    cout << "Update successfully" << endl;
 }
