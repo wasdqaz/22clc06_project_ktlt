@@ -1,5 +1,5 @@
 #include "header.h"
-void Inputcourse(Course *headCourse, string FileName){
+void Inputcourse(Course *&headCourse, string FileName){
     Course *Cur_Course=headCourse;
     ifstream fin (FileName);
     while(Cur_Course){
@@ -27,4 +27,4 @@ void Inputcourse(Course *headCourse, string FileName){
     }
     fin.close();
 }
-//chua chay tu luon
+//chua chay thu luon

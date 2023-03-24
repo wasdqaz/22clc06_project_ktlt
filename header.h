@@ -26,7 +26,7 @@
         float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
         Course *CoursesOfStudentHead; //cai nay de lam j vay moi nguoi
         Student *Next, *Prev=nullptr;
-        bool Gender; // them gioi tinh
+        //bool Gender; // them gioi tinh
     };
 
     struct Mark{

@@ -8,4 +8,8 @@ bool checkPassword(string a);
 void CreateSchoolYears(SchoolYear Year);
 void CreateClass(Class a);
 void ViewListOfCourse(Course *head);
+void AddStudentToCourse(Student *&head);
+void DeleteCourse(Course *&head);
+void DeleteStudentInCourse(Student *&head);
+void DeleteMark(Mark *&head);
 #endif
