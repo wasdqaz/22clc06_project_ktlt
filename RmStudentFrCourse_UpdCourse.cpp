@@ -6,12 +6,12 @@ using namespace std;
 
 void RmStudentFrCourse(Course *pHead) //con tro cac course trong hoc ki hien tai
 {
-    string CourseName;
-    cout << "Enter the name of the course to remove student from: ";
+    string CourseId;
+    cout << "Enter the ID of the course to remove student from: ";
     cin.ignore();
-    getline(cin, CourseName);
+    getline(cin, CourseId);
 
-    while (pHead != nullptr && pHead->CourseName != CourseName)
+    while (pHead != nullptr && pHead->CourseId != CourseId)
         pHead = pHead->Next;
     
     if (pHead == nullptr || pHead->CourseStudent == nullptr)
