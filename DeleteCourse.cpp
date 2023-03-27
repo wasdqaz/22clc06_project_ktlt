@@ -24,9 +24,10 @@ void DeleteCourse(Course *&head){
     cin.ignore();
     getline(cin, IdOFCourse);
     Course *cur=head;
-    if(cur==head){
+    if(head->CourseId==IdOFCourse){
         head=head->Next;
         delete cur;
+        return;
     }
     while(cur->Next->CourseId!=IdOFCourse){
         cur=cur->Next;
