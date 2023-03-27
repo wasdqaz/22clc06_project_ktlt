@@ -82,24 +82,4 @@ void createAccountList(Account*& head, int role)
 	}
 }
 
-void DisPlay(Account* head)
-{
-	int i = 0;
-	while (head != nullptr)
-	{
-		cout << i << endl;
-		cout <<"username: "<< head->username << endl;
-		cout << "pass: " << head->Password << endl;
-		head = head->next;
-		i++;
-	}
-		
 
-}
-	
-
-
-
-	
-
-	
