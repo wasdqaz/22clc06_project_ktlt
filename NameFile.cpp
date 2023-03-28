@@ -1,10 +1,6 @@
 #include "header.h"
 
 
-/*void ReadCourse(Course *&CourseHead, string inp)
-{
-    
-}*/
 void Course()
 {
     string Name_SY = "SchoolYear";
