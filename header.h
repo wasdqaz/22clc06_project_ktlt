@@ -1,4 +1,4 @@
-    #ifndef _HEADER_H_
+#ifndef _HEADER_H_
     #define _HEADER_H_
 
     #include<iostream>
@@ -24,30 +24,24 @@
         int No;
         string Id, Name, Gender, DateOfBirth, SocialId, Class; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
         float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
-<<<<<<< Updated upstream
-       Mark* HeadOfMark; //update head of mark
-        Student *Next, *Prev=nullptr;
-=======
-        //Course *CoursesOfStudentHead; //cai nay de lam j vay moi nguoi
-        Mark *markStudent = nullptr;
-        Student *Next;//, *Prev=nullptr;
->>>>>>> Stashed changes
+        Mark* HeadOfMark; //update head of mark
+        Student *Next = nullptr;
         //bool Gender; // them gioi tinh
     };
 
     struct Mark{
         string NameOfCourse,Id;
         float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
-        Mark *next;
-        Mark* pre;
+        Mark *next = nullptr;
+        Mark* pre = nullptr;
     };
-                                        
+
     struct Course
     {
         string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
         int NumberOfCredits, MaxStudent = 50;
         Student *CourseStudent; // moi update them
-        Course *Next, *Prev = nullptr;
+        Course *Next = nullptr;
     };
 
     struct Class{
