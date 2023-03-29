@@ -4,6 +4,8 @@
     #include<iostream>
     #include<fstream>
     #include<string>
+    #include <dirent.h>
+    #include <sys/types.h>
     using namespace std;
 
 
