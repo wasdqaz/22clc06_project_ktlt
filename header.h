@@ -32,7 +32,8 @@
     struct Mark{
         string NameOfCourse,Id;
         float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
-        Mark *next=nullptr;
+        Mark *next;
+        Mark* pre;
     };
 
     struct Course
