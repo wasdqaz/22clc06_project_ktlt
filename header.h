@@ -24,8 +24,14 @@
         int No;
         string Id, Name, Gender, DateOfBirth, SocialId, Class; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
         float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
+<<<<<<< Updated upstream
        Mark* HeadOfMark; //update head of mark
         Student *Next, *Prev=nullptr;
+=======
+        //Course *CoursesOfStudentHead; //cai nay de lam j vay moi nguoi
+        Mark *markStudent = nullptr;
+        Student *Next;//, *Prev=nullptr;
+>>>>>>> Stashed changes
         //bool Gender; // them gioi tinh
     };
 
@@ -35,7 +41,7 @@
         Mark *next;
         Mark* pre;
     };
-
+                                        
     struct Course
     {
         string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
