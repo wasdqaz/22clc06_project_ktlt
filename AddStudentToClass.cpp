@@ -57,4 +57,5 @@ void AddNewStudent(Class *pHead)
     pHead->StudentHead->SocialId = SocialId;
     pHead->StudentHead->HeadOfMark = nullptr;
     }
+    cout << "Add student to class successfully." << endl;
 }
