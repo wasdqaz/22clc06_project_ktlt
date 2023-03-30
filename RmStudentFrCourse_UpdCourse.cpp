@@ -25,15 +25,24 @@ void RmStudentFrCourse(Course *pHead) //con tro cac course trong hoc ki hien tai
     getline(cin, Id);
 
     Student *pHeadStudent = pHead->CourseStudent;
-    if (pHeadStudent->Id == Id)
+    if (pHeadStudent->Id == Id) //nếu đây là hs đầu tiên trong list
     {   
+        //chuyển điểm hs đó thành -1
+        pHeadStudent->HeadOfMark->FinalMark = -1;
+        pHeadStudent->HeadOfMark->Gpa = -1;
+        pHeadStudent->HeadOfMark->MidtermMark = -1;
+        pHeadStudent->HeadOfMark->OtherMark = -1;
+        pHeadStudent->HeadOfMark->TotalMark = -1;
+
+        //xóa hs
         pHead->CourseStudent = pHead->CourseStudent->Next;
         delete pHeadStudent;
         cout << "Delete successfully" << endl;
         return;
     }
 
-    while (pHeadStudent->Next != nullptr && pHeadStudent->Next->Id != Id)
+    // đưa con trỏ đến hs trước hs cần xóa
+    while (pHeadStudent->Next != nullptr && pHeadStudent->Next->Id != Id) 
         pHeadStudent = pHeadStudent->Next;
     
     if (pHeadStudent->Next == nullptr)
@@ -42,6 +51,14 @@ void RmStudentFrCourse(Course *pHead) //con tro cac course trong hoc ki hien tai
         return;
     }
 
+    //chuyển điểm hs đó thành -1
+    pHeadStudent->Next->HeadOfMark->FinalMark = -1;
+    pHeadStudent->Next->HeadOfMark->Gpa = -1;
+    pHeadStudent->Next->HeadOfMark->MidtermMark = -1;
+    pHeadStudent->Next->HeadOfMark->OtherMark = -1;
+    pHeadStudent->Next->HeadOfMark->TotalMark = -1;
+
+    //xóa hs
     Student *Temp = pHeadStudent->Next;
     pHeadStudent->Next = pHeadStudent->Next->Next;
     delete Temp;
