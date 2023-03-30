@@ -30,17 +30,31 @@ void AddNewStudent(Class *pHead)
     cout << "Social ID: ";
     cin >> SocialId;
 
+    int No = 0;
     Student *Temp = pHead->StudentHead;
-    while (Temp->Next != nullptr)
-        Temp = Temp->Next;  
-
-    int No = Temp->No;
-    Temp->Next = new Student;
-    Temp->Class = ClassName;
-    Temp->DateOfBirth = DateOfBirth;
-    Temp->Gender = Gender;
-    Temp->Id = Id;
-    Temp->Name = Name;
-    Temp->No = No+1;
-    Temp->SocialId = SocialId;
+    if (Temp != nullptr) { //neu da co hs trong lop
+        while (Temp->Next != nullptr)
+            Temp = Temp->Next;
+        No = Temp->No;
+        Temp->Next = new Student;
+        Temp->Next->Class = ClassName;
+        Temp->Next->DateOfBirth = DateOfBirth;
+        Temp->Next->Gender = Gender;
+        Temp->Next->Id = Id;
+        Temp->Next->Name = Name;
+        Temp->Next->No = No+1;
+        Temp->Next->SocialId = SocialId;
+        Temp->Next->HeadOfMark = nullptr;
+    }
+    else { //neu chua co hs nao trong lop
+    pHead->StudentHead = new Student;
+    pHead->StudentHead->Class = ClassName;
+    pHead->StudentHead->DateOfBirth = DateOfBirth;
+    pHead->StudentHead->Gender = Gender;
+    pHead->StudentHead->Id = Id;
+    pHead->StudentHead->Name = Name;
+    pHead->StudentHead->No = No+1;
+    pHead->StudentHead->SocialId = SocialId;
+    pHead->StudentHead->HeadOfMark = nullptr;
+    }
 }
