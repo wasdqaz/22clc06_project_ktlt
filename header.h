@@ -14,28 +14,28 @@
         bool Status = false;
         int Role;
         string Class;           // Them ID, Class; // ID: username
-        Account *next;
+        Account *Next;
     };
 
     struct Staff{
         string Id, Name, Gender, Birth, Social_ID;
-        Staff *pNext;
+        Staff *Next;
     };
    
     struct Student{
         int No;
         string Id, Name, Gender, DateOfBirth, SocialId, Class; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
-        float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
+        float Gpa;
         Mark* HeadOfMark; //update head of mark
         Student *Next = nullptr;
         //bool Gender; // them gioi tinh
     };
 
     struct Mark{
-        string NameOfCourse,Id;
-        float Gpa, TotalMark, FinalMark, MidtermMark, OtherMark;
-        Mark *next = nullptr;
-        Mark* pre = nullptr;
+        string NameOfCourse, Id;
+        float TotalMark, FinalMark, MidtermMark, OtherMark;
+        Mark *Next = nullptr;
+        Mark* Prev = nullptr;
     };
 
     struct Course
@@ -49,13 +49,13 @@
     struct Class{
         string Name;
         Student *StudentHead;
-        Class *next;
+        Class *Next;
     };
 
     struct Semester{
         Course *CourseList;
         string StartDate, EndDate; // them ngay bat dau, ket thuc hk
-        Semester *next;
+        Semester *Next;
     };
 
     struct SchoolYear{
