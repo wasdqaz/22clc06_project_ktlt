@@ -29,7 +29,6 @@ void RmStudentFrCourse(Course *pHead) //con tro cac course trong hoc ki hien tai
     {   
         //chuyển điểm hs đó thành -1
         pHeadStudent->HeadOfMark->FinalMark = -1;
-        pHeadStudent->HeadOfMark->Gpa = -1;
         pHeadStudent->HeadOfMark->MidtermMark = -1;
         pHeadStudent->HeadOfMark->OtherMark = -1;
         pHeadStudent->HeadOfMark->TotalMark = -1;
@@ -53,7 +52,6 @@ void RmStudentFrCourse(Course *pHead) //con tro cac course trong hoc ki hien tai
 
     //chuyển điểm hs đó thành -1
     pHeadStudent->Next->HeadOfMark->FinalMark = -1;
-    pHeadStudent->Next->HeadOfMark->Gpa = -1;
     pHeadStudent->Next->HeadOfMark->MidtermMark = -1;
     pHeadStudent->Next->HeadOfMark->OtherMark = -1;
     pHeadStudent->Next->HeadOfMark->TotalMark = -1;

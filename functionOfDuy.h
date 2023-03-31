@@ -3,7 +3,7 @@
 
 #include "header.h"
 
-void CalGpa(Student &Hs, Course *HeadCourse);
+void CalGpa(Class *pHead);
 void AddNewYear(SchoolYear *&pHeadYear);
 Semester *AddNewSemester(SchoolYear *pHeadYear);
 void AddCourse(Semester *pHeadSemester);
