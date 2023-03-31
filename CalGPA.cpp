@@ -3,30 +3,26 @@
 #include "functionOfDuy.h"
 using namespace std;
 
-void CalGpa(Student &Hs, Course *HeadCourse)
+void CalGpa(Class *pHead)
 {
-    float SumMark = 0;
-    float SumCredits = 0;
-    Course *Temp = Hs.CoursesOfStudentHead; //day la con tro temp cho danh sach course cua hoc sinh
-    while(Temp != nullptr)
-    {
-        Course *CourseTemp = HeadCourse; //con tro temp cho danh sach toan bo khoa hoc trong nam hoc
-        while (CourseTemp != nullptr)
-        {
-            if (Temp->CourseName == CourseTemp->CourseName) //neu do la course cua hoc sinh thi thuc hien tinh toan
-            {
-                Student *StudentTemp = CourseTemp->CourseStudent; //con tro temp cho danh sach hoc sinh trong course
+    while (pHead != nullptr) {
+        Student *pHeadStudent = pHead->StudentHead;
 
-                while (StudentTemp->Id != Hs.Id)       //dua con tro cua danh sach hoc sinh 
-                    StudentTemp = StudentTemp->Next;   //trong course den hoc sinh can tinh gpa
+        while (pHeadStudent != nullptr) {
+            Mark *pHeadMark = pHeadStudent->HeadOfMark;
+            float total = 0, count = 0;
 
-                SumMark += StudentTemp->TotalMark;
-                SumCredits += CourseTemp->NumberOfCredits;
-                break;
+            while (pHeadMark != nullptr) {
+                total += pHeadMark->FinalMark + pHeadMark->MidtermMark + pHeadMark->OtherMark + pHeadMark->TotalMark;
+                count++;
+                pHeadMark = pHeadMark->Next;
             }
-            CourseTemp = CourseTemp->Next;
+
+            float temp = total/count;
+            pHeadStudent->Gpa = temp*4.0 / 10.0;
+            pHeadStudent = pHeadStudent->Next;
         }
-        Temp = Temp->Next;
+
+        pHead = pHead->Next;
     }
-    Hs.Gpa = SumMark / SumCredits;
 }

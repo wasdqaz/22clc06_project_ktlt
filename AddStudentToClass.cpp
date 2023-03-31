@@ -9,7 +9,7 @@ void AddNewStudent(Class *pHead)
     cout << "Enter the class you want to add student to: ";
     cin >> ClassName;
     while (pHead != nullptr && pHead->Name != ClassName)
-        pHead = pHead->next;
+        pHead = pHead->Next;
     if (pHead == nullptr)
     {
         cout << "No class found!!!" << endl;
