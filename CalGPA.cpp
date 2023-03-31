@@ -18,7 +18,8 @@ void CalGpa(Class *pHead)
                 pHeadMark = pHeadMark->Next;
             }
 
-            pHeadStudent->Gpa = total/count;
+            float temp = total/count;
+            pHeadStudent->Gpa = temp*4.0 / 10.0;
             pHeadStudent = pHeadStudent->Next;
         }
 
