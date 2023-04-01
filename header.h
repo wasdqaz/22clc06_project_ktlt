@@ -4,8 +4,8 @@
     #include<iostream>
     #include<fstream>
     #include<string>
-    #include <dirent.h>
-    #include <sys/types.h>
+    #include <direct.h>
+#include <io.h>
     using namespace std;
 
 
@@ -26,7 +26,7 @@
         int No;
         string Id, Name, Gender, DateOfBirth, SocialId, Class; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
         float Gpa;
-        Mark* HeadOfMark; //update head of mark
+        Mark* HeadOfMark = nullptr; //update head of mark
         Student *Next = nullptr;
         //bool Gender; // them gioi tinh
     };
@@ -42,14 +42,14 @@
     {
         string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
         int NumberOfCredits, MaxStudent = 50;
-        Student *CourseStudent; // moi update them
+        Student *CourseStudent = nullptr; // moi update them
         Course *Next = nullptr;
     };
 
     struct Class{
         string Name;
-        Student *StudentHead;
-        Class *Next;
+        Student *StudentHead = nullptr;
+        Class *Next = nullptr;
     };
 
     struct Semester{
