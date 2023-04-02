@@ -1,11 +1,81 @@
 #include "header.h"
+
+Mark* makeMarkNode (double midterm, double final, double total)
+{
+    Mark* newMark = new Mark;
+    newMark->FinalMark = final;
+    newMark->MidtermMark = midterm;
+    newMark->TotalMark = total;
+    newMark->Next = nullptr;
+    newMark->Prev = nullptr;
+    return newMark;
+    
+}
+
+
+void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final, double total)
+{
+    // push Node Mark to Student of class
+    Mark* head =studentOfClass ->HeadOfMark;
+    Mark* newMark =  makeMarkNode(midterm, final, total);
+    if(!head)
+    {
+        studentOfClass->HeadOfMark = newMark;
+        return;
+    }
+    while(head->Next)
+    head = head->Next;
+    newMark->Prev = head;
+    head->Next = newMark;
+    // push node mark to student of course
+    studentOfCourse->HeadOfMark = newMark;
+    
+
+
+
+}
+Student* FindNodeStudentOfCourseToPutMark (string id, Course* cur)
+{
+    Student* head = cur->CourseStudent;
+    while(head)
+    {
+        if(head->Id == id)
+            return head;
+            head = head->Next;
+    }
+    return nullptr;
+
+}
+Student* FindNodeStudentOfClassToPutMark (string id, Class* head, string clss)
+{
+    Class* cur = head;
+    while(cur)
+    {
+        if(cur ->Name == clss)
+        break;
+        cur = cur->Next;
+    }
+    if(cur)
+    {
+        Student* head = cur->StudentHead;
+        while(head)
+        {
+            if(head->Id == id) break;
+            head = head->Next;
+
+        }
+        return head;
+    }
+    return nullptr;
+}
+
 void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, string input)
 {
     ifstream in;
     in.open(input);
     if(!in.is_open()) cout<<"Can not open file "<<input<<endl;
 
-    // Access to ShoolYear current
+    // Access to ShoolYear contain semester (This semester contain course current)
     SchoolYear* cur;
     string beginYear, endYear;
     getline(in,beginYear, '-');
@@ -15,7 +85,7 @@ void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, strin
     cur = cur->NextYear;
    }
 
-   // Access Semester Current
+   // Access Semester Contain Course current
    string semester;
    getline(in,semester);
    Semester SemesterCur;
@@ -26,7 +96,7 @@ void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, strin
     SemesterCur = cur->S2;
     else SemesterCur = cur->S3;
 
-    // Access Course cur
+    //Access Course current
     string course;
     getline(in,course);
     Course* CourseCur = SemesterCur.CourseList;
@@ -34,22 +104,75 @@ void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, strin
     {
         CourseCur = CourseCur->Next;
     }
+    
 
     // Now Access to Student
     string id, name, clss; // clss: class do bi trung ten
-    double gpa;
+    double midterm, final, total;
+
+    Class* curClass= headOfClass;
     while(!in.eof())
     {
         getline(in,id,',');
         getline(in,name,',');
         getline(in,clss,',');
-        in>>gpa;
+        in>>midterm;
+        in>>final;
+        in>>total;
         in.ignore(1);
+        
+        Student* studentCurOfClass = FindNodeStudentOfClassToPutMark(id,headOfClass,clss);
+        Student* studentCufOfCourse = FindNodeStudentOfCourseToPutMark(id, CourseCur);
+        putMarkToStudentNode(studentCurOfClass, studentCufOfCourse, midterm,final,total);
 
-        // Access 
+        // Access Student
+        
+
     }
-
     
     
 
 }
+void printDirectory( string directoryPath) {
+    stack<string> directories;
+    directories.push(directoryPath);
+
+    while (!directories.empty()) {
+        string currentDirectory = directories.top();
+        directories.pop();
+
+        string directoryGlob = currentDirectory + "/*";
+        _finddata_t fileInfo;
+        intptr_t handle = _findfirst(directoryGlob.c_str(), &fileInfo);
+
+        if (handle == -1) {
+            cerr << "Error: unable to open directory " << currentDirectory << endl;
+            continue;
+        }
+
+        do {
+            if (strcmp(fileInfo.name, ".") != 0 && strcmp(fileInfo.name, "..") != 0){
+                if (fileInfo.attrib & _A_SUBDIR)  {
+                    string subdirectoryPath = currentDirectory + "/" + fileInfo.name;
+                    cout << "Directory: " << fileInfo.name << endl;
+                    directories.push(subdirectoryPath);
+                } 
+                else {
+                	
+                    string fileName = fileInfo.name;
+                    string check = fileName.substr(0,4);
+                    
+                    string a = "mark";
+                    if(check.compare(a)== 0) cout<<fileName;
+					
+                       
+                    
+                }
+            }
+        } while (_findnext(handle, &fileInfo) == 0);
+
+        _findclose(handle);
+    }
+}
+
+    
