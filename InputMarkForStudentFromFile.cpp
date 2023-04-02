@@ -69,7 +69,7 @@ Student* FindNodeStudentOfClassToPutMark (string id, Class* head, string clss)
     return nullptr;
 }
 
-void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, string input)
+void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
 {
     ifstream in;
     in.open(input);
@@ -85,7 +85,7 @@ void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, strin
    {
     cur = cur->NextYear;
    }
-
+    Class* headOfClass= cur->ClassHead;
    // Access Semester Contain Course current
    string semester;
    getline(in,semester);
@@ -172,7 +172,7 @@ void AccessFileMark(string directoryPath, Class* headOfClass, SchoolYear* headOf
                     {
                         cout<<fileName<<endl;
 					string filePath = currentDirectory + "/" + fileInfo.name;
-                    InputMarkForStudent(headOfClass,headOfSchoolyear,filePath);
+                    InputMarkForStudent(headOfSchoolyear,filePath);
                     }
                     
                     
