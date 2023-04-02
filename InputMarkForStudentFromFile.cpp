@@ -76,10 +76,11 @@ void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, strin
     if(!in.is_open()) cout<<"Can not open file "<<input<<endl;
 
     // Access to ShoolYear contain semester (This semester contain course current)
-    SchoolYear* cur;
+    SchoolYear* cur = headOfSchoolyear;
     string beginYear, endYear;
     getline(in,beginYear, '-');
     getline(in,endYear);
+
     while(cur && cur->BeginYear != beginYear)
    {
     cur = cur->NextYear;
@@ -88,7 +89,7 @@ void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, strin
    // Access Semester Contain Course current
    string semester;
    getline(in,semester);
-   Semester SemesterCur;
+   Semester* SemesterCur;
 
    if(semester[1] == '1')
    SemesterCur = cur->S1;
@@ -99,7 +100,7 @@ void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, strin
     //Access Course current
     string course;
     getline(in,course);
-    Course* CourseCur = SemesterCur.CourseList;
+    Course* CourseCur = SemesterCur->CourseList;
     while(CourseCur && CourseCur->ClassName != course)
     {
         CourseCur = CourseCur->Next;
@@ -133,7 +134,11 @@ void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, strin
     
 
 }
-void printDirectory( string directoryPath) {
+
+
+
+//This function access File store Mark and Using InputMarkForStudent function to input mark for student in a course
+void AccessFileMark(string directoryPath, Class* headOfClass, SchoolYear* headOfSchoolyear) {
     stack<string> directories;
     directories.push(directoryPath);
 
@@ -163,9 +168,13 @@ void printDirectory( string directoryPath) {
                     string check = fileName.substr(0,4);
                     
                     string a = "mark";
-                    if(check.compare(a)== 0) cout<<fileName;
-					
-                       
+                    if(check.compare(a)== 0) 
+                    {
+                        cout<<fileName<<endl;
+					string filePath = currentDirectory + "/" + fileInfo.name;
+                    InputMarkForStudent(headOfClass,headOfSchoolyear,filePath);
+                    }
+                    
                     
                 }
             }
@@ -175,4 +184,17 @@ void printDirectory( string directoryPath) {
     }
 }
 
-    
+//Ai do chay dum ham main nay zoi
+//include lun ca ham cua Tran
+// int main()
+// {
+//     string directoryPath = "SchoolYear";
+//     Course *CourseHead = nullptr, *curCourse = nullptr;
+//     Class *ClassHead = nullptr, *curClass = nullptr;
+//     SchoolYear *YearHead = nullptr, *curYear = nullptr;
+//     printDirectory(directoryPath, 0, curCourse, curClass, YearHead, curYear);
+   
+//     AccessFileMark(directoryPath , ClassHead, YearHead);
+
+//     return 0;
+// }
