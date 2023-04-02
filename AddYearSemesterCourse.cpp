@@ -57,19 +57,19 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
     switch (Smter)
     {
         case 1:
-            Semester *pHead = &pHeadYear->S1;
+            Semester *pHead = pHeadYear->S1;
             pHead->StartDate = StartDate;
             pHead->EndDate = EndDate;
             cout << "Semester created" << endl;
             return pHead;
         case 2:
-            Semester *pHead = &pHeadYear->S2;
+            Semester *pHead = pHeadYear->S2;
             pHead->StartDate = StartDate;
             pHead->EndDate = EndDate;
             cout << "Semester created" << endl;
             return pHead;
         case 3:
-            Semester *pHead = &pHeadYear->S3;
+            Semester *pHead = pHeadYear->S3;
             pHead->StartDate = StartDate;
             pHead->EndDate = EndDate;
             cout << "Semester created" << endl;
