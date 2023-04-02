@@ -101,7 +101,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
     string course;
     getline(in,course);
     Course* CourseCur = SemesterCur->CourseList;
-    while(CourseCur && CourseCur->ClassName != course)
+    while(CourseCur && CourseCur->CourseId != course)
     {
         CourseCur = CourseCur->Next;
     }
