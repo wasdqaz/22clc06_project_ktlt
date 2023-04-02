@@ -77,9 +77,9 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
 
     // Access to ShoolYear contain semester (This semester contain course current)
     SchoolYear* cur = headOfSchoolyear;
-    string beginYear, endYear;
-    getline(in,beginYear, '-');
-    getline(in,endYear);
+    string year;
+    getline(in,year);
+    string beginYear = year.substr(0,2);
 
     while(cur && cur->BeginYear != beginYear)
    {
