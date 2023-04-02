@@ -1,5 +1,4 @@
 #include "header.h"
-
     
 void InputStudent(Student *&StuHead, string input)
 {
