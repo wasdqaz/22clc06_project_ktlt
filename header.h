@@ -1,14 +1,13 @@
 #ifndef _HEADER_H_
-    #define _HEADER_H_
+#define _HEADER_H_
 
-    #include<iostream>
-    #include<fstream>
-    #include<string>
-    #include <direct.h>
-    #include <stack>
-    
+#include<iostream>
+#include<fstream>
+#include<string>
+#include <direct.h>
+#include <stack>
 #include <io.h>
-    using namespace std;
+using namespace std;
 
 
     struct Account{
@@ -55,15 +54,15 @@
     };
 
     struct Semester{
-        Course *CourseList;
+        Course *CourseList = nullptr;
         string StartDate, EndDate; // them ngay bat dau, ket thuc hk
-        Semester *Next;
+        Semester *Next = nullptr;
     };
 
     struct SchoolYear{
         string BeginYear, EndYear;
-        Class *ClassHead;
-        Semester *S1, *S2, *S3;
+        Class *ClassHead = nullptr;
+        Semester *S1 = nullptr, *S2 = nullptr, *S3 = nullptr;
         SchoolYear *NextYear; //them con tro cho nam hoc
     };
     
