@@ -4,9 +4,10 @@
     #include<iostream>
     #include<fstream>
     #include<string>
-#include <stack>
     #include <direct.h>
-    #include <io.h>
+    #include <stack>
+    
+#include <io.h>
     using namespace std;
 
 
@@ -17,12 +18,17 @@
         string Class;           // Them ID, Class; // ID: username
         Account *Next;
     };
-    struct Mark;
+
     struct Staff{
         string Id, Name, Gender, Birth, Social_ID;
         Staff *Next;
     };
-   
+   struct Mark{
+        string NameOfCourse, Id;
+        float TotalMark, FinalMark, MidtermMark, OtherMark;
+        Mark *Next = nullptr;
+        Mark* Prev = nullptr;
+    };
     struct Student{
         int No;
         string Id, Name, Gender, DateOfBirth, SocialId, Class; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
@@ -32,12 +38,7 @@
         //bool Gender; // them gioi tinh
     };
 
-    struct Mark{
-        string NameOfCourse, Id;
-        float TotalMark, FinalMark, MidtermMark, OtherMark;
-        Mark *Next = nullptr;
-        Mark* Prev = nullptr;
-    };
+    
 
     struct Course
     {
@@ -54,16 +55,16 @@
     };
 
     struct Semester{
-        Course *CourseList = nullptr;
+        Course *CourseList;
         string StartDate, EndDate; // them ngay bat dau, ket thuc hk
-        Semester *Next = nullptr;
+        Semester *Next;
     };
 
     struct SchoolYear{
         string BeginYear, EndYear;
-        Class *ClassHead = nullptr;
-        Semester *S1 = nullptr, *S2 = nullptr, *S3 = nullptr;
-        SchoolYear *NextYear = nullptr; //them con tro cho nam hoc
+        Class *ClassHead;
+        Semester *S1, *S2, *S3;
+        SchoolYear *NextYear; //them con tro cho nam hoc
     };
     
     void changePassword(Account &a);
@@ -71,4 +72,22 @@
     void CreateSchoolYears(SchoolYear Year);
     void CreateClass(Class a);
 
+    // Read list of Course and Class from File
+    void InputStudent(Student *&StuHead, string input);
+    void InputStudentCourse(Course *&subCourse, string input);
+    void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear);
+    void printDirectory(const string& directoryPath, int indent, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
+    
+    
+    // Read mark
+    Mark* makeMarkNode (double midterm, double final, double total);
+    void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final, double total);
+    Student* FindNodeStudentOfCourseToPutMark (string id, Course* cur);
+    Student* FindNodeStudentOfClassToPutMark (string id, Class* head, string clss);
+    void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, string input);
+    void AccessFileMark(string directoryPath, Class* headOfClass, SchoolYear* headOfSchoolyear);
+    struct FileInfo {
+    string name;
+    bool isDirectory;
+};
     #endif
