@@ -6,7 +6,7 @@
     #include<string>
 #include <stack>
     #include <direct.h>
-#include <io.h>
+    #include <io.h>
     using namespace std;
 
 
@@ -17,7 +17,7 @@
         string Class;           // Them ID, Class; // ID: username
         Account *Next;
     };
-
+    struct Mark;
     struct Staff{
         string Id, Name, Gender, Birth, Social_ID;
         Staff *Next;
@@ -54,16 +54,16 @@
     };
 
     struct Semester{
-        Course *CourseList;
+        Course *CourseList = nullptr;
         string StartDate, EndDate; // them ngay bat dau, ket thuc hk
-        Semester *Next;
+        Semester *Next = nullptr;
     };
 
     struct SchoolYear{
         string BeginYear, EndYear;
-        Class *ClassHead;
-        Semester S1, S2, S3;
-        SchoolYear *NextYear; //them con tro cho nam hoc
+        Class *ClassHead = nullptr;
+        Semester *S1 = nullptr, *S2 = nullptr, *S3 = nullptr;
+        SchoolYear *NextYear = nullptr; //them con tro cho nam hoc
     };
     
     void changePassword(Account &a);
