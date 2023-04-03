@@ -55,14 +55,14 @@
     };
 
     struct Semester{
-        Course *CourseList;
+        Course *CourseList=nullptr;
         string StartDate, EndDate; // them ngay bat dau, ket thuc hk
         Semester *Next;
     };
 
     struct SchoolYear{
         string BeginYear, EndYear;
-        Class *ClassHead;
+        Class *ClassHead=nullptr;
         Semester *S1=nullptr, *S2=nullptr, *S3=nullptr;
         SchoolYear *NextYear; //them con tro cho nam hoc
     };
