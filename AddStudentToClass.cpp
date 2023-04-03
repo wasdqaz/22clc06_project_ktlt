@@ -3,8 +3,11 @@
 #include "functionOfDuy.h"
 using namespace std;
 
-void AddNewStudent(Class *pHead)
+void AddNewStudent(SchoolYear *pHeadYear)
 {
+    while (pHeadYear->NextYear != nullptr) 
+        pHeadYear = pHeadYear->NextYear;
+    Class *pHead = pHeadYear->ClassHead;
     string ClassName;
     cout << "Enter the class you want to add student to: ";
     cin >> ClassName;
