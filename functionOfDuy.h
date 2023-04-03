@@ -7,7 +7,7 @@ void CalGpa(Class *pHead);
 void AddNewYear(SchoolYear *&pHeadYear);
 Semester *AddNewSemester(SchoolYear *pHeadYear);
 void AddCourse(Semester *pHeadSemester);
-void AddNewStudent(Class *pHead);
+void AddNewStudent(SchoolYear *pHeadYear);
 void RmStudentFrCourse(Course *pHead);
 void UpdCourseInf(Course *pHead);
 

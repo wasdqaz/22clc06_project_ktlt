@@ -23,30 +23,30 @@
 //     cout << "Social ID: " << User -> SocialId << endl;
 // }
 
-// Staff *Find_Staff(Staff *pHead, string ID)
-// {
-//     if (pHead == nullptr) return;
-//     Staff *cur = pHead;
-//     while (cur)
-//     {
-//         if (cur -> Id == ID)
-//             return cur;
-//         cur = cur -> pNext;
-//     }
-//     return nullptr;
-// }
-// Class *Find_ClassName(Class *pHead, string Class_Name)
-// {
-//     if (pHead == nullptr) return;
-//     Class *cur = pHead;
-//     while (cur)
-//     {
-//         if (cur -> Name == Class_Name)
-//             return cur;
-//         cur = cur -> next;
-//     }
-//     return nullptr;
-// }
+Staff *Find_Staff(Staff *pHead, string ID)
+{
+    if (pHead == nullptr) return;
+    Staff *cur = pHead;
+    while (cur)
+    {
+        if (cur -> Id == ID)
+            return cur;
+        cur = cur -> pNext;
+    }
+    return nullptr;
+}
+Class *Find_ClassName(Class *pHead, string Class_Name)
+{
+    if (pHead == nullptr) return;
+    Class *cur = pHead;
+    while (cur)
+    {
+        if (cur -> Name == Class_Name)
+            return cur;
+        cur = cur -> next;
+    }
+    return nullptr;
+}
 
 // Student *Find_Student(Class *pClass, string ID)
 // {
