@@ -2,8 +2,7 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-Account* MakeNewAccountOfStudent(string username, string password, string Class)
-{
+Account* MakeNewAccountOfStudent(string username, string password, string Class){
 	Account* newAccount = new Account;
 	newAccount->Class = Class;
 	newAccount->Password = password;
