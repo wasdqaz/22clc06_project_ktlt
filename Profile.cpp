@@ -1,15 +1,15 @@
 #include "header.h"
 
-// void PrintProfile_Staff(Staff *User)
-// {
-//     cout << "Profile\n";
-//     cout << "Academic staff member\n";
-//     cout << "Id: " << User -> Id <<endl;
-//     cout << "Name: " << User -> Name << endl;
-//     cout << "Gender: " << User -> Gender << endl;
-//     cout << "Birth: "<< User -> Birth << endl;
-//     cout << "Social ID: " << User -> Social_ID << endl;
-// }
+void PrintProfile_Staff(Staff *User)
+{
+    cout << "Profile\n";
+    cout << "Academic staff member\n";
+    cout << "Id: " << User -> Id <<endl;
+    cout << "Name: " << User -> Name << endl;
+    cout << "Gender: " << User -> Gender << endl;
+    cout << "Birth: "<< User -> Birth << endl;
+    cout << "Social ID: " << User -> Social_ID << endl;
+}
 
 void PrintProfile_Student(Student *User)
 {

@@ -77,10 +77,10 @@ void printDirectory(const string& directoryPath, Course *&curCourse, Class *curC
     struct _finddata_t fileInfo;
     intptr_t handle = _findfirst(directoryGlob.c_str(), &fileInfo);
 
-    /*if (handle == -1) {
-        cerr << "Error: unable to open directory " << directoryPath << endl;
+    if (handle == -1) {
+        //cerr << "Error: unable to open directory " << directoryPath << endl;
         return;
-    }*/
+    }
 
     do {
         if (strcmp(fileInfo.name, ".") != 0 && strcmp(fileInfo.name, "..") != 0){

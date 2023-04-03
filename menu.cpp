@@ -20,8 +20,8 @@ int main(){
     Course *curCourse = nullptr;
     Class *curClass = nullptr;
     SchoolYear *curYear = nullptr;
-    // printDirectory(directoryPath, curCourse, curClass, Year_head, curYear);
-    // AccessFileMark(directoryPath, Year_head);
+    printDirectory(directoryPath, curCourse, curClass, Year_head, curYear);
+    AccessFileMark(directoryPath, Year_head);
 
 
 
