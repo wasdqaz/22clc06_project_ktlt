@@ -17,7 +17,7 @@ Account* Login(Account* head)
 		tmp = head;
 		cout << "Please enter your username: ";
 		cin >> username;
-		cout << "Please enter your password";
+		cout << "Please enter your password: ";
 		cin >> password;
 		while (tmp != nullptr)
 		{
@@ -31,6 +31,5 @@ Account* Login(Account* head)
 
 	}
 	
-
 }
  
