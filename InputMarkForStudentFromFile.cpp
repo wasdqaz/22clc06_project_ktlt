@@ -73,12 +73,13 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
 {
     ifstream in;
     in.open(input);
-    if(!in.is_open()) cout<<"Can not open file "<<input<<endl;
+    if(!in.is_open()) return;
 
     // Access to ShoolYear contain semester (This semester contain course current)
     SchoolYear* cur = headOfSchoolyear;
     string year;
-    getline(in,year);
+    //getline(in,year);
+    getline(in, year);
     string beginYear = year.substr(0,2);
 
     while(cur && cur->BeginYear != beginYear)
@@ -138,7 +139,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
 
 
 //This function access File store Mark and Using InputMarkForStudent function to input mark for student in a course
-void AccessFileMark(string directoryPath, Class* headOfClass, SchoolYear* headOfSchoolyear) {
+void AccessFileMark(string directoryPath,  SchoolYear* headOfSchoolyear) {
     stack<string> directories;
     directories.push(directoryPath);
 
