@@ -43,11 +43,11 @@ void InputStudentCourse(Course *&subCourse, string input)
     getline(ifs, subCourse -> TeacherName);
     getline(ifs, subCourse -> Session);
     getline(ifs, subCourse -> DayOfWeek);
-    string Credits = "";
-    getline(ifs, Credits);
-    subCourse -> NumberOfCredits = stoi(Credits);
+    ifs >> subCourse -> NumberOfCredits;
+    //subCourse -> NumberOfCredits = stoi(Credits);
     Student *cur = nullptr;
-    while (!ifs.eof())/*  */
+    ifs.ignore();
+    while (!ifs.eof())
     {
         string Info = "";
         getline(ifs, Info, ',');
@@ -101,8 +101,13 @@ void printDirectory(const string& directoryPath, int indent, Course *&curCourse,
                     //curYear -> BeginYear = 
                     //curYear -> NextYear = nullptr;
                 }
+                string FileName = fileInfo.name;
+                //int t = FileName.find('-');
+                
                 cout << string(indent, ' ') << "Directory: " << fileInfo.name << endl;
                 printDirectory(subdirectoryPath, indent + 2, curCourse, curClass, YearHead, curYear);
+                curYear -> BeginYear = FileName.substr(0, 2);
+                curYear -> EndYear = FileName.substr(3, 2);
             } 
             else {
                 string pathFile = directoryPath + "/" + fileInfo.name;
