@@ -15,6 +15,14 @@ int main(){
     createAccountList(Student_head,2);
     createAccountList(Staff_head,1);
 
+
+    string directoryPath = "SchoolYear";
+    Course *curCourse = nullptr;
+    Class *curClass = nullptr;
+    SchoolYear *curYear = nullptr;
+    printDirectory(directoryPath, 0, curCourse, curClass, Year_head, curYear);
+    //AccessFileMark(directoryPath, Year_head);
+
     cout<<"You are student or staff.\n";
     cout<<"1. Staff\n";
     cout<<"2. Student\n";
@@ -29,11 +37,12 @@ int main(){
         User->Role=Role;
     }
     
-    int Begin_Year, End_Year;
+    string Begin_Year;
     cout<<"Please input school year.\n";    
-
-
-
+    cout<<"20--(PLease enter two last digits of year. Ex: 22( 2022),...)\n";
+    cin>>Begin_Year;//happy case
+    
+ 
     while(true){
         if(User->Role == 1){
             cout<<"\n-----------------------------MENU-------------------------------------\n";
