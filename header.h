@@ -90,7 +90,7 @@
     Student* FindNodeStudentOfCourseToPutMark (string id, Course* cur);
     Student* FindNodeStudentOfClassToPutMark (string id, Class* head, string clss);
     void InputMarkForStudent( SchoolYear* headOfSchoolyear, string input);
-    void AccessFileMark(string directoryPath, Class* headOfClass, SchoolYear* headOfSchoolyear);
+    void AccessFileMark(string directoryPath,  SchoolYear* headOfSchoolyear);
     struct FileInfo {
     string name;
     bool isDirectory;
