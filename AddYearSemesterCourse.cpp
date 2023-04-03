@@ -108,7 +108,7 @@ void AddCourse(Semester *pHeadSemester) //con tro hoc ki mac dinh
     getline(cin, DayOfWeek);
     cout << "Number of credits: ";
     cin >> NumberOfCredits;
-
+    
     if (pHeadSemester->CourseList == nullptr)
     {
         pHeadSemester->CourseList = new Course;
