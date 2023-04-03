@@ -161,7 +161,7 @@ void AccessFileMark(string directoryPath,  SchoolYear* headOfSchoolyear) {
             if (strcmp(fileInfo.name, ".") != 0 && strcmp(fileInfo.name, "..") != 0){
                 if (fileInfo.attrib & _A_SUBDIR)  {
                     string subdirectoryPath = currentDirectory + "/" + fileInfo.name;
-                    cout << "Directory: " << fileInfo.name << endl;
+                    
                     directories.push(subdirectoryPath);
                 } 
                 else {
@@ -172,7 +172,7 @@ void AccessFileMark(string directoryPath,  SchoolYear* headOfSchoolyear) {
                     string a = "mark";
                     if(check.compare(a)== 0) 
                     {
-                        cout<<fileName<<endl;
+                        
 					string filePath = currentDirectory + "/" + fileInfo.name;
                     InputMarkForStudent(headOfSchoolyear,filePath);
                     }
