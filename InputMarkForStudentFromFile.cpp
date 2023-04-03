@@ -1,8 +1,9 @@
 #include "header.h"
 
-Mark* makeMarkNode (double midterm, double final, double total)
+Mark* makeMarkNode (double midterm, double final, double total, string course)
 {
     Mark* newMark = new Mark;
+    newMark->Id = course;
     newMark->FinalMark = final;
     newMark->MidtermMark = midterm;
     newMark->TotalMark = total;
@@ -13,11 +14,11 @@ Mark* makeMarkNode (double midterm, double final, double total)
 }
 
 
-void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final, double total)
+void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final, double total, string course)
 {
     // push Node Mark to Student of class
     Mark* head =studentOfClass ->HeadOfMark;
-    Mark* newMark =  makeMarkNode(midterm, final, total);
+    Mark* newMark =  makeMarkNode(midterm, final, total, course);
     if(!head)
     {
         studentOfClass->HeadOfMark = newMark;
@@ -125,7 +126,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
         
         Student* studentCurOfClass = FindNodeStudentOfClassToPutMark(id,headOfClass,clss);
         Student* studentCufOfCourse = FindNodeStudentOfCourseToPutMark(id, CourseCur);
-        putMarkToStudentNode(studentCurOfClass, studentCufOfCourse, midterm,final,total);
+        putMarkToStudentNode(studentCurOfClass, studentCufOfCourse, midterm,final,total, course);
 
         // Access Student
         
