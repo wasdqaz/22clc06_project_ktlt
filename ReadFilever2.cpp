@@ -71,16 +71,16 @@ void InputStudentCourse(Course *&subCourse, string input)
 }
 
 //void printDirectory(const string& directoryPath, int indent, Course *&CourseHead, Course *curCourse, Class *&ClassHead, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear) {
-void printDirectory(const string& directoryPath, int indent, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear) {
+void printDirectory(const string& directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear) {
 
     string directoryGlob = directoryPath + "/*";
     struct _finddata_t fileInfo;
     intptr_t handle = _findfirst(directoryGlob.c_str(), &fileInfo);
 
-    if (handle == -1) {
+    /*if (handle == -1) {
         cerr << "Error: unable to open directory " << directoryPath << endl;
         return;
-    }
+    }*/
 
     do {
         if (strcmp(fileInfo.name, ".") != 0 && strcmp(fileInfo.name, "..") != 0){
@@ -104,8 +104,8 @@ void printDirectory(const string& directoryPath, int indent, Course *&curCourse,
                 string FileName = fileInfo.name;
                 //int t = FileName.find('-');
                 
-                cout << string(indent, ' ') << "Directory: " << fileInfo.name << endl;
-                printDirectory(subdirectoryPath, indent + 2, curCourse, curClass, YearHead, curYear);
+                //cout << string(indent, ' ') << "Directory: " << fileInfo.name << endl;
+                printDirectory(subdirectoryPath, curCourse, curClass, YearHead, curYear);
                 curYear -> BeginYear = FileName.substr(0, 2);
                 curYear -> EndYear = FileName.substr(3, 2);
             } 
@@ -175,7 +175,7 @@ void printDirectory(const string& directoryPath, int indent, Course *&curCourse,
                     //curCourse = curSe -> CourseList;
                     //string  = pathCourse + '/' + Name_Course;
                 }
-                cout << string(indent, ' ') << "File: " << fileInfo.name << endl;
+                //cout << string(indent, ' ') << "File: " << fileInfo.name << endl;
             }
         }
     } while (_findnext(handle, &fileInfo) == 0);
@@ -183,11 +183,3 @@ void printDirectory(const string& directoryPath, int indent, Course *&curCourse,
     _findclose(handle);
 }
 
-/*int main() {
-    string directoryPath = "SchoolYear";
-    Course *CourseHead = nullptr, *curCourse = nullptr;
-    Class *ClassHead = nullptr, *curClass = nullptr;
-    SchoolYear *YearHead = nullptr, *curYear = nullptr;
-    printDirectory(directoryPath, 0, curCourse, curClass, YearHead, curYear);
-    return 0;
-}*/

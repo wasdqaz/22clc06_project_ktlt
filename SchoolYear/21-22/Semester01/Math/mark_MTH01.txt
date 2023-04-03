@@ -1,10 +1,10 @@
 21-22
 S1
 MTH01
-21127016,	Nguyen Thi Ngoc Anh,	21CLC01, 9.5
-21127029,	Le Nguyen Gia Bao,	21CLC01, 8.6
-21127082,	Ngo Thanh Phuong Duong,	21CLC02, 7.3
-21127087,	Nguyen Quang Duy,		21CLC02, 8.4
+21127016,Nguyen Thi Ngoc Anh,21CLC01, 9.5 8.9 7.6
+21127029,Le Nguyen Gia Bao,21CLC01, 8.6 7.9 8.9
+21127082,Ngo Thanh Phuong Duong,21CLC02, 7.3 8.6 9.1
+21127087,Nguyen Quang Duy,21CLC02, 8.4 7.8 8.9
 
 
 

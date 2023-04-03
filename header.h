@@ -81,7 +81,7 @@
     void InputStudent(Student *&StuHead, string input);
     void InputStudentCourse(Course *&subCourse, string input);
     void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear);
-    void printDirectory(const string& directoryPath, int indent, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
+    void printDirectory(const string& directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
     
     
     // Read mark
