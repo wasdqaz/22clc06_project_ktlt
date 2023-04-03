@@ -1,21 +1,22 @@
 #ifndef _HEADER_H_
-#define _HEADER_H_
+    #define _HEADER_H_
 
-#include<iostream>
-#include<fstream>
-#include<string>
-#include <direct.h>
-#include <stack>
+    #include<iostream>
+    #include<fstream>
+    #include<string>
+    #include <direct.h>
+    #include <stack>
+    
 #include <io.h>
-using namespace std;
+    using namespace std;
 
 
     struct Account{
-        string UserName, Password;
+        string username, Password;
         bool Status = false;
         int Role;
         string Class;           // Them ID, Class; // ID: username
-        Account *Next;
+        Account *next;
     };
 
     struct Staff{
@@ -54,18 +55,23 @@ using namespace std;
     };
 
     struct Semester{
-        Course *CourseList = nullptr;
+        Course *CourseList;
         string StartDate, EndDate; // them ngay bat dau, ket thuc hk
-        Semester *Next = nullptr;
+        Semester *Next;
     };
 
     struct SchoolYear{
         string BeginYear, EndYear;
-        Class *ClassHead = nullptr;
-        Semester *S1 = nullptr, *S2 = nullptr, *S3 = nullptr;
+        Class *ClassHead;
+        Semester *S1, *S2, *S3;
         SchoolYear *NextYear; //them con tro cho nam hoc
     };
-    
+    //Login
+    Account* MakeNewAccountOfStudent(string username, string password, string Class);
+    Account* MakeNewAccountOfStaff(string username, string password);
+    void createAccountList(Account*& head, int role);
+    Account* Login(Account* head);
+
     void changePassword(Account &a);
     bool checkPassword(string a);
     void CreateSchoolYears(SchoolYear Year);
@@ -83,7 +89,7 @@ using namespace std;
     void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final, double total);
     Student* FindNodeStudentOfCourseToPutMark (string id, Course* cur);
     Student* FindNodeStudentOfClassToPutMark (string id, Class* head, string clss);
-    void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear, string input);
+    void InputMarkForStudent( SchoolYear* headOfSchoolyear, string input);
     void AccessFileMark(string directoryPath, Class* headOfClass, SchoolYear* headOfSchoolyear);
     struct FileInfo {
     string name;
