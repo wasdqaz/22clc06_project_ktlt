@@ -31,7 +31,7 @@ Staff *Find_Staff(Staff *pHead, string ID)
     {
         if (cur -> Id == ID)
             return cur;
-        cur = cur -> pNext;
+        cur = cur -> Next;
     }
     return nullptr;
 }
@@ -43,7 +43,7 @@ Class *Find_ClassName(Class *pHead, string Class_Name)
     {
         if (cur -> Name == Class_Name)
             return cur;
-        cur = cur -> next;
+        cur = cur -> Next;
     }
     return nullptr;
 }
