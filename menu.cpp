@@ -98,7 +98,7 @@ int main(){
                 
                 break;
             case 3:
-                //AddNewStudent();
+                AddNewStudent(Year_head);
                 break;
             case 4:
                 Semester_head = AddNewSemester(Year_head);
@@ -116,7 +116,7 @@ int main(){
                 AddStudentToCourse(Semester_head->CourseList);
                 break;
             case 9:
-                RmStudentFrCourse(Semester_head->CourseList);//bug
+                RmStudentFrCourse(Semester_head->CourseList);
                 break;
             case 10:
                 
