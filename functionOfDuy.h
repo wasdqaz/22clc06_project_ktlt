@@ -10,5 +10,6 @@ void AddCourse(Semester *pHeadSemester);
 void AddNewStudent(SchoolYear *pHeadYear);
 void RmStudentFrCourse(Course *pHead);
 void UpdCourseInf(Course *pHead);
+Semester *defaultSemester(SchoolYear *pHead);
 
 #endif

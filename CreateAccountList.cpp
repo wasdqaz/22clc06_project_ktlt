@@ -17,7 +17,7 @@ Account* MakeNewAccountOfStaff(string username, string password)
 	Account* newAccount = new Account;
 	
 	newAccount->Password = password;
-	newAccount->Role = 2;
+	newAccount->Role = 1;
 	newAccount->Status = 0;
 	newAccount->username = username;
 	newAccount->next = nullptr;

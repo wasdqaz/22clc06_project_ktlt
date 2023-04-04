@@ -4,16 +4,16 @@ bool checkPassword(string a){
         if(a[i]==' ')return false;
     return true;
 }
-void changePassword(Account &a){
+void changePassword(Account *a){
     string tmp;
     cout<<"Enter old password: ";
+    cin.ignore();
     getline(cin, tmp);
-    while(tmp!=a.Password){
+    while(tmp != a->Password){
         cout<<"Invalid password!!! Please re-enter.\n";
         getline(cin, tmp);
     }
     cout<<"Enter new password: ";
-    cin.ignore();
     getline(cin, tmp);
     while(checkPassword(tmp)==0){
         cout<<"Invalid password!!! Please re-enter.\n";
@@ -21,7 +21,7 @@ void changePassword(Account &a){
         cout<<"Enter new password: ";
         getline(cin, tmp);
     }
-    a.Password=tmp;
-    cout<<"Change password successfully!!!";
+    a->Password = tmp;
+    cout<<"Change password successfully!!!\n";
 }
 

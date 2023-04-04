@@ -30,35 +30,43 @@ int main(){
     cout<<"1. Staff\n";
     cout<<"2. Student\n";
     cin>>Role;
-    
+    string clss;
     if(Role==1){
         User=Login(Staff_head);
-        User->Role=Role;
     }
     else {
         User=Login(Student_head);
-        User->Role=Role;
+        clss = User -> Class;
     }
+   
+    
+
 //------------------------------------login--------------------------------------  
     string Begin_Year;
     cout<<"Please input school year.\n";    
     cout<<"20--(PLease enter two last digits of year. Ex: 22( 2022),...)\n";
-    cin>>Begin_Year;//happy case
+    cin>>Begin_Year;
+    while (Year_head && Year_head -> BeginYear != Begin_Year)
+    {
+        Year_head = Year_head -> NextYear;
+    }
     
-    
+    Semester_head = defaultSemester(Year_head);    
+//---------------------------------------------------------------------------------
     while(true){
         if(User->Role == 1){
             cout<<"\n-----------------------------MENU-------------------------------------\n";
-            cout<<"|1. Create school year.                                              |\n";
+            cout<<"|0. Change the password.                                             |\n";                                               cout<<"|1. Create school year.                                              |\n";
+            cout<<"|1. Add year.                                                        |\n";
             cout<<"|2. Create class.                                                    |\n";//can lam them
             cout<<"|3. Add student.                                                     |\n";//can fix
             cout<<"|4. Create semester.                                                 |\n";
-            cout<<"|5. Add course.                                                      |\n";//can fix
+            cout<<"|5. Add course.                                                      |\n";
             cout<<"|6. Upload file student list for course.                             |\n";//chua co
             cout<<"|7. Update course information.                                       |\n";
             cout<<"|8. Add a student to the course.                                     |\n";
             cout<<"|9. Remove a student from the course.                                |\n";
-            cout<<"|10. Delete course.                                                  |\n";
+            cout<<"|10. Delete course.                                                  |\n";//can fix
             cout<<"|11. View a list of classes.                                         |\n";
             cout<<"|12. View a list of students in a class.                             |\n";
             cout<<"|13. View a list of courses.                                         |\n";
@@ -68,7 +76,8 @@ int main(){
             cout<<"|17. Update a student's result.                                      |\n";
             cout<<"|18. View the scoreboard of a class.                                 |\n";
             cout<<"|19. View the scoreboard of a course.                                |\n";
-            cout<<"|20. Logout                                                          |\n";
+            cout<<"|20. View prifile.                                                   |\n";
+            cout<<"|21. Logout.                                                         |\n";
             cout<<"------------------------------END-------------------------------------\n";
             
 
@@ -77,6 +86,11 @@ int main(){
             cin>>Staff_Choice;
             switch (Staff_Choice)
             {
+            case 0:
+            {
+                changePassword(User);
+                break;
+            }
             case 1:
                 AddNewYear(Year_head);
                 break;
@@ -87,24 +101,22 @@ int main(){
                 //AddNewStudent();
                 break;
             case 4:
-
                 Semester_head = AddNewSemester(Year_head);
                 break;
             case 5:
-                // Semester 
-                // AddCourse(Year_head->S1);
+                AddCourse(Semester_head);
                 break;
             case 6:
                 
                 break;
             case 7:
-                
+                UpdCourseInf(Semester_head->CourseList);
                 break;
             case 8:
-                
+                AddStudentToCourse(Semester_head->CourseList);
                 break;
             case 9:
-                
+                RmStudentFrCourse(Semester_head->CourseList);
                 break;
             case 10:
                 

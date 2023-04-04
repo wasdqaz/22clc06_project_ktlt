@@ -63,8 +63,8 @@
     struct SchoolYear{
         string BeginYear, EndYear;
         Class *ClassHead=nullptr;
-        Semester *S1=nullptr, *S2=nullptr, *S3=nullptr;
-        SchoolYear *NextYear; //them con tro cho nam hoc
+        Semester *S1 = nullptr, *S2 = nullptr, *S3 = nullptr;
+        SchoolYear *NextYear = nullptr; //them con tro cho nam hoc
     };
     //Login
     Account* MakeNewAccountOfStudent(string username, string password, string Class);
@@ -72,7 +72,7 @@
     void createAccountList(Account*& head, int role);
     Account* Login(Account* head);
 
-    void changePassword(Account &a);
+    void changePassword(Account *a);
     bool checkPassword(string a);
     void CreateSchoolYears(SchoolYear Year);
     void CreateClass(Class a);
