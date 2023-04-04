@@ -41,15 +41,15 @@ int main(){
    
     
 
-//------------------------------------login--------------------------------------  
-    string Begin_Year;
-    cout<<"Please input school year.\n";    
-    cout<<"20--(PLease enter two last digits of year. Ex: 22( 2022),...)\n";
-    cin>>Begin_Year;
-    while (Year_head && Year_head -> BeginYear != Begin_Year)
-    {
-        Year_head = Year_head -> NextYear;
-    }
+//------------------------------------login-------------------------------------- 
+    // string Begin_Year;
+    // cout<<"Please input school year.\n";    
+    // cout<<"20--(PLease enter two last digits of year. Ex: 22( 2022),...)\n";
+    // cin>>Begin_Year;
+    // while (Year_head && Year_head -> BeginYear != Begin_Year)
+    // {
+    //     Year_head = Year_head -> NextYear;
+    // }
     
     Semester_head = defaultSemester(Year_head);    
 //---------------------------------------------------------------------------------
@@ -116,7 +116,7 @@ int main(){
                 AddStudentToCourse(Semester_head->CourseList);
                 break;
             case 9:
-                RmStudentFrCourse(Semester_head->CourseList);
+                RmStudentFrCourse(Semester_head->CourseList);//bug
                 break;
             case 10:
                 
@@ -141,7 +141,7 @@ int main(){
                 break;
             case 17:
                 
-                break;
+                break; 
             case 18:
                 
                 break;

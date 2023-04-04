@@ -1,4 +1,4 @@
-    #include "header.h"
+#include "header.h"
 #include "functionOfDuy.h"
 #include "iostream"
 #include <string>
@@ -7,46 +7,42 @@ using namespace std;
 void AddNewYear(SchoolYear *&pHeadYear) //con tro toan bo cac nam hoc
 {
     string Temp;
-    cout << "What is the school year (Ex: 2022-2023): ";
+    cout << "What is the school year you want to create (Ex: 2022-2023): ";
     cin >> Temp;
     if (pHeadYear == nullptr)
     {
         pHeadYear = new SchoolYear;
-        pHeadYear->BeginYear = Temp.substr(0, 4);
-        pHeadYear->EndYear = Temp.substr(5, 4);
+        pHeadYear->BeginYear = Temp.substr(2, 2);
+        pHeadYear->EndYear = Temp.substr(5, 2);
         pHeadYear->NextYear = nullptr;
         pHeadYear->ClassHead = nullptr;
         cout << "Add new school year successfully" << endl;
         return;
     }
 
-    while (pHeadYear->NextYear != nullptr)
-        pHeadYear = pHeadYear->NextYear;
+    SchoolYear *temp = pHeadYear;
+
+    while (temp->NextYear != nullptr)
+        temp = temp->NextYear;
     
-    pHeadYear->NextYear = new SchoolYear;
-    pHeadYear->NextYear->BeginYear = Temp.substr(0, 4);
-    pHeadYear->NextYear->EndYear = Temp.substr(5, 4);
-    pHeadYear->NextYear->NextYear = nullptr;
-    pHeadYear->NextYear->ClassHead = nullptr;
+    temp->NextYear = new SchoolYear;
+    temp->NextYear->BeginYear = Temp.substr(2, 2);
+    temp->NextYear->EndYear = Temp.substr(5, 2);
+    temp->NextYear->NextYear = nullptr;
+    temp->NextYear->ClassHead = nullptr;
     cout << "Add new school year successfully" << endl;
 }
 
 Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
 {
     int Smter;
-    string Year, StartDate, EndDate;
+    string StartDate, EndDate;
     cout << "What semester do you want to create (1, 2 or 3): ";
     cin >> Smter;
-    cout << "What year does it belong to (Ex: 2022-2023): ";
-    cin >> Year;
     cout << "What is the start date (Ex: 30/04): ";
     cin >> StartDate;
     cout << "What is the end date (Ex: 30/08): ";
     cin >> EndDate;
-
-    string Temp = StartDate.substr(0, 4);
-    while (pHeadYear != nullptr && pHeadYear->BeginYear != Temp)
-        pHeadYear = pHeadYear->NextYear;
 
     if (pHeadYear == nullptr)
     {
@@ -58,27 +54,42 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
     {
         case 1:
         {
-            Semester *pHead = pHeadYear->S1;
-            pHead->StartDate = StartDate;
-            pHead->EndDate = EndDate;
-            cout << "Semester created" << endl;
-            return pHead;
+            if (pHeadYear->S1 == nullptr) {
+                pHeadYear->S1 = new Semester;
+                pHeadYear->S1->StartDate = StartDate;
+                pHeadYear->S1->EndDate = EndDate;
+                pHeadYear->S1->Next = nullptr;
+                cout << "Semester created" << endl;
+            }
+            else
+                cout << "S1 has already existed.";
+            return pHeadYear->S1;
         }
         case 2:
         {
-            Semester *pHead = pHeadYear->S2;
-            pHead->StartDate = StartDate;
-            pHead->EndDate = EndDate;
-            cout << "Semester created" << endl;
-            return pHead;
+            if (pHeadYear->S2 == nullptr) {
+                pHeadYear->S2 = new Semester;
+                pHeadYear->S2->StartDate = StartDate;
+                pHeadYear->S2->EndDate = EndDate;
+                pHeadYear->S2->Next = nullptr;
+                cout << "Semester created" << endl;
+            }
+            else
+                cout << "S2 has already existed.";
+            return pHeadYear->S2;
         }
         case 3:
         {
-            Semester *pHead = pHeadYear->S3;
-            pHead->StartDate = StartDate;
-            pHead->EndDate = EndDate;
-            cout << "Semester created" << endl;
-            return pHead;
+            if (pHeadYear->S3 == nullptr) {
+                pHeadYear->S3 = new Semester;
+                pHeadYear->S3->StartDate = StartDate;
+                pHeadYear->S3->EndDate = EndDate;
+                pHeadYear->S3->Next = nullptr;
+                cout << "Semester created" << endl;
+            }
+            else
+                cout << "S3 has already existed.";
+            return pHeadYear->S3;
         }
     }
     return nullptr;
@@ -95,16 +106,12 @@ void AddCourse(Semester *pHeadSemester) //con tro hoc ki mac dinh
     cin.ignore();
     getline(cin, CourseName);
     cout << "Class name: ";
-    cin.ignore();
     getline(cin, ClassName);
     cout << "Teacher name: ";
-    cin.ignore();
     getline(cin, TeacherName);
     cout << "Session(S1, S2, S3 or S4): ";
-    cin.ignore();
     getline(cin, Session);
     cout << "Day of week (MON, TUE, WED, THU, FRI or SAT): ";
-    cin.ignore();
     getline(cin, DayOfWeek);
     cout << "Number of credits: ";
     cin >> NumberOfCredits;

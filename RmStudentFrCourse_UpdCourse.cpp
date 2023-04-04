@@ -89,16 +89,12 @@ void UpdCourseInf(Course *pHead) //con tro danh sach cac course
     cin.ignore();
     getline(cin, CourseName);
     cout << "Class name: ";
-    cin.ignore();
     getline(cin, ClassName);
     cout << "Teacher name: ";
-    cin.ignore();
     getline(cin, TeacherName);
     cout << "Session (S1, S2, S3 or S4): ";
-    cin.ignore();
     getline(cin, Session);
     cout << "Day of week (MON, TUE, WED, THU, FRI or SAT): ";
-    cin.ignore();
     getline(cin, DayOfWeek);
     cout << "Number of credits: ";
     cin >> NumberOfCredits;
