@@ -22,12 +22,15 @@ void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, do
     if(!head)
     {
         studentOfClass->HeadOfMark = newMark;
-        return;
+        //return;
     }
-    while(head->Next)
-    head = head->Next;
-    newMark->Prev = head;
-    head->Next = newMark;
+    else
+    {
+        while(head->Next)
+        head = head->Next;
+        newMark->Prev = head;
+        head->Next = newMark;
+    }
     // push node mark to student of course
     studentOfCourse->HeadOfMark = newMark;
     
