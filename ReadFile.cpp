@@ -63,14 +63,12 @@ void InputStudentCourse(Course *&subCourse, string input)
             cur = cur -> Next;
         }
         cur -> Id = Info;
-        //getline(ifs, cur -> Id, ',');
         getline(ifs, cur -> Name, ',');
         getline(ifs, cur -> Class);
     }
     ifs.close();
 }
 
-//void printDirectory(const string& directoryPath, int indent, Course *&CourseHead, Course *curCourse, Class *&ClassHead, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear) {
 void printDirectory(const string& directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear) {
 
     string directoryGlob = directoryPath + "/*";
@@ -78,7 +76,6 @@ void printDirectory(const string& directoryPath, Course *&curCourse, Class *curC
     intptr_t handle = _findfirst(directoryGlob.c_str(), &fileInfo);
 
     if (handle == -1) {
-        //cerr << "Error: unable to open directory " << directoryPath << endl;
         return;
     }
 
@@ -98,13 +95,8 @@ void printDirectory(const string& directoryPath, Course *&curCourse, Class *curC
                         curYear -> NextYear = new SchoolYear;
                         curYear = curYear -> NextYear;
                     }
-                    //curYear -> BeginYear = 
-                    //curYear -> NextYear = nullptr;
                 }
                 string FileName = fileInfo.name;
-                //int t = FileName.find('-');
-                
-                //cout << string(indent, ' ') << "Directory: " << fileInfo.name << endl;
                 printDirectory(subdirectoryPath, curCourse, curClass, YearHead, curYear);
                 curYear -> BeginYear = FileName.substr(0, 2);
                 curYear -> EndYear = FileName.substr(3, 2);
@@ -114,7 +106,6 @@ void printDirectory(const string& directoryPath, Course *&curCourse, Class *curC
                 
                 if (fileInfo.name[0] >= '0' && fileInfo.name[0] <= '9')
                 {
-                    //curYear -> ClassHead = new Class;
                     if (curYear -> ClassHead == nullptr)
                     {
                         curYear -> ClassHead = new Class;
@@ -128,7 +119,6 @@ void printDirectory(const string& directoryPath, Course *&curCourse, Class *curC
                     string FileName = fileInfo.name;
                     curClass -> Name = FileName.substr(0, FileName.find('.'));
                     InputStudent(curClass -> StudentHead, pathFile);
-                    //curClass -> Next = nullptr;
                 }
                 else
                 {
@@ -159,23 +149,15 @@ void printDirectory(const string& directoryPath, Course *&curCourse, Class *curC
                     if (curSe -> CourseList == nullptr)
                     {
                         curSe -> CourseList = new Course;
-                        //curSe.CourseList = new Course;
-                        //curCourse = curSe.CourseList;
                         curCourse = curSe -> CourseList;
                     }
                     else
                     {
-                        //curSe -> CourseList -> Next = new Course;
-                        //curSe -> CourseList = curSe -> CourseList -> Next;
                         curCourse -> Next = new Course;
                         curCourse = curCourse -> Next;
                     }
-                    //curCourse -> Name = FileName.substr(0, FileName.find(','));
                     InputStudentCourse(curCourse, pathFile);
-                    //curCourse = curSe -> CourseList;
-                    //string  = pathCourse + '/' + Name_Course;
                 }
-                //cout << string(indent, ' ') << "File: " << fileInfo.name << endl;
             }
         }
     } while (_findnext(handle, &fileInfo) == 0);
