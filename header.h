@@ -75,14 +75,14 @@
     void changePassword(Account *a);
     bool checkPassword(string a);
     void CreateSchoolYears(SchoolYear Year);
-    void CreateClass(Class a);
+    
 
     // Read list of Course and Class from File
     void InputStudent(Student *&StuHead, string input);
     void InputStudentCourse(Course *&subCourse, string input);
     void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear);
     void printDirectory(const string& directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
-    
+    void CreateClass(SchoolYear *YearHead);
     
     // Read mark
     Mark* makeMarkNode (double midterm, double final, double total);
