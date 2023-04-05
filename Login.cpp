@@ -28,7 +28,7 @@ Account* Login(Account* head)
 			}
 			tmp = tmp->next;
 		}
-
+		cout<<"You are wrong in password or username. Please enter again\n";
 	}
 	
 }
