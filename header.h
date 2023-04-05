@@ -72,6 +72,12 @@
     void createAccountList(Account*& head, int role);
     Account* Login(Account* head);
 
+    Staff *Find_Staff(Staff *pHead, string ID);
+    void PrintProfile_Staff(Account *User);
+    Class *Find_ClassName(Class *pHead, string Class_Name);
+    Student *Find_Student(Class *pClass, string ID);
+    void PrintProfile_Student(Account *User, SchoolYear *curYear);
+
     void changePassword(Account *a);
     bool checkPassword(string a);
     void CreateSchoolYears(SchoolYear Year);
@@ -81,9 +87,8 @@
     void InputStudent(Student *&StuHead, string input);
     void InputStudentCourse(Course *&subCourse, string input);
     void InputMarkForStudent(Class* headOfClass, SchoolYear* headOfSchoolyear);
-    void printDirectory(const string& directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
+    void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
     void CreateClass(SchoolYear *YearHead);
-    
     // Read mark
     Mark* makeMarkNode (double midterm, double final, double total);
     void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final, double total);

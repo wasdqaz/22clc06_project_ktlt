@@ -20,7 +20,7 @@ int main(){
     Course *curCourse = nullptr;
     Class *curClass = nullptr;
     SchoolYear *curYear = nullptr;
-    printDirectory(directoryPath, curCourse, curClass, Year_head, curYear);
+    ReadDirectory(directoryPath, curCourse, curClass, Year_head, curYear);
     AccessFileMark(directoryPath, Year_head);
 
 
@@ -76,7 +76,7 @@ int main(){
             cout<<"|17. Update a student's result.                                      |\n";
             cout<<"|18. View the scoreboard of a class.                                 |\n";
             cout<<"|19. View the scoreboard of a course.                                |\n";
-            cout<<"|20. View prifile.                                                   |\n";
+            cout<<"|20. View profile.                                                   |\n";
             cout<<"|21. Logout.                                                         |\n";
             cout<<"------------------------------END-------------------------------------\n";
             
@@ -155,14 +155,15 @@ int main(){
                 cout<<"Please re-check your choice.\n\n";
                 break;
             }
-            if(Staff_Choice==20)break;
+            if(Staff_Choice == 21)break;
         }
         else {
             cout<<"\n-----------------------------MENU----------------------------------\n";
             cout<<"1. View list of course.\n";
             cout<<"2. View scoreboard\n";
             cout<<"3. Change password.\n";
-            cout<<"4. Logout\n";
+            cout<<"4. View profile.\n";
+            cout<<"5. Logout\n";
             cout<<"\n------------------------------END----------------------------------\n";
 
             cout<<"Please enter your choice. \n";
@@ -181,14 +182,17 @@ int main(){
                 
                 break;
             case 4:
-                
+                PrintProfile_Student(User, Year_head);
+                break;
+            case 5:
+
                 break;
             default:
                 cout<<"Please re-check your choice.\n\n";
                 break;
             
             }
-            if(Student_choice == 4)break;
+            if(Student_choice == 5)break;
         }
     } 
     deleteAllLists (Year_head, Student_head, Staff_head);

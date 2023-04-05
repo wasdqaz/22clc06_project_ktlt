@@ -69,7 +69,7 @@ void InputStudentCourse(Course *&subCourse, string input)
     ifs.close();
 }
 
-void printDirectory(const string& directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear) {
+void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear) {
 
     string directoryGlob = directoryPath + "/*";
     struct _finddata_t fileInfo;
@@ -97,7 +97,7 @@ void printDirectory(const string& directoryPath, Course *&curCourse, Class *curC
                     }
                 }
                 string FileName = fileInfo.name;
-                printDirectory(subdirectoryPath, curCourse, curClass, YearHead, curYear);
+                ReadDirectory(subdirectoryPath, curCourse, curClass, YearHead, curYear);
                 curYear -> BeginYear = FileName.substr(0, 2);
                 curYear -> EndYear = FileName.substr(3, 2);
             } 
