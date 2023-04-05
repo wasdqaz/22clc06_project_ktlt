@@ -21,7 +21,7 @@ Account* Login(Account* head)
 		cin >> password;
 		while (tmp != nullptr)
 		{
-			if (username.compare(head->username) == 0 && password.compare(head->Password) == 0)
+			if (username.compare(tmp->username) == 0 && password.compare(tmp->Password) == 0)
 			{
 				return tmp;
 
