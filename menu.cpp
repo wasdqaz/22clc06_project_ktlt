@@ -58,8 +58,8 @@ int main(){
             cout<<"\n-----------------------------MENU-------------------------------------\n";
             cout<<"|0. Change the password.                                             |\n";                                               cout<<"|1. Create school year.                                              |\n";
             cout<<"|1. Add year.                                                        |\n";
-            cout<<"|2. Create class.                                                    |\n";//can lam them
-            cout<<"|3. Add student.                                                     |\n";//can fix
+            cout<<"|2. Create class.                                                    |\n";
+            cout<<"|3. Add student.                                                     |\n";
             cout<<"|4. Create semester.                                                 |\n";
             cout<<"|5. Add course.                                                      |\n";
             cout<<"|6. Upload file student list for course.                             |\n";//chua co
@@ -71,7 +71,7 @@ int main(){
             cout<<"|12. View a list of students in a class.                             |\n";
             cout<<"|13. View a list of courses.                                         |\n";
             cout<<"|14. View a list of students in a course.                            |\n";
-            cout<<"|15. Export a list of students in a course to a CSV file.            |\n";
+            cout<<"|15. Export a list of students in a course to a CSV file.            |\n";//
             cout<<"|16. Import the scoreboard of a course.                              |\n";
             cout<<"|17. Update a student's result.                                      |\n";
             cout<<"|18. View the scoreboard of a class.                                 |\n";
@@ -95,7 +95,7 @@ int main(){
                 AddNewYear(Year_head);
                 break;
             case 2:
-                
+                CreateClass(Year_head);//can update
                 break;
             case 3:
                 AddNewStudent(Year_head);
@@ -194,6 +194,8 @@ int main(){
             }
             if(Student_choice == 5)break;
         }
-    }    
+    } 
+    deleteAllLists (Year_head, Student_head, Staff_head);
+    delete User;
     return 0;
 }
