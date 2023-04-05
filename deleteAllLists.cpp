@@ -36,6 +36,7 @@ void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHe
         Temp = Temp->NextYear;
     }
 
+    if (pHead->S1 != nullptr) {
     Course *TempCourse = pHead->S1->CourseList;
     while (TempCourse != nullptr) { //xóa hs trong course hk1
         tmp = TempCourse->CourseStudent;
@@ -46,8 +47,10 @@ void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHe
         }
         TempCourse = TempCourse->Next;
     }
+    }
 
-    TempCourse = pHead->S2->CourseList;
+    if (pHead->S2 != nullptr) {
+    Course *TempCourse = pHead->S2->CourseList;
     while (TempCourse != nullptr) { //xóa hs trong course hk2
         tmp = TempCourse->CourseStudent;
         while (tmp != nullptr) {
@@ -57,8 +60,10 @@ void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHe
         }
         TempCourse = TempCourse->Next;
     }
+    }
 
-    TempCourse = pHead->S3->CourseList;
+    if (pHead->S3 != nullptr) {
+    Course *TempCourse = pHead->S3->CourseList;
     while (TempCourse != nullptr) { //xóa hs trong course hk3
         tmp = TempCourse->CourseStudent;
         while (tmp != nullptr) {
@@ -68,8 +73,9 @@ void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHe
         }
         TempCourse = TempCourse->Next;
     }
+    }
 
-    TempCourse = pHead->S1->CourseList;
+    Course *TempCourse = pHead->S1->CourseList;
     while (TempCourse != nullptr) { //xóa course hk1
         Course *temp = TempCourse;
         TempCourse = TempCourse->Next;
