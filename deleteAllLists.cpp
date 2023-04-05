@@ -75,25 +75,31 @@ void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHe
     }
     }
 
+    if (pHead->S1 != nullptr) {
     Course *TempCourse = pHead->S1->CourseList;
     while (TempCourse != nullptr) { //xóa course hk1
         Course *temp = TempCourse;
         TempCourse = TempCourse->Next;
         delete temp;
     }
+    }
 
-    TempCourse = pHead->S2->CourseList;
+    if (pHead->S2 != nullptr) {
+    Course *TempCourse = pHead->S2->CourseList;
     while (TempCourse != nullptr) { //xóa course hk2
         Course *temp = TempCourse;
         TempCourse = TempCourse->Next;
         delete temp;
     }
+    }
 
-    TempCourse = pHead->S3->CourseList;
+    if (pHead->S3 != nullptr) {
+    Course *TempCourse = pHead->S3->CourseList;
     while (TempCourse != nullptr) { //xóa course hk3
         Course *temp = TempCourse;
         TempCourse = TempCourse->Next;
         delete temp;
+    }
     }
 
     while (pHead != nullptr) { //xóa năm học
