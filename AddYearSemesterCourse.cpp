@@ -13,7 +13,7 @@ void AddNewYear(SchoolYear *&pHeadYear) //con tro toan bo cac nam hoc
     {
         pHeadYear = new SchoolYear;
         pHeadYear->BeginYear = Temp.substr(2, 2);
-        pHeadYear->EndYear = Temp.substr(5, 2);
+        pHeadYear->EndYear = Temp.substr(7, 2);
         pHeadYear->NextYear = nullptr;
         pHeadYear->ClassHead = nullptr;
         cout << "Add new school year successfully" << endl;
@@ -27,7 +27,7 @@ void AddNewYear(SchoolYear *&pHeadYear) //con tro toan bo cac nam hoc
     
     temp->NextYear = new SchoolYear;
     temp->NextYear->BeginYear = Temp.substr(2, 2);
-    temp->NextYear->EndYear = Temp.substr(5, 2);
+    temp->NextYear->EndYear = Temp.substr(7, 2);
     temp->NextYear->NextYear = nullptr;
     temp->NextYear->ClassHead = nullptr;
     cout << "Add new school year successfully" << endl;
