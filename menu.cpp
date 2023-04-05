@@ -122,13 +122,13 @@ int main(){
                 
                 break;
             case 11:
-                
+                viewClass(Year_head);
                 break;
             case 12:
-                
+                viewStudentClass(Year_head);
                 break;
             case 13:
-                
+                //ViewListOfCourse(Year_head);
                 break;
             case 14:
                 
