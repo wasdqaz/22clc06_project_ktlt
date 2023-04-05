@@ -1,9 +1,6 @@
 #include "header.h"
 
 
-
-
-
 Staff *Find_Staff(Staff *pHead, string ID)
 {
     if (pHead == nullptr) return nullptr;
