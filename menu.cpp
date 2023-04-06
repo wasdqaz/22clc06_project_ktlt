@@ -119,7 +119,7 @@ int main(){
                 RmStudentFrCourse(Semester_head->CourseList);
                 break;
             case 10:
-                
+                DeleteCourse(Semester_head->CourseList);
                 break;
             case 11:
                 viewClass(Year_head);
@@ -128,7 +128,7 @@ int main(){
                 viewStudentClass(Year_head);
                 break;
             case 13:
-                //ViewListOfCourse(Year_head);
+                ViewListOfCourse(Semester_head->CourseList);
                 break;
             case 14:
                 
