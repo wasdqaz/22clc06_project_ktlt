@@ -131,7 +131,7 @@ int main(){
                 ViewListOfCourse(Semester_head->CourseList);
                 break;
             case 14:
-                
+                viewStudentsInCourse(Semester_head->CourseList);
                 break;
             case 15:
                 
