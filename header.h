@@ -7,7 +7,12 @@
     #include <direct.h>
     #include <stack>
     
+    
 #include <io.h>
+#include <filesystem>
+
+namespace fs = std::filesystem;
+
     using namespace std;
 
 
@@ -99,5 +104,10 @@
     void viewClass(SchoolYear *YearHead);
     void viewStudentClass(SchoolYear *YearHead);
     void ViewListOfCourse(Course *head);
+
+
+    //Export course to CSV file
+    Course* FindCourse (SchoolYear* HeadOfYear);
+    void ExportCourseToCSVFile(SchoolYear* head, string parentFolder);
 
     #endif
