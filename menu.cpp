@@ -146,7 +146,7 @@ int main(){
                 
                 break;
             case 19:
-                
+                viewCourseScoreboard(Semester_head->CourseList);
                 break;
             case 20:
                 
