@@ -81,8 +81,8 @@
     void changePassword(Account *a);
     bool checkPassword(string a);
     void CreateSchoolYears(SchoolYear Year);
+    bool checkCourse(Course *head);
     
-
     // Read list of Course and Class from File
     void InputStudent(Student *&StuHead, string input);
     void InputStudentCourse(Course *&subCourse, string input);

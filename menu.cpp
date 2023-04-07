@@ -71,7 +71,7 @@ int main(){
             cout<<"|12. View a list of students in a class.                             |\n";
             cout<<"|13. View a list of courses.                                         |\n";
             cout<<"|14. View a list of students in a course.                            |\n";
-            cout<<"|15. Export a list of students in a course to a CSV file.            |\n";//
+            cout<<"|15. Export a list of students in a course to a CSV file.            |\n";
             cout<<"|16. Import the scoreboard of a course.                              |\n";
             cout<<"|17. Update a student's result.                                      |\n";
             cout<<"|18. View the scoreboard of a class.                                 |\n";
@@ -119,7 +119,7 @@ int main(){
                 RmStudentFrCourse(Semester_head->CourseList);
                 break;
             case 10:
-                
+                DeleteCourse(Semester_head->CourseList);
                 break;
             case 11:
                 viewClass(Year_head);
@@ -128,7 +128,7 @@ int main(){
                 viewStudentClass(Year_head);
                 break;
             case 13:
-                //ViewListOfCourse(Year_head);
+                ViewListOfCourse(Semester_head->CourseList);
                 break;
             case 14:
                 
@@ -150,6 +150,9 @@ int main(){
                 break;
             case 20:
                 
+                break;
+            case 21:
+                //logout.
                 break;    
             default:
                 cout<<"Please re-check your choice.\n\n";
@@ -158,13 +161,14 @@ int main(){
             if(Staff_Choice == 21)break;
         }
         else {
-            cout<<"\n-----------------------------MENU----------------------------------\n";
-            cout<<"1. View list of course.\n";
-            cout<<"2. View scoreboard\n";
-            cout<<"3. Change password.\n";
-            cout<<"4. View profile.\n";
-            cout<<"5. Logout\n";
-            cout<<"\n------------------------------END----------------------------------\n";
+            cout<<"\n-----------------------------MENU-------------------------------------\n";
+            cout<<"|1. View list of course.                                             |\n";
+            cout<<"|2. View scoreboard                                                  |\n";
+            cout<<"|3. Change password.                                                 |\n";
+            cout<<"|4. View profile.                                                    |\n";
+            cout<<"|5. Logout                                                           |\n";
+            cout<<"------------------------------END-------------------------------------\n";
+
 
             cout<<"Please enter your choice. \n";
             int Student_choice;
