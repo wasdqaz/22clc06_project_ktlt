@@ -30,6 +30,7 @@ namespace fs = std::filesystem;
     };
    struct Mark{
         string NameOfCourse, Id;
+        string semester;
         float TotalMark, FinalMark, MidtermMark, OtherMark;
         Mark *Next = nullptr;
         Mark* Prev = nullptr;
