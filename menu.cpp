@@ -16,7 +16,7 @@ int main(){
     createAccountList(Staff_head,1);
 
 
-    string directoryPath = "SchoolYear";
+    string directoryPath = "Data";
     Course *curCourse = nullptr;
     Class *curClass = nullptr;
     SchoolYear *curYear = nullptr;
