@@ -16,7 +16,7 @@ int main(){
     createAccountList(Staff_head,1);
 
 
-    string directoryPath = "SchoolYear";
+    string directoryPath = "Data";
     Course *curCourse = nullptr;
     Class *curClass = nullptr;
     SchoolYear *curYear = nullptr;
@@ -119,7 +119,7 @@ int main(){
                 RmStudentFrCourse(Semester_head->CourseList);
                 break;
             case 10:
-                
+                DeleteCourse(Semester_head->CourseList);
                 break;
             case 11:
                 viewClass(Year_head);
@@ -128,10 +128,10 @@ int main(){
                 viewStudentClass(Year_head);
                 break;
             case 13:
-                //ViewListOfCourse(Year_head);
+                ViewListOfCourse(Semester_head->CourseList);
                 break;
             case 14:
-                
+                viewStudentsInCourse(Semester_head->CourseList);
                 break;
             case 15:
                 
@@ -146,7 +146,7 @@ int main(){
                 
                 break;
             case 19:
-                
+                viewCourseScoreboard(Semester_head->CourseList);
                 break;
             case 20:
                 

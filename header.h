@@ -7,7 +7,12 @@
     #include <direct.h>
     #include <stack>
     
+    
 #include <io.h>
+#include <filesystem>
+
+namespace fs = std::filesystem;
+
     using namespace std;
 
 
@@ -25,6 +30,7 @@
     };
    struct Mark{
         string NameOfCourse, Id;
+        string semester;
         float TotalMark, FinalMark, MidtermMark, OtherMark;
         Mark *Next = nullptr;
         Mark* Prev = nullptr;
@@ -81,8 +87,8 @@
     void changePassword(Account *a);
     bool checkPassword(string a);
     void CreateSchoolYears(SchoolYear Year);
+    bool checkCourse(Course *head);
     
-
     // Read list of Course and Class from File
     void InputStudent(Student *&StuHead, string input);
     void InputStudentCourse(Course *&subCourse, string input);
@@ -99,5 +105,10 @@
     void viewClass(SchoolYear *YearHead);
     void viewStudentClass(SchoolYear *YearHead);
     void ViewListOfCourse(Course *head);
+
+
+    //Export course to CSV file
+    Course* FindCourse (SchoolYear* HeadOfYear);
+    void ExportCourseToCSVFile(SchoolYear* head, string parentFolder);
 
     #endif
