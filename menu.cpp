@@ -16,7 +16,7 @@ int main(){
     createAccountList(Staff_head,1);
 
 
-    string directoryPath = "Data";
+    string directoryPath = "Data/SchoolYear";
     Course *curCourse = nullptr;
     Class *curClass = nullptr;
     SchoolYear *curYear = nullptr;
@@ -104,7 +104,7 @@ int main(){
                 Semester_head = AddNewSemester(Year_head);
                 break;
             case 5:
-                AddCourse(Semester_head);
+                AddCourse(Year_head, Semester_head);
                 break;
             case 6:
                 
