@@ -62,7 +62,7 @@ namespace fs = std::filesystem;
 
     struct Semester{
         Course *CourseList=nullptr;
-        string StartDate, EndDate; // them ngay bat dau, ket thuc hk
+        string NameSemester, StartDate, EndDate; // them ngay bat dau, ket thuc hk
         Semester *Next;
     };
 
@@ -110,5 +110,11 @@ namespace fs = std::filesystem;
     //Export course to CSV file
     Course* FindCourse (SchoolYear* HeadOfYear);
     void ExportCourseToCSVFile(SchoolYear* head, string parentFolder);
+
+    void Add_FolderSchoolYear(SchoolYear *Year);
+    
+    void Add_FolderSemester(SchoolYear *Year, Semester *Smeter);
+
+    void Add_InfoCourse(SchoolYear *Year, Semester *Smeter); //Year, Semester mac dinh 
 
     #endif

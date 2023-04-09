@@ -16,7 +16,8 @@ void AddNewYear(SchoolYear *&pHeadYear) //con tro toan bo cac nam hoc
         pHeadYear->EndYear = Temp.substr(7, 2);
         pHeadYear->NextYear = nullptr;
         pHeadYear->ClassHead = nullptr;
-        cout << "Add new school year successfully" << endl;
+        Add_FolderSchoolYear(pHeadYear);
+        //cout << "Add new school year successfully" << endl;
         return;
     }
 
@@ -30,7 +31,8 @@ void AddNewYear(SchoolYear *&pHeadYear) //con tro toan bo cac nam hoc
     temp->NextYear->EndYear = Temp.substr(7, 2);
     temp->NextYear->NextYear = nullptr;
     temp->NextYear->ClassHead = nullptr;
-    cout << "Add new school year successfully" << endl;
+    Add_FolderSchoolYear(temp->NextYear);
+    //cout << "Add new school year successfully" << endl;
 }
 
 Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
@@ -59,7 +61,8 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
                 pHeadYear->S1->StartDate = StartDate;
                 pHeadYear->S1->EndDate = EndDate;
                 pHeadYear->S1->Next = nullptr;
-                cout << "Semester created" << endl;
+                Add_FolderSemester(pHeadYear, pHeadYear -> S1);
+                //cout << "Semester created" << endl;
             }
             else
                 cout << "S1 has already existed.";
@@ -72,7 +75,8 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
                 pHeadYear->S2->StartDate = StartDate;
                 pHeadYear->S2->EndDate = EndDate;
                 pHeadYear->S2->Next = nullptr;
-                cout << "Semester created" << endl;
+                Add_FolderSemester(pHeadYear, pHeadYear -> S2);
+                //cout << "Semester created" << endl;
             }
             else
                 cout << "S2 has already existed.";
@@ -85,7 +89,8 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
                 pHeadYear->S3->StartDate = StartDate;
                 pHeadYear->S3->EndDate = EndDate;
                 pHeadYear->S3->Next = nullptr;
-                cout << "Semester created" << endl;
+                Add_FolderSemester(pHeadYear, pHeadYear -> S3);
+                //cout << "Semester created" << endl;
             }
             else
                 cout << "S3 has already existed.";
@@ -95,7 +100,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
     return nullptr;
 }
 
-void AddCourse(Semester *pHeadSemester) //con tro hoc ki mac dinh
+void AddCourse(SchoolYear *Year, Semester *pHeadSemester) //con tro hoc ki mac dinh
 {
     string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
     int NumberOfCredits, MaxStudent = 50;
@@ -129,7 +134,8 @@ void AddCourse(Semester *pHeadSemester) //con tro hoc ki mac dinh
         pHeadSemester->CourseList->TeacherName = TeacherName;
         pHeadSemester->CourseList->Next = nullptr;
         pHeadSemester->CourseList->CourseStudent = nullptr;
-        cout << "Add course successfully" << endl;
+        Add_InfoCourse(Year, pHeadSemester);
+        //cout << "Add course successfully" << endl;
         return;
     }
 
@@ -148,5 +154,6 @@ void AddCourse(Semester *pHeadSemester) //con tro hoc ki mac dinh
     pHeadCourse->Next->TeacherName = TeacherName;
     pHeadCourse->Next->Next = nullptr;
     pHeadCourse->Next->CourseStudent = nullptr;
+    Add_InfoCourse(Year, pHeadSemester);
     cout << "Add course successfully" << endl;
 }
