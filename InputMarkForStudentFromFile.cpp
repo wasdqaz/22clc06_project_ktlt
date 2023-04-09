@@ -22,7 +22,7 @@ void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, do
     if(!head)
     {
         studentOfClass->HeadOfMark = newMark;
-        //return;
+        //return
     }
     else
     {
@@ -33,10 +33,6 @@ void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, do
     }
     // push node mark to student of course
     studentOfCourse->HeadOfMark = newMark;
-    
-
-
-
 }
 Student* FindNodeStudentOfCourseToPutMark (string id, Course* cur)
 {
