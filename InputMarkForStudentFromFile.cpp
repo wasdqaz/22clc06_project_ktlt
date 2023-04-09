@@ -136,6 +136,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
         
 
     }
+    in.close();
     
     
 
