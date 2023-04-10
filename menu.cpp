@@ -51,7 +51,9 @@ int main(){
     //     Year_head = Year_head -> NextYear;
     // }
     
-    Semester_head = defaultSemester(Year_head);    
+    Semester_head = defaultSemester(Year_head);
+    CalGpa(Year_head->ClassHead);
+    calGPASemester(Year_head->ClassHead, Semester_head);    
 //---------------------------------------------------------------------------------
     while(true){
         if(User->Role == 1){

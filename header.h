@@ -38,7 +38,7 @@ namespace fs = std::filesystem;
     struct Student{
         int No;
         string Id, Name, Gender, DateOfBirth, SocialId, Class; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
-        float Gpa;
+        float Gpa, SemesterGpa;
         Mark* HeadOfMark = nullptr; //update head of mark
         Student *Next = nullptr;
         //bool Gender; // them gioi tinh

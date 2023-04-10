@@ -15,5 +15,6 @@ Semester *defaultSemester(SchoolYear *pHead);
 void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHeadAccStaff /*,Staff *&pHeadStaff*/);
 void viewStudentsInCourse(Course *pHead);
 void viewCourseScoreboard(Course *pHead);
+void calGPASemester(Class *pHeadClass, Semester *pHeadSemester);
 
 #endif
