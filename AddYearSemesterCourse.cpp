@@ -61,7 +61,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
                 pHeadYear->S1->StartDate = StartDate;
                 pHeadYear->S1->EndDate = EndDate;
                 pHeadYear->S1->Next = nullptr;
-                Add_FolderSemester(pHeadYear, pHeadYear -> S1);
+                Add_FolderSemester(pHeadYear -> S1);
                 //cout << "Semester created" << endl;
             }
             else
@@ -75,7 +75,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
                 pHeadYear->S2->StartDate = StartDate;
                 pHeadYear->S2->EndDate = EndDate;
                 pHeadYear->S2->Next = nullptr;
-                Add_FolderSemester(pHeadYear, pHeadYear -> S2);
+                Add_FolderSemester(pHeadYear -> S2);
                 //cout << "Semester created" << endl;
             }
             else
@@ -89,7 +89,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
                 pHeadYear->S3->StartDate = StartDate;
                 pHeadYear->S3->EndDate = EndDate;
                 pHeadYear->S3->Next = nullptr;
-                Add_FolderSemester(pHeadYear, pHeadYear -> S3);
+                Add_FolderSemester(pHeadYear -> S3);
                 //cout << "Semester created" << endl;
             }
             else
@@ -100,7 +100,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) //con tro toan bo cac nam hoc
     return nullptr;
 }
 
-void AddCourse(SchoolYear *Year, Semester *pHeadSemester) //con tro hoc ki mac dinh
+void AddCourse(Semester *pHeadSemester) //con tro hoc ki mac dinh
 {
     string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
     int NumberOfCredits, MaxStudent = 50;
@@ -134,7 +134,7 @@ void AddCourse(SchoolYear *Year, Semester *pHeadSemester) //con tro hoc ki mac d
         pHeadSemester->CourseList->TeacherName = TeacherName;
         pHeadSemester->CourseList->Next = nullptr;
         pHeadSemester->CourseList->CourseStudent = nullptr;
-        Add_InfoCourse(Year, pHeadSemester);
+        Add_InfoCourse(pHeadSemester -> CourseList);
         //cout << "Add course successfully" << endl;
         return;
     }
@@ -154,6 +154,6 @@ void AddCourse(SchoolYear *Year, Semester *pHeadSemester) //con tro hoc ki mac d
     pHeadCourse->Next->TeacherName = TeacherName;
     pHeadCourse->Next->Next = nullptr;
     pHeadCourse->Next->CourseStudent = nullptr;
-    Add_InfoCourse(Year, pHeadSemester);
+    Add_InfoCourse(pHeadCourse -> Next);
     cout << "Add course successfully" << endl;
 }

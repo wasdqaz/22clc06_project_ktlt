@@ -8,30 +8,27 @@ void Add_FolderSchoolYear(SchoolYear *Year)
     if (create_folder == 0) cout << "Add new school year successfully" << endl;
     
 }
-void Add_FolderSemester(SchoolYear *Year, Semester *Smeter)
+void Add_FolderSemester(Semester *Smeter)
 {
-    string pathYear = "Data/SchoolYear/" + Year -> BeginYear + "-" + Year -> EndYear + "/";
+    string pathYear = "Data/SchoolYear/" + Smeter -> Year + "/";
     string SemesterName = pathYear + Smeter -> NameSemester;
     int create_folder = _mkdir(SemesterName.c_str());
     if (create_folder == 0) cout << "Semester created" << endl;
 }
-void Add_InfoCourse(SchoolYear *Year, Semester *Smeter) //Year, Semester mac dinh 
+void Save_InfoCourse(Course *curCourse) //Year, Semester mac dinh 
 {
-    string pathYear = "Data/SchoolYear/" + Year -> BeginYear + "-" + Year -> EndYear + "/";
-    string pathSemester = pathYear + Smeter -> NameSemester;
-    string Course_Name = pathSemester + Smeter -> CourseList -> CourseName;
-    int create_folder = _mkdir(Course_Name.c_str());
+    string Course_Name = "Data/SchoolYear/" + curCourse -> Year + "/" + curCourse -> NameSemester + "/" + curCourse -> CourseName;
+    //string Course_Name = pathSemester + Smeter -> CourseList -> CourseName;
     ofstream ofs;
     string nameSmter;
-    if (Smeter -> NameSemester == "Semester01")
+    if (curCourse -> NameSemester == "Semester01")
         nameSmter = "S1";
-    else if (Smeter -> NameSemester == "Semester02")
+    else if (curCourse -> NameSemester == "Semester02")
             nameSmter = "S2";
             else nameSmter = "S3";
-    string NameFile = Course_Name + nameSmter + "_" + Smeter->CourseList->CourseName;
-    ofs.open(Course_Name);
+    string NameFile = Course_Name + nameSmter + "_" + curCourse -> CourseId;
+    ofs.open(NameFile);
     if (!ofs.is_open()) return;
-    Course *curCourse = Smeter -> CourseList;
     ofs << curCourse -> CourseId << "\n" 
         << curCourse -> CourseName << "\n"
         << curCourse -> ClassName << "\n"
@@ -40,5 +37,12 @@ void Add_InfoCourse(SchoolYear *Year, Semester *Smeter) //Year, Semester mac din
         << curCourse -> DayOfWeek << "\n"
         << curCourse -> NumberOfCredits << "\n";
     ofs.close();
-    if (create_folder == 0) cout << "Add course successfully" << endl;
+    
+}
+void Add_InfoCourse(Course *curCourse) 
+{
+    string Course_Name = "Data/SchoolYear/" + curCourse -> Year + "/" + curCourse -> NameSemester + "/" + curCourse -> CourseName;
+    int create_folder = _mkdir(Course_Name.c_str());
+    if (!create_folder == 0) cout << "Add course successfully" << endl;
+    Save_InfoCourse(curCourse);
 }

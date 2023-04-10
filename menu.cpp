@@ -104,13 +104,13 @@ int main(){
                 Semester_head = AddNewSemester(Year_head);
                 break;
             case 5:
-                AddCourse(Year_head, Semester_head);
+                AddCourse(Semester_head);
                 break;
             case 6:
                 
                 break;
             case 7:
-                UpdCourseInf(Semester_head->CourseList);
+                UpdCourseInf(Semester_head -> CourseList);
                 break;
             case 8:
                 AddStudentToCourse(Semester_head->CourseList);
