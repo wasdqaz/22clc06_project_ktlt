@@ -16,5 +16,6 @@ void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHe
 void viewStudentsInCourse(Course *pHead);
 void viewCourseScoreboard(Course *pHead);
 void calGPASemester(Class *pHeadClass, Semester *pHeadSemester);
+void viewClassScoreboard(Class *pHead, Semester *SemesterHead);
 
 #endif

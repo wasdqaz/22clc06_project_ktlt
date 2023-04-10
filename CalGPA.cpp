@@ -33,11 +33,11 @@ void calGPASemester(Class *pHeadClass, Semester *pHeadSemester)
     Class *pTemp = pHeadClass;
 
     if (pTemp == nullptr) {
-        cout << "No class found!!!";
+        cout << "No class found!!!" << endl;
         return;
     }
     if (pHeadSemester == nullptr) {
-        cout << "No semester found!!!";
+        cout << "No semester found!!!" << endl;
         return;
     }
 
