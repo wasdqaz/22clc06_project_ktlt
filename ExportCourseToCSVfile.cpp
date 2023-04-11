@@ -1,12 +1,11 @@
 #include "header.h"
+#include <direct.h>
+
 Course* FindCourse (SchoolYear* HeadOfYear)
 {
-    
-
     SchoolYear* curyear = HeadOfYear;
     string year;
     cout<<"Please enter begin year of SchoolYear contain course. Example: 21 (if that schoolYear is 2021-2022\n";
-
     cin>>year;
     string semester;
     cout<<"Please enter semester contain course. Ex: S1 (if semester is first semester)\n";
@@ -43,58 +42,53 @@ Course* FindCourse (SchoolYear* HeadOfYear)
         return nullptr;
     }
     return curCourse;
-
-
-
-
-
 }
+
 void ExportCourseToCSVFile(SchoolYear* head, string parentFolder)
 {
+    Course* cur = FindCourse(head);
+    string idcourse = cur->CourseId;
+    string filename = "ouput_" + idcourse;
 
-    Course* cur =  FindCourse(head);
+
     Student* headOfStudent = cur->CourseStudent;
-   std::string parentFolderName = "Data"; // replace with the name of the parent folder
-    std::string subFolderName = "User_Output"; // replace with the name of the subfolder you want to create the file in
-    std::string filePath;
+    string parentFolderName = "Data";
+    string subFolderName = "User_Output";
+    string filePath;
 
     // Search for the parent folder
-    for (const auto& entry : fs::directory_iterator(".")) {
-        if (fs::is_directory(entry.status()) && entry.path().filename() == parentFolderName) {
-            filePath = entry.path().string() + "/" + subFolderName + "/new_file.txt";
+    _finddata_t fileInfo;
+    intptr_t handle = _findfirst(parentFolderName.c_str(), &fileInfo);
+    if (handle == -1) {
+        cerr << "Parent folder not found!" << endl;
+        return;
+    }
+    do {
+        if ((fileInfo.attrib & _A_SUBDIR) && (strcmp(fileInfo.name, subFolderName.c_str()) == 0)) {
+            filePath = parentFolderName + "/" + subFolderName + filename;
             break;
         }
-    }
+    } while (_findnext(handle, &fileInfo) == 0);
 
-    // Check if the parent folder was found
+    _findclose(handle);
+
     if (filePath.empty()) {
-        std::cerr << "Parent folder not found!" << std::endl;
-        return ;
+        cerr << "Subfolder not found!" << endl;
+        return;
     }
 
-    std::ofstream file;
-
-    // Open the file stream and check if it opened successfully
+    ofstream file;
     file.open(filePath.c_str());
     if (!file.is_open()) {
-        std::cerr << "Failed to create file!" << std::endl;
-        return ;
+        cerr << "Failed to create file!" << endl;
+        return;
     }
 
-    // Write some data to the file
-    file<<"ID Student,Name\n";
-    while(headOfStudent)
-    {
-        file<<headOfStudent->Id<<","<<headOfStudent->Name<<endl;
+    file << "ID Student,Name\n";
+    while (headOfStudent) {
+        file << headOfStudent->Id << "," << headOfStudent->Name << endl;
         headOfStudent = headOfStudent->Next;
     }
-    
-    
 
-    // Close the file stream
     file.close();
-
-    
-
-    
 }
