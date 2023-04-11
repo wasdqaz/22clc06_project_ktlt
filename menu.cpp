@@ -16,7 +16,7 @@ int main(){
     createAccountList(Staff_head,1);
 
 
-    string directoryPath = "Data";
+    string directoryPath = "Data/SchoolYear";
     Course *curCourse = nullptr;
     Class *curClass = nullptr;
     SchoolYear *curYear = nullptr;
@@ -51,7 +51,9 @@ int main(){
     //     Year_head = Year_head -> NextYear;
     // }
     
-    Semester_head = defaultSemester(Year_head);    
+    Semester_head = defaultSemester(Year_head);
+    CalGpa(Year_head->ClassHead);
+    calGPASemester(Year_head->ClassHead, Semester_head);    
 //---------------------------------------------------------------------------------
     while(true){
         if(User->Role == 1){
@@ -110,7 +112,7 @@ int main(){
                 
                 break;
             case 7:
-                UpdCourseInf(Semester_head->CourseList);
+                UpdCourseInf(Semester_head -> CourseList);
                 break;
             case 8:
                 AddStudentToCourse(Semester_head->CourseList);
@@ -143,7 +145,7 @@ int main(){
                 
                 break; 
             case 18:
-                
+                viewClassScoreboard(Year_head->ClassHead, Semester_head);
                 break;
             case 19:
                 viewCourseScoreboard(Semester_head->CourseList);

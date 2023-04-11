@@ -38,7 +38,7 @@ namespace fs = std::filesystem;
     struct Student{
         int No;
         string Id, Name, Gender, DateOfBirth, SocialId, Class; //da bo cai Course, them Ho Ten, ngay sinh va CCCD
-        float Gpa;
+        float Gpa, SemesterGpa;
         Mark* HeadOfMark = nullptr; //update head of mark
         Student *Next = nullptr;
         //bool Gender; // them gioi tinh
@@ -49,20 +49,21 @@ namespace fs = std::filesystem;
     struct Course
     {
         string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
+        string NameSemester, Year;
         int NumberOfCredits, MaxStudent = 50;
         Student *CourseStudent = nullptr; // moi update them
         Course *Next = nullptr;
     };
 
     struct Class{
-        string Name;
+        string Name, Year;
         Student *StudentHead = nullptr;
         Class *Next = nullptr;
     };
 
     struct Semester{
         Course *CourseList=nullptr;
-        string NameSemester, StartDate, EndDate; // them ngay bat dau, ket thuc hk
+        string NameSemester, Year, StartDate, EndDate; // them ngay bat dau, ket thuc hk
         Semester *Next;
     };
 
@@ -113,8 +114,10 @@ namespace fs = std::filesystem;
 
     void Add_FolderSchoolYear(SchoolYear *Year);
     
-    void Add_FolderSemester(SchoolYear *Year, Semester *Smeter);
+    void Add_FolderSemester(Semester *Smeter);
 
-    void Add_InfoCourse(SchoolYear *Year, Semester *Smeter); //Year, Semester mac dinh 
+    void Save_InfoCourse(Course *curCourse);
+    void Add_InfoCourse(Course *curCourse); //Semester mac dinh 
+
 
     #endif

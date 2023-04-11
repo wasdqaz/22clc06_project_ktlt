@@ -83,7 +83,7 @@ void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curCl
         if (strcmp(fileInfo.name, ".") != 0 && strcmp(fileInfo.name, "..") != 0){
             if (fileInfo.attrib & _A_SUBDIR)  {
                 string subdirectoryPath = directoryPath + "/" + fileInfo.name;
-                if (fileInfo.name[0] >= '0' && fileInfo.name[0] <= '9')
+                if (fileInfo.name[2] == '-')
                 {
                     if (YearHead == nullptr)
                     {
@@ -95,15 +95,16 @@ void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curCl
                         curYear -> NextYear = new SchoolYear;
                         curYear = curYear -> NextYear;
                     }
+                    string FileName = fileInfo.name;
+                    curYear -> BeginYear = FileName.substr(0, 2);
+                    curYear -> EndYear = FileName.substr(3, 2);
                 }
-                string FileName = fileInfo.name;
                 ReadDirectory(subdirectoryPath, curCourse, curClass, YearHead, curYear);
-                curYear -> BeginYear = FileName.substr(0, 2);
-                curYear -> EndYear = FileName.substr(3, 2);
+                
             } 
             else {
                 string pathFile = directoryPath + "/" + fileInfo.name;
-                
+                string NameYear = curYear -> BeginYear + "-" + curYear -> EndYear;
                 if (fileInfo.name[0] >= '0' && fileInfo.name[0] <= '9')
                 {
                     if (curYear -> ClassHead == nullptr)
@@ -116,12 +117,14 @@ void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curCl
                         curClass -> Next = new Class;
                         curClass = curClass -> Next;
                     }
+                    curClass -> Year = NameYear;
                     string FileName = fileInfo.name;
                     curClass -> Name = FileName.substr(0, FileName.find('.'));
                     InputStudent(curClass -> StudentHead, pathFile);
                 }
                 else
                 {
+                    
                     string FileName = fileInfo.name;
                     int t = FileName.find("mark");
                     if (t != -1) continue;
@@ -131,6 +134,7 @@ void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curCl
                         if (curYear -> S1 == nullptr)
                             curYear -> S1 = new Semester;
                         curSe = curYear -> S1;
+                        curSe -> NameSemester = "Semester01";
                     }
                     else 
                         if (fileInfo.name[1] == '2')
@@ -138,13 +142,16 @@ void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curCl
                             if (curYear -> S2 == nullptr)
                                 curYear -> S2 = new Semester;
                             curSe = curYear -> S2;
+                            curSe -> NameSemester = "Semester02";
                         }
                         else 
                         {
                             if (curYear -> S3 == nullptr)
                                 curYear -> S3 = new Semester;
                             curSe = curYear -> S3;
+                            curSe -> NameSemester = "Semester03";
                         }
+                    curSe -> Year = NameYear;
                     //Course *curYearCourse = curSe -> CourseList;
                     if (curSe -> CourseList == nullptr)
                     {
@@ -156,6 +163,8 @@ void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curCl
                         curCourse -> Next = new Course;
                         curCourse = curCourse -> Next;
                     }
+                    curCourse -> Year = NameYear;
+                    curCourse -> NameSemester = curSe -> NameSemester;
                     InputStudentCourse(curCourse, pathFile);
                 }
             }
