@@ -115,10 +115,11 @@ void Add_FolderSemester(Semester *Smeter);
 
 void Add_InfoCourse(Course *curCourse); // Semester mac dinh
 
-void Add_FolderClass(Class *newClass);
-
 
 void Save_InfoCourse(Course *curCourse);
-void Save_StudentCourse(Student *StuCourse, string FileName);
+void Save_StudentCourse_1(Student *StuCourse, string FileName);
+void Save_StudentCourse_All(Course *curCourse, string FileName);
+void Save_StudentCourse_All_Mark(Course *curCourse, string FileName);
+
 #endif
 

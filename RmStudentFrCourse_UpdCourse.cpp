@@ -36,10 +36,9 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
         // xóa hs
         pHead->CourseStudent = pHead->CourseStudent->Next;
         delete pHeadStudent;
-        cout << "Delete successfully" << endl;
-        return;
     }
-
+    else
+    {
     // đưa con trỏ đến hs trước hs cần xóa
     while (pHeadStudent->Next != nullptr && pHeadStudent->Next->Id != Id)
         pHeadStudent = pHeadStudent->Next;
@@ -60,6 +59,21 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
     Student *Temp = pHeadStudent->Next;
     pHeadStudent->Next = pHeadStudent->Next->Next;
     delete Temp;
+    }
+    
+    string pathSemester = "Data/SchoolYear/" + pHead->Year + "/" + pHead->NameSemester + "/";
+    string Course_Name = pathSemester + pHead -> CourseName + "/";
+    string nameSmter;
+    if (pHead->NameSemester == "Semester01")
+        nameSmter = "S1";
+    else if (pHead->NameSemester == "Semester02")
+        nameSmter = "S2";
+    else
+        nameSmter = "S3";
+    string fileCourse = Course_Name + nameSmter + "_" + pHead->CourseId + ".txt";
+    Save_StudentCourse_All(pHead, fileCourse);
+    string fileCourseMark = Course_Name + "mark_" + pHead->CourseId + ".txt";
+    Save_StudentCourse_All_Mark(pHead, fileCourseMark);
     cout << "Delete successfully" << endl;
 }
 
