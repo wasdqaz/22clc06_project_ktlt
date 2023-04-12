@@ -114,6 +114,5 @@
     void Save_InfoCourse(Course *curCourse);
     void Add_InfoCourse(Course *curCourse); //Semester mac dinh 
 
-    void Add_FolderClass(Class *newClass);
 
     #endif

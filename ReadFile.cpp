@@ -51,7 +51,7 @@ void InputStudentCourse(Course *&subCourse, string input)
     {
         string Info = "";
         getline(ifs, Info, ',');
-        if (Info == "\n" || Info == "") return;
+        //if (Info == "\n" || Info == "") return;
         if (subCourse -> CourseStudent == nullptr)
         {
             subCourse -> CourseStudent = new Student;

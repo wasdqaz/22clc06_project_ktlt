@@ -22,7 +22,7 @@
             YearHead->ClassHead->Name=ClassName;
             YearHead->ClassHead->Next=Cur_Class;
         }
-        Add_FolderClass(YearHead -> ClassHead);
+        //Add_FolderClass(YearHead -> ClassHead);
 
     }
 

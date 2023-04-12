@@ -6,7 +6,8 @@ void Add_FolderSchoolYear(SchoolYear *Year)
     string YearName = pathSchoolYear + Year -> BeginYear + "-" + Year -> EndYear;
     int create_folder = _mkdir(YearName.c_str());
     if (create_folder == 0) cout << "Add new school year successfully" << endl;
-    
+    string ClassName = YearName + "/CLASS";
+    _mkdir(ClassName.c_str());
 }
 void Add_FolderSemester(Semester *Smeter)
 {
@@ -47,9 +48,4 @@ void Add_InfoCourse(Course *newCourse)
     Save_InfoCourse(newCourse);
 }
 
-void Add_FolderClass(Class *newClass)
-{
-    string Class_Name = "Data/SchoolYear/" + newClass->Year + "/" + newClass->Name;
-    int create_folder = _mkdir(Class_Name.c_str());
-    if (!create_folder == 0) cout <<"Add class successfully" <<endl;
-}
+
