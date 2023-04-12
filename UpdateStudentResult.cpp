@@ -1,0 +1,96 @@
+#include "header.h"
+#include "KhoiFunction.h"
+bool FindCourse(Course *head, string Course_Id, Course *&tmp)
+{
+    Course *cur_course = head;
+    while (cur_course)
+    {
+        if (cur_course->CourseId == Course_Id)
+        {
+            tmp = cur_course;
+            return true;
+        }
+        cur_course = cur_course->Next;
+    }
+    return false;
+}
+bool FindStudent(Student *&head, string Student_id)
+{
+    Student *Cur = head;
+    while (!Cur)
+    {
+        if (Cur->Id == Student_id)
+        {
+            head = Cur;
+            return true;
+        }
+        Cur = Cur->Next;
+    }
+    return true;
+}
+
+void UpdateStudentResult(Course *head)
+{
+    string Course_Id, Student_id;
+    Course *cur_course;
+    while (true)
+    {
+        cout << "Please enter course ID: ";
+        cin >> Course_Id;
+        if (FindCourse(head, Course_Id, cur_course))
+        {
+            cout << "Please enter student ID: ";
+            cin >> Student_id;
+            Student *Student_head = head->CourseStudent;
+            if (FindStudent(Student_head, Student_id))
+            {
+                cout << Student_head->Name << " ";
+                cout << Student_head->Id << " ";
+                cout << Student_head->HeadOfMark->NameOfCourse << " ";
+                cout << Student_head->HeadOfMark->MidtermMark << " ";
+                cout << Student_head->HeadOfMark->FinalMark << " ";
+                cout << Student_head->HeadOfMark->TotalMark << " ";
+                cout << Student_head->HeadOfMark->OtherMark << " ";
+
+                    cout << "Do you want to update?\n";
+                    cout << "0. Exit\n";
+                    cout << "1. Update\n";
+                    int choice;
+                    cin >> choice;
+                    if (choice == 0)
+                        return;
+                    cout << "Midterm Mark: ";
+                    cin >> Student_head->HeadOfMark->MidtermMark;
+                    cout << "Final Mark: ";
+                    cin >> Student_head->HeadOfMark->FinalMark;
+                    cout << "Total Mark\n";
+                    cin >> Student_head->HeadOfMark->TotalMark;
+                    cout << "Other Mark\n";
+                    cin >> Student_head->HeadOfMark->OtherMark;
+                // ban co muon sua hay khong(tao bien roi gan);
+                // while(true){
+                //     int choice;
+                //     cout<<"The mark you want to upp date ?\n";
+                //     cout<<"1. Midterm Mark\n";
+                //     cout<<"2. Final Mark\n";
+                //     cout<<"3. Total Mark\n";
+                //     cout<<"4. Other Mark\n";
+                //     cout<<"5. All.\n";
+                //     cout<<"0. Exit\n";
+                //     cin>>choice;
+
+                // }
+            }
+            else
+            {
+                cout << "Can't find student.\n";
+                cout << "PLEASE RE-ENTER.\n";
+            }
+        }
+        else
+        {
+            cout << "Can't find course id.\n";
+            cout << "PLEASE RE-ENTER.\n";
+        }
+    }
+}

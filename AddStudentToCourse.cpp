@@ -19,9 +19,3 @@ void AddStudentToCourse(Course *CourseHead){
     cout<<"Enter student ID: ";
     cin>>cur->Id;
 }
-// int main(){
-//     Course *a = new Course;
-//     a->CourseId="123123";
-//     AddStudentToCourse(a);
-//     return 0;
-// }
