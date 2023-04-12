@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-void RmStudentFrCourse(Course *pHead) //con tro cac course trong hoc ki hien tai
+void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien tai
 {
     string CourseId;
     cout << "Enter the ID of the course to remove student from: ";
@@ -13,7 +13,7 @@ void RmStudentFrCourse(Course *pHead) //con tro cac course trong hoc ki hien tai
 
     while (pHead != nullptr && pHead->CourseId != CourseId)
         pHead = pHead->Next;
-    
+
     if (pHead == nullptr || pHead->CourseStudent == nullptr)
     {
         cout << "No course found or class has no student!!!" << endl;
@@ -25,15 +25,15 @@ void RmStudentFrCourse(Course *pHead) //con tro cac course trong hoc ki hien tai
     getline(cin, Id);
 
     Student *pHeadStudent = pHead->CourseStudent;
-    if (pHeadStudent->Id == Id) //nếu đây là hs đầu tiên trong list
-    {   
-        //chuyển điểm hs đó thành -1
+    if (pHeadStudent->Id == Id) // nếu đây là hs đầu tiên trong list
+    {
+        // chuyển điểm hs đó thành -1
         pHeadStudent->HeadOfMark->FinalMark = -1;
         pHeadStudent->HeadOfMark->MidtermMark = -1;
         pHeadStudent->HeadOfMark->OtherMark = -1;
         pHeadStudent->HeadOfMark->TotalMark = -1;
 
-        //xóa hs
+        // xóa hs
         pHead->CourseStudent = pHead->CourseStudent->Next;
         delete pHeadStudent;
         cout << "Delete successfully" << endl;
@@ -41,29 +41,29 @@ void RmStudentFrCourse(Course *pHead) //con tro cac course trong hoc ki hien tai
     }
 
     // đưa con trỏ đến hs trước hs cần xóa
-    while (pHeadStudent->Next != nullptr && pHeadStudent->Next->Id != Id) 
+    while (pHeadStudent->Next != nullptr && pHeadStudent->Next->Id != Id)
         pHeadStudent = pHeadStudent->Next;
-    
+
     if (pHeadStudent->Next == nullptr)
     {
         cout << "No student found!!!" << endl;
         return;
     }
 
-    //chuyển điểm hs đó thành -1
+    // chuyển điểm hs đó thành -1
     pHeadStudent->Next->HeadOfMark->FinalMark = -1;
     pHeadStudent->Next->HeadOfMark->MidtermMark = -1;
     pHeadStudent->Next->HeadOfMark->OtherMark = -1;
     pHeadStudent->Next->HeadOfMark->TotalMark = -1;
 
-    //xóa hs
+    // xóa hs
     Student *Temp = pHeadStudent->Next;
     pHeadStudent->Next = pHeadStudent->Next->Next;
     delete Temp;
     cout << "Delete successfully" << endl;
 }
 
-void UpdCourseInf(Course *pHead) //con tro danh sach cac course
+void UpdCourseInf(Course *pHead) // con tro danh sach cac course
 {
     string CourseId;
     cout << "Please enter the ID of the course you want to update: ";

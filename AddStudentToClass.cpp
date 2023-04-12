@@ -5,7 +5,7 @@ using namespace std;
 
 void AddNewStudent(SchoolYear *pHeadYear)
 {
-    while (pHeadYear->NextYear != nullptr) 
+    while (pHeadYear->NextYear != nullptr)
         pHeadYear = pHeadYear->NextYear;
     Class *pHead = pHeadYear->ClassHead;
     string ClassName;
@@ -35,7 +35,8 @@ void AddNewStudent(SchoolYear *pHeadYear)
 
     int No = 0;
     Student *Temp = pHead->StudentHead;
-    if (Temp != nullptr) { //neu da co hs trong lop
+    if (Temp != nullptr)
+    { // neu da co hs trong lop
         while (Temp->Next != nullptr)
             Temp = Temp->Next;
         No = Temp->No;
@@ -45,20 +46,21 @@ void AddNewStudent(SchoolYear *pHeadYear)
         Temp->Next->Gender = Gender;
         Temp->Next->Id = Id;
         Temp->Next->Name = Name;
-        Temp->Next->No = No+1;
+        Temp->Next->No = No + 1;
         Temp->Next->SocialId = SocialId;
         Temp->Next->HeadOfMark = nullptr;
     }
-    else { //neu chua co hs nao trong lop
-    pHead->StudentHead = new Student;
-    pHead->StudentHead->Class = ClassName;
-    pHead->StudentHead->DateOfBirth = DateOfBirth;
-    pHead->StudentHead->Gender = Gender;
-    pHead->StudentHead->Id = Id;
-    pHead->StudentHead->Name = Name;
-    pHead->StudentHead->No = No+1;
-    pHead->StudentHead->SocialId = SocialId;
-    pHead->StudentHead->HeadOfMark = nullptr;
+    else
+    { // neu chua co hs nao trong lop
+        pHead->StudentHead = new Student;
+        pHead->StudentHead->Class = ClassName;
+        pHead->StudentHead->DateOfBirth = DateOfBirth;
+        pHead->StudentHead->Gender = Gender;
+        pHead->StudentHead->Id = Id;
+        pHead->StudentHead->Name = Name;
+        pHead->StudentHead->No = No + 1;
+        pHead->StudentHead->SocialId = SocialId;
+        pHead->StudentHead->HeadOfMark = nullptr;
     }
     cout << "Add student to class successfully." << endl;
 }

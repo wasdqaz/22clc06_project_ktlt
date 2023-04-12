@@ -10,7 +10,8 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead)
     Class *pTemp = pHead;
     while (pTemp != nullptr && pTemp->Name != ClassName)
         pTemp = pTemp->Next;
-    if (pTemp == nullptr) {
+    if (pTemp == nullptr)
+    {
         cout << "No class found!!!" << endl;
         return;
     }
@@ -18,19 +19,21 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead)
     string Smt = SemesterHead->NameSemester.substr(9, 1);
 
     Student *StudentTemp = pTemp->StudentHead;
-    while (StudentTemp != nullptr) {
+    while (StudentTemp != nullptr)
+    {
         Mark *MarkTemp = StudentTemp->HeadOfMark;
 
         cout << setw(4) << left << "No";
         cout << setw(30) << left << "Name";
 
-        while (MarkTemp != nullptr) {
+        while (MarkTemp != nullptr)
+        {
             string tmp = MarkTemp->semester.substr(1, 1);
             if (tmp == Smt)
                 cout << setw(10) << left << MarkTemp->Id;
             MarkTemp = MarkTemp->Next;
         }
-        
+
         MarkTemp = StudentTemp->HeadOfMark;
 
         cout << setw(20) << left << "GPA This Semester";
@@ -39,7 +42,8 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead)
         cout << setw(4) << left << StudentTemp->No;
         cout << setw(30) << left << StudentTemp->Name;
 
-        while (MarkTemp != nullptr) {
+        while (MarkTemp != nullptr)
+        {
             string tmp = MarkTemp->semester.substr(1, 1);
             if (tmp == Smt)
                 cout << setw(10) << left << MarkTemp->FinalMark;
@@ -47,7 +51,8 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead)
         }
 
         cout << setw(20) << left << StudentTemp->SemesterGpa;
-        cout << setw(15) << left << StudentTemp->Gpa << endl << endl;
+        cout << setw(15) << left << StudentTemp->Gpa << endl
+             << endl;
 
         StudentTemp = StudentTemp->Next;
     }

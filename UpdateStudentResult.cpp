@@ -17,7 +17,7 @@ bool FindCourse(Course *head, string Course_Id, Course *&tmp)
 bool FindStudent(Student *&head, string Student_id)
 {
     Student *Cur = head;
-    while (!Cur)
+    while (Cur)
     {
         if (Cur->Id == Student_id)
         {
@@ -26,7 +26,7 @@ bool FindStudent(Student *&head, string Student_id)
         }
         Cur = Cur->Next;
     }
-    return true;
+    return false;
 }
 
 void UpdateStudentResult(Course *head)
@@ -44,29 +44,41 @@ void UpdateStudentResult(Course *head)
             Student *Student_head = head->CourseStudent;
             if (FindStudent(Student_head, Student_id))
             {
-                cout << Student_head->Name << " ";
-                cout << Student_head->Id << " ";
-                cout << Student_head->HeadOfMark->NameOfCourse << " ";
-                cout << Student_head->HeadOfMark->MidtermMark << " ";
-                cout << Student_head->HeadOfMark->FinalMark << " ";
-                cout << Student_head->HeadOfMark->TotalMark << " ";
-                cout << Student_head->HeadOfMark->OtherMark << " ";
+                cout << left << setw(15) << "ID"
+                     << left << setw(30) << "Name"
+                     << left << setw(15) << "Midterm Mark"
+                     << left << setw(15) << "Final Mark"
+                     << left << setw(15) << "Total mark"
+                     << left << setw(15) << "Other Mark";
+                cout << endl;
 
-                    cout << "Do you want to update?\n";
-                    cout << "0. Exit\n";
-                    cout << "1. Update\n";
-                    int choice;
-                    cin >> choice;
-                    if (choice == 0)
-                        return;
-                    cout << "Midterm Mark: ";
-                    cin >> Student_head->HeadOfMark->MidtermMark;
-                    cout << "Final Mark: ";
-                    cin >> Student_head->HeadOfMark->FinalMark;
-                    cout << "Total Mark\n";
-                    cin >> Student_head->HeadOfMark->TotalMark;
-                    cout << "Other Mark\n";
-                    cin >> Student_head->HeadOfMark->OtherMark;
+                cout << left << setw(15) << Student_head->Id;
+                cout << left << setw(30) << Student_head->Name;
+                cout << left << setw(15) << Student_head->HeadOfMark->MidtermMark;
+                cout << left << setw(15) << Student_head->HeadOfMark->FinalMark;
+                cout << left << setw(15) << Student_head->HeadOfMark->TotalMark;
+                cout << left << setw(15) << Student_head->HeadOfMark->OtherMark;
+                cout << endl;
+
+                cout << "Do you want to update?\n";
+                cout << "0. Exit\n";
+                cout << "1. Update\n";
+
+                int choice;
+                cin >> choice;
+                if (choice == 0)
+                    return;
+
+                cout << "Midterm Mark: ";
+                cin >> Student_head->HeadOfMark->MidtermMark;
+                cout << "Final Mark: ";
+                cin >> Student_head->HeadOfMark->FinalMark;
+                cout << "Total Mark: ";
+                cin >> Student_head->HeadOfMark->TotalMark;
+                cout << "Other Mark: ";
+                cin >> Student_head->HeadOfMark->OtherMark;
+                cout << "Update result successfully!!!\n";
+                return;
                 // ban co muon sua hay khong(tao bien roi gan);
                 // while(true){
                 //     int choice;
@@ -78,7 +90,6 @@ void UpdateStudentResult(Course *head)
                 //     cout<<"5. All.\n";
                 //     cout<<"0. Exit\n";
                 //     cin>>choice;
-
                 // }
             }
             else

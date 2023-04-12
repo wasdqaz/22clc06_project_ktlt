@@ -2,8 +2,9 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-Account* MakeNewAccountOfStudent(string username, string password, string Class){
-	Account* newAccount = new Account;
+Account *MakeNewAccountOfStudent(string username, string password, string Class)
+{
+	Account *newAccount = new Account;
 	newAccount->Class = Class;
 	newAccount->Password = password;
 	newAccount->Role = 2;
@@ -12,10 +13,10 @@ Account* MakeNewAccountOfStudent(string username, string password, string Class)
 	newAccount->next = nullptr;
 	return newAccount;
 }
-Account* MakeNewAccountOfStaff(string username, string password)
+Account *MakeNewAccountOfStaff(string username, string password)
 {
-	Account* newAccount = new Account;
-	
+	Account *newAccount = new Account;
+
 	newAccount->Password = password;
 	newAccount->Role = 1;
 	newAccount->Status = 0;
@@ -23,20 +24,23 @@ Account* MakeNewAccountOfStaff(string username, string password)
 	newAccount->next = nullptr;
 	return newAccount;
 }
-void createAccountList(Account*& head, int role)
+void createAccountList(Account *&head, int role)
 {
 	ifstream in;
-	if (role == 1) in.open("staff.txt");
-	else in.open("student.txt");
-	if (!in.is_open()) cout << "Can not open file";
+	if (role == 1)
+		in.open("staff.txt");
+	else
+		in.open("student.txt");
+	if (!in.is_open())
+		cout << "Can not open file";
 	string s, s2, s3;
-	Account* tmp = head;
+	Account *tmp = head;
 	if (role == 1)
 	{
 		while (!in.eof())
 		{
 			in >> s >> s2;
-			Account* newAccount = MakeNewAccountOfStaff(s, s2);
+			Account *newAccount = MakeNewAccountOfStaff(s, s2);
 			if (head == nullptr)
 			{
 				head = newAccount;
@@ -46,21 +50,16 @@ void createAccountList(Account*& head, int role)
 			{
 				tmp->next = newAccount;
 				tmp = tmp->next;
-
 			}
-
-
-
 		}
 		in.close();
-
 	}
 	else
 	{
 		while (!in.eof())
 		{
 			in >> s >> s2 >> s3;
-			Account* newAccount = MakeNewAccountOfStudent(s, s2, s3);
+			Account *newAccount = MakeNewAccountOfStudent(s, s2, s3);
 			if (head == nullptr)
 			{
 				head = newAccount;
@@ -70,15 +69,8 @@ void createAccountList(Account*& head, int role)
 			{
 				tmp->next = newAccount;
 				tmp = tmp->next;
-
 			}
-
-
 		}
 		in.close();
-
-
 	}
 }
-
-
