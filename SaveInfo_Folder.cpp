@@ -39,10 +39,17 @@ void Save_InfoCourse(Course *curCourse) //Year, Semester mac dinh
     ofs.close();
     
 }
-void Add_InfoCourse(Course *curCourse) 
+void Add_InfoCourse(Course *newCourse) 
 {
-    string Course_Name = "Data/SchoolYear/" + curCourse -> Year + "/" + curCourse -> NameSemester + "/" + curCourse -> CourseName;
+    string Course_Name = "Data/SchoolYear/" + newCourse -> Year + "/" + newCourse -> NameSemester + "/" + newCourse -> CourseName;
     int create_folder = _mkdir(Course_Name.c_str());
     if (!create_folder == 0) cout << "Add course successfully" << endl;
-    Save_InfoCourse(curCourse);
+    Save_InfoCourse(newCourse);
+}
+
+void Add_FolderClass(Class *newClass)
+{
+    string Class_Name = "Data/SchoolYear/" + newClass->Year + "/" + newClass->Name;
+    int create_folder = _mkdir(Class_Name.c_str());
+    if (!create_folder == 0) cout <<"Add class successfully" <<endl;
 }

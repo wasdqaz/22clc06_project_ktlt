@@ -7,11 +7,6 @@
     #include <direct.h>
     #include <stack>
     
-    
-#include <io.h>
-#include <filesystem>
-
-namespace fs = std::filesystem;
 
     using namespace std;
 
@@ -119,5 +114,6 @@ namespace fs = std::filesystem;
     void Save_InfoCourse(Course *curCourse);
     void Add_InfoCourse(Course *curCourse); //Semester mac dinh 
 
+    void Add_FolderClass(Class *newClass);
 
     #endif
