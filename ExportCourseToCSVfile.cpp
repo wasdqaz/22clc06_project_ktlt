@@ -1,57 +1,59 @@
 #include "header.h"
 #include <direct.h>
 
-Course* FindCourse (SchoolYear* HeadOfYear)
+Course *FindCourse(SchoolYear *HeadOfYear)
 {
-    SchoolYear* curyear = HeadOfYear;
+    SchoolYear *curyear = HeadOfYear;
     string year;
-    cout<<"Please enter begin year of SchoolYear contain course. Example: 21 (if that schoolYear is 2021-2022\n";
-    cin>>year;
+    cout << "Please enter begin year of SchoolYear contain course. Example: 21 (if that schoolYear is 2021-2022\n";
+    cin >> year;
     string semester;
-    cout<<"Please enter semester contain course. Ex: S1 (if semester is first semester)\n";
-    cin>>semester;
-    while(curyear && (curyear->BeginYear.compare(year) == 0))
+    cout << "Please enter semester contain course. Ex: S1 (if semester is first semester)\n";
+    cin >> semester;
+    while (curyear && (curyear->BeginYear.compare(year) == 0))
     {
-       curyear = curyear->NextYear;
+        curyear = curyear->NextYear;
     }
-    if(!curyear)
+    if (!curyear)
     {
-        cout<<"Not found schoolyear\n";
+        cout << "Not found schoolyear\n";
         return nullptr;
     }
-    Semester* semesterCur;
-    if(semester[1] == '1') semesterCur = curyear->S1;
-    else if(semester[1] == '2') semesterCur = curyear->S2;
-    else if(semester[1] == '3') semesterCur = curyear->S3;
-    else{
-        cout<<"semester invalid\n";
+    Semester *semesterCur;
+    if (semester[1] == '1')
+        semesterCur = curyear->S1;
+    else if (semester[1] == '2')
+        semesterCur = curyear->S2;
+    else if (semester[1] == '3')
+        semesterCur = curyear->S3;
+    else
+    {
+        cout << "semester invalid\n";
         return nullptr;
     }
-    Course* curCourse = semesterCur->CourseList;
+    Course *curCourse = semesterCur->CourseList;
     string courseId;
-    cout<<"Please enter Id course\n";
-    cin>> courseId;
-    while(curCourse && curCourse->CourseId ==courseId )
+    cout << "Please enter Id course\n";
+    cin >> courseId;
+    while (curCourse && curCourse->CourseId == courseId)
     {
         curCourse = curCourse->Next;
-        
-    } 
-    if(!curCourse)
+    }
+    if (!curCourse)
     {
-        cout<<"Not found course\n";
+        cout << "Not found course\n";
         return nullptr;
     }
     return curCourse;
 }
 
-void ExportCourseToCSVFile(SchoolYear* head, string parentFolder)
+void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
 {
-    Course* cur = FindCourse(head);
+    Course *cur = FindCourse(head);
     string idcourse = cur->CourseId;
     string filename = "ouput_" + idcourse;
 
-
-    Student* headOfStudent = cur->CourseStudent;
+    Student *headOfStudent = cur->CourseStudent;
     string parentFolderName = "Data";
     string subFolderName = "User_Output";
     string filePath;
@@ -59,12 +61,15 @@ void ExportCourseToCSVFile(SchoolYear* head, string parentFolder)
     // Search for the parent folder
     _finddata_t fileInfo;
     intptr_t handle = _findfirst(parentFolderName.c_str(), &fileInfo);
-    if (handle == -1) {
+    if (handle == -1)
+    {
         cerr << "Parent folder not found!" << endl;
         return;
     }
-    do {
-        if ((fileInfo.attrib & _A_SUBDIR) && (strcmp(fileInfo.name, subFolderName.c_str()) == 0)) {
+    do
+    {
+        if ((fileInfo.attrib & _A_SUBDIR) && (strcmp(fileInfo.name, subFolderName.c_str()) == 0))
+        {
             filePath = parentFolderName + "/" + subFolderName + filename;
             break;
         }
@@ -72,20 +77,23 @@ void ExportCourseToCSVFile(SchoolYear* head, string parentFolder)
 
     _findclose(handle);
 
-    if (filePath.empty()) {
+    if (filePath.empty())
+    {
         cerr << "Subfolder not found!" << endl;
         return;
     }
 
     ofstream file;
     file.open(filePath.c_str());
-    if (!file.is_open()) {
+    if (!file.is_open())
+    {
         cerr << "Failed to create file!" << endl;
         return;
     }
 
     file << "ID Student,Name\n";
-    while (headOfStudent) {
+    while (headOfStudent)
+    {
         file << headOfStudent->Id << "," << headOfStudent->Name << endl;
         headOfStudent = headOfStudent->Next;
     }

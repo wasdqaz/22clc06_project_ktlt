@@ -1,16 +1,18 @@
 #include "header.h"
-    
+
 void InputStudent(Student *&StuHead, string input)
 {
     ifstream ifs;
     ifs.open(input);
-    if (!ifs.is_open()) return;
+    if (!ifs.is_open())
+        return;
     Student *cur = nullptr;
-     while (!ifs.eof())/*  */
+    while (!ifs.eof()) /*  */
     {
         string Info = "";
         getline(ifs, Info, ',');
-        if (Info == "\n" || Info == "") return;
+        if (Info == "\n" || Info == "")
+            return;
         if (StuHead == nullptr)
         {
             StuHead = new Student;
@@ -18,16 +20,16 @@ void InputStudent(Student *&StuHead, string input)
         }
         else
         {
-            cur -> Next = new Student;
-            cur = cur -> Next;
+            cur->Next = new Student;
+            cur = cur->Next;
         }
-        
-        cur -> No = stoi(Info);
-        getline(ifs, cur -> Id, ',');
-        getline(ifs, cur -> Name, ',');
-        getline(ifs, cur -> Gender, ',');
-        getline(ifs, cur -> DateOfBirth, ',');
-        getline(ifs, cur -> SocialId);
+
+        cur->No = stoi(Info);
+        getline(ifs, cur->Id, ',');
+        getline(ifs, cur->Name, ',');
+        getline(ifs, cur->Gender, ',');
+        getline(ifs, cur->DateOfBirth, ',');
+        getline(ifs, cur->SocialId);
     }
     ifs.close();
 }
@@ -36,52 +38,59 @@ void InputStudentCourse(Course *&subCourse, string input)
 {
     ifstream ifs;
     ifs.open(input);
-    if (!ifs.is_open()) return;
-    getline(ifs, subCourse -> CourseId);
-    getline(ifs, subCourse -> CourseName);
-    getline(ifs, subCourse -> ClassName);
-    getline(ifs, subCourse -> TeacherName);
-    getline(ifs, subCourse -> Session);
-    getline(ifs, subCourse -> DayOfWeek);
-    ifs >> subCourse -> NumberOfCredits;
-    //subCourse -> NumberOfCredits = stoi(Credits);
+    if (!ifs.is_open())
+        return;
+    getline(ifs, subCourse->CourseId);
+    getline(ifs, subCourse->CourseName);
+    getline(ifs, subCourse->ClassName);
+    getline(ifs, subCourse->TeacherName);
+    getline(ifs, subCourse->Session);
+    getline(ifs, subCourse->DayOfWeek);
+    ifs >> subCourse->NumberOfCredits;
+    // subCourse -> NumberOfCredits = stoi(Credits);
     Student *cur = nullptr;
     ifs.ignore();
     while (!ifs.eof())
     {
         string Info = "";
         getline(ifs, Info, ',');
-        if (Info == "\n" || Info == "") return;
-        if (subCourse -> CourseStudent == nullptr)
+        if (Info == "\n" || Info == "")
+            return;
+        if (subCourse->CourseStudent == nullptr)
         {
-            subCourse -> CourseStudent = new Student;
-            cur = subCourse -> CourseStudent;
+            subCourse->CourseStudent = new Student;
+            cur = subCourse->CourseStudent;
         }
         else
         {
-            cur -> Next = new Student;
-            cur = cur -> Next;
+            cur->Next = new Student;
+            cur = cur->Next;
         }
-        cur -> Id = Info;
-        getline(ifs, cur -> Name, ',');
-        getline(ifs, cur -> Class);
+        cur->Id = Info;
+        getline(ifs, cur->Name, ',');
+        getline(ifs, cur->Class);
     }
     ifs.close();
 }
 
-void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear) {
+void ReadDirectory(const string &directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear)
+{
 
     string directoryGlob = directoryPath + "/*";
     struct _finddata_t fileInfo;
     intptr_t handle = _findfirst(directoryGlob.c_str(), &fileInfo);
 
-    if (handle == -1) {
+    if (handle == -1)
+    {
         return;
     }
 
-    do {
-        if (strcmp(fileInfo.name, ".") != 0 && strcmp(fileInfo.name, "..") != 0){
-            if (fileInfo.attrib & _A_SUBDIR)  {
+    do
+    {
+        if (strcmp(fileInfo.name, ".") != 0 && strcmp(fileInfo.name, "..") != 0)
+        {
+            if (fileInfo.attrib & _A_SUBDIR)
+            {
                 string subdirectoryPath = directoryPath + "/" + fileInfo.name;
                 if (fileInfo.name[2] == '-')
                 {
@@ -92,79 +101,79 @@ void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curCl
                     }
                     else
                     {
-                        curYear -> NextYear = new SchoolYear;
-                        curYear = curYear -> NextYear;
+                        curYear->NextYear = new SchoolYear;
+                        curYear = curYear->NextYear;
                     }
                     string FileName = fileInfo.name;
-                    curYear -> BeginYear = FileName.substr(0, 2);
-                    curYear -> EndYear = FileName.substr(3, 2);
+                    curYear->BeginYear = FileName.substr(0, 2);
+                    curYear->EndYear = FileName.substr(3, 2);
                 }
                 ReadDirectory(subdirectoryPath, curCourse, curClass, YearHead, curYear);
-                
-            } 
-            else {
+            }
+            else
+            {
                 string pathFile = directoryPath + "/" + fileInfo.name;
-                string NameYear = curYear -> BeginYear + "-" + curYear -> EndYear;
+                string NameYear = curYear->BeginYear + "-" + curYear->EndYear;
                 if (fileInfo.name[0] >= '0' && fileInfo.name[0] <= '9')
                 {
-                    if (curYear -> ClassHead == nullptr)
+                    if (curYear->ClassHead == nullptr)
                     {
-                        curYear -> ClassHead = new Class;
-                        curClass = curYear -> ClassHead;
+                        curYear->ClassHead = new Class;
+                        curClass = curYear->ClassHead;
                     }
                     else
                     {
-                        curClass -> Next = new Class;
-                        curClass = curClass -> Next;
+                        curClass->Next = new Class;
+                        curClass = curClass->Next;
                     }
-                    curClass -> Year = NameYear;
+                    curClass->Year = NameYear;
                     string FileName = fileInfo.name;
-                    curClass -> Name = FileName.substr(0, FileName.find('.'));
-                    InputStudent(curClass -> StudentHead, pathFile);
+                    curClass->Name = FileName.substr(0, FileName.find('.'));
+                    InputStudent(curClass->StudentHead, pathFile);
                 }
                 else
                 {
-                    
+
                     string FileName = fileInfo.name;
                     int t = FileName.find("mark");
-                    if (t != -1) continue;
+                    if (t != -1)
+                        continue;
                     Semester *curSe;
                     if (fileInfo.name[1] == '1')
                     {
-                        if (curYear -> S1 == nullptr)
-                            curYear -> S1 = new Semester;
-                        curSe = curYear -> S1;
-                        curSe -> NameSemester = "Semester01";
+                        if (curYear->S1 == nullptr)
+                            curYear->S1 = new Semester;
+                        curSe = curYear->S1;
+                        curSe->NameSemester = "Semester01";
                     }
-                    else 
-                        if (fileInfo.name[1] == '2')
-                        {
-                            if (curYear -> S2 == nullptr)
-                                curYear -> S2 = new Semester;
-                            curSe = curYear -> S2;
-                            curSe -> NameSemester = "Semester02";
-                        }
-                        else 
-                        {
-                            if (curYear -> S3 == nullptr)
-                                curYear -> S3 = new Semester;
-                            curSe = curYear -> S3;
-                            curSe -> NameSemester = "Semester03";
-                        }
-                    curSe -> Year = NameYear;
-                    //Course *curYearCourse = curSe -> CourseList;
-                    if (curSe -> CourseList == nullptr)
+                    else if (fileInfo.name[1] == '2')
                     {
-                        curSe -> CourseList = new Course;
-                        curCourse = curSe -> CourseList;
+                        if (curYear->S2 == nullptr)
+                            curYear->S2 = new Semester;
+                        curSe = curYear->S2;
+                        curSe->NameSemester = "Semester02";
                     }
                     else
                     {
-                        curCourse -> Next = new Course;
-                        curCourse = curCourse -> Next;
+                        if (curYear->S3 == nullptr)
+                            curYear->S3 = new Semester;
+                        curSe = curYear->S3;
+                        curSe->NameSemester = "Semester03";
                     }
-                    curCourse -> Year = NameYear;
-                    curCourse -> NameSemester = curSe -> NameSemester;
+                    curSe->Year = NameYear;
+                    // Course *curYearCourse = curSe -> CourseList;
+                    if (curSe->CourseList == nullptr)
+                    {
+                        curSe->CourseList = new Course;
+                        curCourse = curSe->CourseList;
+                    }
+                    else
+                    {
+                        curCourse->Next = new Course;
+                        curCourse = curCourse->Next;
+                    }
+                    curCourse->Year = NameYear;
+                    curCourse->NameSemester = curSe->NameSemester;
                     InputStudentCourse(curCourse, pathFile);
                 }
             }
@@ -173,4 +182,3 @@ void ReadDirectory(const string& directoryPath, Course *&curCourse, Class *curCl
 
     _findclose(handle);
 }
-
