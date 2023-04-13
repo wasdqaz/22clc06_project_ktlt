@@ -76,7 +76,7 @@ int main()
             cout << "|14. View a list of students in a course.                            |\n";
             cout << "|15. Export a list of students in a course to a CSV file.            |\n";
             cout << "|16. Import the scoreboard of a course.                              |\n";
-            cout << "|17. Update a student's result.                                      |\n"; // khoi
+            cout << "|17. Update a student's result.                                      |\n"; 
             cout << "|18. View the scoreboard of a class.                                 |\n";
             cout << "|19. View the scoreboard of a course.                                |\n";
             cout << "|20. View profile.                                                   |\n"; // duy
@@ -187,7 +187,7 @@ int main()
                 // duy
                 break;
             case 2:
-                // khoi
+                ViewScoreBoardStudent(Year_head,User);
                 break;
             case 3:
                 changePassword(User);
