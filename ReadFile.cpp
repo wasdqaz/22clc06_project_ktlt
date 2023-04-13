@@ -11,8 +11,7 @@ void InputStudent(Student *&StuHead, string input)
     {
         string Info = "";
         getline(ifs, Info, ',');
-        if (Info == "\n" || Info == "")
-            return;
+        //if (Info == "\n" || Info == "") return;
         if (StuHead == nullptr)
         {
             StuHead = new Student;
