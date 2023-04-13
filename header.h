@@ -127,5 +127,10 @@ void Save_StudentCourse_All_Mark(Course *curCourse, string FileName);
 //Save scoreboard
 void SaveScorboardToFolderSchoolyear (string input);
 
+
+//Quick input class 1st Year
+void quickInputClass1stYear (SchoolYear* cur);
+void SaveClass1stYearToFolderSchoolYear (string input, string clss, SchoolYear* cur);
+
 #endif
 
