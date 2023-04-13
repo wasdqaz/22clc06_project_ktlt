@@ -1,6 +1,6 @@
 #include "header.h"
 
-void ImportScoreboardFromFileUser(SchoolYear *headOfyear)
+string ImportScoreboardFromFileUser(SchoolYear *headOfyear)
 {
     string idCourse;
     cout << "Please enter id course:\n";
@@ -20,7 +20,7 @@ void ImportScoreboardFromFileUser(SchoolYear *headOfyear)
     if (parentHandle == -1)
     {
         std::cerr << "Parent folder not found!" << std::endl;
-        return;
+        return"";
     }
 
     // Search for the subfolder
@@ -30,7 +30,7 @@ void ImportScoreboardFromFileUser(SchoolYear *headOfyear)
     {
         std::cerr << "Subfolder not found!" << std::endl;
         _findclose(parentHandle);
-        return;
+        return"";
     }
 
     // Search for the file
@@ -42,7 +42,7 @@ void ImportScoreboardFromFileUser(SchoolYear *headOfyear)
         std::cerr << "File not found!" << std::endl;
         _findclose(subHandle);
         _findclose(parentHandle);
-        return;
+        return"";
     }
 
     filePath = file.name;
@@ -54,4 +54,5 @@ void ImportScoreboardFromFileUser(SchoolYear *headOfyear)
     _findclose(handle);
     _findclose(subHandle);
     _findclose(parentHandle);
+    return filePath;
 }
