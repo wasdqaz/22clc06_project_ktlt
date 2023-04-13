@@ -6,6 +6,7 @@
 #include <string>
 #include <direct.h>
 #include <stack>
+#include <io.h>
 
 using namespace std;
 
@@ -108,7 +109,8 @@ void ViewListOfCourse(Course *head);
 // Export course to CSV file
 Course *FindCourse(SchoolYear *HeadOfYear);
 void ExportCourseToCSVFile(SchoolYear *head, string parentFolder);
-
+//import
+string ImportScoreboardFromFileUser(SchoolYear* headOfyear);
 void Add_FolderSchoolYear(SchoolYear *Year);
 
 void Add_FolderSemester(Semester *Smeter);
