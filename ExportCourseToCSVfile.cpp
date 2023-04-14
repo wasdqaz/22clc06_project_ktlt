@@ -10,8 +10,9 @@ Course *FindCourse(SchoolYear *HeadOfYear)
     string semester;
     cout << "Please enter semester contain course. Ex: S1 (if semester is first semester)\n";
     cin >> semester;
-    while (curyear && (curyear->BeginYear.compare(year) == 0))
+    while (curyear )
     {
+        if(curyear->BeginYear.compare(year) == 0) break;
         curyear = curyear->NextYear;
     }
     if (!curyear)
@@ -36,8 +37,9 @@ Course *FindCourse(SchoolYear *HeadOfYear)
     cout << "Please enter Id course\n";
     cin >> courseId;
     cout<<"Please enter classname of course\n";
-    while (curCourse && curCourse->CourseId == courseId && curCourse->ClassName == classname)
+    while (curCourse)
     {
+        if( curCourse->CourseId == courseId && curCourse->ClassName == classname) break;
         curCourse = curCourse->Next;
     }
     if (!curCourse)
