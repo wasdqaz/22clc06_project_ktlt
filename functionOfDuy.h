@@ -17,5 +17,6 @@ void viewStudentsInCourse(Course *pHead);
 void viewCourseScoreboard(Course *pHead);
 void calGPASemester(Class *pHeadClass, Semester *pHeadSemester);
 void viewClassScoreboard(Class *pHead, Semester *SemesterHead);
+void viewListOfCourses_Student(Semester *Semester_head, Account *Student_head);
 
 #endif
