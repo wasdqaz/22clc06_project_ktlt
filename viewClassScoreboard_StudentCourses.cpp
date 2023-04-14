@@ -57,3 +57,28 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead)
         StudentTemp = StudentTemp->Next;
     }
 }
+
+void viewListOfCourses_Student(Semester *Semester_head, Account *Student_head)
+{
+    string StudentID = Student_head->username;
+    Course *Temp = Semester_head->CourseList;
+    while (Temp != nullptr) {
+        Student *tempStd = Temp->CourseStudent;
+        
+        while (tempStd != nullptr) {
+            if (tempStd->Id == StudentID) {
+                cout << "-----------------------------" << endl;
+                cout << "Course ID: " << Temp->CourseId << "\t\tClass: " << Temp->ClassName << endl;
+                cout << "Course name: " << Temp->CourseName << endl;
+                cout << "Teacher: " << Temp->TeacherName << endl;
+                cout << "Day of week: " << Temp->DayOfWeek << "\t\tSession: " << Temp->Session << endl;
+                cout << "Number of credits: " << Temp->NumberOfCredits << endl;
+                break;
+            }
+            tempStd = tempStd->Next;
+        }
+
+        Temp = Temp->Next;
+    }
+    cout << "-----------------------------" << endl << endl;
+}
