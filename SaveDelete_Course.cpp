@@ -156,3 +156,13 @@ void InputCSV_Course(Course *curCourse)
     } while (_findnext(handle, &fileInfo) == 0);
      _findclose(handle);
 }
+
+void Remove_File_Course(Course *curCourse)
+{
+    string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/";
+    string nameSmter = nameSemester(curCourse->NameSemester);
+    string NameCourse = pathSemester + nameSmter + "_" + curCourse->CourseId + ".txt";
+    string NameMark = pathSemester + "mark_" + curCourse->CourseId + ".txt";
+    remove(NameCourse.c_str());
+    remove(NameMark.c_str()); 
+}
