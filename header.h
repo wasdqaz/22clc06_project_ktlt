@@ -136,5 +136,8 @@ void SaveScorboardToFolderSchoolyear (string input);
 void quickInputClass1stYear (SchoolYear* cur);
 void SaveClass1stYearToFolderSchoolYear (string input, string clss, SchoolYear* cur);
 
+//Save when add a student
+void SaveWhenAdd1StudentToClass (Student*add, string classname, SchoolYear* cur);
+
 #endif
 
