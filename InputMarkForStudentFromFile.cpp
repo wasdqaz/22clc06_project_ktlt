@@ -1,144 +1,162 @@
 #include "header.h"
 
-Mark *makeMarkNode(double midterm, double final, double total, string course, string semester)
+Mark* makeMarkNode (double midterm, double final, double othermark, double total, string course, string semester, string year)
 {
-    Mark *newMark = new Mark;
+    Mark* newMark = new Mark;
     newMark->Id = course;
     newMark->FinalMark = final;
     newMark->MidtermMark = midterm;
     newMark->TotalMark = total;
+    newMark->OtherMark = othermark;
     newMark->semester = semester;
+    newMark->year = year;
     newMark->Next = nullptr;
     newMark->Prev = nullptr;
     return newMark;
+    
 }
 
-void putMarkToStudentNode(Student *studentOfClass, Student *studentOfCourse, double midterm, double final, double total, string course, string semester)
+
+void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final,double othermark, double total, string course, string semester, string year)
 {
     // push Node Mark to Student of class
-    Mark *head = studentOfClass->HeadOfMark;
-    Mark *newMark = makeMarkNode(midterm, final, total, course, semester);
-    if (!head)
+    Mark* head =studentOfClass ->HeadOfMark;
+    Mark* newMark =  makeMarkNode(midterm, final, othermark, total, course,semester,year);
+    if(!head)
     {
         studentOfClass->HeadOfMark = newMark;
-        // return
+        //return
     }
     else
     {
-        while (head->Next)
-            head = head->Next;
+        while(head->Next)
+        head = head->Next;
         newMark->Prev = head;
         head->Next = newMark;
     }
     // push node mark to student of course
     studentOfCourse->HeadOfMark = newMark;
 }
-Student *FindNodeStudentOfCourseToPutMark(string id, Course *cur)
+Student* FindNodeStudentOfCourseToPutMark (string id, Course* cur)
 {
-    Student *head = cur->CourseStudent;
-    while (head)
+    Student* head = cur->CourseStudent;
+    while(head)
     {
-        if (head->Id == id)
+        if(head->Id == id)
             return head;
-        head = head->Next;
+            head = head->Next;
     }
     return nullptr;
+
 }
-Student *FindNodeStudentOfClassToPutMark(string id, Class *head, string clss)
+Student* FindNodeStudentOfClassToPutMark (string id, Class* head, string clss)
 {
-    Class *cur = head;
-    while (cur)
+    Class* cur = head;
+    while(cur)
     {
-        if (cur->Name == clss)
-            break;
+        if(cur ->Name == clss)
+        break;
         cur = cur->Next;
     }
-    if (cur)
+    if(cur)
     {
-        Student *head = cur->StudentHead;
-        while (head)
+        Student* head = cur->StudentHead;
+        while(head)
         {
-            if (head->Id == id)
-                break;
+            if(head->Id == id) break;
             head = head->Next;
+
         }
         return head;
     }
     return nullptr;
 }
 
-void InputMarkForStudent(SchoolYear *headOfSchoolyear, string input)
+void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
 {
     ifstream in;
     in.open(input);
-    if (!in.is_open())
-        return;
+    if(!in.is_open()) return;
 
     // Access to ShoolYear contain semester (This semester contain course current)
-    SchoolYear *cur = headOfSchoolyear;
+    SchoolYear* cur = headOfSchoolyear;
     string year;
-    // getline(in,year);
+    //getline(in,year);
     getline(in, year);
-    string beginYear = year.substr(0, 2);
+    string beginYear = year.substr(0,2);
 
-    while (cur && cur->BeginYear != beginYear)
-    {
-        cur = cur->NextYear;
-    }
-    Class *headOfClass = cur->ClassHead;
-    // Access Semester Contain Course current
-    string semester;
-    getline(in, semester);
-    Semester *SemesterCur;
+    while(cur && cur->BeginYear != beginYear)
+   {
+    cur = cur->NextYear;
+   }
+    Class* headOfClass= cur->ClassHead;
+   // Access Semester Contain Course current
+   string semester;
+   getline(in,semester);
+   Semester* SemesterCur;
 
-    if (semester[1] == '1')
-        SemesterCur = cur->S1;
-    else if (semester[1] == '2')
-        SemesterCur = cur->S2;
-    else
-        SemesterCur = cur->S3;
+   if(semester[1] == '1')
+   SemesterCur = cur->S1;
+   else if(semester[1] == '2')
+    SemesterCur = cur->S2;
+    else SemesterCur = cur->S3;
 
-    // Access Course current
-    string course;
-    getline(in, course);
-    Course *CourseCur = SemesterCur->CourseList;
-    while (CourseCur && CourseCur->CourseId != course)
+    //Access Course current
+    string coursename;
+    getline(in,coursename);
+    
+    string idcourse;
+    getline(in,idcourse);
+
+    string classnameOfcourse;
+    getline(in,classnameOfcourse);
+
+
+    Course* CourseCur = SemesterCur->CourseList;
+    while(CourseCur && CourseCur->CourseId != idcourse && CourseCur->ClassName == classnameOfcourse)
     {
         CourseCur = CourseCur->Next;
     }
+    
 
     // Now Access to Student
     string id, name, clss; // clss: class do bi trung ten
-    double midterm, final, total;
+    double midterm, final, total, othermark;
 
-    Class *curClass = headOfClass;
-    while (!in.eof())
+    Class* curClass= headOfClass;
+    while(!in.eof())
     {
-        getline(in, id, ',');
-        getline(in, name, ',');
-        getline(in, clss, ',');
-        in >> midterm;
-        in >> final;
-        in >> total;
+        getline(in,id,',');
+        getline(in,name,',');
+        getline(in,clss,',');
+        in>>midterm;
+        in>>final;
+        in>>othermark;
+        in>>total;
         in.ignore(1);
-
-        Student *studentCurOfClass = FindNodeStudentOfClassToPutMark(id, headOfClass, clss);
-        Student *studentCufOfCourse = FindNodeStudentOfCourseToPutMark(id, CourseCur);
-        putMarkToStudentNode(studentCurOfClass, studentCufOfCourse, midterm, final, total, course, semester);
+        
+        Student* studentCurOfClass = FindNodeStudentOfClassToPutMark(id,headOfClass,clss);
+        Student* studentCufOfCourse = FindNodeStudentOfCourseToPutMark(id, CourseCur);
+        putMarkToStudentNode(studentCurOfClass, studentCufOfCourse, midterm,final,othermark,total, idcourse,semester,year);
 
         // Access Student
+        
+
     }
     in.close();
+    
+    
+
 }
 
-// This function access File store Mark and Using InputMarkForStudent function to input mark for student in a course
-void AccessFileMark(string directoryPath, SchoolYear *headOfSchoolyear)
-{
+
+
+//This function access File store Mark and Using InputMarkForStudent function to input mark for student in a course
+void AccessFileMark(string directoryPath,  SchoolYear* headOfSchoolyear) {
     stack<string> directories;
     directories.push(directoryPath);
 
-    while (!directories.empty())
-    {
+    while (!directories.empty()) {
         string currentDirectory = directories.top();
         directories.pop();
 
@@ -146,35 +164,32 @@ void AccessFileMark(string directoryPath, SchoolYear *headOfSchoolyear)
         _finddata_t fileInfo;
         intptr_t handle = _findfirst(directoryGlob.c_str(), &fileInfo);
 
-        if (handle == -1)
-        {
+        if (handle == -1) {
             cerr << "Error: unable to open directory " << currentDirectory << endl;
             continue;
         }
 
-        do
-        {
-            if (strcmp(fileInfo.name, ".") != 0 && strcmp(fileInfo.name, "..") != 0)
-            {
-                if (fileInfo.attrib & _A_SUBDIR)
-                {
+        do {
+            if (strcmp(fileInfo.name, ".") != 0 && strcmp(fileInfo.name, "..") != 0){
+                if (fileInfo.attrib & _A_SUBDIR)  {
                     string subdirectoryPath = currentDirectory + "/" + fileInfo.name;
-
+                    
                     directories.push(subdirectoryPath);
-                }
-                else
-                {
-
+                } 
+                else {
+                	
                     string fileName = fileInfo.name;
-                    string check = fileName.substr(0, 4);
-
+                    string check = fileName.substr(0,4);
+                    
                     string a = "mark";
-                    if (check.compare(a) == 0)
+                    if(check.compare(a)== 0) 
                     {
-
-                        string filePath = currentDirectory + "/" + fileInfo.name;
-                        InputMarkForStudent(headOfSchoolyear, filePath);
+                        
+					string filePath = currentDirectory + "/" + fileInfo.name;
+                    InputMarkForStudent(headOfSchoolyear,filePath);
                     }
+                    
+                    
                 }
             }
         } while (_findnext(handle, &fileInfo) == 0);
@@ -183,16 +198,16 @@ void AccessFileMark(string directoryPath, SchoolYear *headOfSchoolyear)
     }
 }
 
-// Ai do chay dum ham main nay zoi
-// include lun ca ham cua Tran
-//  int main()
-//  {
-//      string directoryPath = "SchoolYear";
-//      Course *CourseHead = nullptr, *curCourse = nullptr;
-//      Class *ClassHead = nullptr, *curClass = nullptr;
-//      SchoolYear *YearHead = nullptr, *curYear = nullptr;
-//      printDirectory(directoryPath, 0, curCourse, curClass, YearHead, curYear);
-
+//Ai do chay dum ham main nay zoi
+//include lun ca ham cua Tran
+// int main()
+// {
+//     string directoryPath = "SchoolYear";
+//     Course *CourseHead = nullptr, *curCourse = nullptr;
+//     Class *ClassHead = nullptr, *curClass = nullptr;
+//     SchoolYear *YearHead = nullptr, *curYear = nullptr;
+//     printDirectory(directoryPath, 0, curCourse, curClass, YearHead, curYear);
+   
 //     AccessFileMark(directoryPath , ClassHead, YearHead);
 
 //     return 0;
