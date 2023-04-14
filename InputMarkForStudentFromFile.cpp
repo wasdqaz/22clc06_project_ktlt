@@ -103,19 +103,22 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
     else SemesterCur = cur->S3;
 
     //Access Course current
-    string coursename;
-    getline(in,coursename);
+   
     
     string idcourse;
     getline(in,idcourse);
+
+     string coursename;
+    getline(in,coursename);
 
     string classnameOfcourse;
     getline(in,classnameOfcourse);
 
 
     Course* CourseCur = SemesterCur->CourseList;
-    while(CourseCur && CourseCur->CourseId != idcourse && CourseCur->ClassName == classnameOfcourse)
+    while(CourseCur )
     {
+        if(CourseCur->CourseId == idcourse && CourseCur->ClassName == classnameOfcourse) break;
         CourseCur = CourseCur->Next;
     }
     
