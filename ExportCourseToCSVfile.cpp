@@ -99,7 +99,7 @@ void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
     file << "ID Student,Name\n";
     while (headOfStudent)
     {
-        file << headOfStudent->Id << "," << headOfStudent->Name << endl;
+        file <<headOfStudent->No<<","<< headOfStudent->Id << "," << headOfStudent->Name << endl;
         headOfStudent = headOfStudent->Next;
     }
 
