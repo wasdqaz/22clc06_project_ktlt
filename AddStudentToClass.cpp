@@ -49,6 +49,7 @@ void AddNewStudent(SchoolYear *pHeadYear)
         Temp->Next->No = No + 1;
         Temp->Next->SocialId = SocialId;
         Temp->Next->HeadOfMark = nullptr;
+        SaveWhenAdd1StudentToClass(Temp->Next, ClassName, pHeadYear );
     }
     else
     { // neu chua co hs nao trong lop
@@ -61,6 +62,7 @@ void AddNewStudent(SchoolYear *pHeadYear)
         pHead->StudentHead->No = No + 1;
         pHead->StudentHead->SocialId = SocialId;
         pHead->StudentHead->HeadOfMark = nullptr;
+         SaveWhenAdd1StudentToClass ( pHead->StudentHead, ClassName,pHeadYear);
     }
     cout << "Add student to class successfully." << endl;
 }
