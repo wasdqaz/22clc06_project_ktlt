@@ -43,7 +43,7 @@ string ImportScoreboardFromFileUser(SchoolYear* headOfyear)
     }
 
     filePath = file.name;
-    return filePath;
+    
     // Process the file
     InputMarkForStudent(headOfyear, filePath);
 
@@ -51,5 +51,6 @@ string ImportScoreboardFromFileUser(SchoolYear* headOfyear)
     _findclose(handle);
     _findclose(subHandle);
     _findclose(parentHandle);
+    return filePath;
 }
 

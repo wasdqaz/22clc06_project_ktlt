@@ -10,7 +10,7 @@ void SaveWhenAdd1StudentToClass (Student*add, string classname, SchoolYear* cur)
    
     std::string FilePath = folderPath + "\\" + classname +".txt";
     ofstream out;
-    out.open(FilePath, ios::out || ios::app);
+    out.open(FilePath,  ios::app);
     out<<endl;
     out<<add->No<<","<<add->Id<<","<<add->Name<<","<<add->Gender<<","<<add->DateOfBirth<<add->SocialId;
     out.close();
