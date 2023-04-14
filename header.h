@@ -29,6 +29,7 @@ struct Mark
     string NameOfCourse, Id;
     string semester;
     float TotalMark, FinalMark, MidtermMark, OtherMark;
+    string year;
     Mark *Next = nullptr;
     Mark *Prev = nullptr;
 };
