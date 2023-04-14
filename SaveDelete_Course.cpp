@@ -75,7 +75,9 @@ void Save_StudentCourse_All_Mark(Course *curCourse, string FileName)
     string nameSmter = nameSemester(curCourse -> NameSemester);
     ofs << curCourse -> Year << "\n"
         << nameSmter << "\n"
-        << curCourse->CourseId;
+        << curCourse->CourseId << "\n"
+        << curCourse->CourseName << "\n"
+        << curCourse->ClassName;
     Student *StuCourse = curCourse -> CourseStudent;
     while (StuCourse != nullptr)
     {
