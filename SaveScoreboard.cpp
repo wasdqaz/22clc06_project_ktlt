@@ -7,10 +7,13 @@ void SaveScorboardToFolderSchoolyear (string input)
     in>>year;
     string semester;
     in>>semester;
-    string coursename;
-    in>>coursename;
     string courseid;
     in>>courseid;
+    string coursename;
+    in>>coursename;
+    
+    string classname;
+    in>>classname;
     in.close();
     std::string schoolYear = "SchoolYear";
     
@@ -18,7 +21,7 @@ void SaveScorboardToFolderSchoolyear (string input)
 
     // Tạo folder mới nếu chưa tồn tại
     _mkdir(folderPath.c_str());
-    string filename = "\\mark_"+courseid+".txt";
+    string filename = "\\mark_"+ classname +"_"+ courseid+".txt";
 
     // Tạo file mới và ghi dữ liệu vào đó
     std::ofstream newFile(folderPath + filename);

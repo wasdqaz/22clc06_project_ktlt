@@ -54,7 +54,7 @@ void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
 {
     Course *cur = FindCourse(head);
     string idcourse = cur->CourseId;
-    string filename =  idcourse +".txt";
+    string filename =  idcourse +"_" +cur->ClassName+".txt";
 
     Student *headOfStudent = cur->CourseStudent;
     string parentFolderName = "Data";
