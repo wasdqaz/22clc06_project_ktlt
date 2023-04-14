@@ -32,10 +32,11 @@ Course *FindCourse(SchoolYear *HeadOfYear)
         return nullptr;
     }
     Course *curCourse = semesterCur->CourseList;
-    string courseId;
+    string courseId, classname;
     cout << "Please enter Id course\n";
     cin >> courseId;
-    while (curCourse && curCourse->CourseId == courseId)
+    cout<<"Please enter classname of course\n";
+    while (curCourse && curCourse->CourseId == courseId && curCourse->ClassName == classname)
     {
         curCourse = curCourse->Next;
     }
@@ -51,7 +52,7 @@ void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
 {
     Course *cur = FindCourse(head);
     string idcourse = cur->CourseId;
-    string filename = "ouput_" + idcourse;
+    string filename =  idcourse +".txt";
 
     Student *headOfStudent = cur->CourseStudent;
     string parentFolderName = "Data";
@@ -90,6 +91,8 @@ void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
         cerr << "Failed to create file!" << endl;
         return;
     }
+    file<< cur->CourseName<<endl;
+    file<< cur->CourseId<<endl;
 
     file << "ID Student,Name\n";
     while (headOfStudent)
