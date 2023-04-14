@@ -63,7 +63,7 @@ void DeleteCourse(Course *&head)
         {
             // hàm checkCoures sẽ trả con trỏ cur về trc Node Course cần xóa.
             // Nếu Course cần xóa ở đầu thì sẽ trả về head;
-            if (cur = head)
+            if (cur == head)
             {
                 DeleteStudentInCourse(cur->CourseStudent);
                 cur = cur->Next;

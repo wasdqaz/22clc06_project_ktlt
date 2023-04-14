@@ -22,8 +22,8 @@ void Add_InfoCourse(Course *newCourse)
 {
     string Course_Name = "Data/SchoolYear/" + newCourse->Year + "/" + newCourse->NameSemester + "/" + newCourse->CourseName;
     int create_folder = _mkdir(Course_Name.c_str());
-    if (!create_folder == 0)
-        cout << "Add course successfully" << endl;
+    //if (create_folder == 0)
     Save_InfoCourse(newCourse);
+    cout << "Add course successfully" << endl;
 }
 
