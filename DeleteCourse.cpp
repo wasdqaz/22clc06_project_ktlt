@@ -29,16 +29,16 @@ void DeleteMark(Mark *&head)
 
     delete head;
 }
-bool checkCourse(Course *head, string Course_id, Course *&cur_course)
+bool checkCourse(Course *head, string Course_id, string Class_name, Course *&cur_course)
 {
-    if (head->CourseId == Course_id)
+    if (head->CourseId == Course_id && head->ClassName == Class_name)
     {
         return true;
     }
     Course *cur = head;
     while (cur->Next != nullptr)
     {
-        if (cur->Next->CourseId == Course_id)
+        if (cur->Next->CourseId == Course_id && cur->Next->ClassName == Class_name)
         {
             cur_course = cur;
             return true;
@@ -51,15 +51,17 @@ bool checkCourse(Course *head, string Course_id, Course *&cur_course)
 
 void DeleteCourse(Course *&head)
 {
-    string Course_id;
+    string Course_id, Class_Name;
     while (true)
     {
         cout << "Please enter course you want to delete: ";
         cin.ignore();
         getline(cin, Course_id);
+        cout << "Please enter the class name of course: ";
+        getline(cin, Class_Name);
         Course *cur = head;
 
-        if (checkCourse(head, Course_id, cur))
+        if (checkCourse(head, Course_id, Class_Name, cur))
         {
             // hàm checkCoures sẽ trả con trỏ cur về trc Node Course cần xóa.
             // Nếu Course cần xóa ở đầu thì sẽ trả về head;
