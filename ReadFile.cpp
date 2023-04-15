@@ -51,9 +51,6 @@ void InputStudentCourse(Course *&subCourse, string input)
     ifs.ignore();
     while (!ifs.eof())
     {
-        string Info = "";
-        getline(ifs, Info, ',');
-        //if (Info == "\n" || Info == "") return;
         if (subCourse -> CourseStudent == nullptr)
 
         {
@@ -65,7 +62,10 @@ void InputStudentCourse(Course *&subCourse, string input)
             cur->Next = new Student;
             cur = cur->Next;
         }
-        cur->Id = Info;
+        string NO = "";
+        getline(ifs, NO, ',');
+        cur->No = stoi(NO);
+        getline(ifs, cur->Id);
         getline(ifs, cur->Name, ',');
         getline(ifs, cur->Class);
     }

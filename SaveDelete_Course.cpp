@@ -26,7 +26,7 @@ void Save_InfoCourse(Course *curCourse) // Year, Semester mac dinh
         << curCourse->TeacherName << "\n"
         << curCourse->Session << "\n"
         << curCourse->DayOfWeek << "\n"
-        << curCourse->NumberOfCredits << "\n";
+        << curCourse->NumberOfCredits;
     ofs.close();
 }
 
@@ -36,8 +36,7 @@ void Save_StudentCourse_1(Student *StuCourse, string FileName)
     file.open(FileName, ios::app);
     if (!file.is_open())
         return;
-    file <<"\n";
-    file << StuCourse -> Id << "," << StuCourse -> Name <<","<<StuCourse -> Class;
+    file << "\n" << StuCourse->No << "," << StuCourse -> Id << "," << StuCourse -> Name <<","<<StuCourse -> Class;
     file.close();
 }
 
@@ -59,7 +58,7 @@ void Save_StudentCourse_All(Course *curCourse, string FileName)
     Student *StuCourse = curCourse -> CourseStudent;
     while (StuCourse != nullptr)
     {
-        ofs << "\n" <<StuCourse->Id << "," <<StuCourse->Name << "," << StuCourse->Class;
+        ofs << "\n" << StuCourse->No << "," << StuCourse->Id << "," <<StuCourse->Name << "," << StuCourse->Class;
         StuCourse = StuCourse->Next;
     }
     ofs.close();
@@ -81,7 +80,7 @@ void Save_StudentCourse_All_Mark(Course *curCourse, string FileName)
     Student *StuCourse = curCourse -> CourseStudent;
     while (StuCourse != nullptr)
     {
-        ofs << "\n" <<StuCourse->Id << "," <<StuCourse->Name << "," << StuCourse->Class;
+        ofs << "\n" << StuCourse->No << "," <<StuCourse->Id << "," <<StuCourse->Name << "," << StuCourse->Class;
         StuCourse = StuCourse->Next;
     }
     ofs.close();
@@ -105,6 +104,9 @@ void Input_Student_Course_File(Student *StuCourse, string FileName)
             curStudent->Next = new Student;
             curStudent = curStudent->Next;
         }
+        string NO = "";
+        getline(ifs, NO, ',');
+        curStudent->No = stoi(NO);
         getline(ifs, curStudent->Id, ',');
         getline(ifs, curStudent->Name, ',');
         getline(ifs, curStudent->Class);
