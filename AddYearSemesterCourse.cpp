@@ -1,8 +1,5 @@
 #include "header.h"
 #include "functionOfDuy.h"
-#include "iostream"
-#include <string>
-using namespace std;
 
 void AddNewYear(SchoolYear *&pHeadYear) // con tro toan bo cac nam hoc
 {
@@ -23,15 +20,13 @@ void AddNewYear(SchoolYear *&pHeadYear) // con tro toan bo cac nam hoc
 
     SchoolYear *temp = pHeadYear;
 
-    while (temp->NextYear != nullptr)
-        temp = temp->NextYear;
-
     temp->NextYear = new SchoolYear;
     temp->NextYear->BeginYear = Temp.substr(2, 2);
     temp->NextYear->EndYear = Temp.substr(7, 2);
     temp->NextYear->NextYear = nullptr;
     temp->NextYear->ClassHead = nullptr;
-    Add_FolderSchoolYear(temp->NextYear);
+    pHeadYear = temp -> NextYear;
+    Add_FolderSchoolYear(pHeadYear);
     // cout << "Add new school year successfully" << endl;
 }
 
@@ -51,7 +46,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
         cout << "No school year found!!!" << endl;
         return nullptr;
     }
-
+    string YearName = pHeadYear->BeginYear + "-" + pHeadYear ->EndYear;
     switch (Smter)
     {
     case 1:
@@ -62,6 +57,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
             pHeadYear->S1->StartDate = StartDate;
             pHeadYear->S1->EndDate = EndDate;
             pHeadYear->S1->Next = nullptr;
+            pHeadYear->S1->Year = YearName;
             Add_FolderSemester(pHeadYear->S1);
             // cout << "Semester created" << endl;
         }
@@ -77,6 +73,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
             pHeadYear->S2->StartDate = StartDate;
             pHeadYear->S2->EndDate = EndDate;
             pHeadYear->S2->Next = nullptr;
+            pHeadYear->S2->Year = YearName;
             Add_FolderSemester(pHeadYear->S2);
             // cout << "Semester created" << endl;
         }
@@ -92,6 +89,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
             pHeadYear->S3->StartDate = StartDate;
             pHeadYear->S3->EndDate = EndDate;
             pHeadYear->S3->Next = nullptr;
+            pHeadYear->S3->Year = YearName;
             Add_FolderSemester(pHeadYear->S3);
             // cout << "Semester created" << endl;
         }

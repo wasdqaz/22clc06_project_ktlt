@@ -48,8 +48,10 @@ int main()
     // {
     //     Year_head = Year_head -> NextYear;
     // }
-
-    Semester_head = defaultSemester(Year_head);
+    curYear = Year_head;
+    while (curYear -> NextYear != nullptr)
+        curYear = curYear -> NextYear;
+    Semester_head = defaultSemester(curYear);
     CalGpa(Year_head->ClassHead);
     calGPASemester(Year_head->ClassHead, Semester_head);
     //---------------------------------------------------------------------------------
@@ -95,22 +97,22 @@ int main()
                 break;
             }
             case 1:
-                AddNewYear(Year_head);
+                AddNewYear(curYear);
                 break;
             case 2:
-                CreateClass(Year_head); // can update
+                CreateClass(curYear); // can update
                 break;
             case 3:
                 AddNewStudent(Year_head);
                 break;
             case 4:
-                Semester_head = AddNewSemester(Year_head);
+                Semester_head = AddNewSemester(curYear);
                 break;
             case 5:
-                // AddCourse(Semester_head);
+                AddCourse(Semester_head);
                 break;
             case 6:
-
+                InputCSV_Course(Semester_head->CourseList);
                 break;
             case 7:
                 UpdCourseInf(Semester_head->CourseList);

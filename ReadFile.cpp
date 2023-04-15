@@ -65,7 +65,7 @@ void InputStudentCourse(Course *&subCourse, string input)
         string NO = "";
         getline(ifs, NO, ',');
         cur->No = stoi(NO);
-        getline(ifs, cur->Id);
+        getline(ifs, cur->Id, ',');
         getline(ifs, cur->Name, ',');
         getline(ifs, cur->Class);
     }

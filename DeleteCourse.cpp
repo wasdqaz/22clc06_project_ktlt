@@ -68,6 +68,7 @@ void DeleteCourse(Course *&head)
             if (cur == head)
             {
                 DeleteStudentInCourse(cur->CourseStudent);
+                Remove_File_Course(cur);
                 cur = cur->Next;
                 delete head;
                 head = cur;
@@ -78,6 +79,7 @@ void DeleteCourse(Course *&head)
             {
                 Course *tmp = cur->Next;
                 DeleteStudentInCourse(tmp->CourseStudent);
+                Remove_File_Course(tmp);
                 cur->Next = tmp->Next;
                 delete tmp;
                 cout << "Delete the course successfully.\n";
