@@ -124,12 +124,13 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
     
 
     // Now Access to Student
-    string id, name, clss; // clss: class do bi trung ten
+    string id, name, clss, no; // clss: class do bi trung ten
     double midterm, final, total, othermark;
 
     Class* curClass= headOfClass;
     while(!in.eof())
     {
+        getline(in,no,',');
         getline(in,id,',');
         getline(in,name,',');
         getline(in,clss,',');
