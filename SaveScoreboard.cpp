@@ -1,27 +1,27 @@
 #include "header.h"
-void SaveScorboardToFolderSchoolyear (string input)
+void SaveScorboardToFolderSchoolyear(string input)
 {
     ifstream in;
     in.open(input);
     string year;
-    in>>year;
+    in >> year;
     string semester;
-    in>>semester;
+    in >> semester;
     string courseid;
-    in>>courseid;
+    in >> courseid;
     string coursename;
-    in>>coursename;
-    
+    in >> coursename;
+
     string classname;
-    in>>classname;
+    in >> classname;
     in.close();
     std::string schoolYear = "SchoolYear";
-    
+
     std::string folderPath = ".\\data\\" + schoolYear + "\\" + year + "\\" + semester + "\\" + coursename;
 
     // Tạo folder mới nếu chưa tồn tại
     _mkdir(folderPath.c_str());
-    string filename = "\\mark_"+ classname +"_"+ courseid+".txt";
+    string filename = "\\mark_" + classname + "_" + courseid + ".txt";
 
     // Tạo file mới và ghi dữ liệu vào đó
     std::ofstream newFile(folderPath + filename);
@@ -31,7 +31,8 @@ void SaveScorboardToFolderSchoolyear (string input)
     std::ifstream sourceFile(input, std::ios::binary);
     std::ofstream destinationFile(filePath, std::ios::binary);
 
-    if (sourceFile.is_open() && destinationFile.is_open()) {
+    if (sourceFile.is_open() && destinationFile.is_open())
+    {
         // Đọc toàn bộ nội dung của file cần copy
         std::string fileContent((std::istreambuf_iterator<char>(sourceFile)), std::istreambuf_iterator<char>());
 
@@ -39,12 +40,13 @@ void SaveScorboardToFolderSchoolyear (string input)
         destinationFile << fileContent;
 
         std::cout << "File copied successfully!\n";
-    } else {
+    }
+    else
+    {
         std::cerr << "Failed to copy file!\n";
     }
 
     // Đóng file
     sourceFile.close();
     destinationFile.close();
-
 }
