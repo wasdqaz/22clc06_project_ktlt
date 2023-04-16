@@ -11,6 +11,7 @@ int main()
     Account *User;
     Semester *Semester_head = nullptr;
     SchoolYear *Year_head = nullptr;
+    Staff *Staff_info_head = nullptr;
     int Role;
 
     createAccountList(Student_head, 2);
@@ -22,6 +23,7 @@ int main()
     SchoolYear *curYear = nullptr;
     ReadDirectory(directoryPath, curCourse, curClass, Year_head, curYear);
     AccessFileMark(directoryPath, Year_head);
+    readStaffInfo(Staff_info_head);
 
     //-------------------------------------login--------------------------------
     cout << "You are student or staff.\n";

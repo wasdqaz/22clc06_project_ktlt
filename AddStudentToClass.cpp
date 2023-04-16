@@ -26,7 +26,7 @@ void AddNewStudent(SchoolYear *pHeadYear)
     cout << "Student name: ";
     cin.ignore();
     getline(cin, Name);
-    cout << "Gender (Male/Female): ";
+    cout << "Gender (Nam/Nu): ";
     getline(cin, Gender);
     cout << "Date of birth: ";
     cin >> DateOfBirth;
