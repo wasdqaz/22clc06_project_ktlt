@@ -6,6 +6,7 @@
 #include <string>
 #include <direct.h>
 #include <stack>
+#include <conio.h>
 #include <io.h>
 
 using namespace std;

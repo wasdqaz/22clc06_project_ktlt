@@ -2,7 +2,6 @@
 #include "KhoiFunction.h"
 #include "functionOfDuy.h"
 
-// #define time;
 
 int main()
 {
@@ -41,15 +40,6 @@ int main()
         clss = User->Class;
     }
 
-    //------------------------------------login--------------------------------------
-    // string Begin_Year;
-    // cout<<"Please input school year.\n";
-    // cout<<"20--(PLease enter two last digits of year. Ex: 22( 2022),...)\n";
-    // cin>>Begin_Year;
-    // while (Year_head && Year_head -> BeginYear != Begin_Year)
-    // {
-    //     Year_head = Year_head -> NextYear;
-    // }
     curYear = Year_head;
     while (curYear -> NextYear != nullptr)
         curYear = curYear -> NextYear;
@@ -61,7 +51,7 @@ int main()
     {
         if (User->Role == 1)
         {
-            cout << "\n-----------------------------MENU-------------------------------------\n";
+            cout << "-----------------------------MENU-------------------------------------\n";
             cout << "|0. Change the password.                                             |\n";
             cout << "|1. Create school year.                                              |\n";
             cout << "|1. Add year.                                                        |\n";
@@ -84,7 +74,7 @@ int main()
             cout << "|18. View the scoreboard of a class.                                 |\n";
             cout << "|19. View the scoreboard of a course.                                |\n";
             cout << "|20. View profile.                                                   |\n"; 
-            cout << "|21. -------------                                                   |\n";
+            cout << "|21. Upload file student in class                                    |\n";
             cout << "|22. Logout.                                                         |\n";
             cout << "------------------------------END-------------------------------------\n";
 
