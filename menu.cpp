@@ -67,11 +67,11 @@ int main()
             cout << "|3. Add student.                                                     |\n";
             cout << "|4. Create semester.                                                 |\n";
             cout << "|5. Add course.                                                      |\n";
-            cout << "|6. Upload file student list for course.                             |\n"; // chua co
+            cout << "|6. Upload file student list for course.                             |\n"; 
             cout << "|7. Update course information.                                       |\n";
             cout << "|8. Add a student to the course.                                     |\n";
             cout << "|9. Remove a student from the course.                                |\n";
-            cout << "|10. Delete course.                                                  |\n"; // can fix
+            cout << "|10. Delete course.                                                  |\n"; 
             cout << "|11. View a list of classes.                                         |\n";
             cout << "|12. View a list of students in a class.                             |\n";
             cout << "|13. View a list of courses.                                         |\n";
@@ -81,7 +81,7 @@ int main()
             cout << "|17. Update a student's result.                                      |\n"; 
             cout << "|18. View the scoreboard of a class.                                 |\n";
             cout << "|19. View the scoreboard of a course.                                |\n";
-            cout << "|20. View profile.                                                   |\n"; // duy
+            cout << "|20. View profile.                                                   |\n"; 
             cout << "|21. -------------                                                   |\n";
             cout << "|22. Logout.                                                         |\n";
             cout << "------------------------------END-------------------------------------\n";

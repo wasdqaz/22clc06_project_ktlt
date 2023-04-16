@@ -28,8 +28,8 @@ struct Mark
 {
     string NameOfCourse, Id;
     string semester;
-    float TotalMark, FinalMark, MidtermMark, OtherMark;
     string year;
+    float TotalMark=0, FinalMark=0, MidtermMark=0, OtherMark=0;
     Mark *Next = nullptr;
     Mark *Prev = nullptr;
 };

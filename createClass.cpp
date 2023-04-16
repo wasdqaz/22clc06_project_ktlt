@@ -1,4 +1,6 @@
 #include "header.h"
+
+
 void CreateClass(SchoolYear *YearHead)
 {
     string ClassName;
@@ -34,9 +36,3 @@ void CreateClass(SchoolYear *YearHead)
     }
 }
 
-// int main(){
-//     SchoolYear *a=nullptr;
-//     CreateClass(a);
-
-//     return 0;
-// }
