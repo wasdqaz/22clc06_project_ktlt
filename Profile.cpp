@@ -14,10 +14,10 @@ Staff *Find_Staff(Staff *pHead, string ID)
     return nullptr;
 }
 
-void PrintProfile_Staff(Account *User)
+void PrintProfile_Staff(Account *User, Staff *pHead)
 {
     Staff *StaffInfo;
-    Staff *Staff_Info = Find_Staff(StaffInfo, User->username);
+    StaffInfo = Find_Staff(pHead, User->username);
     cout << "Profile\n";
     cout << "Academic staff member\n";
     cout << "Id: " << StaffInfo->Id << endl;

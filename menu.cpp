@@ -156,7 +156,7 @@ int main()
                 viewCourseScoreboard(Semester_head->CourseList);
                 break;
             case 20:
-                //
+                PrintProfile_Staff(Staff_head, Staff_info_head);
                 break;
             case 21:
 

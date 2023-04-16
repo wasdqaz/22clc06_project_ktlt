@@ -80,7 +80,7 @@ void createAccountList(Account *&head, int role);
 Account *Login(Account *head);
 
 Staff *Find_Staff(Staff *pHead, string ID);
-void PrintProfile_Staff(Account *User);
+void PrintProfile_Staff(Account *User, Staff *pHead);
 Class *Find_ClassName(Class *pHead, string Class_Name);
 Student *Find_Student(Class *pClass, string ID);
 void PrintProfile_Student(Account *User, SchoolYear *curYear);
