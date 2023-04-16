@@ -1,10 +1,10 @@
 #include "functionOfDuy.h"
 #include "header.h"
 
-void viewClassScoreboard(Class *pHead, Semester *SemesterHead)
+void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearHead)
 {
     string ClassName;
-    cout << "Enter the class name to view scoreboard (Ex: 21CLC01): ";
+    cout << "Enter the class name to view scoreboard (Ex: 22CLC01): ";
     cin >> ClassName;
 
     Class *pTemp = pHead;
@@ -17,6 +17,7 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead)
     }
 
     string Smt = SemesterHead->NameSemester.substr(9, 1);
+    string curYear = YearHead->BeginYear;
 
     Student *StudentTemp = pTemp->StudentHead;
     while (StudentTemp != nullptr)
@@ -29,7 +30,8 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead)
         while (MarkTemp != nullptr)
         {
             string tmp = MarkTemp->semester.substr(1, 1);
-            if (tmp == Smt)
+            string year = MarkTemp->year.substr(0, 2);
+            if (tmp == Smt && year == curYear)
                 cout << setw(10) << left << MarkTemp->Id;
             MarkTemp = MarkTemp->Next;
         }
@@ -45,7 +47,8 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead)
         while (MarkTemp != nullptr)
         {
             string tmp = MarkTemp->semester.substr(1, 1);
-            if (tmp == Smt)
+            string year = MarkTemp->year.substr(0, 2);
+            if (tmp == Smt && year == curYear)
                 cout << setw(10) << left << MarkTemp->FinalMark;
             MarkTemp = MarkTemp->Next;
         }

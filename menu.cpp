@@ -148,7 +148,7 @@ int main()
                 UpdateStudentResult(Semester_head->CourseList);
                 break;
             case 18:
-                viewClassScoreboard(Year_head->ClassHead, Semester_head);
+                viewClassScoreboard(Year_head->ClassHead, Semester_head, curYear);
                 break;
             case 19:
                 viewCourseScoreboard(Semester_head->CourseList);
@@ -186,7 +186,7 @@ int main()
             switch (Student_choice)
             {
             case 1:
-                // duy
+                viewListOfCourses_Student(Semester_head, Student_head);
                 break;
             case 2:
                 ViewScoreBoardStudent(Year_head,User);
