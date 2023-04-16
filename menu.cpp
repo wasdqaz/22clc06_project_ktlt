@@ -131,11 +131,17 @@ int main()
                 viewStudentsInCourse(Semester_head->CourseList);
                 break;
             case 15:
-                // 15
+            ExportCourseToCSVFile(Year_head,"");
+                
                 break;
             case 16:
-                // 16
+                
+            {
+                string filepath = ImportScoreboardFromFileUser(Year_head);
+                SaveScorboardToFolderSchoolyear(filepath);
                 break;
+            }
+                
             case 17:
                 UpdateStudentResult(Semester_head->CourseList);
                 break;
@@ -149,7 +155,7 @@ int main()
                 PrintProfile_Staff(Staff_head, Staff_info_head);
                 break;
             case 21:
-
+                quickInputClass1stYear(curYear);
                 break;
             case 22:
                 // logout.
