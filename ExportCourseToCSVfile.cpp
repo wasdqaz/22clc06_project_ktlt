@@ -10,9 +10,10 @@ Course *FindCourse(SchoolYear *HeadOfYear)
     string semester;
     cout << "Please enter semester contain course. Ex: S1 (if semester is first semester)\n";
     cin >> semester;
-    while (curyear )
+    while (curyear)
     {
-        if(curyear->BeginYear.compare(year) == 0) break;
+        if (curyear->BeginYear.compare(year) == 0)
+            break;
         curyear = curyear->NextYear;
     }
     if (!curyear)
@@ -36,10 +37,12 @@ Course *FindCourse(SchoolYear *HeadOfYear)
     string courseId, classname;
     cout << "Please enter Id course\n";
     cin >> courseId;
-    cout<<"Please enter classname of course\n";
+    cout << "Please enter classname of course\n";
+    cin >> classname;
     while (curCourse)
     {
-        if( curCourse->CourseId == courseId && curCourse->ClassName == classname) break;
+        if (curCourse->CourseId == courseId && curCourse->ClassName == classname)
+            break;
         curCourse = curCourse->Next;
     }
     if (!curCourse)
@@ -54,37 +57,27 @@ void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
 {
     Course *cur = FindCourse(head);
     string idcourse = cur->CourseId;
-    string filename =  idcourse +"_" +cur->ClassName+".txt";
+
+    string semester[] = {"S1", "S2", "S3"};
+    string tmp;
+    if (cur->NameSemester[9] == '1')
+        tmp = semester[0];
+    if (cur->NameSemester[9] == '2')
+        tmp = semester[1];
+    if (cur->NameSemester[9] == '3')
+        tmp = semester[2];
+    string filename = tmp + "_" + cur->ClassName + "_" + idcourse + ".txt";
 
     Student *headOfStudent = cur->CourseStudent;
-    string parentFolderName = "Data";
-    string subFolderName = "User_Output";
+    string Data = "Data";
+    string User = "User_Output";
     string filePath;
 
     // Search for the parent folder
     _finddata_t fileInfo;
-    intptr_t handle = _findfirst(parentFolderName.c_str(), &fileInfo);
-    if (handle == -1)
-    {
-        cerr << "Parent folder not found!" << endl;
-        return;
-    }
-    do
-    {
-        if ((fileInfo.attrib & _A_SUBDIR) && (strcmp(fileInfo.name, subFolderName.c_str()) == 0))
-        {
-            filePath = parentFolderName + "/" + subFolderName + filename;
-            break;
-        }
-    } while (_findnext(handle, &fileInfo) == 0);
+    filePath = Data + "/" + User + "/" + filename;
 
-    _findclose(handle);
-
-    if (filePath.empty())
-    {
-        cerr << "Subfolder not found!" << endl;
-        return;
-    }
+    
 
     ofstream file;
     file.open(filePath.c_str());
@@ -93,13 +86,13 @@ void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
         cerr << "Failed to create file!" << endl;
         return;
     }
-    file<< cur->CourseName<<endl;
-    file<< cur->CourseId<<endl;
+    file << cur->CourseName << endl;
+    file << cur->CourseId << endl;
 
     file << "ID Student,Name\n";
     while (headOfStudent)
     {
-        file <<headOfStudent->No<<","<< headOfStudent->Id << "," << headOfStudent->Name << endl;
+        file << headOfStudent->No << "," << headOfStudent->Id << "," << headOfStudent->Name << endl;
         headOfStudent = headOfStudent->Next;
     }
 

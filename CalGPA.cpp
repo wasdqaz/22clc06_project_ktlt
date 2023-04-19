@@ -4,7 +4,8 @@
 using namespace std;
 
 void CalGpa(Class *pHead)
-{
+{   
+    if(!pHead)return;
     while (pHead != nullptr)
     {
         Student *pHeadStudent = pHead->StudentHead;
@@ -31,7 +32,8 @@ void CalGpa(Class *pHead)
 }
 
 void calGPASemester(Class *pHeadClass, Semester *pHeadSemester)
-{
+{   
+    if(!pHeadClass||!pHeadSemester)return;
     string Smt = pHeadSemester->NameSemester.substr(9, 1);
     Class *pTemp = pHeadClass;
 

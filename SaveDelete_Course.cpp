@@ -4,10 +4,10 @@ string nameSemester(string name)
 {
     if (name == "Semester01")
         return "S1";
-    else    
-        if (name == "Semester02")
-            return "S2";
-            else return "S3";
+    else if (name == "Semester02")
+        return "S2";
+    else
+        return "S3";
 }
 
 void Save_InfoCourse(Course *curCourse) // Year, Semester mac dinh
@@ -36,18 +36,18 @@ void Save_StudentCourse_1(Student *StuCourse, string FileName)
     file.open(FileName, ios::app);
     if (!file.is_open())
         return;
-    file << "\n" << StuCourse->No << "," << StuCourse -> Id << "," << StuCourse -> Name <<","<<StuCourse -> Class;
+    file << "\n"
+         << StuCourse->No << "," << StuCourse->Id << "," << StuCourse->Name << "," << StuCourse->Class;
     file.close();
 }
-
-
 
 void Save_StudentCourse_All(Course *curCourse, string FileName)
 {
     ofstream ofs;
     ofs.open(FileName);
-    if (!ofs.is_open());
-        return;
+    if (!ofs.is_open())
+        ;
+    return;
     ofs << curCourse->CourseId << "\n"
         << curCourse->CourseName << "\n"
         << curCourse->ClassName << "\n"
@@ -55,15 +55,15 @@ void Save_StudentCourse_All(Course *curCourse, string FileName)
         << curCourse->Session << "\n"
         << curCourse->DayOfWeek << "\n"
         << curCourse->NumberOfCredits;
-    Student *StuCourse = curCourse -> CourseStudent;
+    Student *StuCourse = curCourse->CourseStudent;
     while (StuCourse != nullptr)
     {
-        ofs << "\n" << StuCourse->No << "," << StuCourse->Id << "," <<StuCourse->Name << "," << StuCourse->Class;
+        ofs << "\n"
+            << StuCourse->No << "," << StuCourse->Id << "," << StuCourse->Name << "," << StuCourse->Class;
         StuCourse = StuCourse->Next;
     }
     ofs.close();
 }
-
 
 void Save_StudentCourse_All_Mark(Course *curCourse, string FileName)
 {
@@ -71,16 +71,17 @@ void Save_StudentCourse_All_Mark(Course *curCourse, string FileName)
     ofs.open(FileName);
     if (!ofs.is_open())
         return;
-    string nameSmter = nameSemester(curCourse -> NameSemester);
-    ofs << curCourse -> Year << "\n"
+    string nameSmter = nameSemester(curCourse->NameSemester);
+    ofs << curCourse->Year << "\n"
         << nameSmter << "\n"
         << curCourse->CourseId << "\n"
         << curCourse->CourseName << "\n"
         << curCourse->ClassName;
-    Student *StuCourse = curCourse -> CourseStudent;
+    Student *StuCourse = curCourse->CourseStudent;
     while (StuCourse != nullptr)
     {
-        ofs << "\n" << StuCourse->No << "," <<StuCourse->Id << "," <<StuCourse->Name << "," << StuCourse->Class;
+        ofs << "\n"
+            << StuCourse->No << "," << StuCourse->Id << "," << StuCourse->Name << "," << StuCourse->Class;
         StuCourse = StuCourse->Next;
     }
     ofs.close();
@@ -90,7 +91,8 @@ void Input_Student_Course_File(Student *StuCourse, string FileName)
 {
     ifstream ifs;
     ifs.open(FileName);
-    if (!ifs.is_open()) return;
+    if (!ifs.is_open())
+        return;
     Student *curStudent = nullptr;
     while (!ifs.eof())
     {
@@ -119,10 +121,11 @@ void CopyFile_Course(string fileCSV, string fileCourse)
     ifstream ifs;
     ifs.open(fileCSV);
     fstream ofs;
-    ofs.open(fileCourse, ios:: app);
-    if (ifs.is_open() && ofs.is_open()) {
+    ofs.open(fileCourse, ios::app);
+    if (ifs.is_open() && ofs.is_open())
+    {
         string fileContent((istreambuf_iterator<char>(ifs)), istreambuf_iterator<char>());
-        ofs <<"\n";
+        ofs << "\n";
         ofs << fileContent;
     }
     ifs.close();
@@ -132,10 +135,10 @@ void CopyFile_Course(string fileCSV, string fileCourse)
 void InputCSV_Course(Course *curCourse)
 {
     string CourseID;
-    cout <<"Please enter the course ID: ";
+    cout << "Please enter the course ID: ";
     cin >> CourseID;
-    while (curCourse -> CourseId != CourseID)
-        curCourse = curCourse -> Next;
+    while (curCourse->CourseId != CourseID)
+        curCourse = curCourse->Next;
     string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/";
     string pathCourse = pathSemester + curCourse->CourseName + "/";
     string nameSmter = nameSemester(curCourse->NameSemester);
@@ -154,11 +157,11 @@ void InputCSV_Course(Course *curCourse)
         if (fileName.find(CourseID) < 0)
             continue;
         string pathInputCourse = pathInput + fileName;
-        Input_Student_Course_File(curCourse -> CourseStudent, pathInputCourse);
+        Input_Student_Course_File(curCourse->CourseStudent, pathInputCourse);
         CopyFile_Course(fileName, NameCourse);
         break;
     } while (_findnext(handle, &fileInfo) == 0);
-     _findclose(handle);
+    _findclose(handle);
 }
 
 void Remove_File_Course(Course *curCourse)
@@ -168,5 +171,5 @@ void Remove_File_Course(Course *curCourse)
     string NameCourse = pathSemester + nameSmter + "_" + curCourse->CourseId + ".txt";
     string NameMark = pathSemester + "mark_" + curCourse->CourseId + ".txt";
     remove(NameCourse.c_str());
-    remove(NameMark.c_str()); 
+    remove(NameMark.c_str());
 }

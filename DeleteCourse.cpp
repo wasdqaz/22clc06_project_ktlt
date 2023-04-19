@@ -91,7 +91,6 @@ void DeleteCourse(Course *&head)
             cout << "Don't find course name.\n";
             cout << "1. Re-input.\n";
             cout << "2. Exit.\n";
-            // print list course
             int choice;
             cin >> choice;
             if (choice == 2)

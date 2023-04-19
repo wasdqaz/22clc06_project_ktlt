@@ -2,7 +2,10 @@
 #include "KhoiFunction.h"
 #include "functionOfDuy.h"
 
-// #define time;
+
+const int Mode[]={-1,1,2,3};
+int defautSemester=Mode[1];
+
 
 int main()
 {
@@ -40,19 +43,10 @@ int main()
         User = Login(Student_head);
         clss = User->Class;
     }
-
-    //------------------------------------login--------------------------------------
-    // string Begin_Year;
-    // cout<<"Please input school year.\n";
-    // cout<<"20--(PLease enter two last digits of year. Ex: 22( 2022),...)\n";
-    // cin>>Begin_Year;
-    // while (Year_head && Year_head -> BeginYear != Begin_Year)
-    // {
-    //     Year_head = Year_head -> NextYear;
-    // }
+    //---------------------------------------------------------------------------------
     curYear = Year_head;
-    while (curYear -> NextYear != nullptr)
-        curYear = curYear -> NextYear;
+    while (curYear->NextYear != nullptr)
+        curYear = curYear->NextYear;
     Semester_head = defaultSemester(curYear);
     //CalGpa(Year_head->ClassHead);
     //calGPASemester(Year_head->ClassHead, Semester_head);
@@ -61,7 +55,7 @@ int main()
     {
         if (User->Role == 1)
         {
-            cout << "\n-----------------------------MENU-------------------------------------\n";
+            cout << "-----------------------------MENU-------------------------------------\n";
             cout << "|0. Change the password.                                             |\n";
             cout << "|1. Create school year.                                              |\n";
             cout << "|1. Add year.                                                        |\n";
@@ -69,29 +63,29 @@ int main()
             cout << "|3. Add student.                                                     |\n";
             cout << "|4. Create semester.                                                 |\n";
             cout << "|5. Add course.                                                      |\n";
-            cout << "|6. Upload file student list for course.                             |\n"; // chua co
+            cout << "|6. Upload file student list for course.                             |\n";
             cout << "|7. Update course information.                                       |\n";
             cout << "|8. Add a student to the course.                                     |\n";
             cout << "|9. Remove a student from the course.                                |\n";
-            cout << "|10. Delete course.                                                  |\n"; // can fix
+            cout << "|10. Delete course.                                                  |\n";
             cout << "|11. View a list of classes.                                         |\n";
             cout << "|12. View a list of students in a class.                             |\n";
             cout << "|13. View a list of courses.                                         |\n";
             cout << "|14. View a list of students in a course.                            |\n";
             cout << "|15. Export a list of students in a course to a CSV file.            |\n";
             cout << "|16. Import the scoreboard of a course.                              |\n";
-            cout << "|17. Update a student's result.                                      |\n"; 
+            cout << "|17. Update a student's result.                                      |\n";
             cout << "|18. View the scoreboard of a class.                                 |\n";
             cout << "|19. View the scoreboard of a course.                                |\n";
-            cout << "|20. View profile.                                                   |\n"; // duy
-            cout << "|21. -------------                                                   |\n";
+            cout << "|20. View profile.                                                   |\n";
+            cout << "|21. Upload file student in class                                    |\n";
             cout << "|22. Logout.                                                         |\n";
             cout << "------------------------------END-------------------------------------\n";
 
             int Staff_Choice;
             cout << "Please enter your choice. \n";
             cin >> Staff_Choice;
-            switch (Staff_Choice)
+             switch (Staff_Choice)
             {
             case 0:
             {
@@ -141,11 +135,17 @@ int main()
                 viewStudentsInCourse(Semester_head->CourseList);
                 break;
             case 15:
-                // 15
+                ExportCourseToCSVFile(Year_head, "");
+
                 break;
             case 16:
-                // 16
+
+            {
+                string filepath = ImportScoreboardFromFileUser(Year_head);
+                SaveScorboardToFolderSchoolyear(filepath);
                 break;
+            }
+
             case 17:
                 UpdateStudentResult(Semester_head->CourseList);
                 break;
@@ -156,13 +156,13 @@ int main()
                 viewCourseScoreboard(Semester_head->CourseList);
                 break;
             case 20:
-                //
+                PrintProfile_Staff(Staff_head, Staff_info_head);
                 break;
             case 21:
-
+                quickInputClass1stYear(curYear);
                 break;
             case 22:
-                // logout.
+                
                 break;
             default:
                 cout << "Please re-check your choice.\n\n";
@@ -191,7 +191,7 @@ int main()
                 viewListOfCourses_Student(Semester_head, Student_head);
                 break;
             case 2:
-                ViewScoreBoardStudent(Year_head,User);
+                ViewScoreBoardStudent(Year_head, User);
                 break;
             case 3:
                 changePassword(User);
@@ -200,7 +200,7 @@ int main()
                 PrintProfile_Student(User, Year_head);
                 break;
             case 5:
-                // logout
+                
                 break;
             default:
                 cout << "Please re-check your choice.\n\n";
