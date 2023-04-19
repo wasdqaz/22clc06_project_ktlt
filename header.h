@@ -94,7 +94,7 @@ bool checkCourse(Course *head);
 void InputStudent(Student *&StuHead, string input);
 void InputStudentCourse(Course *&subCourse, string input);
 void InputMarkForStudent(Class *headOfClass, SchoolYear *headOfSchoolyear);
-void ReadDirectory(const string &directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
+void ReadDirectory(const string &directoryPath, Semester *&curSmeter, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
 void CreateClass(SchoolYear *YearHead);
 // Read mark
 Mark *makeMarkNode(double midterm, double final, double total);

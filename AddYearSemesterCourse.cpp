@@ -135,6 +135,8 @@ void AddCourse(Semester *pHeadSemester) // con tro hoc ki mac dinh
         pHeadSemester->CourseList->TeacherName = TeacherName;
         pHeadSemester->CourseList->Next = nullptr;
         pHeadSemester->CourseList->CourseStudent = nullptr;
+        pHeadSemester->CourseList->Year = pHeadSemester->Year;
+        pHeadSemester->CourseList->NameSemester = pHeadSemester->NameSemester;
         Add_InfoCourse(pHeadSemester->CourseList);
         // cout << "Add course successfully" << endl;
         return;
@@ -155,6 +157,8 @@ void AddCourse(Semester *pHeadSemester) // con tro hoc ki mac dinh
     pHeadCourse->Next->TeacherName = TeacherName;
     pHeadCourse->Next->Next = nullptr;
     pHeadCourse->Next->CourseStudent = nullptr;
+    pHeadCourse->Next->Year = pHeadSemester->Year;
+    pHeadCourse->Next->NameSemester = pHeadSemester->NameSemester;
     Add_InfoCourse(pHeadCourse->Next);
     cout << "Add course successfully" << endl;
 }

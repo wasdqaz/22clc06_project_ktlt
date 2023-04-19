@@ -16,7 +16,7 @@ void Save_InfoCourse(Course *curCourse) // Year, Semester mac dinh
     // string Course_Name = pathSemester + Smeter -> CourseList -> CourseName;
     ofstream ofs;
     string nameSmter = nameSemester(curCourse->NameSemester);
-    string NameFile = Course_Name + nameSmter + "_" + curCourse->CourseId + ".txt";
+    string NameFile = Course_Name + nameSmter + "_" + curCourse->ClassName + "_" + curCourse->CourseId + ".txt";
     ofs.open(NameFile);
     if (!ofs.is_open())
         return;

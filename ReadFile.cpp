@@ -72,7 +72,7 @@ void InputStudentCourse(Course *&subCourse, string input)
     ifs.close();
 }
 
-void ReadDirectory(const string &directoryPath, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear)
+void ReadDirectory(const string &directoryPath, Semester *&curSe, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear)
 {
 
     string directoryGlob = directoryPath + "/*";
@@ -107,7 +107,36 @@ void ReadDirectory(const string &directoryPath, Course *&curCourse, Class *curCl
                     curYear->BeginYear = FileName.substr(0, 2);
                     curYear->EndYear = FileName.substr(3, 2);
                 }
-                ReadDirectory(subdirectoryPath, curCourse, curClass, YearHead, curYear);
+                else
+                {
+                    string NameYear = curYear->BeginYear + "-" + curYear->EndYear;
+                    if (fileInfo.name[0] == 'S')
+                    {
+                        if (fileInfo.name[9] == '1')
+                        {
+                            if (curYear->S1 == nullptr)
+                                curYear->S1 = new Semester;
+                            curSe = curYear->S1;
+                            curSe->NameSemester = "Semester01";
+                        }
+                        else if (fileInfo.name[9] == '2')
+                        {
+                            if (curYear->S2 == nullptr)
+                                curYear->S2 = new Semester;
+                            curSe = curYear->S2;
+                            curSe->NameSemester = "Semester02";
+                        }
+                        else
+                        {
+                            if (curYear->S3 == nullptr)
+                                curYear->S3 = new Semester;
+                            curSe = curYear->S3;
+                            curSe->NameSemester = "Semester03";
+                        }
+                        curSe->Year = NameYear;
+                    }
+                }
+                ReadDirectory(subdirectoryPath, curSe, curCourse, curClass, YearHead, curYear);
             }
             else
             {
@@ -137,30 +166,8 @@ void ReadDirectory(const string &directoryPath, Course *&curCourse, Class *curCl
                     int t = FileName.find("mark");
                     if (t != -1)
                         continue;
-                    Semester *curSe;
-                    if (fileInfo.name[1] == '1')
-                    {
-                        if (curYear->S1 == nullptr)
-                            curYear->S1 = new Semester;
-                        curSe = curYear->S1;
-                        curSe->NameSemester = "Semester01";
-                    }
-                    else if (fileInfo.name[1] == '2')
-                    {
-                        if (curYear->S2 == nullptr)
-                            curYear->S2 = new Semester;
-                        curSe = curYear->S2;
-                        curSe->NameSemester = "Semester02";
-                    }
-                    else
-                    {
-                        if (curYear->S3 == nullptr)
-                            curYear->S3 = new Semester;
-                        curSe = curYear->S3;
-                        curSe->NameSemester = "Semester03";
-                    }
-                    curSe->Year = NameYear;
-                    // Course *curYearCourse = curSe -> CourseList;
+                    
+                    Course *curYearCourse = curSe -> CourseList;
                     if (curSe->CourseList == nullptr)
                     {
                         curSe->CourseList = new Course;

@@ -9,7 +9,7 @@ int main()
     Account *Student_head = nullptr;
     Account *Staff_head = nullptr;
     Account *User;
-    Semester *Semester_head = nullptr;
+    Semester *curSmeter = nullptr, *Semester_head;
     SchoolYear *Year_head = nullptr;
     Staff *Staff_info_head = nullptr;
     int Role;
@@ -21,7 +21,7 @@ int main()
     Course *curCourse = nullptr;
     Class *curClass = nullptr;
     SchoolYear *curYear = nullptr;
-    ReadDirectory(directoryPath, curCourse, curClass, Year_head, curYear);
+    ReadDirectory(directoryPath, curSmeter, curCourse, curClass, Year_head, curYear);
     AccessFileMark(directoryPath, Year_head);
     readStaffInfo(Staff_info_head);
 
@@ -54,8 +54,8 @@ int main()
     while (curYear -> NextYear != nullptr)
         curYear = curYear -> NextYear;
     Semester_head = defaultSemester(curYear);
-    CalGpa(Year_head->ClassHead);
-    calGPASemester(Year_head->ClassHead, Semester_head);
+    //CalGpa(Year_head->ClassHead);
+    //calGPASemester(Year_head->ClassHead, Semester_head);
     //---------------------------------------------------------------------------------
     while (true)
     {
