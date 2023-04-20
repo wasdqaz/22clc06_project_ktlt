@@ -87,7 +87,7 @@ void Save_StudentCourse_All_Mark(Course *curCourse, string FileName)
     ofs.close();
 }
 
-void Input_Student_Course_File(Student *StuCourse, string FileName)
+void Input_Student_Course_File(Student *&StuCourse, string FileName)
 {
     ifstream ifs;
     ifs.open(FileName);
@@ -137,14 +137,18 @@ void InputCSV_Course(Course *curCourse)
     string CourseID;
     cout << "Please enter the course ID: ";
     cin >> CourseID;
-    while (curCourse->CourseId != CourseID)
+    string Class_Name;
+    cout << "Pleasse enter the class name of course: ";
+    cin >> Class_Name;
+    while (curCourse->CourseId != CourseID && curCourse->ClassName != Class_Name)
         curCourse = curCourse->Next;
     string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/";
     string pathCourse = pathSemester + curCourse->CourseName + "/";
     string nameSmter = nameSemester(curCourse->NameSemester);
-    string NameCourse = pathCourse + nameSmter + "_" + curCourse->CourseId + ".txt";
+    string NameCourse = pathCourse + nameSmter + "_" + curCourse->ClassName + "_" + curCourse->CourseId + ".txt";
 
-    string pathInput = "Data/Input_User/*";
+    string pathIp = "Data/Input_User/";
+    string pathInput = pathIp + "*";
     struct _finddata_t fileInfo;
     intptr_t handle = _findfirst(pathInput.c_str(), &fileInfo);
     if (handle == -1)
@@ -156,7 +160,7 @@ void InputCSV_Course(Course *curCourse)
         string fileName = fileInfo.name;
         if (fileName.find(CourseID) < 0)
             continue;
-        string pathInputCourse = pathInput + fileName;
+        string pathInputCourse = pathIp + fileName;
         Input_Student_Course_File(curCourse->CourseStudent, pathInputCourse);
         CopyFile_Course(fileName, NameCourse);
         break;
