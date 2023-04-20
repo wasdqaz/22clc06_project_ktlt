@@ -211,6 +211,6 @@ int main()
         }
     }
     deleteAllLists(Year_head, Student_head, Staff_head);
-    delete User;
+    //delete User;
     return 0;
 }

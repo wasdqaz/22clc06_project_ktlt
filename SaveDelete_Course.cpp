@@ -41,12 +41,15 @@ void Save_StudentCourse_1(Student *StuCourse, string FileName)
     file.close();
 }
 
-void Save_StudentCourse_All(Course *curCourse, string FileName)
+void Save_StudentCourse_All(Course *curCourse)
 {
+    string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/";
+    string pathCourse = pathSemester + curCourse->CourseName + "/";
+    string nameSmter = nameSemester(curCourse->NameSemester);
+    string NameCourse = pathCourse + nameSmter + "_" + curCourse->ClassName + "_" + curCourse->CourseId + ".txt";
     ofstream ofs;
-    ofs.open(FileName);
+    ofs.open(NameCourse);
     if (!ofs.is_open())
-        ;
     return;
     ofs << curCourse->CourseId << "\n"
         << curCourse->CourseName << "\n"
@@ -147,8 +150,11 @@ void InputCSV_Course(Course *curCourse)
     string nameSmter = nameSemester(curCourse->NameSemester);
     string NameCourse = pathCourse + nameSmter + "_" + curCourse->ClassName + "_" + curCourse->CourseId + ".txt";
 
-    string pathIp = "Data/Input_User/";
-    string pathInput = pathIp + "*";
+    string pathInput = "Data/Input_User/" + curCourse->CourseId + "_" + curCourse->ClassName + ".txt";
+    Input_Student_Course_File(curCourse->CourseStudent, pathInput);
+    CopyFile_Course(pathInput, NameCourse);
+
+    /*string pathInput = pathIp + "*";
     struct _finddata_t fileInfo;
     intptr_t handle = _findfirst(pathInput.c_str(), &fileInfo);
     if (handle == -1)
@@ -165,7 +171,7 @@ void InputCSV_Course(Course *curCourse)
         CopyFile_Course(fileName, NameCourse);
         break;
     } while (_findnext(handle, &fileInfo) == 0);
-    _findclose(handle);
+    _findclose(handle);*/
 }
 
 void Remove_File_Course(Course *curCourse)

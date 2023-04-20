@@ -65,7 +65,7 @@ struct Semester
 {
     Course *CourseList = nullptr;
     string NameSemester, Year, StartDate, EndDate; // them ngay bat dau, ket thuc hk
-    Semester *Next;
+    //Semester *Next;
 };
 
 struct SchoolYear
@@ -123,9 +123,9 @@ void Add_InfoCourse(Course *curCourse); // Semester mac dinh
 
 void Save_InfoCourse(Course *curCourse);
 void Save_StudentCourse_1(Student *StuCourse, string FileName);
-void Save_StudentCourse_All(Course *curCourse, string FileName);
+void Save_StudentCourse_All(Course *curCourse);
 void Save_StudentCourse_All_Mark(Course *curCourse, string FileName);
-void Input_Student_Course_File(Student *StuCourse, string FileName);
+void Input_Student_Course_File(Student *&StuCourse, string FileName);
 void CopyFile_Course(string fileCSV, string fileCourse);
 void InputCSV_Course(Course *curCourse);
 void Remove_File_Course(Course *curCourse);

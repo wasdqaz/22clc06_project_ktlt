@@ -57,7 +57,6 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
             pHeadYear->S1->NameSemester = "Semester01";
             pHeadYear->S1->StartDate = StartDate;
             pHeadYear->S1->EndDate = EndDate;
-            pHeadYear->S1->Next = nullptr;
             pHeadYear->S1->Year = YearName;
             Add_FolderSemester(pHeadYear->S1);
             // cout << "Semester created" << endl;
@@ -74,7 +73,6 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
             pHeadYear->S1->NameSemester = "Semester02";
             pHeadYear->S2->StartDate = StartDate;
             pHeadYear->S2->EndDate = EndDate;
-            pHeadYear->S2->Next = nullptr;
             pHeadYear->S2->Year = YearName;
             Add_FolderSemester(pHeadYear->S2);
             // cout << "Semester created" << endl;
@@ -91,7 +89,6 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
             pHeadYear->S3->NameSemester = "Semester03";
             pHeadYear->S3->StartDate = StartDate;
             pHeadYear->S3->EndDate = EndDate;
-            pHeadYear->S3->Next = nullptr;
             pHeadYear->S3->Year = YearName;
             Add_FolderSemester(pHeadYear->S3);
             // cout << "Semester created" << endl;
