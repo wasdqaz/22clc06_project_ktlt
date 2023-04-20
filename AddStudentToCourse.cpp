@@ -7,7 +7,10 @@ void AddStudentToCourse(Course *CourseHead)
     cout << "Please input course id: \n";
     cin >> CourseID;
 
-    while (CourseHead->CourseId != CourseID)
+    string ClassName;
+    cout << "Please enter class name: \n";
+    cin >> ClassName;
+    while (CourseHead->CourseId != CourseID && CourseHead->ClassName != ClassName)
     {
         CourseHead = CourseHead->Next;
     }
@@ -31,7 +34,7 @@ void AddStudentToCourse(Course *CourseHead)
         nameSmter = "S2";
     else
         nameSmter = "S3";
-    string FileCourse = Course_Name + nameSmter + "_" + CourseHead->CourseId + ".txt";
+    string FileCourse = Course_Name + nameSmter + "_" + CourseHead->ClassName + "_" + CourseHead->CourseId + ".txt";
     Save_StudentCourse_1(cur, FileCourse);
     string FileCourseMark = Course_Name + "mark/" + CourseHead->CourseId + ".txt";
     Save_StudentCourse_1(cur, FileCourseMark);

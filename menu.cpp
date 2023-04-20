@@ -173,7 +173,7 @@ int main()
         }
         else
         {
-            cout << "\n-----------------------------MENU-------------------------------------\n";
+            cout << "-----------------------------MENU--------------------------------------\n";
             cout << "|1. View list of course.                                             |\n";
             cout << "|2. View scoreboard                                                  |\n";
             cout << "|3. Change password.                                                 |\n";

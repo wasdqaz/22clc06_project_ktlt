@@ -19,9 +19,14 @@ void viewStudentClass(SchoolYear *YearHead)
     if (!YearHead->ClassHead)
         return;
     Student *ListStudent = YearHead->ClassHead->StudentHead;
+    cout << setw(5) << left << "No";
+    cout << setw(15) << left << "Student ID";
+    cout << setw(40) << left << "Name" << endl;
     while (ListStudent)
     {
-        cout << ListStudent->Name << endl;
+        cout << setw(5) << left << ListStudent->No;
+        cout << setw(15) << left << ListStudent->Id;
+        cout << setw(40) << left << ListStudent->Name << endl;
         ListStudent = ListStudent->Next;
     }
 }

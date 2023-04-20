@@ -88,7 +88,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
         if (pHeadYear->S3 == nullptr)
         {
             pHeadYear->S3 = new Semester;
-            pHeadYear->S1->NameSemester = "Semester03";
+            pHeadYear->S3->NameSemester = "Semester03";
             pHeadYear->S3->StartDate = StartDate;
             pHeadYear->S3->EndDate = EndDate;
             pHeadYear->S3->Next = nullptr;

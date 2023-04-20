@@ -21,13 +21,18 @@ void viewStudentsInCourse(Course *pHead)
         return;
     }
     int i = 1;
-    cout << "-----------" << endl;
+    cout << "-----------------------------------------------" << endl;
+    cout << setw(5) << left << "No";
+    cout << setw(15) << left << "Student ID";
+    cout << setw(40) << left << "Name" << endl;
     while (Temp != nullptr)
     {
-        cout << i++ << ". " << Temp->Name << endl;
+        cout << setw(5) << left << i++;
+        cout << setw(15) << left << Temp->Id;
+        cout << setw(40) << left << Temp->Name << endl;
         Temp = Temp->Next;
     }
-    cout << "-----------" << endl;
+    cout << "-----------------------------------------------" << endl;
 }
 
 void viewCourseScoreboard(Course *pHead)
@@ -49,8 +54,10 @@ void viewCourseScoreboard(Course *pHead)
         cout << "No student in the course!!!" << endl;
         return;
     }
-    cout << endl
-         << setw(35) << left << "Name";
+    int i = 0;
+    cout << endl << setw(5) << left << "No";
+    cout << setw(15) << left << "Student ID";
+    cout << setw(35) << left << "Name";
     cout << setw(15) << left << "Midterm Mark";
     cout << setw(15) << left << "Total Mark";
     cout << setw(15) << left << "Other Mark";
@@ -58,6 +65,8 @@ void viewCourseScoreboard(Course *pHead)
     cout << "------------------------------------------------------------------------------------------" << endl;
     while (Temp != nullptr)
     {
+        cout << setw(5) << left << i++;
+        cout << setw(15) << left << Temp->Id;
         cout << setw(35) << left << Temp->Name;
         cout << setw(15) << left << Temp->HeadOfMark->MidtermMark;
         cout << setw(15) << left << Temp->HeadOfMark->TotalMark;

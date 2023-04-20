@@ -1,15 +1,17 @@
 #include "header.h"
 
-string ImportScoreboardFromFileUser(SchoolYear* headOfyear)
+string ImportScoreboardFromFileUser(SchoolYear *headOfyear)
 {
-    string idCourse;
+    string idCourse, classname;
     cout << "Please enter id course:\n";
     cin >> idCourse;
+    cout << "Please enter classname: ";
+    cin >> classname;
     string fileName;
-    fileName = "mark_" + idCourse;
+    fileName = "mark_" + idCourse + "_"+ classname;
 
-    std::string parentFolderName = "Data"; // replace with the name of the parent folder
-    std::string subFolderName = "User_Input"; // replace with the name of the subfolder containing the file
+    std::string parentFolderName = "Data";    // replace with the name of the parent folder
+    std::string subFolderName = "Input_User"; // replace with the name of the subfolder containing the file
 
     std::string filePath;
 
@@ -17,33 +19,36 @@ string ImportScoreboardFromFileUser(SchoolYear* headOfyear)
     _finddata_t parentFolder, subFolder;
     intptr_t parentHandle, subHandle;
     parentHandle = _findfirst(parentFolderName.c_str(), &parentFolder);
-    if (parentHandle == -1) {
+    if (parentHandle == -1)
+    {
         std::cerr << "Parent folder not found!" << std::endl;
-        return"";
+        return "";
     }
 
     // Search for the subfolder
     std::string subFolderPath = parentFolderName + "\\" + subFolderName;
     subHandle = _findfirst(subFolderPath.c_str(), &subFolder);
-    if (subHandle == -1) {
+    if (subHandle == -1)
+    {
         std::cerr << "Subfolder not found!" << std::endl;
         _findclose(parentHandle);
-        return"";
+        return "";
     }
 
     // Search for the file
     std::string searchPattern = subFolderPath + "\\" + fileName + ".*";
     _finddata_t file;
     intptr_t handle = _findfirst(searchPattern.c_str(), &file);
-    if (handle == -1) {
+    if (handle == -1)
+    {
         std::cerr << "File not found!" << std::endl;
         _findclose(subHandle);
         _findclose(parentHandle);
-        return"";
+        return "";
     }
 
     filePath = file.name;
-    
+
     // Process the file
     InputMarkForStudent(headOfyear, filePath);
 
@@ -53,4 +58,3 @@ string ImportScoreboardFromFileUser(SchoolYear* headOfyear)
     _findclose(parentHandle);
     return filePath;
 }
-
