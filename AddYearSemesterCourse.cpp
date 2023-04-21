@@ -63,6 +63,10 @@ void AddNewYear(SchoolYear *&pHeadYear) // con tro toan bo cac nam hoc
 
 Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
 {
+    if (pHeadYear == nullptr) {
+        cout << "No schoolyear found!!!" << endl;
+        return;
+    }
     int Smter;
     string StartDate, EndDate;
     cout << "What semester do you want to create (1, 2 or 3): ";

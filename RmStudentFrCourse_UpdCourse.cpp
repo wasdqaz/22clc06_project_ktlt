@@ -6,6 +6,10 @@ using namespace std;
 
 void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien tai
 {
+    if (pHead == nullptr) {
+        cout << "No course found!!!" << endl;
+        return;
+    }
     string CourseId;
     cout << "Enter the ID of the course to remove student from: ";
     cin.ignore();
@@ -23,6 +27,14 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
     string Id;
     cout << "Enter the ID of the student you want to remove: ";
     getline(cin, Id);
+
+    int choice;
+    cout << "Do you want to remove this student from course?" << endl;
+    cout << "1. Yes \n2. No \n->Your choice: ";
+    cin >> choice;
+    
+    if (choice == 2)
+        return;
 
     Student *pHeadStudent = pHead->CourseStudent;
     if (pHeadStudent->Id == Id) // nếu đây là hs đầu tiên trong list
@@ -72,6 +84,10 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
 
 void UpdCourseInf(Course *pHead) // con tro danh sach cac course
 {
+    if (pHead == nullptr) {
+        cout << "No course found!!!" << endl;
+        return;
+    }
     string CourseId;
     cout << "Please enter the ID of the course you want to update: ";
     cin.ignore();
@@ -108,6 +124,14 @@ void UpdCourseInf(Course *pHead) // con tro danh sach cac course
     cin >> NumberOfCredits;
     /*cout << "Maximum number of student in the course: ";
     cin >> MaxStudent;*/
+
+    int choice;
+    cout << "Do you want to update?" << endl;
+    cout << "1. Yes \n2. No \n->Your choice: ";
+    cin >> choice;
+    
+    if (choice == 2)
+        return;
 
     /*pHead->ClassName = ClassName;
     pHead->CourseId = CourseId;
