@@ -7,8 +7,12 @@ void SaveScorboardToFolderSchoolyear(string input)
     in >> year;
     string semester;
     in >> semester;
+    if(semester[1] == '1') semester = "Semester01";
+    else if(semester[1] == '2') semester = "Semester02";
+    else semester  = "Semester03";
     string courseid;
     in >> courseid;
+    
     string coursename;
     in >> coursename;
 
@@ -17,7 +21,7 @@ void SaveScorboardToFolderSchoolyear(string input)
     in.close();
     std::string schoolYear = "SchoolYear";
 
-    std::string folderPath = ".\\data\\" + schoolYear + "\\" + year + "\\" + semester + "\\" + coursename;
+    std::string folderPath = ".\\Data\\" + schoolYear + "\\" + year + "\\" + semester + "\\" + coursename;
 
     // Tạo folder mới nếu chưa tồn tại
     _mkdir(folderPath.c_str());

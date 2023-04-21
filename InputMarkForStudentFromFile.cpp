@@ -50,9 +50,23 @@ Student* FindNodeStudentOfCourseToPutMark (string id, Course* cur)
     return nullptr;
 
 }
-Student* FindNodeStudentOfClassToPutMark (string id, Class* head, string clss)
+Student* FindNodeStudentOfClassToPutMark (string id, SchoolYear* headOfschoolyear, string clss)
 {
-    Class* cur = head;
+    SchoolYear* curYear = headOfschoolyear;
+    string beginYear = clss.substr(0,2);
+    while(curYear)
+    {
+        if(curYear->BeginYear == beginYear) break;
+        curYear = curYear->NextYear;
+    }
+    if(!curYear)
+    {
+        cout<<"Not found student "<<id<<endl;
+        return nullptr;
+    }
+    
+
+    Class* cur = curYear->ClassHead;
     while(cur)
     {
         if(cur ->Name == clss)
@@ -90,7 +104,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
    {
     cur = cur->NextYear;
    }
-    Class* headOfClass= cur->ClassHead;
+    
    // Access Semester Contain Course current
    string semester;
    getline(in,semester);
@@ -127,7 +141,9 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
     string id, name, clss, no; // clss: class do bi trung ten
     double midterm, final, total, othermark;
 
-    Class* curClass= headOfClass;
+
+    
+    
     while(!in.eof())
     {
         getline(in,no,',');
@@ -140,7 +156,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
         in>>total;
         in.ignore(1);
         
-        Student* studentCurOfClass = FindNodeStudentOfClassToPutMark(id,headOfClass,clss);
+        Student* studentCurOfClass = FindNodeStudentOfClassToPutMark(id,headOfSchoolyear,clss);
         Student* studentCufOfCourse = FindNodeStudentOfCourseToPutMark(id, CourseCur);
         putMarkToStudentNode(studentCurOfClass, studentCufOfCourse, midterm,final,othermark,total, idcourse, coursename,semester,year);
 

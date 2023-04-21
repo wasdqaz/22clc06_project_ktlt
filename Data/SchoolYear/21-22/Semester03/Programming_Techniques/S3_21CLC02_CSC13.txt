@@ -1,3 +1,10 @@
+CSC13
+Programming_Techniques
+21CLC02
+thanh
+S1
+MON
+4
 1,21127016,Nguyen Thi Ngoc Anh,21CLC01
 2,21127036,Le Quoc Binh,21CLC01
 3,21127086,Nguyen Lam Anh Duy,21CLC02

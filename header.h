@@ -102,7 +102,7 @@ void CreateClass(SchoolYear *YearHead);
 Mark *makeMarkNode(double midterm, double final, double total);
 void putMarkToStudentNode(Student *studentOfClass, Student *studentOfCourse, double midterm, double final, double total);
 Student *FindNodeStudentOfCourseToPutMark(string id, Course *cur);
-Student *FindNodeStudentOfClassToPutMark(string id, Class *head, string clss);
+Student* FindNodeStudentOfClassToPutMark (string id, SchoolYear* headOfschoolyear, string clss);
 void InputMarkForStudent(SchoolYear *headOfSchoolyear, string input);
 void AccessFileMark(string directoryPath, SchoolYear *headOfSchoolyear);
 void viewClass(SchoolYear *YearHead);
