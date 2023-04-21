@@ -63,9 +63,13 @@ void AddNewYear(SchoolYear *&pHeadYear) // con tro toan bo cac nam hoc
 
 Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
 {
+    SchoolYear *tmp = pHeadYear;
+    while (tmp->NextYear != nullptr)
+        tmp = tmp->NextYear;
+    
     if (pHeadYear == nullptr) {
         cout << "No schoolyear found!!!" << endl;
-        return;
+        return defaultSemester(tmp);
     }
     int Smter;
     string StartDate, EndDate;
@@ -86,10 +90,6 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
     cout << "Do you want to add new semester?" << endl;
     cout << "1. Yes \n2. No \n->Your choice: ";
     cin >> choice;
-
-    SchoolYear *tmp = pHeadYear;
-    while (tmp->NextYear != nullptr)
-        tmp = tmp->NextYear;
 
     if (choice == 2)
         return defaultSemester(tmp);
