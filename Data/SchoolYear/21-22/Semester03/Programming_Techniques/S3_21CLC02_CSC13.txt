@@ -1,8 +1,8 @@
 CSC13
 Programming_Techniques
 21CLC02
-thanh
-S1
+Le Ngoc Thanh
+S2
 MON
 4
 1,21127016,Nguyen Thi Ngoc Anh,21CLC01

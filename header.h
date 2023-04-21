@@ -120,7 +120,7 @@ void Add_FolderSemester(Semester *Smeter);
 
 void Add_InfoCourse(Course *curCourse); // Semester mac dinh
 
-
+string nameSemester(string name);
 void Save_InfoCourse(Course *curCourse);
 void Save_StudentCourse_1(Student *StuCourse, string FileName);
 void Save_StudentCourse_All(Course *curCourse);

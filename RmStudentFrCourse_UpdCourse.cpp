@@ -77,7 +77,7 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
     string Course_Name = pathSemester + pHead -> CourseName + "/";
     string nameSmter;
     Save_StudentCourse_All(pHead);
-    string fileCourseMark = Course_Name + "mark_" + pHead->CourseId + ".txt";
+    string fileCourseMark = Course_Name + "mark_" + pHead->ClassName + "_" + pHead->CourseId + ".txt";
     Save_StudentCourse_All_Mark(pHead, fileCourseMark);
     cout << "Delete successfully" << endl;
 }

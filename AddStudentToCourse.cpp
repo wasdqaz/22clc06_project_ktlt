@@ -14,7 +14,7 @@ void AddStudentToCourse(Course *CourseHead)
     {
         CourseHead = CourseHead->Next;
     }
-    Student *cur = new Student;
+    /*Student *cur = new Student;
     cur->Next = CourseHead->CourseStudent;
     CourseHead->CourseStudent = cur;
     cout << "Enter name of student: ";
@@ -23,19 +23,34 @@ void AddStudentToCourse(Course *CourseHead)
     cout << "Enter student ID: ";
     cin >> cur->Id;
     cout << "Enter student's current class: ";
-    cin >> cur->Class;
+    cin >> cur->Class;*/
 
+    string ID, name, Class;
+    cout << "Enter student ID: ";
+    cin >> ID;
+    cout << "Enter name of student: ";
+    cin.ignore();
+    getline(cin, name);
+    cout << "Enter student's current class: ";
+    cin >> Class;
+    Student *cur = CourseHead->CourseStudent;
+    do
+    {
+        cur = cur->Next;
+    } 
+    while (cur->Next != nullptr);
+    int No = cur->No;
+    Student *New_Stu = new Student;
+    New_Stu->No = No + 1;
+    New_Stu->Id = ID;
+    New_Stu->Name = name;
+    New_Stu->Class = Class;
+    cur->Next = New_Stu;
     string pathSemester = "Data/SchoolYear/" + CourseHead->Year + "/" + CourseHead->NameSemester + "/";
     string Course_Name = pathSemester + CourseHead->CourseName + "/";
-    string nameSmter;
-    if (CourseHead->NameSemester == "Semester01")
-        nameSmter = "S1";
-    else if (CourseHead->NameSemester == "Semester02")
-        nameSmter = "S2";
-    else
-        nameSmter = "S3";
+    string nameSmter = nameSemester(CourseHead->NameSemester);
     string FileCourse = Course_Name + nameSmter + "_" + CourseHead->ClassName + "_" + CourseHead->CourseId + ".txt";
-    Save_StudentCourse_1(cur, FileCourse);
-    string FileCourseMark = Course_Name + "mark/" + CourseHead->CourseId + ".txt";
-    Save_StudentCourse_1(cur, FileCourseMark);
+    Save_StudentCourse_1(New_Stu, FileCourse);
+    string FileCourseMark = Course_Name + "mark_" + CourseHead->ClassName + "_" + CourseHead->CourseId + ".txt";
+    Save_StudentCourse_1(New_Stu, FileCourseMark);
 }
