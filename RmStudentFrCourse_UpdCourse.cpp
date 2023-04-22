@@ -6,7 +6,8 @@ using namespace std;
 
 void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien tai
 {
-    if (pHead == nullptr) {
+    if (pHead == nullptr)
+    {
         cout << "No course found!!!" << endl;
         return;
     }
@@ -32,7 +33,7 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
     cout << "Do you want to remove this student from course?" << endl;
     cout << "1. Yes \n2. No \n->Your choice: ";
     cin >> choice;
-    
+
     if (choice == 2)
         return;
 
@@ -48,43 +49,56 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
         // xóa hs
         pHead->CourseStudent = pHead->CourseStudent->Next;
         delete pHeadStudent;
+        Student *cur = pHead->CourseStudent;
+        while (cur)
+        {
+            cur->No = cur->No - 1;
+            cur = cur->Next;
+        }
     }
     else
     {
-    // đưa con trỏ đến hs trước hs cần xóa
-    while (pHeadStudent->Next != nullptr && pHeadStudent->Next->Id != Id)
-        pHeadStudent = pHeadStudent->Next;
+        // đưa con trỏ đến hs trước hs cần xóa
+        while (pHeadStudent->Next != nullptr && pHeadStudent->Next->Id != Id)
+            pHeadStudent = pHeadStudent->Next;
 
-    if (pHeadStudent->Next == nullptr)
-    {
-        cout << "No student found!!!" << endl;
-        return;
+        if (pHeadStudent->Next == nullptr)
+        {
+            cout << "No student found!!!" << endl;
+            return;
+        }
+
+        // chuyển điểm hs đó thành -1
+        pHeadStudent->Next->HeadOfMark->FinalMark = -1;
+        pHeadStudent->Next->HeadOfMark->MidtermMark = -1;
+        pHeadStudent->Next->HeadOfMark->OtherMark = -1;
+        pHeadStudent->Next->HeadOfMark->TotalMark = -1;
+
+        // xóa hs
+        Student *Temp = pHeadStudent->Next;
+        pHeadStudent->Next = pHeadStudent->Next->Next;
+        delete Temp;
+        Temp = pHeadStudent->Next;
+        while (Temp)
+        {
+            Temp->No = Temp->No - 1;
+            Temp = Temp->Next;
+        }
     }
 
-    // chuyển điểm hs đó thành -1
-    pHeadStudent->Next->HeadOfMark->FinalMark = -1;
-    pHeadStudent->Next->HeadOfMark->MidtermMark = -1;
-    pHeadStudent->Next->HeadOfMark->OtherMark = -1;
-    pHeadStudent->Next->HeadOfMark->TotalMark = -1;
-
-    // xóa hs
-    Student *Temp = pHeadStudent->Next;
-    pHeadStudent->Next = pHeadStudent->Next->Next;
-    delete Temp;
-    }
-    
     string pathSemester = "Data/SchoolYear/" + pHead->Year + "/" + pHead->NameSemester + "/";
-    string Course_Name = pathSemester + pHead -> CourseName + "/";
+    string Course_Name = pathSemester + pHead->CourseName + "/";
     string nameSmter;
     Save_StudentCourse_All(pHead);
-    string fileCourseMark = Course_Name + "mark_" + pHead->CourseId + ".txt";
+    string fileCourseMark = Course_Name + "mark_" + pHead->ClassName + "_" + pHead->CourseId + ".txt";
     Save_StudentCourse_All_Mark(pHead, fileCourseMark);
     cout << "Delete successfully" << endl;
 }
 
 void UpdCourseInf(Course *pHead) // con tro danh sach cac course
 {
-    if (pHead == nullptr) {
+    if (pHead == nullptr)
+    {
         cout << "No course found!!!" << endl;
         return;
     }
@@ -129,7 +143,7 @@ void UpdCourseInf(Course *pHead) // con tro danh sach cac course
     cout << "Do you want to update?" << endl;
     cout << "1. Yes \n2. No \n->Your choice: ";
     cin >> choice;
-    
+
     if (choice == 2)
         return;
 
@@ -139,10 +153,10 @@ void UpdCourseInf(Course *pHead) // con tro danh sach cac course
     pHead->TeacherName = TeacherName;
     pHead->Session = Session;
     pHead->DayOfWeek = DayOfWeek;
-    //pHead->MaxStudent = MaxStudent;
+    // pHead->MaxStudent = MaxStudent;
     pHead->NumberOfCredits = NumberOfCredits;
-    
-    //Save_InfoCourse(pHead);
+
+    // Save_InfoCourse(pHead);
     Save_StudentCourse_All(pHead);
     cout << "Update successfully" << endl;
 }

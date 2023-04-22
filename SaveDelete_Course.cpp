@@ -84,7 +84,12 @@ void Save_StudentCourse_All_Mark(Course *curCourse, string FileName)
     while (StuCourse != nullptr)
     {
         ofs << "\n"
-            << StuCourse->No << "," << StuCourse->Id << "," << StuCourse->Name << "," << StuCourse->Class;
+            << StuCourse->No << "," << StuCourse->Id << "," << StuCourse->Name << "," << StuCourse->Class << ",";
+        Mark* markStu = StuCourse->HeadOfMark;
+        if (markStu)
+        {
+            ofs << markStu->MidtermMark << "," << markStu->FinalMark << "," << markStu->OtherMark << "," << markStu->TotalMark;
+        }
         StuCourse = StuCourse->Next;
     }
     ofs.close();
