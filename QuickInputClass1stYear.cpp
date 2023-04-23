@@ -14,10 +14,10 @@ void quickInputClass1stYear(SchoolYear *cur)
     }
     if (!curclass)
         return;
-    Student *head = curclass->StudentHead;
+   
 
-    string filePath = ".\\data\\User_Input\\" + clss + ".txt";
-    InputStudent(head, filePath); // use function of Tran
+    string filePath = "Data/Input_User/" + clss + ".txt";
+    InputStudent(curclass->StudentHead, filePath); // use function of Tran
     SaveClass1stYearToFolderSchoolYear(filePath, clss, cur);
 }
 
@@ -26,10 +26,10 @@ void SaveClass1stYearToFolderSchoolYear(string input, string clss, SchoolYear *c
     std::string schoolYear = "SchoolYear";
     std::string year = cur->BeginYear + "-" + cur->EndYear;
 
-    std::string folderPath = ".\\data\\" + schoolYear + "\\" + year + "\\" + "Class";
+    std::string folderPath = "Data/" + schoolYear + "/" + year + "/" + "Class";
 
     // Tạo đường dẫn đến file mới
-    std::string newFilePath = folderPath + "\\" + clss + ".txt";
+    std::string newFilePath = folderPath + "/" + clss + ".txt";
 
     // Tạo file mới và viết nội dung vào file
     std::ofstream newFile(newFilePath);
