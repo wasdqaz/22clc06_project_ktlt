@@ -15,6 +15,12 @@ void AddNewStudent(SchoolYear *pHeadYear)
     string ClassName;
     cout << "Enter the class you want to add student to: ";
     cin >> ClassName;
+
+    if (ClassName.substr(0, 2).compare(pHeadYear->BeginYear) != 0) {
+        cout << "The class you want to add student to is not a 1_st year class!!!" << endl;
+        return;
+    }
+
     while (pHead != nullptr && pHead->Name != ClassName)
         pHead = pHead->Next;
     if (pHead == nullptr)

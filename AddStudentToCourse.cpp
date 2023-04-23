@@ -33,6 +33,14 @@ void AddStudentToCourse(Course *CourseHead)
     getline(cin, name);
     cout << "Enter student's current class: ";
     cin >> Class;
+
+    int choice;
+    cout << "Do you want to add this student to the course?" << endl;
+    cout << "1. Yes \n2. No \n->Your choice: ";
+    cin >> choice;
+    if (choice == 2)
+        return;
+
     Student *cur = CourseHead->CourseStudent;
     do
     {

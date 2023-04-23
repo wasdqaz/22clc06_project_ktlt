@@ -8,6 +8,12 @@ void CreateClass(SchoolYear *YearHead)
     cin.ignore();
     getline(cin, ClassName);
 
+    int choice;
+    cout << "Do you want to add this class?" << endl;
+    cout << "1. Yes \n2. No \n->Your choice: ";
+    cin >> choice;
+    if (choice == 2)
+        return;
         
         if(YearHead->ClassHead==nullptr)
         {
