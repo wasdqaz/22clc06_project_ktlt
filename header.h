@@ -81,7 +81,8 @@ Account *MakeNewAccountOfStudent(string username, string password, string Class)
 Account *MakeNewAccountOfStaff(string username, string password);
 void createAccountList(Account *&head, int role);
 Account *Login(Account *head);
-
+//Save change password
+void SaveChangePassword (Account* head);
 Staff *Find_Staff(Staff *pHead, string ID);
 void PrintProfile_Staff(Account *User, Staff *pHead);
 Class *Find_ClassName(Class *pHead, string Class_Name);
