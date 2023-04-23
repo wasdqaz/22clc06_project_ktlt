@@ -97,16 +97,16 @@ bool checkCourse(Course *head);
 // Read list of Course and Class from File
 void InputStudent(Student *&StuHead, string input);
 void InputStudentCourse(Course *&subCourse, string input);
-void InputMarkForStudent(Class *headOfClass, SchoolYear *headOfSchoolyear);
+void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input);
 void ReadDirectory(const string &directoryPath, Semester *&curSmeter, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
 void CreateClass(SchoolYear *YearHead);
 // Read mark
-Mark *makeMarkNode(double midterm, double final, double total);
-void putMarkToStudentNode(Student *studentOfClass, Student *studentOfCourse, double midterm, double final, double total);
+Mark* makeMarkNode (double midterm, double final, double othermark, double total, string courseid,string coursename, string semester, string year);
+void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final,double othermark, double total, string courseid, string coursename,string semester, string year);
 Student *FindNodeStudentOfCourseToPutMark(string id, Course *cur);
 Student* FindNodeStudentOfClassToPutMark (string id, SchoolYear* headOfschoolyear, string clss);
 void InputMarkForStudent(SchoolYear *headOfSchoolyear, string input);
-void AccessFileMark(string directoryPath, SchoolYear *headOfSchoolyear);
+void AccessFileMark(string directoryPath,  SchoolYear* headOfSchoolyear);
 void viewClass(SchoolYear *YearHead);
 void viewStudentClass(SchoolYear *YearHead);
 void ViewListOfCourse(Course *head);
