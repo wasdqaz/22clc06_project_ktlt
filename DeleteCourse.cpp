@@ -63,6 +63,14 @@ void DeleteCourse(Course *&head)
 
         if (checkCourse(head, Course_id, Class_Name, cur))
         {
+
+            int choice;
+            cout << "Do you want to change the password?" << endl;
+            cout << "1. Yes \n2. No \n->Your choice: ";
+            cin >> choice;
+            if (choice == 2)
+                return;
+                
             // hàm checkCoures sẽ trả con trỏ cur về trc Node Course cần xóa.
             // Nếu Course cần xóa ở đầu thì sẽ trả về head;
             if (cur == head)

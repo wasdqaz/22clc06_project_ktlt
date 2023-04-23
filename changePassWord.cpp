@@ -27,6 +27,14 @@ void changePassword(Account *a)
         cout << "Enter new password: ";
         getline(cin, tmp);
     }
+
+    int choice;
+    cout << "Do you want to change the password?" << endl;
+    cout << "1. Yes \n2. No \n->Your choice: ";
+    cin >> choice;
+    if (choice == 2)
+        return;
+
     a->Password = tmp;
     cout << "Change password successfully!!!\n";
 }
