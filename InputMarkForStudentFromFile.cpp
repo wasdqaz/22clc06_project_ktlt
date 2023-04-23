@@ -1,5 +1,5 @@
 #include "header.h"
-
+#include "stack.h"
 Mark* makeMarkNode (double midterm, double final, double othermark, double total, string courseid,string coursename, string semester, string year)
 {
     Mark* newMark = new Mark;
@@ -175,12 +175,13 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
 
 //This function access File store Mark and Using InputMarkForStudent function to input mark for student in a course
 void AccessFileMark(string directoryPath,  SchoolYear* headOfSchoolyear) {
-    stack<string> directories;
-    directories.push(directoryPath);
+    Stack directories;
+    init(directories);
+    push(directories, directoryPath);
 
-    while (!directories.empty()) {
-        string currentDirectory = directories.top();
-        directories.pop();
+    while (!isEmpty(directories)) {
+        string currentDirectory = top(directories);
+        pop(directories);
 
         string directoryGlob = currentDirectory + "/*";
         _finddata_t fileInfo;
@@ -196,7 +197,7 @@ void AccessFileMark(string directoryPath,  SchoolYear* headOfSchoolyear) {
                 if (fileInfo.attrib & _A_SUBDIR)  {
                     string subdirectoryPath = currentDirectory + "/" + fileInfo.name;
                     
-                    directories.push(subdirectoryPath);
+                    push(directories, subdirectoryPath);
                 } 
                 else {
                 	

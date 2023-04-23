@@ -5,7 +5,6 @@
 #include <fstream>
 #include <string>
 #include <direct.h>
-#include <stack>
 #include <conio.h>
 #include <io.h>
 #include <windows.h>
