@@ -7,6 +7,10 @@ void InputStudent(Student *&StuHead, string input)
     if (!ifs.is_open())
         return;
     Student *cur = nullptr;
+
+    string line;//subline
+    getline(ifs,line);
+
     while (!ifs.eof()) /*  */
     {
         string Info = "";

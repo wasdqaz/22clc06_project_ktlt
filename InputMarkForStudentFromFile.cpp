@@ -141,7 +141,8 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
     string id, name, clss, no; // clss: class do bi trung ten
     double midterm, final, total, othermark;
 
-
+    string line; // line: No,ID,name,Class.... (subline)
+    getline(in,line);
     
     
     while(!in.eof())
