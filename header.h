@@ -147,8 +147,12 @@ void SaveWhenAdd1StudentToClass(Student *add,Student*head, string classname, Sch
 void STAFF_MENU();
 void TextColor(int x);
 void STUDENR_MENU();
-void BeginningYear(int choice);
-void BeginningSemester(int choice);
-void EndOfSemester(int choice);
+void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
+                Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head);
+void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
+                Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head);
+void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
+                Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head);
+int LoginConsole();
 #endif
 
