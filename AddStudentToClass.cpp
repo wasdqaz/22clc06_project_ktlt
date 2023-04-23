@@ -5,6 +5,10 @@ using namespace std;
 
 void AddNewStudent(SchoolYear *pHeadYear)
 {
+    if (pHeadYear == nullptr) {
+        cout << "No schoolyear found!!!" << endl;
+        return;
+    }
     while (pHeadYear->NextYear != nullptr)
         pHeadYear = pHeadYear->NextYear;
     Class *pHead = pHeadYear->ClassHead;
@@ -32,6 +36,14 @@ void AddNewStudent(SchoolYear *pHeadYear)
     cin >> DateOfBirth;
     cout << "Social ID: ";
     cin >> SocialId;
+
+    int choice;
+    cout << "Do you want to add this student?" << endl;
+    cout << "1. Yes \n2. No \n->Your choice: ";
+    cin >> choice;
+    
+    if (choice == 2)
+        return;
 
     int No = 0;
     Student *Temp = pHead->StudentHead;

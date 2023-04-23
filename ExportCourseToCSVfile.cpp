@@ -3,13 +3,29 @@
 
 Course *FindCourse(SchoolYear *HeadOfYear)
 {
+    if (HeadOfYear == nullptr)
+        return nullptr;
     SchoolYear *curyear = HeadOfYear;
     string year;
-    cout << "Please enter begin year of SchoolYear contain course. Example: 21 (if that schoolYear is 2021-2022\n";
-    cin >> year;
+    while (true) {
+        cout << "Please enter begin year of the SchoolYear that contains course. Example: 21 (if that SchoolYear is 2021-2022)\n";
+        cin >> year;
+        if (year.length() != 2 || year[0] != '2' || (year[1] < '0' || year[1] > '9')) {
+            cout << "Wrong input!!! Please re-enter\n";
+            continue;
+        }
+        break;
+    }
     string semester;
-    cout << "Please enter semester contain course. Ex: S1 (if semester is first semester)\n";
-    cin >> semester;
+    while (true) {
+        cout << "Please enter the name of the Semester that contains the Course. Ex: S1 (if that Semester is the first semester)\n";
+        cin >> semester;
+        if (semester[1] < '1' || semester[1] > '3' || semester[0] != 'S') {
+            cout << "Wrong input!!! Please re-enter\n";
+            continue;
+        }
+        break;
+    }
     while (curyear)
     {
         if (curyear->BeginYear.compare(year) == 0)
@@ -30,7 +46,7 @@ Course *FindCourse(SchoolYear *HeadOfYear)
         semesterCur = curyear->S3;
     else
     {
-        cout << "semester invalid\n";
+        cout << "Semester invalid\n";
         return nullptr;
     }
     Course *curCourse = semesterCur->CourseList;
@@ -56,6 +72,9 @@ Course *FindCourse(SchoolYear *HeadOfYear)
 void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
 {
     Course *cur = FindCourse(head);
+    if (cur == nullptr)
+        return;
+    
     string idcourse = cur->CourseId;
 
     string semester[] = {"S1", "S2", "S3"};

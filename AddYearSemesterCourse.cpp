@@ -4,8 +4,39 @@
 void AddNewYear(SchoolYear *&pHeadYear) // con tro toan bo cac nam hoc
 {
     string Temp;
-    cout << "What is the school year you want to create (Ex: 2022-2023): ";
-    cin >> Temp;
+    while (true) {
+        cout << "What is the school year you want to create (Ex: 2022-2023): ";
+        cin >> Temp;
+
+        if (Temp.length() != 9) {
+            cout << "Wrong input!!! Please re-enter: " << endl;
+            continue;
+        }
+
+        SchoolYear *temp = pHeadYear;
+        while (temp != nullptr) {
+            string tmp = Temp.substr(2, 2);
+            if (temp->BeginYear.compare(tmp) == 0) {
+                cout << "School year has existed already!!!" << endl;
+                cout << "Please re-enter: " << endl;
+                break;
+            }
+            else
+                temp = temp->NextYear;
+        }
+        if (temp != nullptr)
+            continue;
+        break;
+    }
+
+    int choice;
+    cout << "Do you want to add new school year?" << endl;
+    cout << "1. Yes \n2. No \n->Your choice: ";
+    cin >> choice;
+
+    if (choice == 2)
+        return;
+
     if (pHeadYear == nullptr)
     {
         pHeadYear = new SchoolYear;
@@ -32,6 +63,14 @@ void AddNewYear(SchoolYear *&pHeadYear) // con tro toan bo cac nam hoc
 
 Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
 {
+    SchoolYear *tmp = pHeadYear;
+    while (tmp->NextYear != nullptr)
+        tmp = tmp->NextYear;
+    
+    if (pHeadYear == nullptr) {
+        cout << "No schoolyear found!!!" << endl;
+        return defaultSemester(tmp);
+    }
     int Smter;
     string StartDate, EndDate;
     cout << "What semester do you want to create (1, 2 or 3): ";
@@ -46,6 +85,15 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
         cout << "No school year found!!!" << endl;
         return nullptr;
     }
+
+    int choice;
+    cout << "Do you want to add new semester?" << endl;
+    cout << "1. Yes \n2. No \n->Your choice: ";
+    cin >> choice;
+
+    if (choice == 2)
+        return defaultSemester(tmp);
+
     string YearName = pHeadYear->BeginYear + "-" + pHeadYear->EndYear;
     switch (Smter)
     {
@@ -125,6 +173,14 @@ void AddCourse(Semester *pHeadSemester) // con tro hoc ki mac dinh
     getline(cin, DayOfWeek);
     cout << "Number of credits: ";
     cin >> NumberOfCredits;
+
+    int choice;
+    cout << "Do you want to add new course?" << endl;
+    cout << "1. Yes \n2. No \n->Your choice: ";
+    cin >> choice;
+
+    if (choice == 2)
+        return;
     
     if (pHeadSemester->CourseList == nullptr)
     {
