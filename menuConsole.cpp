@@ -304,9 +304,12 @@ void STAFF_MENU()
                     if(mode==2){
                         EndOfSemester(flag,pointer,Year_head,curYear,Staff_info_head,User,Semester_head,Staff_head);
                     }
+                    cout<<"\nPress any key to exit!!!\n";
+                    getch();
                 }
             }
         }
+        
         if(flag==-1){
             deleteAllLists(Year_head, Student_head, Staff_head);
             return;
@@ -413,10 +416,14 @@ void STUDENR_MENU(){
                     default:
                         break;
                     }
+
+                    cout<<"\nPress any key to exit!!!\n";
+                    getch();
                     break;
                 }
             }
         }
+        
         if(flag==-1){
             deleteAllLists(Year_head, Student_head, Staff_head);
             return;
