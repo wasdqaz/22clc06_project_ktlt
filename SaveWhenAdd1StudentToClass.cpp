@@ -11,7 +11,7 @@ void SaveWhenAdd1StudentToClass(Student *add,Student*head, string classname, Sch
     out.open(FilePath, ios::app);
 
     if(add != head) out<<endl;
-    else out<<"No,Id,Name,Gender,Date Of Birth, Social Id\n";
+    else out<<"No,ID,Name,Gender,Date Of Birth, Social ID\n";
 
     out << add->No << "," << add->Id << "," << add->Name << "," << add->Gender << "," << add->DateOfBirth << ","<<add->SocialId;
     out.close();
