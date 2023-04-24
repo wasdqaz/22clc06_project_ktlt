@@ -1,7 +1,12 @@
 #include "header.h"
 #include "KhoiFunction.h"
+
 void ViewListOfCourse(Course *head)
-{
+{   
+    if(head==nullptr){
+        cout<<"Can't find course.\n";
+        return;
+    }
     Course *cur = head;
     cout << "----------------------------------------------------------------------------------------\n";
     cout << left << setw(20) << "Course Id"

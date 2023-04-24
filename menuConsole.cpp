@@ -2,15 +2,10 @@
 #include "KhoiFunction.h"
 #include "functionOfDuy.h"
 
+const int MAX_LIST[] = {10, 14, 12};
+const int MAX_STUDENT_LIST = 5;
+int mode = 0;
 
-
-
-    const int MAX_LIST[] = {10, 14, 12};
-    const int MAX_STUDENT_LIST = 5;
-    int mode = 1;
-
-    
-    
 // begining of schoolyear->0
 // beginning of semester->1
 // end of semester->2
@@ -67,8 +62,6 @@ string StudentMenu[] = {
     "Logout.",
 };
 
-
-
 void TextColor(int x) // X là mã màu
 {
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -76,7 +69,8 @@ void TextColor(int x) // X là mã màu
 }
 
 void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
- Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head){
+                   Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
+{
     switch (choice)
     {
     case 0:
@@ -95,27 +89,35 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         viewStudentClass(Year_head);
         break;
     case 5:
-        ViewListOfCourse(Semester_head->CourseList);
+        if (Semester_head)
+            ViewListOfCourse(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 6:
-        viewStudentsInCourse(Semester_head->CourseList);
+        if (Semester_head)
+            viewStudentsInCourse(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 7:
-        PrintProfile_Staff(Staff_head, Staff_info_head);    
+        PrintProfile_Staff(Staff_head, Staff_info_head);
         break;
     case 8:
         changePassword(User);
         break;
     case 9:
-        flag=-1;
+        flag = -1;
         return;
         break;
     default:
         break;
     }
+    cout << "\nPress any key to exit!!!\n";
+    getch();
 }
 void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
- Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
+                       Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
 {
     switch (choice)
     {
@@ -123,22 +125,45 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
         Semester_head = AddNewSemester(curYear);
         break;
     case 1:
-        AddCourse(Semester_head);
+        if (Semester_head)
+            AddCourse(Semester_head);
+        else
+            cout << "Please create semester and course.\n";
+
         break;
     case 2:
-        InputCSV_Course(Semester_head->CourseList);
+        if (Semester_head)
+            InputCSV_Course(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
+
         break;
     case 3:
-        UpdCourseInf(Semester_head->CourseList);
+        if (Semester_head)
+            UpdCourseInf(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
+
         break;
     case 4:
-        AddStudentToCourse(Semester_head->CourseList);
+        if (Semester_head)
+            AddStudentToCourse(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
+
         break;
     case 5:
-        RmStudentFrCourse(Semester_head->CourseList);
+        if (Semester_head)
+            RmStudentFrCourse(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
+
         break;
     case 6:
-        DeleteCourse(Semester_head->CourseList);
+        if (Semester_head)
+            DeleteCourse(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 7:
         viewClass(Year_head);
@@ -147,10 +172,16 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
         viewStudentClass(Year_head);
         break;
     case 9:
-        ViewListOfCourse(Semester_head->CourseList);
+        if (Semester_head)
+            ViewListOfCourse(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 10:
-        viewStudentsInCourse(Semester_head->CourseList);
+        if (Semester_head)
+            viewStudentsInCourse(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 11:
         PrintProfile_Staff(Staff_head, Staff_info_head);
@@ -159,38 +190,48 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
         changePassword(User);
         break;
     case 13:
-        flag=-1;
+        flag = -1;
         return;
         break;
-    
+
     default:
         break;
     }
-    cout<<"\nPress any key to exit!!!\n";
+    cout << "\nPress any key to exit!!!\n";
     getch();
 }
 void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
- Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head){
+                   Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
+{
     switch (choice)
     {
     case 0:
         ExportCourseToCSVFile(Year_head, "");
         break;
     case 1:
-        {
-            string filepath = ImportScoreboardFromFileUser(Year_head);
-            SaveScorboardToFolderSchoolyear(filepath);
-            break;
-        }
+    {
+        string filepath = ImportScoreboardFromFileUser(Year_head);
+        SaveScorboardToFolderSchoolyear(filepath);
         break;
+    }
+    break;
     case 2:
-        viewCourseScoreboard(Semester_head->CourseList);
+        if (Semester_head)
+            viewCourseScoreboard(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 3:
-        UpdateStudentResult(Semester_head->CourseList);
+        if (Semester_head)
+            UpdateStudentResult(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 4:
-        viewClassScoreboard(Year_head->ClassHead, Semester_head, curYear);
+        if (Semester_head)
+            viewClassScoreboard(Year_head->ClassHead, Semester_head, curYear);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 5:
         viewClass(Year_head);
@@ -199,10 +240,16 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         viewStudentClass(Year_head);
         break;
     case 7:
-        ViewListOfCourse(Semester_head->CourseList);
+        if (Semester_head)
+            ViewListOfCourse(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 8:
-        viewStudentsInCourse(Semester_head->CourseList);
+        if (Semester_head)
+            viewStudentsInCourse(Semester_head->CourseList);
+        else
+            cout << "Please create semester and course.\n";
         break;
     case 9:
         PrintProfile_Staff(Staff_head, Staff_info_head);
@@ -211,16 +258,18 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         changePassword(User);
         break;
     case 11:
-        flag=-1;
+        flag = -1;
         return;
         break;
-    
+
     default:
         break;
     }
+    cout << "\nPress any key to exit!!!\n";
+    getch();
 }
 void STAFF_MENU()
-{   
+{
     Account *Student_head = nullptr;
     Account *Staff_head = nullptr;
     Account *User;
@@ -228,7 +277,7 @@ void STAFF_MENU()
     SchoolYear *Year_head = nullptr;
     Staff *Staff_info_head = nullptr;
     int Role;
-    
+
     createAccountList(Student_head, 2);
     createAccountList(Staff_head, 1);
 
@@ -239,8 +288,8 @@ void STAFF_MENU()
     ReadDirectory(directoryPath, curSmeter, curCourse, curClass, Year_head, curYear);
     AccessFileMark(directoryPath, Year_head);
     readStaffInfo(Staff_info_head);
-    
-    User= Login(Staff_head);
+
+    User = Login(Staff_head);
 
     curYear = Year_head;
     while (curYear->NextYear != nullptr)
@@ -249,22 +298,19 @@ void STAFF_MENU()
     CalGpa(Year_head->ClassHead);
     calGPASemester(Year_head->ClassHead, Semester_head);
 
-
-
     int pointer = 0;
     int flag = 0;
 
-
     while (true)
-    {   
+    {
         system("cls");
-        cout<<"============================MENU==========================\n";
+        cout << "============================MENU==========================\n";
         for (int i = 0; i < MAX_LIST[mode]; i++)
         {
             if (pointer == i)
-            {   
+            {
                 TextColor(1);
-                cout << ">> " << menu[mode][i] <<" <<"<< endl;
+                cout << ">> " << menu[mode][i] << " <<" << endl;
                 TextColor(7);
             }
             else
@@ -272,7 +318,7 @@ void STAFF_MENU()
                 cout << "[+]" << menu[mode][i] << endl;
             }
         }
-        cout<<"===========================END===========================\n";
+        cout << "===========================END===========================\n";
         while (true)
         {
             if (kbhit())
@@ -296,154 +342,152 @@ void STAFF_MENU()
                 }
                 if (key == 13)
                 {
-                    if(mode==0){
-                        BeginningYear(flag,pointer,Year_head,curYear,Staff_info_head,User,Semester_head,Staff_head);
-                       
+                    if (mode == 0)
+                    {
+                        BeginningYear(flag, pointer, Year_head, curYear, Staff_info_head, User, Semester_head, Staff_head);
                     }
-                    if(mode==1){
-                        BeginningSemester(flag,pointer,Year_head,curYear,Staff_info_head,User,Semester_head,Staff_head);
-                        
+                    if (mode == 1)
+                    {
+                        BeginningSemester(flag, pointer, Year_head, curYear, Staff_info_head, User, Semester_head, Staff_head);
                     }
-                    if(mode==2){
-                        EndOfSemester(flag,pointer,Year_head,curYear,Staff_info_head,User,Semester_head,Staff_head);
-                        
+                    if (mode == 2)
+                    {
+                        EndOfSemester(flag, pointer, Year_head, curYear, Staff_info_head, User, Semester_head, Staff_head);
                     }
                     break;
                 }
             }
         }
-        
-        if(flag==-1){
+
+        if (flag == -1)
+        {
             deleteAllLists(Year_head, Student_head, Staff_head);
             return;
             break;
-        } 
+        }
     }
 }
-void STUDENR_MENU(){
+void STUDENR_MENU()
+{
     {
-    
-    Account *Student_head = nullptr;
-    Account *Staff_head = nullptr;
-    Account *User;
-    Semester *curSmeter = nullptr, *Semester_head=nullptr;
-    SchoolYear *Year_head = nullptr;
-    Staff *Staff_info_head = nullptr;
-    int Role;
 
-    createAccountList(Student_head, 2);
-    createAccountList(Staff_head, 1);
+        Account *Student_head = nullptr;
+        Account *Staff_head = nullptr;
+        Account *User;
+        Semester *curSmeter = nullptr, *Semester_head = nullptr;
+        SchoolYear *Year_head = nullptr;
+        Staff *Staff_info_head = nullptr;
+        int Role;
 
-    string directoryPath = "Data/SchoolYear";
-    Course *curCourse = nullptr;
-    Class *curClass = nullptr;
-    SchoolYear *curYear = nullptr;
-    ReadDirectory(directoryPath, curSmeter, curCourse, curClass, Year_head, curYear);
-    AccessFileMark(directoryPath, Year_head);
-    readStaffInfo(Staff_info_head);
+        createAccountList(Student_head, 2);
+        createAccountList(Staff_head, 1);
 
-    User = Login(Student_head);
-    string clss = User->Class;
+        string directoryPath = "Data/SchoolYear";
+        Course *curCourse = nullptr;
+        Class *curClass = nullptr;
+        SchoolYear *curYear = nullptr;
+        ReadDirectory(directoryPath, curSmeter, curCourse, curClass, Year_head, curYear);
+        AccessFileMark(directoryPath, Year_head);
+        readStaffInfo(Staff_info_head);
 
-    curYear = Year_head;
-    while (curYear->NextYear != nullptr)
-        curYear = curYear->NextYear;
-    Semester_head = defaultSemester(curYear);
-    CalGpa(Year_head->ClassHead);
-    calGPASemester(Year_head->ClassHead, Semester_head);
+        User = Login(Student_head);
+        string clss = User->Class;
 
-    int pointer = 0;
-    int flag = 0;
+        curYear = Year_head;
+        while (curYear->NextYear != nullptr)
+            curYear = curYear->NextYear;
+        Semester_head = defaultSemester(curYear);
+        CalGpa(Year_head->ClassHead);
+        calGPASemester(Year_head->ClassHead, Semester_head);
 
+        int pointer = 0;
+        int flag = 0;
 
-    while (true)
-    {   
-        system("cls");
-        cout<<"============MENU===========\n";
-        for (int i = 0; i < MAX_STUDENT_LIST; i++)
-        {
-            if (pointer == i)
-            {   
-                TextColor(1);
-                cout << ">> " << StudentMenu[i] <<" <<"<< endl;
-                TextColor(7);
-            }
-            else
-            {
-                cout << "[+]" << StudentMenu[i] << endl;
-            }
-        }
-        cout<<"=============END===========\n";
         while (true)
         {
-            if (kbhit())
+            system("cls");
+            cout << "============MENU===========\n";
+            for (int i = 0; i < MAX_STUDENT_LIST; i++)
             {
-                char key = getch();
-                if (key == 80)
+                if (pointer == i)
                 {
-                    if (pointer < MAX_STUDENT_LIST - 1)
-                        ++pointer;
-                    else
-                        pointer = 0;
-                    break;
+                    TextColor(1);
+                    cout << ">> " << StudentMenu[i] << " <<" << endl;
+                    TextColor(7);
                 }
-                if (key == 72)
+                else
                 {
-                    if (pointer > 0)
-                        --pointer;
-                    else
-                        pointer = MAX_STUDENT_LIST - 1;
-                    break;
+                    cout << "[+]" << StudentMenu[i] << endl;
                 }
-                if (key == 13)
+            }
+            cout << "=============END===========\n";
+            while (true)
+            {
+                if (kbhit())
                 {
-                    switch (pointer)
+                    char key = getch();
+                    if (key == 80)
                     {
-                    case 0:
-                        viewListOfCourses_Student(Semester_head, Student_head);
-                        break;
-                    case 1:
-                        ViewScoreBoardStudent(Year_head, User);
-                        break;
-                    case 2:
-                        changePassword(User);
-                        break;
-                    case 3:
-                        PrintProfile_Student(User, Year_head);
-                        break;
-                    case 4:
-                        deleteAllLists(Year_head, Student_head, Staff_head);
-                        return;
-                        break;
-
-                    default:
+                        if (pointer < MAX_STUDENT_LIST - 1)
+                            ++pointer;
+                        else
+                            pointer = 0;
                         break;
                     }
+                    if (key == 72)
+                    {
+                        if (pointer > 0)
+                            --pointer;
+                        else
+                            pointer = MAX_STUDENT_LIST - 1;
+                        break;
+                    }
+                    if (key == 13)
+                    {
+                        switch (pointer)
+                        {
+                        case 0:
+                            viewListOfCourses_Student(Semester_head, Student_head);
+                            break;
+                        case 1:
+                            ViewScoreBoardStudent(Year_head, User);
+                            break;
+                        case 2:
+                            changePassword(User);
+                            break;
+                        case 3:
+                            PrintProfile_Student(User, Year_head);
+                            break;
+                        case 4:
+                            deleteAllLists(Year_head, Student_head, Staff_head);
+                            return;
+                            break;
 
-                    cout<<"\nPress any key to exit!!!\n";
-                    getch();
-                    break;
+                        default:
+                            break;
+                        }
+
+                        cout << "\nPress any key to exit!!!\n";
+                        getch();
+                        break;
+                    }
                 }
             }
         }
     }
 }
-}
-
-
 
 string Login_Menu[] = {
     "Staff.",
     "Student.",
-    "Exit"
-    };
+    "Exit"};
 const int MAX_LOGIN = 3;
 
 int LoginConsole()
 {
     int pointer = 0;
     while (true)
-    {   
+    {
         system("cls");
         cout << "You are student or staff.\n";
         for (int i = 0; i < MAX_LOGIN; i++)
