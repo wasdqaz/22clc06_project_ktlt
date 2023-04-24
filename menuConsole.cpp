@@ -5,7 +5,7 @@
 
 
 
-    const int MAX_LIST[] = {10, 15, 12};
+    const int MAX_LIST[] = {10, 14, 12};
     const int MAX_STUDENT_LIST = 5;
     int mode = 1;
 
@@ -14,7 +14,7 @@
 // begining of schoolyear->0
 // beginning of semester->1
 // end of semester->2
-string menu[3][16] = {
+string menu[3][14] = {
     {
         "Create school year.",
         "Create class.",
@@ -31,7 +31,6 @@ string menu[3][16] = {
         "Create semester.",
         "Create course.",
         "Upload file student list for course.",
-        "View a list of courses.",
         "Update course information. ",
         "Add a student to the course.",
         "Remove a student from the course.",
@@ -109,6 +108,7 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     case 9:
         flag=-1;
+        return;
         break;
     default:
         break;
@@ -129,45 +129,45 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
         InputCSV_Course(Semester_head->CourseList);
         break;
     case 3:
-        ViewListOfCourse(Semester_head->CourseList);
-        break;
-    case 4:
         UpdCourseInf(Semester_head->CourseList);
         break;
-    case 5:
+    case 4:
         AddStudentToCourse(Semester_head->CourseList);
         break;
-    case 6:
+    case 5:
         RmStudentFrCourse(Semester_head->CourseList);
         break;
-    case 7:
+    case 6:
         DeleteCourse(Semester_head->CourseList);
         break;
-    case 8:
+    case 7:
         viewClass(Year_head);
         break;
-    case 9:
+    case 8:
         viewStudentClass(Year_head);
         break;
-    case 10:
+    case 9:
         ViewListOfCourse(Semester_head->CourseList);
         break;
-    case 11:
+    case 10:
         viewStudentsInCourse(Semester_head->CourseList);
         break;
-    case 12:
+    case 11:
         PrintProfile_Staff(Staff_head, Staff_info_head);
         break;
-    case 13:
+    case 12:
         changePassword(User);
         break;
-    case 14:
+    case 13:
         flag=-1;
+        return;
         break;
     
     default:
         break;
     }
+    cout<<"\nPress any key to exit!!!\n";
+    getch();
 }
 void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
  Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head){
@@ -212,6 +212,7 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     case 11:
         flag=-1;
+        return;
         break;
     
     default:
@@ -297,15 +298,17 @@ void STAFF_MENU()
                 {
                     if(mode==0){
                         BeginningYear(flag,pointer,Year_head,curYear,Staff_info_head,User,Semester_head,Staff_head);
+                       
                     }
                     if(mode==1){
                         BeginningSemester(flag,pointer,Year_head,curYear,Staff_info_head,User,Semester_head,Staff_head);
+                        
                     }
                     if(mode==2){
                         EndOfSemester(flag,pointer,Year_head,curYear,Staff_info_head,User,Semester_head,Staff_head);
+                        
                     }
-                    cout<<"\nPress any key to exit!!!\n";
-                    getch();
+                    break;
                 }
             }
         }
@@ -409,8 +412,8 @@ void STUDENR_MENU(){
                         PrintProfile_Student(User, Year_head);
                         break;
                     case 4:
-                        
-                        flag=-1;
+                        deleteAllLists(Year_head, Student_head, Staff_head);
+                        return;
                         break;
 
                     default:
@@ -422,12 +425,6 @@ void STUDENR_MENU(){
                     break;
                 }
             }
-        }
-        
-        if(flag==-1){
-            deleteAllLists(Year_head, Student_head, Staff_head);
-            return;
-            break;
         }
     }
 }
