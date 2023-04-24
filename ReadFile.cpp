@@ -6,11 +6,11 @@ void InputStudent(Student *&StuHead, string input)
     ifs.open(input);
     if (!ifs.is_open())
         return;
-    Student *cur = nullptr;
 
     string line;//subline
     getline(ifs,line);
 
+    Student *cur = nullptr;
     while (!ifs.eof()) /*  */
     {
         string Info = "";
@@ -51,8 +51,12 @@ void InputStudentCourse(Course *&subCourse, string input)
     getline(ifs, subCourse->DayOfWeek);
     ifs >> subCourse->NumberOfCredits;
     // subCourse -> NumberOfCredits = stoi(Credits);
-    Student *cur = nullptr;
+    
     ifs.ignore();
+    string line;//subline
+    getline(ifs,line);
+    
+    Student *cur = nullptr;
     while (!ifs.eof())
     {
         if (subCourse -> CourseStudent == nullptr)
