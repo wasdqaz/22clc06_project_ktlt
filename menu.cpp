@@ -21,7 +21,7 @@ int main()
     Class *curClass = nullptr;
     SchoolYear *curYear = nullptr;
     ReadDirectory(directoryPath, curSmeter, curCourse, curClass, Year_head, curYear);
-    //AccessFileMark(directoryPath, Year_head);
+    AccessFileMark(directoryPath, Year_head);
     readStaffInfo(Staff_info_head);
 
     //-------------------------------------login--------------------------------

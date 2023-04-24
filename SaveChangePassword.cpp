@@ -1,5 +1,5 @@
 #include "header.h"
-#include "header.h"
+
 void SaveChangePassword (Account* head)
 {
     if(!head) return;
