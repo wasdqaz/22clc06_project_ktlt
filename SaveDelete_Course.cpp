@@ -57,7 +57,8 @@ void Save_StudentCourse_All(Course *curCourse)
         << curCourse->TeacherName << "\n"
         << curCourse->Session << "\n"
         << curCourse->DayOfWeek << "\n"
-        << curCourse->NumberOfCredits;
+        << curCourse->NumberOfCredits << "\n";
+    ofs <<"No,ID,Name,Class";
     Student *StuCourse = curCourse->CourseStudent;
     while (StuCourse != nullptr)
     {
@@ -79,7 +80,8 @@ void Save_StudentCourse_All_Mark(Course *curCourse, string FileName)
         << nameSmter << "\n"
         << curCourse->CourseId << "\n"
         << curCourse->CourseName << "\n"
-        << curCourse->ClassName;
+        << curCourse->ClassName << "\n";
+    ofs << "No,ID,Name,Class,Midterm,Final,Other Mark,Total";
     Student *StuCourse = curCourse->CourseStudent;
     while (StuCourse != nullptr)
     {
@@ -101,6 +103,10 @@ void Input_Student_Course_File(Student *&StuCourse, string FileName)
     ifs.open(FileName);
     if (!ifs.is_open())
         return;
+    
+    string line;//subline
+    getline(ifs,line);
+    
     Student *curStudent = nullptr;
     while (!ifs.eof())
     {
