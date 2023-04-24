@@ -3,11 +3,14 @@
 
 void viewStudentsInCourse(Course *pHead)
 {
+    string CourseId, ClassName;
     cout << "Enter the course ID to view its student list: ";
-    string CourseId;
     cin >> CourseId;
+    cout << "Enter the class name of the course: ";
+    cin >> ClassName;
+
     Course *temp = pHead;
-    while (temp != nullptr && temp->CourseId != CourseId)
+    while (temp != nullptr && temp->CourseId != CourseId && temp->ClassName == ClassName)
         temp = temp->Next;
     if (temp == nullptr)
     {
@@ -37,11 +40,14 @@ void viewStudentsInCourse(Course *pHead)
 
 void viewCourseScoreboard(Course *pHead)
 {
+    string CourseId, ClassName;
     cout << "Enter the course ID to view the score: ";
-    string CourseId;
     cin >> CourseId;
+    cout << "Enter the class name of the course: ";
+    cin >> ClassName;
+
     Course *temp = pHead;
-    while (temp != nullptr && temp->CourseId != CourseId)
+    while (temp != nullptr && temp->CourseId != CourseId && temp->ClassName == ClassName)
         temp = temp->Next;
     if (temp == nullptr)
     {
@@ -54,7 +60,7 @@ void viewCourseScoreboard(Course *pHead)
         cout << "No student in the course!!!" << endl;
         return;
     }
-    int i = 0;
+    int i = 1;
     cout << endl << setw(5) << left << "No";
     cout << setw(15) << left << "Student ID";
     cout << setw(35) << left << "Name";
