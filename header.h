@@ -155,5 +155,8 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
 void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
                 Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head);
 int LoginConsole();
+int MenuYNChangePass(string pass);
+int MenuYN(string comment);
+
 #endif
 

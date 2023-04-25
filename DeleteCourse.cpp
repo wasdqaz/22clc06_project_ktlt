@@ -64,10 +64,8 @@ void DeleteCourse(Course *&head)
         if (checkCourse(head, Course_id, Class_Name, cur))
         {
 
-            int choice;
-            cout << "Do you want to change the password?" << endl;
-            cout << "1. Yes \n2. No \n->Your choice: ";
-            cin >> choice;
+            int choice = MenuYN("Do you want to delete course?");
+            
             if (choice == 2)
                 return;
                 
@@ -95,12 +93,8 @@ void DeleteCourse(Course *&head)
             }
         }
         else
-        {
-            cout << "Don't find course name.\n";
-            cout << "1. Re-input.\n";
-            cout << "2. Exit.\n";
-            int choice;
-            cin >> choice;
+        {      
+            int choice = MenuYN("Don't find course name. Do you  want to re-enter?");
             if (choice == 2)
                 return;
         }

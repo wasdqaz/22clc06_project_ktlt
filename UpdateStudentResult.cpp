@@ -63,13 +63,9 @@ void UpdateStudentResult(Semester* Semester_head)
                 cout << left << setw(15) << Student_head->HeadOfMark->OtherMark;
                 cout << endl;
 
-                cout << "Do you want to update?\n";
-                cout << "0. Exit\n";
-                cout << "1. Update\n";
 
-                int choice;
-                cin >> choice;
-                if (choice == 0)
+                int choice = MenuYN("Do you want to update?");
+                if (choice == 1)
                     return;
 
                 cout << "Midterm Mark: ";
@@ -83,18 +79,6 @@ void UpdateStudentResult(Semester* Semester_head)
                 cout << "Update result successfully!!!\n";
                 SaveWhenUpdateStudentResult(Semester_head, cur_course);
                 return;
-                // ban co muon sua hay khong(tao bien roi gan);
-                // while(true){
-                //     int choice;
-                //     cout<<"The mark you want to upp date ?\n";
-                //     cout<<"1. Midterm Mark\n";
-                //     cout<<"2. Final Mark\n";
-                //     cout<<"3. Total Mark\n";
-                //     cout<<"4. Other Mark\n";
-                //     cout<<"5. All.\n";
-                //     cout<<"0. Exit\n";
-                //     cin>>choice;
-                // }
             }
             else
             {

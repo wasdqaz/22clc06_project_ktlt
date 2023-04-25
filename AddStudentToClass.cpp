@@ -43,10 +43,8 @@ void AddNewStudent(SchoolYear *pHeadYear)
     cout << "Social ID: ";
     cin >> SocialId;
 
-    int choice;
-    cout << "Do you want to add this student?" << endl;
-    cout << "1. Yes \n2. No \n->Your choice: ";
-    cin >> choice;
+    int choice = MenuYN("Do you want to add this student?");
+    
     
     if (choice == 2)
         return;

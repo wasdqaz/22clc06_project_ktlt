@@ -29,11 +29,8 @@ void AddNewYear(SchoolYear *&pHeadYear) // con tro toan bo cac nam hoc
         break;
     }
 
-    int choice;
-    cout << "Do you want to add new school year?" << endl;
-    cout << "1. Yes \n2. No \n->Your choice: ";
-    cin >> choice;
-
+    int choice = MenuYN("Do you want to add new school year?");
+    
     if (choice == 2)
         return;
 
@@ -86,10 +83,7 @@ Semester *AddNewSemester(SchoolYear *pHeadYear) // con tro toan bo cac nam hoc
         return nullptr;
     }
 
-    int choice;
-    cout << "Do you want to add new semester?" << endl;
-    cout << "1. Yes \n2. No \n->Your choice: ";
-    cin >> choice;
+    int choice = MenuYN("Do you want to add new semester?");
 
     if (choice == 2)
         return defaultSemester(tmp);
@@ -174,10 +168,7 @@ void AddCourse(Semester *pHeadSemester) // con tro hoc ki mac dinh
     cout << "Number of credits: ";
     cin >> NumberOfCredits;
 
-    int choice;
-    cout << "Do you want to add new course?" << endl;
-    cout << "1. Yes \n2. No \n->Your choice: ";
-    cin >> choice;
+    int choice = MenuYN("Do you want to add new course?");
 
     if (choice == 2)
         return;
