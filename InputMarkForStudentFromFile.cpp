@@ -21,6 +21,7 @@ Mark* makeMarkNode (double midterm, double final, double othermark, double total
 void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final,double othermark, double total, string courseid, string coursename,string semester, string year)
 {
     // push Node Mark to Student of class
+    if(!studentOfClass) return;
     Mark* head =studentOfClass ->HeadOfMark;
     Mark* newMark =  makeMarkNode(midterm, final, othermark, total, courseid, coursename, semester,year);
     if(!head)
@@ -36,10 +37,12 @@ void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, do
         head->Next = newMark;
     }
     // push node mark to student of course
+    if(!studentOfCourse) return;
     studentOfCourse->HeadOfMark = newMark;
 }
 Student* FindNodeStudentOfCourseToPutMark (string id, Course* cur)
 {
+    if(!cur) return nullptr;
     Student* head = cur->CourseStudent;
     while(head)
     {
@@ -159,6 +162,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
         
         Student* studentCurOfClass = FindNodeStudentOfClassToPutMark(id,headOfSchoolyear,clss);
         Student* studentCufOfCourse = FindNodeStudentOfCourseToPutMark(id, CourseCur);
+         
         putMarkToStudentNode(studentCurOfClass, studentCufOfCourse, midterm,final,othermark,total, idcourse, coursename,semester,year);
 
         // Access Student
