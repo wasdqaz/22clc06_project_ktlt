@@ -68,7 +68,7 @@ void TextColor(int x) // X là mã màu
     SetConsoleTextAttribute(h, x);
 }
 
-void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
+void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
                    Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
 {
     switch (choice)
@@ -104,8 +104,15 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         PrintProfile_Staff(Staff_head, Staff_info_head);
         break;
     case 8:
+    {
         changePassword(User);
+        if (User->Role == 1)
+            SaveChangePassword(Staff_head);
+        else
+            SaveChangePassword(Student_head);
         break;
+    }
+    break;
     case 9:
         flag = -1;
         return;
@@ -116,7 +123,7 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
     cout << "\nPress any key to exit!!!\n";
     getch();
 }
-void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
+void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
                        Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
 {
     switch (choice)
@@ -187,8 +194,15 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
         PrintProfile_Staff(Staff_head, Staff_info_head);
         break;
     case 12:
+    {
         changePassword(User);
+        if (User->Role == 1)
+            SaveChangePassword(Staff_head);
+        else
+            SaveChangePassword(Student_head);
         break;
+    }
+    break;
     case 13:
         flag = -1;
         return;
@@ -200,7 +214,7 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
     cout << "\nPress any key to exit!!!\n";
     getch();
 }
-void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,
+void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
                    Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
 {
     switch (choice)
@@ -255,8 +269,15 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         PrintProfile_Staff(Staff_head, Staff_info_head);
         break;
     case 10:
+    {
         changePassword(User);
+        if (User->Role == 1)
+            SaveChangePassword(Staff_head);
+        else
+            SaveChangePassword(Student_head);
         break;
+    }
+    break;
     case 11:
         flag = -1;
         return;
@@ -344,15 +365,15 @@ void STAFF_MENU()
                 {
                     if (mode == 0)
                     {
-                        BeginningYear(flag, pointer, Year_head, curYear, Staff_info_head, User, Semester_head, Staff_head);
+                        BeginningYear(flag, pointer, Year_head, curYear, Student_head, Staff_info_head, User, Semester_head, Staff_head);
                     }
                     if (mode == 1)
                     {
-                        BeginningSemester(flag, pointer, Year_head, curYear, Staff_info_head, User, Semester_head, Staff_head);
+                        BeginningSemester(flag, pointer, Year_head, curYear, Student_head, Staff_info_head, User, Semester_head, Staff_head);
                     }
                     if (mode == 2)
                     {
-                        EndOfSemester(flag, pointer, Year_head, curYear, Staff_info_head, User, Semester_head, Staff_head);
+                        EndOfSemester(flag, pointer, Year_head, curYear, Student_head, Staff_info_head, User, Semester_head, Staff_head);
                     }
                     break;
                 }
@@ -453,8 +474,15 @@ void STUDENR_MENU()
                             ViewScoreBoardStudent(Year_head, User);
                             break;
                         case 2:
+                        {
                             changePassword(User);
+                            if (User->Role == 1)
+                                SaveChangePassword(Staff_head);
+                            else
+                                SaveChangePassword(Student_head);
                             break;
+                        }
+                        break;
                         case 3:
                             PrintProfile_Student(User, Year_head);
                             break;
