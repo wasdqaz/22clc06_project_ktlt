@@ -6,10 +6,10 @@ void SaveChangePassword (Account* head)
     ofstream out;
     if(head->Role == 1)
     {
-        out.open("staff.txt");
+        out.open("Data/staff.txt");
     }
-    else out.open("student.txt");
-    
+    else out.open("Data/student.txt");
+    if(!out.is_open()) return;
     while(head && head->next)
     {
         out<<head->username<<endl;
