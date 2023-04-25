@@ -28,9 +28,9 @@ void createAccountList(Account *&head, int role)
 {
 	ifstream in;
 	if (role == 1)
-		in.open("staff.txt");
+		in.open("Data/staff.txt");
 	else
-		in.open("student.txt");
+		in.open("Data/student.txt");
 	if (!in.is_open())
 		cout << "Can not open file";
 	string s, s2, s3;
