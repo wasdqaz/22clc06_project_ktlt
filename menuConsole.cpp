@@ -4,7 +4,7 @@
 
 const int MAX_LIST[] = {10, 14, 12};
 const int MAX_STUDENT_LIST = 5;
-int mode = 2;
+int mode = 0;
 
 // begining of schoolyear->0
 // beginning of semester->1

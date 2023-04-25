@@ -139,11 +139,8 @@ void UpdCourseInf(Course *pHead) // con tro danh sach cac course
     /*cout << "Maximum number of student in the course: ";
     cin >> MaxStudent;*/
 
-    int choice;
-    cout << "Do you want to update?" << endl;
-    cout << "1. Yes \n2. No \n->Your choice: ";
-    cin >> choice;
-
+    int choice = MenuYN("Do you want to update?");
+    
     if (choice == 2)
         return;
 
