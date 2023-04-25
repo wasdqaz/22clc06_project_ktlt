@@ -29,8 +29,11 @@ bool FindStudent(Student *&head, string Student_id)
     return false;
 }
 
-void UpdateStudentResult(Course *head)
+
+
+void UpdateStudentResult(Semester* Semester_head)
 {
+    Course* head = Semester_head->CourseList;
     string Course_Id, Student_id;
     Course *cur_course;
     while (true)
@@ -78,6 +81,7 @@ void UpdateStudentResult(Course *head)
                 cout << "Other Mark: ";
                 cin >> Student_head->HeadOfMark->OtherMark;
                 cout << "Update result successfully!!!\n";
+                SaveWhenUpdateStudentResult(Semester_head, cur_course);
                 return;
                 // ban co muon sua hay khong(tao bien roi gan);
                 // while(true){
@@ -105,3 +109,5 @@ void UpdateStudentResult(Course *head)
         }
     }
 }
+
+

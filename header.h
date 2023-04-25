@@ -142,7 +142,8 @@ void SaveClass1stYearToFolderSchoolYear (string input, string clss, SchoolYear* 
 //Save when add a student
 void SaveWhenAdd1StudentToClass(Student *add,Student*head, string classname, SchoolYear *cur);
 
-
+//Save when update student result
+void SaveWhenUpdateStudentResult(Semester* cur, Course* Course_cur);
 //menu
 void STAFF_MENU();
 void TextColor(int x);

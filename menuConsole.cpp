@@ -223,7 +223,7 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     case 3:
         if (Semester_head)
-            UpdateStudentResult(Semester_head->CourseList);
+            UpdateStudentResult(Semester_head);
         else
             cout << "Please create semester and course.\n";
         break;
