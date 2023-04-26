@@ -65,17 +65,29 @@ void viewListOfCourses_Student(Semester *Semester_head, Account *Student_head)
 {
     string StudentID = Student_head->username;
     Course *Temp = Semester_head->CourseList;
+    
+    cout << "+------------+-------------------------------+---------+-----------------------+-------------+---------+---------+" << endl;
+    cout << setw(2) << left << "|" << setw(11) << left << "Course ID";
+    cout << setw(2) << left << "|" << setw(30) << left << "Course name";
+    cout << setw(2) << left << "|" << setw(8) << left << "Class";
+    cout << setw(2) << left << "|" << setw(22) << left << "Teacher";
+    cout << setw(2) << left << "|" << setw(12) << left << "Day of week";
+    cout << setw(2) << left << "|" << setw(8) << left << "Session";
+    cout << setw(2) << left << "|" << setw(8) << left << "Credits" << "|" << endl;
+    cout << "+------------+-------------------------------+---------+-----------------------+-------------+---------+---------+" << endl;
+
     while (Temp != nullptr) {
         Student *tempStd = Temp->CourseStudent;
-        
+
         while (tempStd != nullptr) {
             if (tempStd->Id == StudentID) {
-                cout << "-----------------------------" << endl;
-                cout << "Course ID: " << Temp->CourseId << "\t\tClass: " << Temp->ClassName << endl;
-                cout << "Course name: " << Temp->CourseName << endl;
-                cout << "Teacher: " << Temp->TeacherName << endl;
-                cout << "Day of week: " << Temp->DayOfWeek << "\t\tSession: " << Temp->Session << endl;
-                cout << "Number of credits: " << Temp->NumberOfCredits << endl;
+                cout << setw(2) << left << "|" << setw(11) << left << Temp->CourseId;
+                cout << setw(2) << left << "|" << setw(30) << left << Temp->CourseName;
+                cout << setw(2) << left << "|" << setw(8) << left << Temp->ClassName;
+                cout << setw(2) << left << "|" << setw(22) << left << Temp->TeacherName;
+                cout << setw(2) << left << "|" << setw(12) << left << Temp->DayOfWeek;
+                cout << setw(2) << left << "|" << setw(8) << left << Temp->Session;
+                cout << setw(2) << left << "|" << setw(8) << left << Temp->NumberOfCredits << "|" << endl;
                 break;
             }
             tempStd = tempStd->Next;
@@ -83,5 +95,5 @@ void viewListOfCourses_Student(Semester *Semester_head, Account *Student_head)
 
         Temp = Temp->Next;
     }
-    cout << "-----------------------------" << endl << endl;
+    cout << "+------------+-------------------------------+---------+-----------------------+-------------+---------+---------+" << endl;
 }
