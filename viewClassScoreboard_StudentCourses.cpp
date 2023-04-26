@@ -24,38 +24,38 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearH
     {
         Mark *MarkTemp = StudentTemp->HeadOfMark;
 
-        cout << setw(4) << left << "No";
-        cout << setw(30) << left << "Name";
+        cout << setw(2) << left << "|" << setw(4) << left << "No";
+        cout << setw(2) << left << "|" << setw(30) << left << "Name";
 
         while (MarkTemp != nullptr)
         {
             string tmp = MarkTemp->semester.substr(1, 1);
             string year = MarkTemp->year.substr(0, 2);
             if (tmp == Smt && year == curYear)
-                cout << setw(10) << left << MarkTemp->Id;
+                cout << setw(2) << left << "|" << setw(10) << left << MarkTemp->Id;
             MarkTemp = MarkTemp->Next;
         }
+
+        cout << setw(2) << left << "|" << setw(20) << left << "GPA This Semester";
+        cout << setw(2) << left << "|" << setw(15) << left << "Overall GPA" << "|" << endl;
+
+        cout << setw(2) << left << "|" << setw(4) << left << StudentTemp->No;
+        cout << setw(2) << left << "|" << setw(30) << left << StudentTemp->Name;
 
         MarkTemp = StudentTemp->HeadOfMark;
 
-        cout << setw(20) << left << "GPA This Semester";
-        cout << setw(15) << left << "Overall GPA" << endl;
-
-        cout << setw(4) << left << StudentTemp->No;
-        cout << setw(30) << left << StudentTemp->Name;
-
         while (MarkTemp != nullptr)
         {
             string tmp = MarkTemp->semester.substr(1, 1);
             string year = MarkTemp->year.substr(0, 2);
             if (tmp == Smt && year == curYear)
-                cout << setw(10) << left << MarkTemp->FinalMark;
+                cout << setw(2) << left << "|" << setw(10) << left << MarkTemp->FinalMark;
             MarkTemp = MarkTemp->Next;
         }
 
-        cout << setw(20) << left << StudentTemp->SemesterGpa;
-        cout << setw(15) << left << StudentTemp->Gpa << endl
-             << endl;
+        cout << setw(2) << left << "|" << setw(20) << left << StudentTemp->SemesterGpa;
+        cout << setw(2) << left << "|" << setw(15) << left << StudentTemp->Gpa << "|" << endl;
+        cout << endl;
 
         StudentTemp = StudentTemp->Next;
     }
