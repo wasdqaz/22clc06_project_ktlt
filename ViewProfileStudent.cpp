@@ -1,5 +1,6 @@
 #include "header.h"
 #include "KhoiFunction.h"
+
 bool FindClass(Class *&head, string ClassName)
 {
     Class *Cur_Class = head;
@@ -20,12 +21,12 @@ void PrintMark(Mark *head, string S_name)
     {
         if (head->semester == S_name)
         {   
-            cout << left << setw(40) << head->NameOfCourse;
-            cout << left << setw(20) << head->Id;
-            cout << left << setw(15) << head->MidtermMark;
-            cout << left << setw(15) << head->FinalMark;
-            cout << left << setw(15) << head->TotalMark;
-            cout << left << setw(15) << head->OtherMark;
+            cout << setw(2) << left << "|" << left << setw(40) << head->NameOfCourse;
+            cout << setw(2) << left << "|" << left << setw(11) << head->Id;
+            cout << setw(2) << left << "|" << left << setw(13) << head->MidtermMark;
+            cout << setw(2) << left << "|" << left << setw(11) << head->FinalMark;
+            cout << setw(2) << left << "|" << left << setw(11) << head->TotalMark;
+            cout << setw(2) << left << "|" << left << setw(11) << head->OtherMark << "|";
             cout<<endl;
         }
         head=head->Next;
@@ -55,14 +56,17 @@ void ViewScoreBoardStudent(SchoolYear *head, Account *User)
                     return;
                 if (choice == "S1" || choice == "S2" || choice == "S3")
                 {
-                    cout << left << setw(40) << "Course name"
-                         << left << setw(20) << "Course ID"
-                         << left << setw(15) << "Midterm Mark"
-                         << left << setw(15) << "Final Mark"
-                         << left << setw(15) << "Total mark"
-                         << left << setw(15) << "Other Mark";
+                    cout << "+-----------------------------------------+------------+--------------+------------+------------+------------+" << endl;
+                    cout << setw(2) << left << "|" << left << setw(40) << "Course name"
+                         << setw(2) << left << "|" << left << setw(11) << "Course ID"
+                         << setw(2) << left << "|" << left << setw(13) << "Midterm Mark"
+                         << setw(2) << left << "|" << left << setw(11) << "Final Mark"
+                         << setw(2) << left << "|" << left << setw(11) << "Total mark"
+                         << setw(2) << left << "|" << left << setw(11) << "Other Mark" << "|";
                     cout << endl;
+                    cout << "+-----------------------------------------+------------+--------------+------------+------------+------------+" << endl;
                     PrintMark(Cur_Student->HeadOfMark, choice);
+                    cout << "+-----------------------------------------+------------+--------------+------------+------------+------------+" << endl;
                     return;
                 }
             }

@@ -18,13 +18,14 @@ void PrintProfile_Staff(Account *User, Staff *pHead)
 {
     Staff *StaffInfo;
     StaffInfo = Find_Staff(pHead, User->username);
-    cout << "Profile\n";
+    cout << "+-------Profile-------+\n";
     cout << "Academic staff member\n";
     cout << "Id: " << StaffInfo->Id << endl;
     cout << "Name: " << StaffInfo->Name << endl;
     cout << "Gender: " << StaffInfo->Gender << endl;
     cout << "Birth: " << StaffInfo->Birth << endl;
     cout << "Social ID: " << StaffInfo->Social_ID << endl;
+    cout << "+---------------------+\n";
 }
 
 Class *Find_ClassName(Class *pHead, string Class_Name)
@@ -58,7 +59,7 @@ void PrintProfile_Student(Account *User, SchoolYear *curYear)
     string Stu_Class = User->Class;
     Class *Class_Info = Find_ClassName(curYear->ClassHead, Stu_Class);
     Student *Student_Info = Find_Student(Class_Info, User->username);
-    cout << "Profile\n";
+    cout << "+-------Profile-------+\n";
     cout << "Student\n";
     cout << "No: " << Student_Info->No << endl;
     cout << "ID: " << Student_Info->Id << endl;
@@ -66,4 +67,5 @@ void PrintProfile_Student(Account *User, SchoolYear *curYear)
     cout << "Gender: " << Student_Info->Gender << endl;
     cout << "Birth: " << Student_Info->DateOfBirth << endl;
     cout << "Social ID: " << Student_Info->SocialId << endl;
+    cout << "+---------------------+\n";
 }
