@@ -12,9 +12,11 @@ void viewClass(SchoolYear *YearHead)
     if (!YearHead)
         return;
     Class *ListClass = YearHead->ClassHead;
+    cout << "*-----------*" << endl;
     while (ListClass)
     {
-        cout << ListClass->Name << endl;
+        cout << setw(3) << left << " " << ListClass->Name << endl;
         ListClass = ListClass->Next;
     }
+    cout << "*-----------*" << endl;
 }

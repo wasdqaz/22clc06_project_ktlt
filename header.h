@@ -38,11 +38,10 @@ struct Mark
 struct Student
 {
     int No;
-    string Id, Name, Gender, DateOfBirth, SocialId, Class; // da bo cai Course, them Ho Ten, ngay sinh va CCCD
+    string Id, Name, Gender, DateOfBirth, SocialId, Class;
     float Gpa, SemesterGpa;
-    Mark *HeadOfMark = nullptr; // update head of mark
+    Mark *HeadOfMark = nullptr;
     Student *Next = nullptr;
-    // bool Gender; // them gioi tinh
 };
 
 struct Course
@@ -50,7 +49,7 @@ struct Course
     string CourseId, CourseName, ClassName, TeacherName, Session, DayOfWeek;
     string NameSemester, Year;
     int NumberOfCredits, MaxStudent = 50;
-    Student *CourseStudent = nullptr; // moi update them
+    Student *CourseStudent = nullptr;
     Course *Next = nullptr;
 };
 
@@ -64,7 +63,7 @@ struct Class
 struct Semester
 {
     Course *CourseList = nullptr;
-    string NameSemester, Year, StartDate, EndDate; // them ngay bat dau, ket thuc hk
+    string NameSemester, Year, StartDate, EndDate;
     //Semester *Next;
 };
 
@@ -73,7 +72,7 @@ struct SchoolYear
     string BeginYear, EndYear;
     Class *ClassHead = nullptr;
     Semester *S1 = nullptr, *S2 = nullptr, *S3 = nullptr;
-    SchoolYear *NextYear = nullptr; // them con tro cho nam hoc
+    SchoolYear *NextYear = nullptr;
 };
 // Login
 Account *MakeNewAccountOfStudent(string username, string password, string Class);

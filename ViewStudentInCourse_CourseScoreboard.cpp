@@ -24,18 +24,19 @@ void viewStudentsInCourse(Course *pHead)
         return;
     }
     int i = 1;
-    cout << "-----------------------------------------------" << endl;
-    cout << setw(5) << left << "No";
-    cout << setw(15) << left << "Student ID";
-    cout << setw(40) << left << "Name" << endl;
+    cout << "+------+----------------+-----------------------------------------+" << endl;
+    cout << setw(2) << left << "|" << setw(5) << left << "No";
+    cout << setw(2) << left << "|" << setw(15) << left << "Student ID";
+    cout << setw(2) << left << "|" << setw(40) << left << "Name" << "|" << endl;
+    cout << "+------+----------------+-----------------------------------------+" << endl;
     while (Temp != nullptr)
     {
-        cout << setw(5) << left << i++;
-        cout << setw(15) << left << Temp->Id;
-        cout << setw(40) << left << Temp->Name << endl;
+        cout << setw(2) << left << "|" << setw(5) << left << i++;
+        cout << setw(2) << left << "|" << setw(15) << left << Temp->Id;
+        cout << setw(2) << left << "|" << setw(40) << left << Temp->Name << "|" << endl;
         Temp = Temp->Next;
     }
-    cout << "-----------------------------------------------" << endl;
+    cout << "+------+----------------+-----------------------------------------+" << endl;
 }
 
 void viewCourseScoreboard(Course *pHead)
@@ -61,7 +62,7 @@ void viewCourseScoreboard(Course *pHead)
         return;
     }
     int i = 1;
-    cout << endl << "+-----+----------------+-------------------------------+--------------+------------+------------+------------+" << endl;
+    cout << "+-----+----------------+-------------------------------+--------------+------------+------------+------------+" << endl;
     cout << setw(2) << left << "|" << setw(4) << left << "No";
     cout << setw(2) << left << "|" << setw(15) << left << "Student ID";
     cout << setw(2) << left << "|" << setw(30) << left << "Name";
