@@ -61,23 +61,25 @@ void viewCourseScoreboard(Course *pHead)
         return;
     }
     int i = 1;
-    cout << endl << setw(5) << left << "No";
-    cout << setw(15) << left << "Student ID";
-    cout << setw(35) << left << "Name";
-    cout << setw(15) << left << "Midterm Mark";
-    cout << setw(15) << left << "Total Mark";
-    cout << setw(15) << left << "Other Mark";
-    cout << setw(15) << left << "Final Mark" << endl;
-    cout << "------------------------------------------------------------------------------------------" << endl;
+    cout << endl << "+-----+----------------+-------------------------------+--------------+------------+------------+------------+" << endl;
+    cout << setw(2) << left << "|" << setw(4) << left << "No";
+    cout << setw(2) << left << "|" << setw(15) << left << "Student ID";
+    cout << setw(2) << left << "|" << setw(30) << left << "Name";
+    cout << setw(2) << left << "|" << setw(13) << left << "Midterm Mark";
+    cout << setw(2) << left << "|" << setw(11) << left << "Total Mark";
+    cout << setw(2) << left << "|" << setw(11) << left << "Other Mark";
+    cout << setw(2) << left << "|" << setw(11) << left << "Final Mark" << "|" << endl;
+    cout << "+-----+----------------+-------------------------------+--------------+------------+------------+------------+" << endl;
     while (Temp != nullptr)
     {
-        cout << setw(5) << left << i++;
-        cout << setw(15) << left << Temp->Id;
-        cout << setw(35) << left << Temp->Name;
-        cout << setw(15) << left << Temp->HeadOfMark->MidtermMark;
-        cout << setw(15) << left << Temp->HeadOfMark->TotalMark;
-        cout << setw(15) << left << Temp->HeadOfMark->OtherMark;
-        cout << setw(15) << left << Temp->HeadOfMark->FinalMark << endl;
+        cout << setw(2) << left << "|" << setw(4) << left << i++;
+        cout << setw(2) << left << "|" << setw(15) << left << Temp->Id;
+        cout << setw(2) << left << "|" << setw(30) << left << Temp->Name;
+        cout << setw(2) << left << "|" << setw(13) << left << Temp->HeadOfMark->MidtermMark;
+        cout << setw(2) << left << "|" << setw(11) << left << Temp->HeadOfMark->TotalMark;
+        cout << setw(2) << left << "|" << setw(11) << left << Temp->HeadOfMark->OtherMark;
+        cout << setw(2) << left << "|" << setw(11) << left << Temp->HeadOfMark->FinalMark << "|" << endl;
         Temp = Temp->Next;
     }
+    cout << "+-----+----------------+-------------------------------+--------------+------------+------------+------------+" << endl;
 }
