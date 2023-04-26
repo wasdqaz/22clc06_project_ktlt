@@ -388,7 +388,7 @@ void STAFF_MENU()
         }
     }
 }
-void STUDENR_MENU()
+void STUDENT_MENU()
 {
     {
 

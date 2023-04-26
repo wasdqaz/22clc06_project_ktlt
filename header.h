@@ -147,7 +147,7 @@ void SaveWhenUpdateStudentResult(Semester* cur, Course* Course_cur);
 //menu
 void STAFF_MENU();
 void TextColor(int x);
-void STUDENR_MENU();
+void STUDENT_MENU();
 void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,Account *Student_head,
                 Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head);
 void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear,Account *Student_head,

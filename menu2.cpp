@@ -17,7 +17,7 @@ int main()
         }
         else
         {
-            STUDENR_MENU();
+            STUDENT_MENU();
         }
     }
 
