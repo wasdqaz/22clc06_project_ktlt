@@ -2,6 +2,10 @@
 
 void viewStudentClass(SchoolYear *YearHead)
 {
+    if (!YearHead) {
+        cout << "No schoolyear found" << endl;
+        return;
+    }
     string year, Class_out;
     cout << "School Year (example 21-22): ";
     cin.ignore();

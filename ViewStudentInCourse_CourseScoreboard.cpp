@@ -3,6 +3,10 @@
 
 void viewStudentsInCourse(Course *pHead)
 {
+    if (!pHead) {
+        cout << "No course found" << endl;
+        return;
+    }
     string CourseId, ClassName;
     cout << "Enter the course ID to view its student list: ";
     cin >> CourseId;

@@ -3,6 +3,10 @@
 
 void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearHead)
 {
+    if (!pHead || !SemesterHead) {
+        cout << "No class found!!!" << endl;
+        return;
+    }
     string ClassName;
     cout << "Enter the class name to view scoreboard (Ex: 22CLC01): ";
     cin >> ClassName;
@@ -63,6 +67,10 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearH
 
 void viewListOfCourses_Student(Semester *Semester_head, Account *Student_head)
 {
+    if (!Semester_head || !Student_head) {
+        cout << "No Semester found!!!" << endl;
+        return;
+    }
     string StudentID = Student_head->username;
     Course *Temp = Semester_head->CourseList;
     
