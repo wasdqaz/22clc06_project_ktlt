@@ -14,18 +14,6 @@ void CreateClass(SchoolYear *YearHead)
     // cin >> choice;
     if (choice == 2)
         return;
-        
-        if(YearHead->ClassHead==nullptr)
-        {
-            YearHead->ClassHead = new Class;
-            YearHead->ClassHead->Name=ClassName;
-        }
-        else {
-            Class *Cur_Class = YearHead->ClassHead;
-            YearHead->ClassHead=new Class;
-            YearHead->ClassHead->Name=ClassName;
-            YearHead->ClassHead->Next=Cur_Class;
-        }
 
 
     if (YearHead->ClassHead == nullptr)
