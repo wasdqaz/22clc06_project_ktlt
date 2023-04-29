@@ -2,7 +2,7 @@
 #include "KhoiFunction.h"
 #include "functionOfDuy.h"
 
-const int MAX_LIST[] = {10, 14, 12};
+const int MAX_LIST[] = {11, 14, 12};
 const int MAX_STUDENT_LIST = 5;
 int mode = 0;
 
@@ -14,6 +14,7 @@ string menu[3][14] = {
         "Create school year.",
         "Create class.",
         "Add student.",
+        "Upload file student for class",
         "View a list of classes.",
         "View a list of students in a class.",
         "View a list of courses.",
@@ -83,27 +84,33 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         AddNewStudent(Year_head);
         break;
     case 3:
-        viewClass(Year_head);
+        if (curYear)
+            quickInputClass1stYear(curYear);
+        else
+            cout << "Please create year first.\n";
         break;
     case 4:
-        viewStudentClass(Year_head);
+        viewClass(Year_head);
         break;
     case 5:
+        viewStudentClass(Year_head);
+        break;
+    case 6:
         if (Semester_head)
             ViewListOfCourse(Semester_head->CourseList);
         else
             cout << "Please create semester and course.\n";
         break;
-    case 6:
+    case 7:
         if (Semester_head)
             viewStudentsInCourse(Semester_head->CourseList);
         else
             cout << "Please create semester and course.\n";
         break;
-    case 7:
+    case 8:
         PrintProfile_Staff(Staff_head, Staff_info_head);
         break;
-    case 8:
+    case 9:
     {
         changePassword(User);
         if (User->Role == 1)
@@ -113,7 +120,7 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     }
     break;
-    case 9:
+    case 10:
         flag = -1;
         return;
         break;
@@ -316,8 +323,17 @@ void STAFF_MENU()
     while (curYear->NextYear != nullptr)
         curYear = curYear->NextYear;
     Semester_head = defaultSemester(curYear);
-    CalGpa(Year_head->ClassHead);
-    calGPASemester(Year_head->ClassHead, Semester_head);
+    SchoolYear *tmp = Year_head;
+    while (tmp) {
+        CalGpa(tmp->ClassHead);
+        if (tmp->S1)
+            calGPASemester(tmp->ClassHead, tmp->S1);
+        if (tmp->S2)
+            calGPASemester(tmp->ClassHead, tmp->S2);
+        if (tmp->S3)
+            calGPASemester(tmp->ClassHead, tmp->S3);
+        tmp = tmp->NextYear;
+    }
 
     int pointer = 0;
     int flag = 0;
@@ -418,8 +434,17 @@ void STUDENT_MENU()
         while (curYear->NextYear != nullptr)
             curYear = curYear->NextYear;
         Semester_head = defaultSemester(curYear);
-        CalGpa(Year_head->ClassHead);
-        calGPASemester(Year_head->ClassHead, Semester_head);
+        SchoolYear *tmp = Year_head;
+        while (tmp) {
+            CalGpa(tmp->ClassHead);
+            if (tmp->S1)
+                calGPASemester(tmp->ClassHead, tmp->S1);
+            if (tmp->S2)
+                calGPASemester(tmp->ClassHead, tmp->S2);
+            if (tmp->S3)
+                calGPASemester(tmp->ClassHead, tmp->S3);
+            tmp = tmp->NextYear;
+        }
 
         int pointer = 0;
         int flag = 0;

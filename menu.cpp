@@ -78,7 +78,7 @@
 //             cout << "|18. View the scoreboard of a class.                                 |\n";
 //             cout << "|19. View the scoreboard of a course.                                |\n";
 //             cout << "|20. View profile.                                                   |\n";
-//             cout << "|21. Upload file student in class                                    |\n";
+//             cout << "|21. Upload file student for class                                    |\n";
 //             cout << "|22. Logout.                                                         |\n";
 //             cout << "------------------------------END-------------------------------------\n";
 

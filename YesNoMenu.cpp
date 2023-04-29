@@ -11,7 +11,7 @@ int MenuYNChangePass(string pass)
     while (true)
     {
         system("cls");
-        cout << "Are you sureto change passwork to: " << pass << endl;
+        cout << "Are you sure to change passwork to: " << pass << endl;
         for (int i = 0; i < max_list; i++)
         {
 

@@ -20,7 +20,7 @@ void viewStudentClass(SchoolYear *YearHead)
         cout << "Error: No schoolyear found!!!" << endl;
         return;
     }
-    while (YearHead->ClassHead->Name != Class_out)
+    while (YearHead->ClassHead && YearHead->ClassHead->Name != Class_out)
         YearHead->ClassHead = YearHead->ClassHead->Next;
     if (!YearHead->ClassHead) {
         cout << "Error: No class found!!!" << endl;
