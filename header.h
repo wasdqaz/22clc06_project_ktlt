@@ -98,6 +98,7 @@ void InputStudentCourse(Course *&subCourse, string input);
 void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input);
 void ReadDirectory(const string &directoryPath, Semester *&curSmeter, Course *&curCourse, Class *curClass, SchoolYear *&YearHead, SchoolYear *curYear);
 void CreateClass(SchoolYear *YearHead);
+void CreateFileClass(string year, string classname);
 // Read mark
 Mark* makeMarkNode (double midterm, double final, double othermark, double total, string courseid,string coursename, string semester, string year);
 void putMarkToStudentNode (Student* studentOfClass, Student* studentOfCourse, double midterm, double final,double othermark, double total, string courseid, string coursename,string semester, string year);

@@ -15,7 +15,8 @@ void CreateClass(SchoolYear *YearHead)
     if (choice == 2)
         return;
 
-
+    string year = YearHead->BeginYear + "-" + YearHead->EndYear;
+    CreateFileClass(year,ClassName);
     if (YearHead->ClassHead == nullptr)
     {
         YearHead->ClassHead = new Class;
@@ -29,4 +30,5 @@ void CreateClass(SchoolYear *YearHead)
         YearHead->ClassHead->Next = Cur_Class;
     }
 }
+
 
