@@ -17,8 +17,10 @@ void CalGpa(Class *pHead)
 
             while (pHeadMark != nullptr)
             {
-                total += pHeadMark->FinalMark + pHeadMark->MidtermMark + pHeadMark->OtherMark + pHeadMark->TotalMark;
-                count += 4;
+                if (pHeadMark->FinalMark != -1) {
+                    total += pHeadMark->FinalMark + pHeadMark->MidtermMark + pHeadMark->OtherMark + pHeadMark->TotalMark;
+                    count += 4;
+                }
                 pHeadMark = pHeadMark->Next;
             }
 
@@ -62,8 +64,10 @@ void calGPASemester(Class *pHeadClass, Semester *pHeadSemester)
                 string temp = TempMark->semester.substr(1, 1);
                 if (temp == Smt && pTemp->Year == pHeadSemester->Year)
                 {
-                    total += TempMark->FinalMark + TempMark->MidtermMark + TempMark->OtherMark + TempMark->TotalMark;
-                    count += 4;
+                    if (TempMark->FinalMark != -1) {
+                        total += TempMark->FinalMark + TempMark->MidtermMark + TempMark->OtherMark + TempMark->TotalMark;
+                        count += 4;
+                    }
                 }
                 TempMark = TempMark->Next;
             }

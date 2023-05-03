@@ -14,7 +14,7 @@ void viewStudentsInCourse(Course *pHead)
     cin >> ClassName;
 
     Course *temp = pHead;
-    while (temp != nullptr && temp->CourseId != CourseId && temp->ClassName == ClassName)
+    while (temp != nullptr && (temp->CourseId != CourseId || temp->ClassName != ClassName))
         temp = temp->Next;
     if (temp == nullptr)
     {
@@ -52,7 +52,7 @@ void viewCourseScoreboard(Course *pHead)
     cin >> ClassName;
 
     Course *temp = pHead;
-    while (temp != nullptr && temp->CourseId != CourseId && temp->ClassName == ClassName)
+    while (temp != nullptr && (temp->CourseId != CourseId || temp->ClassName != ClassName))
         temp = temp->Next;
     if (temp == nullptr)
     {
@@ -77,13 +77,15 @@ void viewCourseScoreboard(Course *pHead)
     cout << "+-----+----------------+-------------------------------+--------------+------------+------------+------------+" << endl;
     while (Temp != nullptr)
     {
-        cout << setw(2) << left << "|" << setw(4) << left << i++;
-        cout << setw(2) << left << "|" << setw(15) << left << Temp->Id;
-        cout << setw(2) << left << "|" << setw(30) << left << Temp->Name;
-        cout << setw(2) << left << "|" << setw(13) << left << Temp->HeadOfMark->MidtermMark;
-        cout << setw(2) << left << "|" << setw(11) << left << Temp->HeadOfMark->TotalMark;
-        cout << setw(2) << left << "|" << setw(11) << left << Temp->HeadOfMark->OtherMark;
-        cout << setw(2) << left << "|" << setw(11) << left << Temp->HeadOfMark->FinalMark << "|" << endl;
+        if (Temp->HeadOfMark->FinalMark != -1) {
+            cout << setw(2) << left << "|" << setw(4) << left << i++;
+            cout << setw(2) << left << "|" << setw(15) << left << Temp->Id;
+            cout << setw(2) << left << "|" << setw(30) << left << Temp->Name;
+            cout << setw(2) << left << "|" << setw(13) << left << Temp->HeadOfMark->MidtermMark;
+            cout << setw(2) << left << "|" << setw(11) << left << Temp->HeadOfMark->TotalMark;
+            cout << setw(2) << left << "|" << setw(11) << left << Temp->HeadOfMark->OtherMark;
+            cout << setw(2) << left << "|" << setw(11) << left << Temp->HeadOfMark->FinalMark << "|" << endl;
+        }
         Temp = Temp->Next;
     }
     cout << "+-----+----------------+-------------------------------+--------------+------------+------------+------------+" << endl;

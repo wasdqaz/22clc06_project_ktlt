@@ -106,7 +106,7 @@ Student *FindNodeStudentOfCourseToPutMark(string id, Course *cur);
 Student* FindNodeStudentOfClassToPutMark (string id, SchoolYear* headOfschoolyear, string clss);
 void InputMarkForStudent(SchoolYear *headOfSchoolyear, string input);
 void AccessFileMark(string directoryPath,  SchoolYear* headOfSchoolyear);
-void viewClass(SchoolYear *YearHead);
+void viewClass(SchoolYear *YearHead, SchoolYear *curYear);
 void viewStudentClass(SchoolYear *YearHead);
 void ViewListOfCourse(Course *head);
 

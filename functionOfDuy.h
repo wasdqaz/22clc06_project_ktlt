@@ -12,7 +12,7 @@ void AddNewStudent(SchoolYear *pHeadYear);
 void RmStudentFrCourse(Course *pHead);
 void UpdCourseInf(Course *pHead);
 Semester *defaultSemester(SchoolYear *pHead);
-void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHeadAccStaff /*,Staff *&pHeadStaff*/);
+void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHeadAccStaff ,Staff *&pHeadStaff);
 void viewStudentsInCourse(Course *pHead);
 void viewCourseScoreboard(Course *pHead);
 void calGPASemester(Class *pHeadClass, Semester *pHeadSemester);

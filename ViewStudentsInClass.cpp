@@ -6,10 +6,7 @@ void viewStudentClass(SchoolYear *YearHead)
         cout << "No schoolyear found" << endl;
         return;
     }
-    string Year, Class_out;
-    cout << "School Year (example 21-22): ";
-    cin.ignore();
-    cin >> Year;
+    string Class_out;
     cout << "Class: ";
     cin >> Class_out;
     string yearClass = Class_out.substr(0,2);
@@ -18,7 +15,7 @@ void viewStudentClass(SchoolYear *YearHead)
         YearHead = YearHead->NextYear;
     }
     if (!YearHead) {
-        cout << "Error: No schoolyear found!!!" << endl;
+        cout << "Error: No class found!!!" << endl;
         return;
     }
     while (YearHead->ClassHead && YearHead->ClassHead->Name != Class_out)
