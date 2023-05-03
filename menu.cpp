@@ -196,13 +196,13 @@
 //                 ViewScoreBoardStudent(Year_head, User);
 //                 break;
 //             case 3:
-            // {
-            //     changePassword(User);
-            //         if(User->Role == 1) SaveChangePassword(Staff_head);
-            //         else SaveChangePassword(Student_head);
-            //     break;
+//             {
+//                 changePassword(User);
+//                     if(User->Role == 1) SaveChangePassword(Staff_head);
+//                     else SaveChangePassword(Student_head);
+//                 break;
 
-            // }
+//             }
                 
 //             case 4:
 //                 PrintProfile_Student(User, Year_head);
