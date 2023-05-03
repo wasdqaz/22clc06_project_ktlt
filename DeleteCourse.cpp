@@ -54,7 +54,7 @@ void DeleteCourse(Course *&head)
     string Course_id, Class_Name;
     while (true)
     {
-        cout << "Please enter course you want to delete: ";
+        cout << "Please enter ID of course you want to delete: ";
         cin.ignore();
         getline(cin, Course_id);
         cout << "Please enter the class name of course: ";

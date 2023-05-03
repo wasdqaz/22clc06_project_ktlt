@@ -1,0 +1,11 @@
+CSC13
+Programing techn
+21CLC02
+qqqqqq
+S1
+TUE
+4
+No,ID,Name,Class
+1,21127036,Le Quoc Binh,21CLC01
+2,21127086,Nguyen Lam Anh Duy,21CLC02
+3,21127087,Nguyen Quang Duy,21CLC02

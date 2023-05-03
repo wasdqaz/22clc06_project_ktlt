@@ -1,7 +1,7 @@
 #include "header.h"
 #include "functionOfDuy.h"
 
-void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHeadAccStaff /*,Staff *&pHeadStaff*/)
+void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHeadAccStaff, Staff *&pHeadStaff)
 {
     Student *tmp = pHead->ClassHead->StudentHead;
     while (tmp != nullptr)
@@ -133,11 +133,11 @@ void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHe
         delete Temp;
     }
 
-    /*while (pHeadStaff != nullptr) { //xóa list staff
+    while (pHeadStaff != nullptr) { //xóa list staff
         Staff *tempStaff = pHeadStaff;
         pHeadStaff = pHeadStaff->Next;
         delete tempStaff;
-    }*/
+    }
 
     while (pHeadAccStaff != nullptr)
     { // xóa account staff

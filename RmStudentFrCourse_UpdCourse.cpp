@@ -11,12 +11,14 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
         cout << "No course found!!!" << endl;
         return;
     }
-    string CourseId;
+    string CourseId, ClassName;
     cout << "Enter the ID of the course to remove student from: ";
     cin.ignore();
     getline(cin, CourseId);
+    cout << "Enter the class name of the course: ";
+    getline(cin, ClassName);
 
-    while (pHead != nullptr && pHead->CourseId != CourseId)
+    while (pHead != nullptr && (pHead->CourseId != CourseId || pHead->ClassName != ClassName))
         pHead = pHead->Next;
 
     if (pHead == nullptr || pHead->CourseStudent == nullptr)
@@ -29,22 +31,22 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
     cout << "Enter the ID of the student you want to remove: ";
     getline(cin, Id);
 
-    int choice;
-    cout << "Do you want to remove this student from course?" << endl;
-    cout << "1. Yes \n2. No \n->Your choice: ";
-    cin >> choice;
-
+    int choice = MenuYN("Do you want to remove this student from course?");
+    
     if (choice == 2)
         return;
-
+    bool ok = 1;
     Student *pHeadStudent = pHead->CourseStudent;
     if (pHeadStudent->Id == Id) // nếu đây là hs đầu tiên trong list
     {
         // chuyển điểm hs đó thành -1
-        pHeadStudent->HeadOfMark->FinalMark = -1;
-        pHeadStudent->HeadOfMark->MidtermMark = -1;
-        pHeadStudent->HeadOfMark->OtherMark = -1;
-        pHeadStudent->HeadOfMark->TotalMark = -1;
+        if (pHeadStudent->HeadOfMark) {
+            pHeadStudent->HeadOfMark->FinalMark = -1;
+            pHeadStudent->HeadOfMark->MidtermMark = -1;
+            pHeadStudent->HeadOfMark->OtherMark = -1;
+            pHeadStudent->HeadOfMark->TotalMark = -1;
+        }
+        else ok = 0;
 
         // xóa hs
         pHead->CourseStudent = pHead->CourseStudent->Next;
@@ -69,10 +71,15 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
         }
 
         // chuyển điểm hs đó thành -1
-        pHeadStudent->Next->HeadOfMark->FinalMark = -1;
-        pHeadStudent->Next->HeadOfMark->MidtermMark = -1;
-        pHeadStudent->Next->HeadOfMark->OtherMark = -1;
-        pHeadStudent->Next->HeadOfMark->TotalMark = -1;
+        if (pHeadStudent->Next->HeadOfMark) {
+            pHeadStudent->Next->HeadOfMark->FinalMark = -1;
+            pHeadStudent->Next->HeadOfMark->MidtermMark = -1;
+            pHeadStudent->Next->HeadOfMark->OtherMark = -1;
+            pHeadStudent->Next->HeadOfMark->TotalMark = -1;
+        }
+        else 
+            ok = 0;
+
 
         // xóa hs
         Student *Temp = pHeadStudent->Next;
@@ -90,8 +97,11 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
     string Course_Name = pathSemester + pHead->CourseName + "/";
     string nameSmter;
     Save_StudentCourse_All(pHead);
-    string fileCourseMark = Course_Name + "mark_" + pHead->ClassName + "_" + pHead->CourseId + ".txt";
-    Save_StudentCourse_All_Mark(pHead, fileCourseMark);
+    if (ok)
+    {
+        string fileCourseMark = Course_Name + "mark_" + pHead->ClassName + "_" + pHead->CourseId + ".txt";
+        Save_StudentCourse_All_Mark(pHead, fileCourseMark);
+    }
     cout << "Delete successfully" << endl;
 }
 

@@ -1,6 +1,6 @@
 #include "header.h"
 
-void viewClass(SchoolYear *YearHead)
+void viewClass(SchoolYear *YearHead, SchoolYear *curYear)
 {
     if (!YearHead)
     {
@@ -10,14 +10,21 @@ void viewClass(SchoolYear *YearHead)
     string year;
     cout << "School Year (example 21-22): \n";
     cin >> year;
-    string curYear = year.substr(0,2);
-    int Begin_year = stoi(curYear);
+    string curYear_classBegin = year.substr(0,2);
+    int Begin_year = stoi(curYear_classBegin);
+    string curYear_classEnd = year.substr(3,2);
+    int End_year = stoi(curYear_classEnd);
+    if (curYear_classBegin > curYear->BeginYear || Begin_year > End_year || End_year - Begin_year > 1)
+    {
+        cout <<"Errors: No schoolyear found!";
+        return;
+    }
 
     cout << "+-----------+" << endl;
     while (YearHead)
     {
         int Year = stoi(YearHead->BeginYear);
-        if (Year >= Begin_year - 4 && Year <= Begin_year)
+        if (Year > Begin_year - 4 && Year <= Begin_year)
         {
             Class *ListClass = YearHead->ClassHead;
             while (ListClass)

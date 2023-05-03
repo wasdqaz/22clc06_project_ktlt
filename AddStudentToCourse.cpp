@@ -46,17 +46,17 @@ void AddStudentToCourse(Course *CourseHead)
     } 
     while (cur->Next != nullptr);
     int No = cur->No;
-    Student *New_Stu = new Student;
-    New_Stu->No = No + 1;
-    New_Stu->Id = ID;
-    New_Stu->Name = name;
-    New_Stu->Class = Class;
-    cur->Next = New_Stu;
+    cur->Next = new Student;
+    cur = cur->Next;
+    cur->No = No + 1;
+    cur->Id = ID;
+    cur->Name = name;
+    cur->Class = Class;
     string pathSemester = "Data/SchoolYear/" + CourseHead->Year + "/" + CourseHead->NameSemester + "/";
     string Course_Name = pathSemester + CourseHead->CourseName + "/";
     string nameSmter = nameSemester(CourseHead->NameSemester);
     string FileCourse = Course_Name + nameSmter + "_" + CourseHead->ClassName + "_" + CourseHead->CourseId + ".txt";
-    Save_StudentCourse_1(New_Stu, FileCourse);
-    string FileCourseMark = Course_Name + "mark_" + CourseHead->ClassName + "_" + CourseHead->CourseId + ".txt";
-    Save_StudentCourse_1(New_Stu, FileCourseMark);
+    Save_StudentCourse_1(cur, FileCourse);
+    //string FileCourseMark = Course_Name + "mark_" + CourseHead->ClassName + "_" + CourseHead->CourseId + ".txt";
+    //Save_StudentCourse_1(New_Stu, FileCourseMark);
 }

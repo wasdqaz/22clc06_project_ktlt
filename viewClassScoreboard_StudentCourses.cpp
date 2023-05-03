@@ -36,7 +36,8 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearH
             string tmp = MarkTemp->semester.substr(1, 1);
             string year = MarkTemp->year.substr(0, 2);
             if (tmp == Smt && year == curYear)
-                cout << setw(2) << left << "|" << setw(10) << left << MarkTemp->Id;
+                if (MarkTemp->FinalMark != -1)
+                    cout << setw(2) << left << "|" << setw(10) << left << MarkTemp->Id;
             MarkTemp = MarkTemp->Next;
         }
 
@@ -53,7 +54,8 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearH
             string tmp = MarkTemp->semester.substr(1, 1);
             string year = MarkTemp->year.substr(0, 2);
             if (tmp == Smt && year == curYear)
-                cout << setw(2) << left << "|" << setw(10) << left << MarkTemp->FinalMark;
+                if (MarkTemp->FinalMark != -1)
+                    cout << setw(2) << left << "|" << setw(10) << left << MarkTemp->FinalMark;
             MarkTemp = MarkTemp->Next;
         }
 

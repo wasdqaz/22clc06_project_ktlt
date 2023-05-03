@@ -141,7 +141,10 @@ void CopyFile_Course(string fileCSV, string fileCourse)
         string fileContent((istreambuf_iterator<char>(ifs)), istreambuf_iterator<char>());
         ofs << "\n";
         ofs << fileContent;
+    }else {
+        cout<<"Unable to open file.\n";
     }
+    cout<<"Upload successfully.\n";
     ifs.close();
     ofs.close();
 }
@@ -164,7 +167,6 @@ void InputCSV_Course(Course *curCourse)
     string pathInput = "Data/Input_User/" + curCourse->CourseId + "_" + curCourse->ClassName + ".txt";
     Input_Student_Course_File(curCourse->CourseStudent, pathInput);
     CopyFile_Course(pathInput, NameCourse);
-
     /*string pathInput = pathIp + "*";
     struct _finddata_t fileInfo;
     intptr_t handle = _findfirst(pathInput.c_str(), &fileInfo);
@@ -187,10 +189,10 @@ void InputCSV_Course(Course *curCourse)
 
 void Remove_File_Course(Course *curCourse)
 {
-    string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/";
+    string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/" + curCourse->CourseName + "/";
     string nameSmter = nameSemester(curCourse->NameSemester);
-    string NameCourse = pathSemester + nameSmter + "_" + curCourse->CourseId + ".txt";
-    string NameMark = pathSemester + "mark_" + curCourse->CourseId + ".txt";
+    string NameCourse = pathSemester + nameSmter + "_" + curCourse->ClassName + "_" + curCourse->CourseId + ".txt";
+    string NameMark = pathSemester + "mark_" + curCourse->ClassName + "_" + curCourse->CourseId + ".txt";
     remove(NameCourse.c_str());
     remove(NameMark.c_str());
 }
