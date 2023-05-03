@@ -189,7 +189,7 @@ void InputCSV_Course(Course *curCourse)
 
 void Remove_File_Course(Course *curCourse)
 {
-    string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/";
+    string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/" + curCourse->CourseName + "/";
     string nameSmter = nameSemester(curCourse->NameSemester);
     string NameCourse = pathSemester + nameSmter + "_" + curCourse->ClassName + "_" + curCourse->CourseId + ".txt";
     string NameMark = pathSemester + "mark_" + curCourse->ClassName + "_" + curCourse->CourseId + ".txt";
