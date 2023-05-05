@@ -3,6 +3,11 @@ void SaveScorboardToFolderSchoolyear(string input)
 {
     ifstream in;
     in.open(input);
+    if(!in.is_open())
+    {
+        return;
+        in.close();
+    }
     string year;
     in >> year;
     string semester;

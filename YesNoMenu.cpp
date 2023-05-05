@@ -17,8 +17,16 @@ int MenuYNChangePass(string pass)
 
             if (pointer == i)
             {
-                TextColor(1);
-                cout << ">> " << menuYN[i] << " <<" << endl;
+                if (i == 0)
+                {
+                    TextColor(1);
+                    cout << ">> " << menuYN[i] << " <<" << endl;
+                }
+                else
+                {
+                    TextColor(4);
+                    cout<< ">> " << menuYN[i] << " <<" << endl;
+                }
                 TextColor(7);
             }
             else
@@ -72,14 +80,22 @@ int MenuYN(string comment)
     while (true)
     {
         system("cls");
-        cout << comment <<endl;
+        cout << comment << endl;
         for (int i = 0; i < max_list; i++)
         {
 
             if (pointer == i)
             {
-                TextColor(1);
-                cout << ">> " << menuYN[i] << " <<" << endl;
+                if (i == 0)
+                {
+                    TextColor(1);
+                    cout << ">> " << menuYN[i] << " <<" << endl;
+                }
+                else
+                {
+                    TextColor(4);
+                    cout<< ">> " << menuYN[i] << " <<" << endl;
+                }
                 TextColor(7);
             }
             else
