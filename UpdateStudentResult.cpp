@@ -62,10 +62,10 @@ void UpdateStudentResult(Semester* Semester_head)
                 cout << left << setw(15) << Student_head->HeadOfMark->TotalMark;
                 cout << left << setw(15) << Student_head->HeadOfMark->OtherMark;
                 cout << endl;
-
-
+                cout<<"Press any key to continue.\n";
+                getch();
                 int choice = MenuYN("Do you want to update?");
-                if (choice == 1)
+                if (choice == 2)
                     return;
 
                 cout << "Midterm Mark: ";

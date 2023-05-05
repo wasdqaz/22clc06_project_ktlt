@@ -125,7 +125,7 @@
 //                 DeleteCourse(Semester_head->CourseList);
 //                 break;
 //             case 11:
-//                 viewClass(Year_head);
+//                 viewClass(Year_head,curYear);
 //                 break;
 //             case 12:
 //                 viewStudentClass(Year_head);
@@ -218,7 +218,7 @@
 //                 break;
 //         }
 //     }
-//     deleteAllLists(Year_head, Student_head, Staff_head);
+//     deleteAllLists(Year_head, Student_head ,Staff_head, Staff_info_head);
 //     //delete User;
 //     return 0;
 // }

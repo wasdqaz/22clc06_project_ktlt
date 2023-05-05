@@ -7,7 +7,7 @@ bool checkPassword(string a)
     return true;
 }
 void changePassword(Account *a)
-{
+{   
     string tmp;
     cout << "Enter old password: ";
     cin.ignore();

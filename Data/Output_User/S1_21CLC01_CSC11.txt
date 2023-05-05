@@ -1,0 +1,6 @@
+INTRODUCTION TO PROGRAMMING
+CSC11
+No,ID Student,Name
+1,21127016,Nguyen Thi Ngoc Anh
+2,21127029,Le Nguyen Gia Bao
+3,21127036,Le Quoc Binh

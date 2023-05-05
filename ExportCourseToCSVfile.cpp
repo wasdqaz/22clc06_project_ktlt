@@ -97,7 +97,8 @@ void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
     filePath = Data + "/" + User + "/" + filename;
 
     
-
+    
+    
     ofstream file;
     file.open(filePath.c_str());
     if (!file.is_open())

@@ -131,7 +131,11 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
     string classnameOfcourse;
     getline(in,classnameOfcourse);
 
-
+    if(!SemesterCur)
+    {
+        cout<<"Not found course\n";
+        return;
+    }
     Course* CourseCur = SemesterCur->CourseList;
     while(CourseCur )
     {

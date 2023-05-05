@@ -13,7 +13,7 @@ string ImportScoreboardFromFileUser(SchoolYear *headOfyear)
     string parentFolderName = "Data";    // replace with the name of the parent folder
     string subFolderName = "Input_User"; // replace with the name of the subfolder containing the file
 
-string filePath = "Data/Input_User/" + fileName;
+    string filePath = "Data/Input_User/" + fileName;
 
     
 
