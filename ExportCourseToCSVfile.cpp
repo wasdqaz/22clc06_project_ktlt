@@ -89,7 +89,7 @@ void ExportCourseToCSVFile(SchoolYear *head, string parentFolder)
 
     Student *headOfStudent = cur->CourseStudent;
     string Data = "Data";
-    string User = "User_Output";
+    string User = "Output_User";
     string filePath;
 
     // Search for the parent folder
