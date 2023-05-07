@@ -94,7 +94,11 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
 {
     ifstream in;
     in.open(input);
-    if(!in.is_open()) return;
+    if(!in.is_open()) {
+        cout<<"Can not find the pathfile: "<<input<<endl;
+        
+        return;
+    }
 
     // Access to ShoolYear contain semester (This semester contain course current)
     SchoolYear* cur = headOfSchoolyear;
