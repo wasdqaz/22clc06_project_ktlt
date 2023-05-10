@@ -48,8 +48,8 @@
 //     while (curYear->NextYear != nullptr)
 //         curYear = curYear->NextYear;
 //     Semester_head = defaultSemester(curYear);
-//     //CalGpa(Year_head->ClassHead);
-//     //calGPASemester(Year_head->ClassHead, Semester_head);
+//     CalGpa(Year_head->ClassHead);
+//     calGPASemester(Year_head->ClassHead, Semester_head);
 //     //---------------------------------------------------------------------------------
 //     while (true)
 //     {
