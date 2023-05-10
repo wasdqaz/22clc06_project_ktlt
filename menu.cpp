@@ -152,7 +152,7 @@ int main()
                 UpdateStudentResult(Semester_head);
                 break;
             case 18:
-                viewClassScoreboard(Year_head->ClassHead, Semester_head, curYear);
+                viewClassScoreboard(Year_head, Semester_head, curYear);
                 break;
             case 19:
                 viewCourseScoreboard(Semester_head->CourseList);
