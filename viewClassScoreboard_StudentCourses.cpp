@@ -1,9 +1,9 @@
 #include "functionOfDuy.h"
 #include "header.h"
 
-void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearHead)
+void viewClassScoreboard(SchoolYear *pHead, Semester *SemesterHead, SchoolYear *YearHead)
 {
-    if (!pHead || !SemesterHead) {
+    if (!pHead->ClassHead || !SemesterHead) {
         cout << "No class found!!!" << endl;
         return;
     }
@@ -11,9 +11,17 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearH
     cout << "Enter the class name to view scoreboard (Ex: 22CLC01): ";
     cin >> ClassName;
 
-    Class *pTemp = pHead;
-    while (pTemp != nullptr && pTemp->Name != ClassName)
-        pTemp = pTemp->Next;
+    SchoolYear *tmp = pHead;
+    Class *pTemp;
+    while (tmp) {
+        pTemp = tmp->ClassHead;
+        while (pTemp != nullptr && pTemp->Name != ClassName)
+            pTemp = pTemp->Next;
+        if (pTemp && pTemp->Name == ClassName)
+            break;
+        tmp = tmp->NextYear;
+    }
+
     if (pTemp == nullptr)
     {
         cout << "No class found!!!" << endl;
@@ -23,9 +31,11 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearH
     string Smt = SemesterHead->NameSemester.substr(9, 1);
     string curYear = YearHead->BeginYear;
 
+    bool haveClass = false;
     Student *StudentTemp = pTemp->StudentHead;
     while (StudentTemp != nullptr)
     {
+        haveClass = false;
         Mark *MarkTemp = StudentTemp->HeadOfMark;
 
         cout << setw(2) << left << "|" << setw(4) << left << "No";
@@ -36,8 +46,10 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearH
             string tmp = MarkTemp->semester.substr(1, 1);
             string year = MarkTemp->year.substr(0, 2);
             if (tmp == Smt && year == curYear)
-                if (MarkTemp->FinalMark != -1)
+                if (MarkTemp->FinalMark != -1) {
                     cout << setw(2) << left << "|" << setw(10) << left << MarkTemp->Id;
+                    haveClass = true;
+                }
             MarkTemp = MarkTemp->Next;
         }
 
@@ -59,8 +71,14 @@ void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearH
             MarkTemp = MarkTemp->Next;
         }
 
-        cout << setw(2) << left << "|" << setw(20) << left << StudentTemp->SemesterGpa;
-        cout << setw(2) << left << "|" << setw(15) << left << StudentTemp->Gpa << "|" << endl;
+        if (haveClass) {
+            cout << setw(2) << left << "|" << setw(20) << left << StudentTemp->SemesterGpa;
+            cout << setw(2) << left << "|" << setw(15) << left << StudentTemp->Gpa << "|" << endl;
+        }
+        else {
+            cout << setw(2) << left << "|" << setw(20) << left << "0";
+            cout << setw(2) << left << "|" << setw(15) << left << StudentTemp->Gpa << "|" << endl;
+        }
         cout << endl;
 
         StudentTemp = StudentTemp->Next;

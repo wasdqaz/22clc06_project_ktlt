@@ -1,7 +1,7 @@
 #include "functionOfDuy.h"
 #include "header.h"
 
-void viewStudentsInCourse(Course *pHead)
+void viewStudentsInCourse(SchoolYear *pHead)
 {
     if (!pHead) {
         cout << "No course found" << endl;
@@ -13,14 +13,38 @@ void viewStudentsInCourse(Course *pHead)
     cout << "Enter the class name of the course: ";
     cin >> ClassName;
 
-    Course *temp = pHead;
-    while (temp != nullptr && (temp->CourseId != CourseId || temp->ClassName != ClassName))
-        temp = temp->Next;
+    Course *temp = nullptr;
+    while (pHead) {
+        if (pHead->S1)
+            temp = pHead->S1->CourseList;
+        while (temp != nullptr && (temp->CourseId != CourseId || temp->ClassName != ClassName))
+            temp = temp->Next;
+        if (temp && temp->CourseId == CourseId && temp->ClassName == ClassName)
+            break;
+
+        if (pHead->S2)
+            temp = pHead->S2->CourseList;
+        while (temp != nullptr && (temp->CourseId != CourseId || temp->ClassName != ClassName))
+            temp = temp->Next;
+        if (temp && temp->CourseId == CourseId && temp->ClassName == ClassName)
+            break;
+
+        if (pHead->S3)
+            temp = pHead->S3->CourseList;
+        while (temp != nullptr && (temp->CourseId != CourseId || temp->ClassName != ClassName))
+            temp = temp->Next;
+        if (temp && temp->CourseId == CourseId && temp->ClassName == ClassName)
+            break;
+
+        pHead = pHead->NextYear;
+    }
+
     if (temp == nullptr)
     {
         cout << "No course found!!!" << endl;
         return;
     }
+    
     Student *Temp = temp->CourseStudent;
     if (Temp == nullptr)
     {
