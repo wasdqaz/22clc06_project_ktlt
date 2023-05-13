@@ -13,10 +13,10 @@ void RmStudentFrCourse(Course *pHead);
 void UpdCourseInf(Course *pHead);
 Semester *defaultSemester(SchoolYear *pHead);
 void deleteAllLists(SchoolYear *&pHead, Account *&pHeadAccStudent, Account *&pHeadAccStaff ,Staff *&pHeadStaff);
-void viewStudentsInCourse(Course *pHead);
+void viewStudentsInCourse(SchoolYear *pHead);
 void viewCourseScoreboard(Course *pHead);
 void calGPASemester(Class *pHeadClass, Semester *pHeadSemester);
-void viewClassScoreboard(Class *pHead, Semester *SemesterHead, SchoolYear *YearHead);
+void viewClassScoreboard(SchoolYear *pHead, Semester *SemesterHead, SchoolYear *YearHead);
 void viewListOfCourses_Student(Semester *Semester_head, Account *Student_head);
 void readStaffInfo(Staff *&pHead);
 

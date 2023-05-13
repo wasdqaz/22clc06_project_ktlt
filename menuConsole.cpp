@@ -103,7 +103,7 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     case 7:
         if (Semester_head)
-            viewStudentsInCourse(Semester_head->CourseList);
+            viewStudentsInCourse(Year_head);
         else
             cout << "Please create semester and course.\n";
         break;
@@ -193,7 +193,7 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
         break;
     case 10:
         if (Semester_head)
-            viewStudentsInCourse(Semester_head->CourseList);
+            viewStudentsInCourse(Year_head);
         else
             cout << "Please create semester and course.\n";
         break;
@@ -250,7 +250,7 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     case 4:
         if (Semester_head)
-            viewClassScoreboard(Year_head->ClassHead, Semester_head, curYear);
+            viewClassScoreboard(Year_head, Semester_head, curYear);
         else
             cout << "Please create semester and course.\n";
         break;
@@ -268,7 +268,7 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     case 8:
         if (Semester_head)
-            viewStudentsInCourse(Semester_head->CourseList);
+            viewStudentsInCourse(Year_head);
         else
             cout << "Please create semester and course.\n";
         break;
