@@ -10,6 +10,10 @@ void viewClass(SchoolYear *YearHead, SchoolYear *curYear)
     string year;
     cout << "School Year (example 21-22): \n";
     cin >> year;
+    if(year.length()!=5){
+        cout<<"Wrong input.\n";
+        return;
+    }
     string curYear_classBegin = year.substr(0,2);
     int Begin_year = stoi(curYear_classBegin);
     string curYear_classEnd = year.substr(3,2);

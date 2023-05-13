@@ -49,8 +49,8 @@ void ViewScoreBoardStudent(SchoolYear *head, Account *User)
                 cout << "Semester 1: S1\n";
                 cout << "Semester 2: S2\n";
                 cout << "Semester 3: S3\n";
-                cout << "Please enter S1 or S2 or S3 to choose semester.\n";
                 cout << "0. Exit\n";
+                cout << "Please enter S1 or S2 or S3 to choose semester.\n";
                 cin >> choice;
                 if (choice == "0")
                     return;
