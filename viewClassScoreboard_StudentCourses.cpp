@@ -77,7 +77,7 @@ void viewClassScoreboard(SchoolYear *pHead, Semester *SemesterHead, SchoolYear *
         }
         else {
             cout << setw(2) << left << "|" << setw(20) << left << "0";
-            cout << setw(2) << left << "|" << setw(15) << left << "0" << "|" << endl;
+            cout << setw(2) << left << "|" << setw(15) << left << StudentTemp->Gpa << "|" << endl;
         }
         cout << endl;
 
