@@ -5,7 +5,7 @@ void SaveScorboardToFolderSchoolyear(string input)
     in.open(input);
     if(!in.is_open())
     {
-        in.close();
+        
         return;
         
     }
