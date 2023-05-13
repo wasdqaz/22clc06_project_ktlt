@@ -14,10 +14,12 @@ void SaveChangePassword (Account* head)
     {
         out<<head->username<<endl;
         out<<head->Password<<endl;
+        if(head->Role == 2) out<<head->Class<<endl;
         head = head->next;
     }
     out<<head->username<<endl;
-    out<<head->Password;
+    out<<head->Password<<endl;
+    if(head->Role ==2) out<<head->Class;
     out.close();
 
 }
