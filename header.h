@@ -157,6 +157,6 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
 int LoginConsole();
 int MenuYNChangePass(string pass);
 int MenuYN(string comment);
-
+string MenuProfile();
 #endif
 
