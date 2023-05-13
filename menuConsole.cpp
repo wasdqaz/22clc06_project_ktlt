@@ -4,7 +4,7 @@
 
 const int MAX_LIST[] = {11, 14, 12};
 const int MAX_STUDENT_LIST = 5;
-int mode = 2;
+int mode = 0;
 
 // begining of schoolyear->0
 // beginning of semester->1
@@ -180,7 +180,7 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
             cout << "Please create semester and course.\n";
         break;
     case 7:
-        viewClass(Year_head,curYear);
+        viewClass(Year_head, curYear);
         break;
     case 8:
         viewStudentClass(Year_head);
@@ -255,7 +255,7 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
             cout << "Please create semester and course.\n";
         break;
     case 5:
-        viewClass(Year_head,curYear);
+        viewClass(Year_head, curYear);
         break;
     case 6:
         viewStudentClass(Year_head);
@@ -293,7 +293,7 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
     default:
         break;
     }
-    cout << "\nPress any key to exit!!!\n";
+    cout << "\nPress any key to exit!!!";
     getch();
 }
 void STAFF_MENU()
@@ -324,7 +324,8 @@ void STAFF_MENU()
         curYear = curYear->NextYear;
     Semester_head = defaultSemester(curYear);
     SchoolYear *tmp = Year_head;
-    while (tmp) {
+    while (tmp)
+    {
         CalGpa(tmp->ClassHead);
         if (tmp->S1)
             calGPASemester(tmp->ClassHead, tmp->S1);
@@ -398,7 +399,7 @@ void STAFF_MENU()
 
         if (flag == -1)
         {
-            deleteAllLists(Year_head, Student_head, Staff_head,Staff_info_head);
+            deleteAllLists(Year_head, Student_head, Staff_head, Staff_info_head);
             return;
             break;
         }
@@ -435,7 +436,8 @@ void STUDENT_MENU()
             curYear = curYear->NextYear;
         Semester_head = defaultSemester(curYear);
         SchoolYear *tmp = Year_head;
-        while (tmp) {
+        while (tmp)
+        {
             CalGpa(tmp->ClassHead);
             if (tmp->S1)
                 calGPASemester(tmp->ClassHead, tmp->S1);
@@ -520,7 +522,7 @@ void STUDENT_MENU()
                             break;
                         }
 
-                        cout << "\nPress any key to exit!!!\n";
+                        cout << "\nPress any key to exit!!!";
                         getch();
                         break;
                     }
@@ -589,6 +591,78 @@ int LoginConsole()
                         return 0;
                         break;
 
+                    default:
+                        break;
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
+string Profile[] = {
+    "Semester 1: S1",
+    "Semester 2: S2",
+    "Semester 3: S3",
+    "Exit"};
+const int FrofileMax=4;
+int MenuProfile(){
+    int pointer = 0;
+    while (true)
+    {
+        system("cls");
+        cout << "Please choose semester.\n";
+        for (int i = 0; i < FrofileMax; i++)
+        {
+            if (pointer == i)
+            {
+                TextColor(1);
+                cout << ">> " << Profile[i] << " <<" << endl;
+                TextColor(7);
+            }
+            else
+                cout << "[+]" << Profile[i] << endl;
+        }
+        while (true)
+        {
+            if (kbhit())
+            {
+                char key = getch();
+                if (key == 80)
+                {
+                    if (pointer < FrofileMax - 1)
+                        ++pointer;
+                    else
+                        pointer = 0;
+                    break;
+                }
+                if (key == 72)
+                {
+                    if (pointer > 0)
+                        --pointer;
+                    else
+                        pointer = FrofileMax - 1;
+                    break;
+                }
+                if (key == 13)
+                {
+                    switch (pointer)
+                    {
+                    case 0:
+                        
+                        break;
+                    case 1:
+                        
+                        break;
+                    case 2:
+                        
+                        break;
+                    case 3:
+
+                        break;
                     default:
                         break;
                     }
