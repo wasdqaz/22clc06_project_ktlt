@@ -17,9 +17,12 @@ void SaveChangePassword (Account* head)
         if(head->Role == 2) out<<head->Class<<endl;
         head = head->next;
     }
+    cout<<"Hi"<<head->username<<" "<<head->Password<<endl;
     out<<head->username<<endl;
-    out<<head->Password<<endl;
-    if(head->Role ==2) out<<head->Class;
+    out<<head->Password;
+    
+    if(head->Role ==2) out<<endl<<head->Class;
+    
     out.close();
 
 }
