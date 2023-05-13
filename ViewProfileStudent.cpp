@@ -15,24 +15,24 @@ bool FindClass(Class *&head, string ClassName)
     }
     return false;
 }
-void PrintMark(Mark *head, string S_name)
+void PrintMark(Mark *head, string S_name, string year)
 {
     while (head)
     {
-        if (head->semester == S_name)
-        {   
+        if (head->semester == S_name && head->year >= year)
+        {
             cout << setw(2) << left << "|" << left << setw(40) << head->NameOfCourse;
             cout << setw(2) << left << "|" << left << setw(11) << head->Id;
             cout << setw(2) << left << "|" << left << setw(13) << head->MidtermMark;
             cout << setw(2) << left << "|" << left << setw(11) << head->FinalMark;
             cout << setw(2) << left << "|" << left << setw(11) << head->TotalMark;
             cout << setw(2) << left << "|" << left << setw(11) << head->OtherMark << "|";
-            cout<<endl;
+            cout << endl;
         }
-        head=head->Next;
+        head = head->Next;
     }
 }
-void ViewScoreBoardStudent(SchoolYear *head, Account *User)
+void ViewScoreBoardStudent(SchoolYear *head, SchoolYear *CurYear, Account *User)
 {
     Class *Cur_Class = head->ClassHead;
     if (FindClass(Cur_Class, User->Class))
@@ -45,13 +45,8 @@ void ViewScoreBoardStudent(SchoolYear *head, Account *User)
             cout << "Name: " << Cur_Student->Name << endl;
             while (true)
             {
-                string choice;
-                cout << "Semester 1: S1\n";
-                cout << "Semester 2: S2\n";
-                cout << "Semester 3: S3\n";
-                cout << "0. Exit\n";
-                cout << "Please enter S1 or S2 or S3 to choose semester.\n";
-                cin >> choice;
+                string choice = MenuProfile();
+
                 if (choice == "0")
                     return;
                 if (choice == "S1" || choice == "S2" || choice == "S3")
@@ -62,10 +57,11 @@ void ViewScoreBoardStudent(SchoolYear *head, Account *User)
                          << setw(2) << left << "|" << left << setw(13) << "Midterm Mark"
                          << setw(2) << left << "|" << left << setw(11) << "Final Mark"
                          << setw(2) << left << "|" << left << setw(11) << "Total mark"
-                         << setw(2) << left << "|" << left << setw(11) << "Other Mark" << "|";
+                         << setw(2) << left << "|" << left << setw(11) << "Other Mark"
+                         << "|";
                     cout << endl;
                     cout << "+-----------------------------------------+------------+--------------+------------+------------+------------+" << endl;
-                    PrintMark(Cur_Student->HeadOfMark, choice);
+                    PrintMark(Cur_Student->HeadOfMark, choice, CurYear->BeginYear);
                     cout << "+-----------------------------------------+------------+--------------+------------+------------+------------+" << endl;
                     return;
                 }

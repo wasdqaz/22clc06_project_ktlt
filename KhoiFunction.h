@@ -17,6 +17,7 @@ void UpdateStudentResult(Semester* Semester_head);
 bool FindCourse(Course *head, string name, Course *&tmp);
 bool FindStudent(Student *&head, string Student_id); 
 
-void ViewScoreBoardStudent(SchoolYear *head, Account *User);
+void ViewScoreBoardStudent(SchoolYear *head, SchoolYear *CurYear, Account *User);
 bool FindClass(Class *&head, string ClassName);
+
 #endif
