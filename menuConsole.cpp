@@ -498,7 +498,7 @@ void STUDENT_MENU()
                             viewListOfCourses_Student(Semester_head, Student_head);
                             break;
                         case 1:
-                            ViewScoreBoardStudent(Year_head, User);
+                            ViewScoreBoardStudent(Year_head, curYear, User);
                             break;
                         case 2:
                         {
@@ -604,12 +604,12 @@ int LoginConsole()
 }
 
 string Profile[] = {
-    "Semester 1: S1",
-    "Semester 2: S2",
-    "Semester 3: S3",
-    "Exit"};
+    "Semester 1.",
+    "Semester 2.",
+    "Semester 3.",
+    "Exit."};
 const int FrofileMax=4;
-int MenuProfile(){
+string MenuProfile(){
     int pointer = 0;
     while (true)
     {
@@ -652,16 +652,16 @@ int MenuProfile(){
                     switch (pointer)
                     {
                     case 0:
-                        
+                        return "S1";
                         break;
                     case 1:
-                        
+                        return "S2";
                         break;
                     case 2:
-                        
+                        return "S3";
                         break;
                     case 3:
-
+                        return "0";
                         break;
                     default:
                         break;
