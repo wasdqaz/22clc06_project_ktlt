@@ -4,7 +4,7 @@
 
 const int MAX_LIST[] = {11, 14, 12};
 const int MAX_STUDENT_LIST = 5;
-int mode = 0;
+int mode = 1;
 
 // begining of schoolyear->0
 // beginning of semester->1
@@ -132,7 +132,8 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
 }
 void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
                        Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
-{
+{   
+    
     switch (choice)
     {
     case 0:
@@ -223,7 +224,7 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
 }
 void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
                    Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
-{
+{   
     switch (choice)
     {
     case 0:
@@ -381,11 +382,11 @@ void STAFF_MENU()
                 if (key == 13)
                 {
                     if (mode == 0)
-                    {
+                    {   
                         BeginningYear(flag, pointer, Year_head, curYear, Student_head, Staff_info_head, User, Semester_head, Staff_head);
                     }
                     if (mode == 1)
-                    {
+                    {   
                         BeginningSemester(flag, pointer, Year_head, curYear, Student_head, Staff_info_head, User, Semester_head, Staff_head);
                     }
                     if (mode == 2)

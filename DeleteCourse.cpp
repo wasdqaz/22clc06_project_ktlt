@@ -2,7 +2,8 @@
 #include "KhoiFunction.h"
 
 void DeleteStudentInCourse(Student *&head)
-{
+{   
+    if(head==nullptr)return;
     Student *cur = head;
     while (!head)
     {

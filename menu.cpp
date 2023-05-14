@@ -129,7 +129,7 @@
 //                 viewStudentClass(Year_head);
 //                 break;
 //             case 13:
-//                 ViewListOfCourse(Semester_head->CourseList);
+//                 //ViewListOfCourse(Semester_head->CourseList);
 //                 break;
 //             case 14:
 //                 viewStudentsInCourse(Year_head);
@@ -147,7 +147,7 @@
 //             }
 
 //             case 17:
-//                 // UpdateStudentResult(Semester_head->CourseList);
+//                  //UpdateStudentResult(Semester_head->CourseList);
 //                 break;
 //             case 18:
 //                 viewClassScoreboard(Year_head, Semester_head, curYear);
