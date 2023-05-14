@@ -12,7 +12,7 @@
 //     Account *Student_head = nullptr;
 //     Account *Staff_head = nullptr;
 //     Account *User;
-//     Semester *curSmeter = nullptr, *Semester_head = nullptr;
+//     Semester *curSmeter = nullptr, *Semester_head;
 //     SchoolYear *Year_head = nullptr;
 //     Staff *Staff_info_head = nullptr;
 //     int Role;
@@ -48,8 +48,8 @@
 //     while (curYear->NextYear != nullptr)
 //         curYear = curYear->NextYear;
 //     Semester_head = defaultSemester(curYear);
-//     //CalGpa(Year_head->ClassHead);
-//     //calGPASemester(Year_head->ClassHead, Semester_head);
+//     CalGpa(Year_head->ClassHead);
+//     calGPASemester(Year_head->ClassHead, Semester_head);
 //     //---------------------------------------------------------------------------------
 //     while (true)
 //     {
@@ -78,7 +78,7 @@
 //             cout << "|18. View the scoreboard of a class.                                 |\n";
 //             cout << "|19. View the scoreboard of a course.                                |\n";
 //             cout << "|20. View profile.                                                   |\n";
-//             cout << "|21. Upload file student for class                                    |\n";
+//             cout << "|21. Upload file student in class                                    |\n";
 //             cout << "|22. Logout.                                                         |\n";
 //             cout << "------------------------------END-------------------------------------\n";
 
@@ -90,8 +90,6 @@
 //             case 0:
 //             {
 //                 changePassword(User);
-//                 if(User->Role == 1) SaveChangePassword(Staff_head);
-//                 else SaveChangePassword(Student_head);
 //                 break;
 //             }
 //             case 1:
@@ -125,7 +123,7 @@
 //                 DeleteCourse(Semester_head->CourseList);
 //                 break;
 //             case 11:
-//                 viewClass(Year_head,curYear);
+//                 // viewClass(Year_head);
 //                 break;
 //             case 12:
 //                 viewStudentClass(Year_head);
@@ -134,25 +132,25 @@
 //                 ViewListOfCourse(Semester_head->CourseList);
 //                 break;
 //             case 14:
-//                 // viewStudentsInCourse(Semester_head->CourseList);
+//                 viewStudentsInCourse(Year_head);
 //                 break;
 //             case 15:
 //                 ExportCourseToCSVFile(Year_head, "");
 
-// //                 break;
-// //             case 16:
+//                 break;
+//             case 16:
 
-// //             {
-// //                 string filepath = ImportScoreboardFromFileUser(Year_head);
-// //                 SaveScorboardToFolderSchoolyear(filepath);
-// //                 break;
-// //             }
+//             {
+//                 string filepath = ImportScoreboardFromFileUser(Year_head);
+//                 SaveScorboardToFolderSchoolyear(filepath);
+//                 break;
+//             }
 
 //             case 17:
-//                 UpdateStudentResult(Semester_head);
+//                 // UpdateStudentResult(Semester_head->CourseList);
 //                 break;
 //             case 18:
-//                 // viewClassScoreboard(Year_head->ClassHead, Semester_head, curYear);
+//                 viewClassScoreboard(Year_head, Semester_head, curYear);
 //                 break;
 //             case 19:
 //                 viewCourseScoreboard(Semester_head->CourseList);
@@ -193,17 +191,11 @@
 //                 viewListOfCourses_Student(Semester_head, Student_head);
 //                 break;
 //             case 2:
-//                 ViewScoreBoardStudent(Year_head, User);
+//                 //ViewScoreBoardStudent(Year_head, User);
 //                 break;
 //             case 3:
-//             {
 //                 changePassword(User);
-//                     if(User->Role == 1) SaveChangePassword(Staff_head);
-//                     else SaveChangePassword(Student_head);
 //                 break;
-
-//             }
-                
 //             case 4:
 //                 PrintProfile_Student(User, Year_head);
 //                 break;
@@ -218,7 +210,7 @@
 //                 break;
 //         }
 //     }
-//     deleteAllLists(Year_head, Student_head ,Staff_head, Staff_info_head);
+    
 //     //delete User;
 //     return 0;
 // }
