@@ -12,7 +12,7 @@
 //     Account *Student_head = nullptr;
 //     Account *Staff_head = nullptr;
 //     Account *User;
-//     Semester *curSmeter = nullptr, *Semester_head;
+//     Semester *curSmeter = nullptr, *Semester_head = nullptr;
 //     SchoolYear *Year_head = nullptr;
 //     Staff *Staff_info_head = nullptr;
 //     int Role;
@@ -78,7 +78,7 @@
 //             cout << "|18. View the scoreboard of a class.                                 |\n";
 //             cout << "|19. View the scoreboard of a course.                                |\n";
 //             cout << "|20. View profile.                                                   |\n";
-//             cout << "|21. Upload file student in class                                    |\n";
+//             cout << "|21. Upload file student for class                                    |\n";
 //             cout << "|22. Logout.                                                         |\n";
 //             cout << "------------------------------END-------------------------------------\n";
 
@@ -90,6 +90,8 @@
 //             case 0:
 //             {
 //                 changePassword(User);
+//                 if(User->Role == 1) SaveChangePassword(Staff_head);
+//                 else SaveChangePassword(Student_head);
 //                 break;
 //             }
 //             case 1:
@@ -123,7 +125,7 @@
 //                 DeleteCourse(Semester_head->CourseList);
 //                 break;
 //             case 11:
-//                 // viewClass(Year_head);
+//                 viewClass(Year_head,curYear);
 //                 break;
 //             case 12:
 //                 viewStudentClass(Year_head);
@@ -147,7 +149,7 @@
 //             }
 
 //             case 17:
-//                 // UpdateStudentResult(Semester_head->CourseList);
+//                 UpdateStudentResult(Semester_head);
 //                 break;
 //             case 18:
 //                 viewClassScoreboard(Year_head, Semester_head, curYear);
@@ -194,8 +196,14 @@
 //                 //ViewScoreBoardStudent(Year_head, User);
 //                 break;
 //             case 3:
+//             {
 //                 changePassword(User);
+//                     if(User->Role == 1) SaveChangePassword(Staff_head);
+//                     else SaveChangePassword(Student_head);
 //                 break;
+
+//             }
+                
 //             case 4:
 //                 PrintProfile_Student(User, Year_head);
 //                 break;
@@ -210,7 +218,7 @@
 //                 break;
 //         }
 //     }
-    
+//     deleteAllLists(Year_head, Student_head ,Staff_head, Staff_info_head);
 //     //delete User;
 //     return 0;
 // }
