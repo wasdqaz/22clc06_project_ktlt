@@ -48,8 +48,8 @@
 //     while (curYear->NextYear != nullptr)
 //         curYear = curYear->NextYear;
 //     Semester_head = defaultSemester(curYear);
-//     //CalGpa(Year_head->ClassHead);
-//     //calGPASemester(Year_head->ClassHead, Semester_head);
+//     CalGpa(Year_head->ClassHead);
+//     calGPASemester(Year_head->ClassHead, Semester_head);
 //     //---------------------------------------------------------------------------------
 //     while (true)
 //     {
@@ -132,7 +132,7 @@
 //                 ViewListOfCourse(Semester_head->CourseList);
 //                 break;
 //             case 14:
-//                 // viewStudentsInCourse(Semester_head->CourseList);
+//                 viewStudentsInCourse(Year_head);
 //                 break;
 //             case 15:
 //                 ExportCourseToCSVFile(Year_head, "");
@@ -150,7 +150,7 @@
 //                 // UpdateStudentResult(Semester_head->CourseList);
 //                 break;
 //             case 18:
-//                 // viewClassScoreboard(Year_head->ClassHead, Semester_head, curYear);
+//                 viewClassScoreboard(Year_head, Semester_head, curYear);
 //                 break;
 //             case 19:
 //                 viewCourseScoreboard(Semester_head->CourseList);
@@ -191,7 +191,7 @@
 //                 viewListOfCourses_Student(Semester_head, Student_head);
 //                 break;
 //             case 2:
-//                 ViewScoreBoardStudent(Year_head, User);
+//                 //ViewScoreBoardStudent(Year_head, User);
 //                 break;
 //             case 3:
 //                 changePassword(User);

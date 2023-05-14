@@ -10,7 +10,7 @@ void InputStudent(Student *&StuHead, string input)
     string line;//subline
     getline(ifs,line);
 
-    Student *cur = nullptr;
+    Student *cur = StuHead;
     while (!ifs.eof()) /*  */
     {
         string Info = "";
