@@ -4,7 +4,7 @@
 
 const int MAX_LIST[] = {11, 14, 12};
 const int MAX_STUDENT_LIST = 5;
-int mode = 1;
+int mode = 0;
 
 // begining of schoolyear->0
 // beginning of semester->1
@@ -97,7 +97,7 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     case 6:
         if (Semester_head)
-            ViewListOfCourse(Semester_head->CourseList);
+            ViewListOfCourse(Semester_head->CourseList,curYear->BeginYear);
         else
             cout << "Please create semester and course.\n";
         break;
@@ -187,7 +187,7 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
         break;
     case 9:
         if (Semester_head)
-            ViewListOfCourse(Semester_head->CourseList);
+            ViewListOfCourse(Semester_head->CourseList, curYear->BeginYear);
         else
             cout << "Please create semester and course.\n";
         break;
@@ -262,7 +262,7 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     case 7:
         if (Semester_head)
-            ViewListOfCourse(Semester_head->CourseList);
+            ViewListOfCourse(Semester_head->CourseList, curYear->BeginYear);
         else
             cout << "Please create semester and course.\n";
         break;

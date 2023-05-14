@@ -7,7 +7,7 @@ void changePassword(Account &a);
 bool checkPassword(string a);
 void CreateSchoolYears(SchoolYear Year);
 
-void ViewListOfCourse(Course *head);
+void ViewListOfCourse(Course *head, string year);
 void AddStudentToCourse(Course *CourseHead);
 void DeleteCourse(Course *&head);
 void DeleteStudentInCourse(Student *&head);
