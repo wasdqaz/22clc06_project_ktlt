@@ -149,7 +149,7 @@
 //             }
 
 //             case 17:
-//                 // UpdateStudentResult(Semester_head->CourseList);
+//                 UpdateStudentResult(Semester_head);
 //                 break;
 //             case 18:
 //                 viewClassScoreboard(Year_head, Semester_head, curYear);

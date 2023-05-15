@@ -151,14 +151,18 @@ void CopyFile_Course(string fileCSV, string fileCourse)
 
 void InputCSV_Course(Course *curCourse)
 {
-    string CourseID;
-    cout << "Please enter the course ID: ";
-    cin >> CourseID;
-    string Class_Name;
-    cout << "Pleasse enter the class name of course: ";
-    cin >> Class_Name;
-    while (curCourse->CourseId != CourseID && curCourse->ClassName != Class_Name)
-        curCourse = curCourse->Next;
+        cin.ignore();
+        string CourseID;
+        cout << "Please enter the course ID: ";
+        getline(cin, CourseID);
+        string Class_Name;
+        cout << "Please enter the class name of course: ";
+        getline(cin, Class_Name);
+        cout<<CourseID;
+        cout<<Class_Name;
+        while (curCourse && curCourse->CourseId != CourseID && curCourse->ClassName != Class_Name){
+            curCourse = curCourse->Next;
+        }
     string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/";
     string pathCourse = pathSemester + curCourse->CourseName + "/";
     string nameSmter = nameSemester(curCourse->NameSemester);

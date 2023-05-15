@@ -13,10 +13,11 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
     }
     string CourseId, ClassName;
     cout << "Enter the ID of the course to remove student from: ";
-    cin.ignore();
-    getline(cin, CourseId);
+    cin>>CourseId;
+    //getline(cin, CourseId);
     cout << "Enter the class name of the course: ";
-    getline(cin, ClassName);
+    cin>>ClassName;
+    //getline(cin, ClassName);
 
     while (pHead != nullptr && (pHead->CourseId != CourseId || pHead->ClassName != ClassName))
         pHead = pHead->Next;
@@ -29,7 +30,8 @@ void RmStudentFrCourse(Course *pHead) // con tro cac course trong hoc ki hien ta
 
     string Id;
     cout << "Enter the ID of the student you want to remove: ";
-    getline(cin, Id);
+    cin>>Id;
+    //getline(cin, Id);
 
     int choice = MenuYN("Do you want to remove this student from course?");
     
@@ -165,5 +167,5 @@ void UpdCourseInf(Course *pHead) // con tro danh sach cac course
 
     // Save_InfoCourse(pHead);
     Save_StudentCourse_All(pHead);
-    cout << "Update successfully" << endl;
+    cout << "Update successfully";
 }

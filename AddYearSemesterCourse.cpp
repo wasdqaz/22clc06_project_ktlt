@@ -215,5 +215,5 @@ void AddCourse(Semester *pHeadSemester) // con tro hoc ki mac dinh
     pHeadCourse->Next->Year = pHeadSemester->Year;
     pHeadCourse->Next->NameSemester = pHeadSemester->NameSemester;
     Add_InfoCourse(pHeadCourse->Next);
-    cout << "Add course successfully" << endl;
+    //cout << "Add course successfully" << endl;
 }

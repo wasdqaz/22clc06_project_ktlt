@@ -44,7 +44,7 @@ void UpdateStudentResult(Semester* Semester_head)
         {
             cout << "Please enter student ID: ";
             cin >> Student_id;
-            Student *Student_head = head->CourseStudent;
+            Student *Student_head = cur_course->CourseStudent;
             if (FindStudent(Student_head, Student_id))
             {
                 cout << left << setw(15) << "ID"
@@ -64,6 +64,7 @@ void UpdateStudentResult(Semester* Semester_head)
                 cout << endl;
                 cout<<"Press any key to continue.\n";
                 getch();
+
                 int choice = MenuYN("Do you want to update?");
                 if (choice == 2)
                     return;

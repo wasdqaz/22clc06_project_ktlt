@@ -4,7 +4,7 @@
 
 const int MAX_LIST[] = {11, 14, 12};
 const int MAX_STUDENT_LIST = 5;
-int mode = 1;
+int mode = 2;
 
 // begining of schoolyear->0
 // beginning of semester->1
@@ -127,8 +127,9 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
     default:
         break;
     }
-    cout << "\nPress any key to exit!!!\n";
-    getch();
+    cout << "\nPress any key to exit!!!";
+    _getch();
+    //cin.ignore();
 }
 void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
                        Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
@@ -218,8 +219,9 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
     default:
         break;
     }
-    cout << "\nPress any key to exit!!!\n";
-    getch();
+    cout << "\nPress any key to exit!!!";
+    _getch();
+    // cin.ignore();
 }
 void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
                    Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
@@ -294,7 +296,8 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     }
     cout << "\nPress any key to exit!!!";
-    getch();
+    _getch();
+    //cin.ignore();
 }
 void STAFF_MENU()
 {

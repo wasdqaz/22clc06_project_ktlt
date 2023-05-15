@@ -1,10 +1,3 @@
-CSC10
-SOFT SKILL
-22CLC02
-Vo Hoang Quan
-S3
-WED
-3
 No,ID,Name,Class
 1,22127026,On Gia Bao,22CLC02
 2,22127043,Nguyen Tan Chau,22CLC02

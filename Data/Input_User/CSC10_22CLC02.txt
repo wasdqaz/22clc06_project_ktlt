@@ -1,10 +1,3 @@
-MTH01
-MATH
-22CLC02
-Vo Si Trong Long
-S2
-SAT
-3
 No,ID,Name,Class
 1,22127026,On Gia Bao,22CLC02
 2,22127043,Nguyen Tan Chau,22CLC02
