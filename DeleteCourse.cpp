@@ -51,16 +51,16 @@ bool checkCourse(Course *head, string Course_id, string Class_name, Course *&cur
 }
 
 void DeleteCourse(Course *&head)
-{
+{   
     string Course_id, Class_Name;
     while (true)
-    {
+    {   
         cout << "Please enter ID of course you want to delete: ";
-        getline(cin, Course_id); 
+        //getline(cin, Course_id); 
         cin>>Course_id;
         cout << "Please enter the class name of course: ";
-        getline(cin, Class_Name);
-        // cin>>Class_Name;
+        //getline(cin, Class_Name);
+        cin>>Class_Name;
         Course *cur = head;
 
         if (checkCourse(head, Course_id, Class_Name, cur))

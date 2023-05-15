@@ -151,13 +151,14 @@ void CopyFile_Course(string fileCSV, string fileCourse)
 
 void InputCSV_Course(Course *curCourse)
 {
-        cin.ignore();
         string CourseID;
         cout << "Please enter the course ID: ";
-        getline(cin, CourseID);
+        cin>>CourseID;
+        // getline(cin, CourseID);
         string Class_Name;
         cout << "Please enter the class name of course: ";
-        getline(cin, Class_Name);
+        cin>> Class_Name;
+        // getline(cin, Class_Name);
         cout<<CourseID;
         cout<<Class_Name;
         while (curCourse && curCourse->CourseId != CourseID && curCourse->ClassName != Class_Name){

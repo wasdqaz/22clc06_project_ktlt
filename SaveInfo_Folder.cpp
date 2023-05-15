@@ -25,5 +25,5 @@ void Add_InfoCourse(Course *newCourse)
     int create_folder = _mkdir(Course_Name.c_str());
     // if (create_folder == 0)
     Save_InfoCourse(newCourse);
-    cout << "Add course successfully" << endl;
+    cout << "Add course successfully";
 }

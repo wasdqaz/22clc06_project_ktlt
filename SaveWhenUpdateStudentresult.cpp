@@ -27,11 +27,12 @@ void SaveWhenUpdateStudentResult(Semester* cur, Course* Course_cur)
     out<<classname<<endl;
     out<<"No,ID,Name,Class,Midterm,Final,Other Mark,Total\n";
     Student* head = Course_cur->CourseStudent;
-    while(head)
+    while(head &&head->Next)
     {
         out<<head->No<<","<<head->Id<<","<<head->Name<<","<<head->Class<<","<<head->HeadOfMark->MidtermMark<<" "<<head->HeadOfMark->FinalMark<< " " <<head->HeadOfMark->OtherMark<<" "<<head->HeadOfMark->TotalMark<<endl;
         head = head->Next;
     }
+    out<<head->No<<","<<head->Id<<","<<head->Name<<","<<head->Class<<","<<head->HeadOfMark->MidtermMark<<" "<<head->HeadOfMark->FinalMark<< " " <<head->HeadOfMark->OtherMark<<" "<<head->HeadOfMark->TotalMark;
 
 
 
