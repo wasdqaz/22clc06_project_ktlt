@@ -133,7 +133,6 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
 void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
                        Staff *&Staff_info_head, Account *&User, Semester *&Semester_head, Account *&Staff_head)
 {   
-    
     switch (choice)
     {
     case 0:

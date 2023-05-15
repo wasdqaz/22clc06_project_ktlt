@@ -65,6 +65,7 @@ void DeleteCourse(Course *&head)
         if (checkCourse(head, Course_id, Class_Name, cur))
         {
 
+
             int choice = MenuYN("Do you want to delete course?");
             
             if (choice == 2)
