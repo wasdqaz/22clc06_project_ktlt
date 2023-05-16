@@ -47,7 +47,7 @@ void UpdateStudentResult(Semester* Semester_head)
             Student *Student_head = cur_course->CourseStudent;
             if (FindStudent(Student_head, Student_id))
             {
-                cout << "+--------------+-----------------------------+--------------+--------------+--------------+--------------+" << endl;
+                cout << "+---------------+------------------------------+---------------+---------------+---------------+---------------+" << endl;
                 cout << "|" << left << setw(15) << "ID"
                      << "|" << left << setw(30) << "Name"
                      << "|" << left << setw(15) << "Midterm Mark"
@@ -55,7 +55,7 @@ void UpdateStudentResult(Semester* Semester_head)
                      << "|" << left << setw(15) << "Total mark"
                      << "|" << left << setw(15) << "Other Mark" << "|";
                 cout << endl;
-                cout << "+--------------+-----------------------------+--------------+--------------+--------------+--------------+" << endl;
+                cout << "+---------------+------------------------------+---------------+---------------+---------------+---------------+" << endl;
 
                 cout << "|" << left << setw(15) << Student_head->Id;
                 cout << "|" << left << setw(30) << Student_head->Name;
@@ -64,7 +64,7 @@ void UpdateStudentResult(Semester* Semester_head)
                 cout << "|" << left << setw(15) << Student_head->HeadOfMark->TotalMark;
                 cout << "|" << left << setw(15) << Student_head->HeadOfMark->OtherMark << "|";
                 cout << endl;
-                cout << "+--------------+-----------------------------+--------------+--------------+--------------+--------------+" << endl;
+                cout << "+---------------+------------------------------+---------------+---------------+---------------+---------------+" << endl;
                 cout<<"Press any key to continue.\n";
                 getch();
 
