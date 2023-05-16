@@ -121,7 +121,7 @@ void UpdCourseInf(Course *pHead) // con tro danh sach cac course
     string ClassName;
     cout << "Class name: ";
     getline(cin, ClassName);
-    while (pHead != nullptr && pHead->CourseId != CourseId && pHead->ClassName != ClassName)
+    while (pHead != nullptr && (pHead->CourseId != CourseId || pHead->ClassName != ClassName))
         pHead = pHead->Next;
 
     if (pHead == nullptr)

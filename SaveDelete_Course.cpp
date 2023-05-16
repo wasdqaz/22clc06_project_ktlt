@@ -159,7 +159,7 @@ void InputCSV_Course(Course *curCourse)
         cout << "Please enter the class name of course: ";
         cin>> Class_Name;
         // getline(cin, Class_Name);
-        while (curCourse && curCourse->CourseId != CourseID && curCourse->ClassName != Class_Name){
+        while (curCourse && (curCourse->CourseId != CourseID || curCourse->ClassName != Class_Name)){
             curCourse = curCourse->Next;
         }
     string pathSemester = "Data/SchoolYear/" + curCourse->Year + "/" + curCourse->NameSemester + "/";
