@@ -106,7 +106,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
     //getline(in,year);
     getline(in, year);
     string beginYear = year.substr(0,2);
-
+    
     while(cur && cur->BeginYear != beginYear)
    {
     cur = cur->NextYear;
@@ -116,7 +116,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
    string semester;
    getline(in,semester);
    Semester* SemesterCur;
-
+    if (cur==nullptr)return;
    if(semester[1] == '1')
    SemesterCur = cur->S1;
    else if(semester[1] == '2')
