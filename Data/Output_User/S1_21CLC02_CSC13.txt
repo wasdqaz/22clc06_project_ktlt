@@ -1,0 +1,7 @@
+PROGRAMMING TECHNIQUES
+CSC13
+No,ID Student,Name
+1,21127016,Nguyen Thi Ngoc Anh
+2,21127036,Le Quoc Binh
+3,21127086,Nguyen Lam Anh Duy
+4,21127087,Nguyen Quang Duy

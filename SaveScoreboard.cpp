@@ -18,9 +18,9 @@ void SaveScorboardToFolderSchoolyear(string input)
     else semester  = "Semester03";
     string courseid;
     in >> courseid;
-    
+    in.ignore();
     string coursename;
-    in >> coursename;
+    getline(in,coursename);
 
     string classname;
     in >> classname;

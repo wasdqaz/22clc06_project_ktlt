@@ -47,21 +47,24 @@ void UpdateStudentResult(Semester* Semester_head)
             Student *Student_head = cur_course->CourseStudent;
             if (FindStudent(Student_head, Student_id))
             {
-                cout << left << setw(15) << "ID"
-                     << left << setw(30) << "Name"
-                     << left << setw(15) << "Midterm Mark"
-                     << left << setw(15) << "Final Mark"
-                     << left << setw(15) << "Total mark"
-                     << left << setw(15) << "Other Mark";
+                cout << "+--------------+-----------------------------+--------------+--------------+--------------+--------------+" << endl;
+                cout << "|" << left << setw(15) << "ID"
+                     << "|" << left << setw(30) << "Name"
+                     << "|" << left << setw(15) << "Midterm Mark"
+                     << "|" << left << setw(15) << "Final Mark"
+                     << "|" << left << setw(15) << "Total mark"
+                     << "|" << left << setw(15) << "Other Mark" << "|";
                 cout << endl;
+                cout << "+--------------+-----------------------------+--------------+--------------+--------------+--------------+" << endl;
 
-                cout << left << setw(15) << Student_head->Id;
-                cout << left << setw(30) << Student_head->Name;
-                cout << left << setw(15) << Student_head->HeadOfMark->MidtermMark;
-                cout << left << setw(15) << Student_head->HeadOfMark->FinalMark;
-                cout << left << setw(15) << Student_head->HeadOfMark->TotalMark;
-                cout << left << setw(15) << Student_head->HeadOfMark->OtherMark;
+                cout << "|" << left << setw(15) << Student_head->Id;
+                cout << "|" << left << setw(30) << Student_head->Name;
+                cout << "|" << left << setw(15) << Student_head->HeadOfMark->MidtermMark;
+                cout << "|" << left << setw(15) << Student_head->HeadOfMark->FinalMark;
+                cout << "|" << left << setw(15) << Student_head->HeadOfMark->TotalMark;
+                cout << "|" << left << setw(15) << Student_head->HeadOfMark->OtherMark << "|";
                 cout << endl;
+                cout << "+--------------+-----------------------------+--------------+--------------+--------------+--------------+" << endl;
                 cout<<"Press any key to continue.\n";
                 getch();
 

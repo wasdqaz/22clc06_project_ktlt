@@ -168,6 +168,7 @@ void AddCourse(Semester *pHeadSemester) // con tro hoc ki mac dinh
     cout << "Number of credits: ";
     cin >> NumberOfCredits;
 
+    cin.ignore();
     int choice = MenuYN("Do you want to add new course?");
 
     if (choice == 2)
@@ -182,7 +183,7 @@ void AddCourse(Semester *pHeadSemester) // con tro hoc ki mac dinh
         pHeadSemester->CourseList->CourseId = CourseId;
         pHeadSemester->CourseList->CourseName = CourseName;
         pHeadSemester->CourseList->DayOfWeek = DayOfWeek;
-        pHeadSemester->CourseList->MaxStudent = MaxStudent;
+        //pHeadSemester->CourseList->MaxStudent = MaxStudent;
         pHeadSemester->CourseList->Session = Session;
         pHeadSemester->CourseList->NumberOfCredits = NumberOfCredits;
         pHeadSemester->CourseList->TeacherName = TeacherName;
@@ -206,7 +207,7 @@ void AddCourse(Semester *pHeadSemester) // con tro hoc ki mac dinh
     pHeadCourse->Next->CourseId = CourseId;
     pHeadCourse->Next->CourseName = CourseName;
     pHeadCourse->Next->DayOfWeek = DayOfWeek;
-    pHeadCourse->Next->MaxStudent = MaxStudent;
+    //pHeadCourse->Next->MaxStudent = MaxStudent;
     pHeadCourse->Next->Session = Session;
     pHeadCourse->Next->NumberOfCredits = NumberOfCredits;
     pHeadCourse->Next->TeacherName = TeacherName;
@@ -214,6 +215,7 @@ void AddCourse(Semester *pHeadSemester) // con tro hoc ki mac dinh
     pHeadCourse->Next->CourseStudent = nullptr;
     pHeadCourse->Next->Year = pHeadSemester->Year;
     pHeadCourse->Next->NameSemester = pHeadSemester->NameSemester;
+    
     Add_InfoCourse(pHeadCourse->Next);
     //cout << "Add course successfully" << endl;
 }

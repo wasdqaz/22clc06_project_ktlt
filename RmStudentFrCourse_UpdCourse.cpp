@@ -134,12 +134,6 @@ void UpdCourseInf(Course *pHead) // con tro danh sach cac course
     int NumberOfCredits, MaxStudent;
 
     cout << "Please enter the new information " << endl;
-    /*cout << "Course ID: ";
-    cin >> CourseId;
-    cout << "Course name: ";
-    cin.ignore();
-    getline(cin, CourseName);
-    */
     cout << "Teacher name: ";
     getline(cin, TeacherName);
     cout << "Session (S1, S2, S3 or S4): ";
@@ -148,24 +142,17 @@ void UpdCourseInf(Course *pHead) // con tro danh sach cac course
     getline(cin, DayOfWeek);
     cout << "Number of credits: ";
     cin >> NumberOfCredits;
-    /*cout << "Maximum number of student in the course: ";
-    cin >> MaxStudent;*/
 
     int choice = MenuYN("Do you want to update?");
-    
     if (choice == 2)
         return;
 
-    /*pHead->ClassName = ClassName;
-    pHead->CourseId = CourseId;
-    pHead->CourseName = CourseName;*/
     pHead->TeacherName = TeacherName;
     pHead->Session = Session;
     pHead->DayOfWeek = DayOfWeek;
-    // pHead->MaxStudent = MaxStudent;
+
     pHead->NumberOfCredits = NumberOfCredits;
 
-    // Save_InfoCourse(pHead);
     Save_StudentCourse_All(pHead);
     cout << "Update successfully";
 }

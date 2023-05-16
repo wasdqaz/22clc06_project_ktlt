@@ -4,7 +4,7 @@
 
 const int MAX_LIST[] = {11, 14, 12};
 const int MAX_STUDENT_LIST = 5;
-int mode = 1;
+int mode = 0;
 
 // begining of schoolyear->0
 // beginning of semester->1
@@ -56,7 +56,7 @@ string menu[3][14] = {
     }};
 
 string StudentMenu[] = {
-    "View list of course.",
+    "View list of courses.",
     "View scoreboard.",
     "Change password.",
     "View profile.",
@@ -128,7 +128,7 @@ void BeginningYear(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     }
     cout << "\nPress any key to exit!!!";
-    _getch();
+    getch();
     //cin.ignore();
 }
 void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
@@ -222,7 +222,7 @@ void BeginningSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear
         break;
     }
     cout << "\nPress any key to exit!!!";
-    char tmpChar=_getch();
+    getch();
     // cin.ignore();
 }
 void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&curYear, Account *Student_head,
@@ -298,7 +298,7 @@ void EndOfSemester(int &flag, int choice, SchoolYear *&Year_head, SchoolYear *&c
         break;
     }
     cout << "\nPress any key to exit!!!";
-    _getch();
+    getch();
     //cin.ignore();
 }
 void STAFF_MENU()

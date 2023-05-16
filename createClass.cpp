@@ -5,9 +5,9 @@ void CreateClass(SchoolYear *YearHead)
 {
     string ClassName;
     cout << "Please enter class name: ";
-    cin.ignore();
-    getline(cin, ClassName);
-
+    // cin.ignore();
+    // getline(cin, ClassName);
+    cin>>ClassName;
     int choice=MenuYN("Do you want to add this class?");
     // cout << "Do you want to add this class?" << endl;
     // cout << "1. Yes \n2. No \n->Your choice: ";

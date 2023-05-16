@@ -1,7 +1,7 @@
 22-23
 S1
 CSC13
-Programming_Techniques
+PROGRAMMING TECHNIQUES
 21CLC02
 No,ID,Name,Class,Midterm,Final,Other Mark,Total
 1,21127016,Nguyen Thi Ngoc Anh,21CLC01, 9.5 8.6 5.7 9.3
