@@ -111,7 +111,7 @@ void InputMarkForStudent(SchoolYear* headOfSchoolyear, string input)
    {
     cur = cur->NextYear;
    }
-    if(!cur) return nullptr;
+   
    // Access Semester Contain Course current
    string semester;
    getline(in,semester);
